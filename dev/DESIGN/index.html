@@ -1,0 +1,825 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/dev/DESIGN/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Plofolia デザイン方針 - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plofolia" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plofolia デザイン方針
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solarized-dark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テーマ: Solarized Dark
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="テーマ: Solarized Dark">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        カラーパレット
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テキストカラー規則
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        背景・ボーダー
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンポーネント別ガイドライン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンポーネント別ガイドライン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostCard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#videoplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VideoPlayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#audioplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioPlayer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フォーム・入力欄
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モーダル・ドロップダウン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        レイアウト原則
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="レイアウト原則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高さ制限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タイムコメントビュー
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        禁止事項まとめ
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="plofolia">Plofolia デザイン方針<a class="headerlink" href="#plofolia" title="Permanent link">&para;</a></h1>
+<p>フロントエンド実装時の UI デザインガイドライン。terra / aurora 両方に適用する。</p>
+<hr />
+<h2 id="solarized-dark">テーマ: Solarized Dark<a class="headerlink" href="#solarized-dark" title="Permanent link">&para;</a></h2>
+<p>全 UI を <strong>Solarized Dark</strong> パレット（<code>sol.*</code> カラー）で統一する。
+<code>bg-black</code>・<code>text-white</code>・<code>text-gray-*</code> の使用は禁止。</p>
+<h3 id="_1">カラーパレット<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tailwind クラス</th>
+<th>Hex</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sol-base03</code></td>
+<td>#002b36</td>
+<td>最も暗い背景・ボタン文字（濃い背景上）</td>
+</tr>
+<tr>
+<td><code>sol-base02</code></td>
+<td>#073642</td>
+<td>主背景</td>
+</tr>
+<tr>
+<td><code>sol-base01</code></td>
+<td>#586e75</td>
+<td>プレースホルダー・ラベル・補助テキスト</td>
+</tr>
+<tr>
+<td><code>sol-base00</code></td>
+<td>#657b83</td>
+<td>セカンダリテキスト</td>
+</tr>
+<tr>
+<td><code>sol-base0</code></td>
+<td>#839496</td>
+<td>本文</td>
+</tr>
+<tr>
+<td><code>sol-base1</code></td>
+<td>#93a1a1</td>
+<td>見出し・ユーザー名</td>
+</tr>
+<tr>
+<td><code>sol-base2</code></td>
+<td>#eee8d5</td>
+<td>(ライトモード用・基本未使用)</td>
+</tr>
+<tr>
+<td><code>sol-base3</code></td>
+<td>#fdf6e3</td>
+<td>強調テキスト</td>
+</tr>
+<tr>
+<td><code>sol-yellow</code></td>
+<td>#b58900</td>
+<td>ブックマーク・警告</td>
+</tr>
+<tr>
+<td><code>sol-orange</code></td>
+<td>#cb4b16</td>
+<td>危険・破壊的操作</td>
+</tr>
+<tr>
+<td><code>sol-red</code></td>
+<td>#dc322f</td>
+<td>エラー・削除</td>
+</tr>
+<tr>
+<td><code>sol-magenta</code></td>
+<td>#d33682</td>
+<td>(汎用アクセント)</td>
+</tr>
+<tr>
+<td><code>sol-violet</code></td>
+<td>#6c71c4</td>
+<td>(汎用アクセント)</td>
+</tr>
+<tr>
+<td><code>sol-blue</code></td>
+<td>#268bd2</td>
+<td>リンク・フォロー・未読バッジ</td>
+</tr>
+<tr>
+<td><code>sol-cyan</code></td>
+<td>#2aa198</td>
+<td>主アクションボタン・タイムコメント</td>
+</tr>
+<tr>
+<td><code>sol-green</code></td>
+<td>#859900</td>
+<td>成功・いいね</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">テキストカラー規則<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>text-sol-base3   → 強調テキスト（最明）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>text-sol-base2   → 見出し・ユーザー名
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>text-sol-base1   → 本文
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>text-sol-base0   → セカンダリテキスト
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>text-sol-base01  → プレースホルダー・ラベル・補助テキスト
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>text-sol-base03  → ボタン文字（sol-cyan など濃い背景の上）
+</code></pre></div>
+<p>アクセントカラーは <code>text-sol-cyan</code>・<code>text-sol-blue</code>・<code>text-sol-yellow</code> 等を目的に応じて使用する。</p>
+<hr />
+<h2 id="_3">背景・ボーダー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<ul>
+<li>主背景: <code>bg-sol-base02</code>（#073642）</li>
+<li>カード背景: <code>bg-sol-base02</code> または <code>bg-sol-base03</code></li>
+<li>ボーダー: <code>border-sol-base01/30</code> 〜 <code>border-sol-base01/60</code>（透明度付き）</li>
+<li><strong><code>bg-black</code> は使用禁止</strong>。最も暗くしたい場合は <code>bg-sol-base03</code>（#002b36）を使う</li>
+</ul>
+<hr />
+<h2 id="_4">コンポーネント別ガイドライン<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="postcard">PostCard<a class="headerlink" href="#postcard" title="Permanent link">&para;</a></h3>
+<ul>
+<li>ボーダーレスフィード（カード間の区切りは色差のみ）</li>
+<li>各投稿の上端にカテゴリカラーアクセントバー（3px、<code>border-t-[3px]</code>）</li>
+<li>アクションボタン: <code>hover:bg-sol-cyan/10 hover:text-sol-cyan</code> など hover 時にアクセントカラーを使用</li>
+<li>タイムコメント数表示: <code>Clock</code> アイコン + カウント、0件は非表示</li>
+</ul>
+<h3 id="videoplayer">VideoPlayer<a class="headerlink" href="#videoplayer" title="Permanent link">&para;</a></h3>
+<ul>
+<li>カスタムコントロール（Solarized Dark テーマ）: <code>bg-sol-base03</code>、グラデーションオーバーレイ <code>from-sol-base03/90</code></li>
+<li>コントロール: 再生/一時停止・シークバー・音量（ミュートトグル + スライダー）・時刻・フルスクリーン</li>
+<li>操作後 2.5 秒でコントロール自動非表示</li>
+<li>複数プレイヤーの排他制御: <code>usePlaybackStore</code></li>
+</ul>
+<h3 id="audioplayer">AudioPlayer<a class="headerlink" href="#audioplayer" title="Permanent link">&para;</a></h3>
+<ul>
+<li>カバーアート + 波形ビジュアライザー（AnalyserNode + Canvas）</li>
+<li>音量スライダー: <code>w-20 accent-[#2aa198]</code>（sol-cyan）</li>
+<li>時刻表示: <code>現在時刻 / 総時間</code>（YouTube スタイル）</li>
+<li><code>chatPanel</code> prop でタイムコメントパネルをプレイヤー下部に表示</li>
+</ul>
+<h3 id="_5">フォーム・入力欄<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>入力欄背景: <code>bg-white/8</code> 〜 <code>bg-sol-base03/60</code></li>
+<li>ボーダー: <code>border border-white/15</code></li>
+<li>フォーカス時: <code>focus:border-sol-cyan/60</code></li>
+<li>送信・主アクションボタン: <code>bg-sol-cyan</code>・<code>text-sol-base03</code></li>
+</ul>
+<h3 id="_6">モーダル・ドロップダウン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>背景: <code>bg-sol-base02</code> または <code>bg-sol-base03</code></li>
+<li>オーバーレイ: <code>bg-black/60</code></li>
+<li>ボーダー: <code>border border-sol-base01/40</code></li>
+</ul>
+<hr />
+<h2 id="_7">レイアウト原則<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="_8">高さ制限<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>タイムライン投稿: <code>max-h-480px</code>、<code>object-cover</code>（X 風クロップ: 16:9 / 4:5 / 1:1）</li>
+<li>タイムコメントパネル: <code>h-72</code> 固定（<code>h-auto</code> は禁止。コメント量で枠が伸びる原因になる）</li>
+<li>動画は常に <code>videoIsFullWidth=true</code> で全幅表示（動画と画像の混在はない）</li>
+</ul>
+<h3 id="_9">タイムコメントビュー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li>動画: VideoPlayer の <code>chatPanel</code> prop に <code>&lt;TimedComments /&gt;</code> を渡し、オーバーレイ表示</li>
+<li>音声: AudioPlayer の <code>chatPanel</code> prop に <code>&lt;TimedComments /&gt;</code> を渡し、プレイヤー下表示</li>
+<li><code>hasVideoMedia</code> フラグで動画・音声を判別し、重複して両方に渡さない</li>
+</ul>
+<hr />
+<h2 id="_10">禁止事項まとめ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>禁止</th>
+<th>代替</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bg-black</code></td>
+<td><code>bg-sol-base03</code></td>
+</tr>
+<tr>
+<td><code>text-white</code></td>
+<td><code>text-sol-base3</code></td>
+</tr>
+<tr>
+<td><code>text-gray-*</code></td>
+<td><code>text-sol-base0</code> / <code>text-sol-base01</code> など</td>
+</tr>
+<tr>
+<td>タイムコメントパネルに <code>h-auto</code></td>
+<td><code>h-72</code> 等の固定高さ</td>
+</tr>
+<tr>
+<td>絵文字をコードやドキュメントに含める</td>
+<td>テキスト表記を使用</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

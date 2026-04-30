@@ -1,0 +1,1522 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/ops/DEPLOY/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>AWS デプロイ手順（実地記録） - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#aws" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AWS デプロイ手順（実地記録）
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現在の本番状態（2026-04-28時点）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コード更新時の再デプロイ（日常運用）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コード更新時の再デプロイ（日常運用）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法1: ワンコマンドデプロイ（推奨）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ec2ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法2: EC2に直接SSHして実行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploysh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        deploy.sh の動作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        前提条件
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        サービス構成
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-sshmac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. SSH接続（Mac）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. サーバー初期セットアップ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. サーバー初期セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        システム更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodejs-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Node.js 20 インストール
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pm2-nginx-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PM2 / Nginx / PostgreSQL インストール
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pm2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PM2ログディレクトリ作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. PostgreSQL セットアップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. コードをクローン
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 環境変数設定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 環境変数設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sol（メインバックエンド）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        terra（メインフロントエンド）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        aurora（管理フロントエンド）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sol-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. sol セットアップ（DB初期化・ビルド）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. sol セットアップ（DB初期化・ビルド）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        テストアカウント（seed後）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-nova" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. nova セットアップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-terra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. terra ビルド
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. aurora ビルド
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-pm24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. PM2で起動（4サービス）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. PM2で起動（4サービス）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pm2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PM2 自動起動設定（サーバー再起動時）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        環境変数を更新して再起動する場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Nginx設定
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 動作確認
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-dnscom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. DNS設定（お名前.com）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-httpscertbot-lets-encrypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. HTTPS化（Certbot / Let's Encrypt）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. 環境変数をHTTPS用に更新
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-aws-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. AWS S3 セットアップ（将来対応）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. AWS S3 セットアップ（将来対応）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S3バケット作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バケットポリシー設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IAMユーザー作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#db-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DB マイグレーション適用（EC2）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コード更新時（再デプロイ）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        トラブルシューティング
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="トラブルシューティング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#502-bad-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        502 Bad Gateway
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DBパスワード認証エラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3nosuchbucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        S3アップロードエラー（NoSuchBucket）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin_jwt_secret-is-not-set-nova" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ADMIN_JWT_SECRET is not set で nova が起動しない
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextconfigts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        next.config.ts エラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#float-is-not-a-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        float is not a function エラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pm2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PM2ログフォルダエラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHubクローン時にユーザー名/パスワードを聞かれる
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#certbotno-such-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certbot「No such authorization」エラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnsservfail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS「SERVFAIL」エラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="aws">AWS デプロイ手順（実地記録）<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h1>
+<p>EC2 t3.micro + Ubuntu 22.04 LTS + PostgreSQL同居構成。
+実際に踏んだ手順と詰まりポイントをまとめたもの。</p>
+<h2 id="2026-04-28">現在の本番状態（2026-04-28時点）<a class="headerlink" href="#2026-04-28" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>状態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URL</td>
+<td>https://plofolia.com（HTTPS稼働中）</td>
+</tr>
+<tr>
+<td>EC2</td>
+<td>i-04f92f1a7aad49ef2（ap-northeast-1a）</td>
+</tr>
+<tr>
+<td>IP</td>
+<td>13.115.254.4</td>
+</tr>
+<tr>
+<td>SSL証明書</td>
+<td>Let's Encrypt（2026-07-26まで有効、自動更新設定済み）</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>plofolia.com / www.plofolia.com → 13.115.254.4</td>
+</tr>
+<tr>
+<td>PM2</td>
+<td>plofolia-sol / plofolia-nova / plofolia-terra / plofolia-aurora 全稼働</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1">コード更新時の再デプロイ（日常運用）<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>→ 詳細な日常運用手順は <a href="../OPERATIONS/">OPERATIONS.md</a> を参照。<br />
+→ トラブル発生時は <a href="../RUNBOOK/">RUNBOOK.md</a> を参照。</p>
+<h3 id="1">方法1: ワンコマンドデプロイ（推奨）<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># ローカル（PowerShell）から実行するだけ</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">.\</span><span class="n">titan</span><span class="p">\</span><span class="n">deploy</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<p>初回のみ <code>E:\DEV\plofolia\ec2_key</code> が自動生成される。以降は同じキーを再利用。</p>
+<p>スクリプトが自動で行うこと:</p>
+<ol>
+<li>EC2に一時公開鍵をプッシュ（EC2 Instance Connect、60秒有効）</li>
+<li><code>git push origin develop</code></li>
+<li>EC2上で <code>git fetch &amp;&amp; git reset --hard origin/develop</code></li>
+<li>変更があったサービスのみビルド・PM2再起動（terra は <code>--update-env</code> 付き）</li>
+</ol>
+<h3 id="2-ec2ssh">方法2: EC2に直接SSHして実行<a class="headerlink" href="#2-ec2ssh" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Bash から接続</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>-o<span class="w"> </span><span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no<span class="w"> </span>ubuntu@13.115.254.4
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./titan/deploy.sh
+</code></pre></div>
+<blockquote>
+<p>接続前に PowerShell で公開鍵のプッシュが必要（詳細は OPERATIONS.md 参照）。</p>
+</blockquote>
+<h3 id="deploysh">deploy.sh の動作<a class="headerlink" href="#deploysh" title="Permanent link">&para;</a></h3>
+<p><code>titan/deploy.sh</code> は変更されたフォルダを自動検出してビルド・PM2再起動まで行う。</p>
+<blockquote>
+<p><strong>重要</strong>: バックエンド（sol）の変更は <code>npm run build</code> でTypeScriptをコンパイルしてから <code>pm2 restart plofolia-sol</code> すること。
+ビルドなしでrestart しても古い <code>dist/app.js</code> が動き続けるため変更が反映されない。</p>
+</blockquote>
+<hr />
+<h2 id="_2">前提条件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>AWS EC2 インスタンス（t3.micro, Ubuntu 22.04 LTS）が起動済み</li>
+<li>セキュリティグループで TCP 22 / 80 / 443 を開放済み</li>
+<li>.pem キーファイルをローカルに保存済み</li>
+</ul>
+<hr />
+<h2 id="_3">サービス構成<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>サービス名（PM2）</th>
+<th>フォルダ</th>
+<th>ポート</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plofolia-sol</code></td>
+<td><code>sol/</code></td>
+<td>4000</td>
+</tr>
+<tr>
+<td><code>plofolia-nova</code></td>
+<td><code>sol/dist/admin-app.js</code></td>
+<td>4001</td>
+</tr>
+<tr>
+<td><code>plofolia-terra</code></td>
+<td><code>terra/</code></td>
+<td>3000</td>
+</tr>
+<tr>
+<td><code>plofolia-aurora</code></td>
+<td><code>aurora/</code></td>
+<td>3001</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="1-sshmac">1. SSH接続（Mac）<a class="headerlink" href="#1-sshmac" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>chmod<span class="w"> </span><span class="m">400</span><span class="w"> </span>~/Downloads/plofolia-key.pem
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>~/Downloads/plofolia-key.pem<span class="w"> </span>ubuntu@&lt;EC2のパブリックIP&gt;
+</code></pre></div>
+<hr />
+<h2 id="2">2. サーバー初期セットアップ<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="_4">システム更新<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>upgrade<span class="w"> </span>-y
+</code></pre></div>
+<blockquote>
+<p>ダイアログが出たら Tab で <code>&lt;Ok&gt;</code> を選んで Enter</p>
+</blockquote>
+<h3 id="nodejs-20">Node.js 20 インストール<a class="headerlink" href="#nodejs-20" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://deb.nodesource.com/setup_20.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
+</code></pre></div>
+<h3 id="pm2-nginx-postgresql">PM2 / Nginx / PostgreSQL インストール<a class="headerlink" href="#pm2-nginx-postgresql" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>pm2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nginx<span class="w"> </span>postgresql<span class="w"> </span>postgresql-contrib<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>nginx<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>postgresql
+</code></pre></div>
+<h3 id="pm2">PM2ログディレクトリ作成<a class="headerlink" href="#pm2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/pm2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>ubuntu:ubuntu<span class="w"> </span>/var/log/pm2
+</code></pre></div>
+<hr />
+<h2 id="3-postgresql">3. PostgreSQL セットアップ<a class="headerlink" href="#3-postgresql" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">plofolia</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">PASSWORD</span><span class="w"> </span><span class="s1">&#39;パスワード&#39;</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">plofolia</span><span class="w"> </span><span class="k">OWNER</span><span class="w"> </span><span class="n">plofolia</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="err">\</span><span class="n">q</span>
+</code></pre></div>
+<blockquote>
+<p>パスワードは自分で決めて <code>sol/.env</code> の <code>DATABASE_URL</code> と揃えること</p>
+</blockquote>
+<hr />
+<h2 id="4">4. コードをクローン<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<p>GitHubのPersonal Access Token（PAT）が必要（パスワード認証は不可）。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://plofolia-dev:&lt;PAT&gt;@github.com/plofolia-dev/plofolia.git<span class="w"> </span>/home/ubuntu/plofolia
+</code></pre></div>
+<p>PATの発行: GitHub → Settings → Developer settings → Personal access tokens → <code>repo</code> スコープにチェック</p>
+<hr />
+<h2 id="5">5. 環境変数設定<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="sol">sol（メインバックエンド）<a class="headerlink" href="#sol" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia/sol
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>nano<span class="w"> </span>.env
+</code></pre></div>
+<p>必須項目：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>NODE_ENV=production
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>DATABASE_URL=postgresql://plofolia:&lt;パスワード&gt;@localhost:5432/plofolia
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>JWT_SECRET=&lt;openssl rand -hex 64 で生成&gt;
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>FRONTEND_URL=https://plofolia.com
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a># ストレージ（現在はローカル保存。S3移行は有料ユーザー発生後）
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>STORAGE_PROVIDER=local
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>UPLOAD_DIR=./uploads
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a># 管理サーバー
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>ADMIN_JWT_SECRET=&lt;openssl rand -hex 64 で別途生成&gt;
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>ADMIN_PORT=4001
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>ADMIN_FRONTEND_URL=http://&lt;EC2のパブリックIP&gt;:3001
+</code></pre></div>
+<blockquote>
+<p>JWT_SECRET と ADMIN_JWT_SECRET は別々に <code>openssl rand -hex 64</code> を2回実行して生成すること</p>
+</blockquote>
+<h3 id="terra">terra（メインフロントエンド）<a class="headerlink" href="#terra" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia/terra
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>cp<span class="w"> </span>.env.example<span class="w"> </span>.env.local
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>nano<span class="w"> </span>.env.local
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>NEXT_PUBLIC_API_URL=http://&lt;EC2のパブリックIP&gt;/api/v1
+</code></pre></div>
+<h3 id="aurora">aurora（管理フロントエンド）<a class="headerlink" href="#aurora" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia/aurora
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>cp<span class="w"> </span>.env.local.example<span class="w"> </span>.env.local
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>nano<span class="w"> </span>.env.local
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ADMIN_API_URL=http://localhost:4001
+</code></pre></div>
+<hr />
+<h2 id="6-sol-db">6. sol セットアップ（DB初期化・ビルド）<a class="headerlink" href="#6-sol-db" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia/sol
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>npm<span class="w"> </span>install
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>npm<span class="w"> </span>run<span class="w"> </span>db:generate
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>npm<span class="w"> </span>run<span class="w"> </span>db:migrate
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>npm<span class="w"> </span>run<span class="w"> </span>db:seed
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</code></pre></div>
+<h3 id="seed">テストアカウント（seed後）<a class="headerlink" href="#seed" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ユーザー名</th>
+<th>メール</th>
+<th>ロール</th>
+<th>パスワード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hana_art</code></td>
+<td>hana@example.com</td>
+<td>illustrator</td>
+<td><code>Password123!</code></td>
+</tr>
+<tr>
+<td><code>admin</code></td>
+<td>admin@example.com</td>
+<td>admin</td>
+<td><code>Password123!</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-nova">7. nova セットアップ<a class="headerlink" href="#7-nova" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia/nova
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>npm<span class="w"> </span>install
+</code></pre></div>
+<blockquote>
+<p>nova は <code>sol/dist/admin-app.js</code> を実行するだけです。sol のビルドが完了していれば追加のビルドは不要です。</p>
+</blockquote>
+<hr />
+<h2 id="8-terra">8. terra ビルド<a class="headerlink" href="#8-terra" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia/terra
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>npm<span class="w"> </span>install
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</code></pre></div>
+<blockquote>
+<p>5〜10分かかる</p>
+</blockquote>
+<hr />
+<h2 id="9-aurora">9. aurora ビルド<a class="headerlink" href="#9-aurora" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia/aurora
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>npm<span class="w"> </span>install
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+</code></pre></div>
+<hr />
+<h2 id="10-pm24">10. PM2で起動（4サービス）<a class="headerlink" href="#10-pm24" title="Permanent link">&para;</a></h2>
+<p><code>--cwd</code> を明示して各サービスを個別に起動する：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>pm2<span class="w"> </span>start<span class="w"> </span>/home/ubuntu/plofolia/sol/dist/app.js<span class="w"> </span>--name<span class="w"> </span>plofolia-sol<span class="w"> </span>--cwd<span class="w"> </span>/home/ubuntu/plofolia/sol
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>pm2<span class="w"> </span>start<span class="w"> </span>/home/ubuntu/plofolia/sol/dist/admin-app.js<span class="w"> </span>--name<span class="w"> </span>plofolia-nova<span class="w"> </span>--cwd<span class="w"> </span>/home/ubuntu/plofolia/sol
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>pm2<span class="w"> </span>start<span class="w"> </span>/home/ubuntu/plofolia/terra/node_modules/.bin/next<span class="w"> </span>--name<span class="w"> </span>plofolia-terra<span class="w"> </span>--cwd<span class="w"> </span>/home/ubuntu/plofolia/terra<span class="w"> </span>--<span class="w"> </span>start<span class="w"> </span>-p<span class="w"> </span><span class="m">3000</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>pm2<span class="w"> </span>start<span class="w"> </span>/home/ubuntu/plofolia/aurora/node_modules/.bin/next<span class="w"> </span>--name<span class="w"> </span>plofolia-aurora<span class="w"> </span>--cwd<span class="w"> </span>/home/ubuntu/plofolia/aurora<span class="w"> </span>--<span class="w"> </span>start<span class="w"> </span>-p<span class="w"> </span><span class="m">3001</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>pm2<span class="w"> </span>save
+</code></pre></div>
+<p>確認：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>pm2<span class="w"> </span>status
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="c1"># plofolia-sol / plofolia-nova / plofolia-terra / plofolia-aurora が online になっていればOK</span>
+</code></pre></div>
+<blockquote>
+<p><strong>注意</strong>: <code>--cwd</code> を省略すると Next.js が <code>.next</code> ディレクトリを見つけられず起動に失敗する。必ず指定すること。</p>
+</blockquote>
+<h3 id="pm2_1">PM2 自動起動設定（サーバー再起動時）<a class="headerlink" href="#pm2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>pm2<span class="w"> </span>startup
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="c1"># 表示された sudo env PATH=... のコマンドをコピーして実行</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>pm2<span class="w"> </span>save
+</code></pre></div>
+<h3 id="_5">環境変数を更新して再起動する場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>--update-env
+</code></pre></div>
+<blockquote>
+<p><code>--update-env</code> を付けないと <code>.env</code> の変更が反映されない</p>
+</blockquote>
+<hr />
+<h2 id="11-nginx">11. Nginx設定<a class="headerlink" href="#11-nginx" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>/home/ubuntu/plofolia/titan/nginx/plofolia.conf<span class="w"> </span>/etc/nginx/sites-available/plofolia
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/your-domain.com/&lt;ドメインまたはEC2のパブリックIP&gt;/g&#39;</span><span class="w"> </span>/etc/nginx/sites-available/plofolia
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>/etc/nginx/sites-available/plofolia<span class="w"> </span>/etc/nginx/sites-enabled/
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/nginx/sites-enabled/default
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+<hr />
+<h2 id="12">12. 動作確認<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>http://&lt;EC2のパブリックIP&gt;/en/timeline     → メインアプリ（terra）
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>http://&lt;EC2のパブリックIP&gt;/health          → {&quot;status&quot;:&quot;ok&quot;}（sol）
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>http://&lt;EC2のパブリックIP&gt;:4001/health     → {&quot;status&quot;:&quot;ok&quot;}（nova）
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>http://&lt;EC2のパブリックIP&gt;:3001            → 管理画面（aurora）
+</code></pre></div>
+<hr />
+<h2 id="13-dnscom">13. DNS設定（お名前.com）<a class="headerlink" href="#13-dnscom" title="Permanent link">&para;</a></h2>
+<p>ドメイン: <code>plofolia.com</code> / EC2 IP: <code>13.115.254.4</code></p>
+<p>お名前.com Navi → ドメイン → DNS設定/転送設定 → DNSレコード設定を利用する</p>
+<p><strong>ネームサーバー設定</strong>（「ご自身でDNSレコード設定を行う場合」を選択）:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>01.dnsv.jp / 02.dnsv.jp / 03.dnsv.jp / 04.dnsv.jp
+</code></pre></div>
+<p><strong>Aレコード追加</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>ホスト名</th>
+<th>TYPE</th>
+<th>VALUE</th>
+<th>TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>（空欄）</td>
+<td>A</td>
+<td><code>13.115.254.4</code></td>
+<td>3600</td>
+</tr>
+<tr>
+<td>www</td>
+<td>A</td>
+<td><code>13.115.254.4</code></td>
+<td>3600</td>
+</tr>
+</tbody>
+</table>
+<p>「レコード情報の登録とあわせてDNSレコード設定用のネームサーバーに変更する」にチェックを入れて保存。</p>
+<blockquote>
+<p><strong>注意</strong>: 設定後に必ず「設定する」ボタンを押すこと。押し忘れると反映されない。</p>
+</blockquote>
+<p><strong>反映確認</strong>（数時間後）:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>nslookup<span class="w"> </span>plofolia.com<span class="w"> </span><span class="m">8</span>.8.8.8
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="c1"># → 13.115.254.4 になればOK</span>
+</code></pre></div>
+<hr />
+<h2 id="14-httpscertbot-lets-encrypt">14. HTTPS化（Certbot / Let's Encrypt）<a class="headerlink" href="#14-httpscertbot-lets-encrypt" title="Permanent link">&para;</a></h2>
+<p>DNS反映確認後に実施。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Certbot インストール</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>certbot<span class="w"> </span>python3-certbot-nginx<span class="w"> </span>-y
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># Nginxのserver_nameをドメインに更新してからCertbot実行</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>sudo<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/your-domain.com/plofolia.com/g&#39;</span><span class="w"> </span>/etc/nginx/sites-available/plofolia
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="c1"># SSL証明書取得（Nginxに自動設定）</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>sudo<span class="w"> </span>certbot<span class="w"> </span>--nginx<span class="w"> </span>-d<span class="w"> </span>plofolia.com<span class="w"> </span>-d<span class="w"> </span>www.plofolia.com
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="c1"># 自動更新テスト</span>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
+</code></pre></div>
+<p>証明書は90日有効。<code>certbot renew</code> はcronで自動実行される（インストール時に設定済み）。</p>
+<p><strong>確認</strong>: <code>https://plofolia.com</code> でブラウザの鍵マークが出ればOK。</p>
+<blockquote>
+<p><strong>注意</strong>: <code>sed</code> でserver_nameを更新する前にCertbotを実行すると「No such authorization」エラーになる。必ずNginxのserver_nameを更新してからCertbotを実行すること。</p>
+</blockquote>
+<hr />
+<h2 id="15-https">15. 環境変数をHTTPS用に更新<a class="headerlink" href="#15-https" title="Permanent link">&para;</a></h2>
+<p>HTTPS化後、各サービスのURLをhttpsに更新して再ビルド・再起動：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># sol/.env</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nv">FRONTEND_URL</span><span class="o">=</span>https://plofolia.com
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nv">ADMIN_FRONTEND_URL</span><span class="o">=</span>https://plofolia.com
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="c1"># terra/.env.local</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="nv">NEXT_PUBLIC_API_URL</span><span class="o">=</span>https://plofolia.com/api/v1
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># terra 再ビルド</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia/terra<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-terra
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># sol 再起動（環境変数を反映）</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>--update-env
+</code></pre></div>
+<hr />
+<h2 id="16-aws-s3">16. AWS S3 セットアップ（将来対応）<a class="headerlink" href="#16-aws-s3" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><strong>現状</strong>: <code>STORAGE_PROVIDER=local</code> でサーバーローカルに保存中。
+S3 移行は有料ユーザーが発生し収益が見込めた段階で実施予定。
+移行時は <code>sol/.env</code> の <code>STORAGE_PROVIDER=s3</code> に変更し下記を設定する。</p>
+</blockquote>
+<p>メディアファイルをS3に保存する（ローカル保存はサーバー障害時に消失するリスクがある）。</p>
+<h3 id="s3">S3バケット作成<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>AWSコンソール → S3 → 「バケットを作成」</li>
+<li>バケット名: <code>plofolia-media</code>、バケットタイプ: 汎用</li>
+<li>リージョン: <code>ap-northeast-1</code>（東京）</li>
+<li>「パブリックアクセスをすべてブロック」→ チェックを外す</li>
+<li>警告のチェックボックスにチェック → 「バケットを作成」</li>
+</ol>
+<h3 id="_6">バケットポリシー設定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>S3 → <code>plofolia-media</code> → 「アクセス許可」→「バケットポリシー」→「編集」:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="p">{</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="w">  </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="w">  </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="w">      </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PublicReadGetObject&quot;</span><span class="p">,</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">      </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">      </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3:GetObject&quot;</span><span class="p">,</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">      </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:s3:::plofolia-media/*&quot;</span>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="iam">IAMユーザー作成<a class="headerlink" href="#iam" title="Permanent link">&para;</a></h3>
+<ol>
+<li>IAM → ユーザー → 「ユーザーを作成」</li>
+<li>ユーザー名: <code>plofolia-s3</code></li>
+<li>「ポリシーを直接アタッチ」→ <code>AmazonS3FullAccess</code></li>
+<li>作成後 → セキュリティ認証情報 → アクセスキーを作成 → 「アプリケーションの外部で実行されるコード」</li>
+<li>アクセスキーIDとシークレットをメモ（この画面でしか確認できない）</li>
+</ol>
+<hr />
+<h2 id="db-ec2">DB マイグレーション適用（EC2）<a class="headerlink" href="#db-ec2" title="Permanent link">&para;</a></h2>
+<p>スキーマ変更を本番に反映するときは、生成済みのSQLファイルを直接適用する。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># EC2 上での実行例（最新マイグレーションを適用）</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>&lt;pw&gt;<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="w">  </span>-f<span class="w"> </span>~/plofolia/sol/src/db/migrations/0033_xxxx.sql
+</code></pre></div>
+<p>まとめて適用する場合：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span>~/plofolia/sol/src/db/migrations/*.sql<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Applying </span><span class="nv">$f</span><span class="s2">...&quot;</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">  </span><span class="nv">PGPASSWORD</span><span class="o">=</span>&lt;pw&gt;<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$f</span><span class="s2">&quot;</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="k">done</span>
+</code></pre></div>
+<hr />
+<h2 id="_7">コード更新時（再デプロイ）<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><code>titan/deploy.sh</code> を使うと自動で変更検出・ビルド・再起動まで行う：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>./titan/deploy.sh
+</code></pre></div>
+<p>手動で行う場合：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/plofolia
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>git<span class="w"> </span>pull
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># sol/nova 変更あり</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a><span class="nb">cd</span><span class="w"> </span>sol<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>plofolia-nova
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a><span class="c1"># terra 変更あり</span>
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a><span class="nb">cd</span><span class="w"> </span>../terra<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-terra
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a><span class="c1"># aurora 変更あり</span>
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a><span class="nb">cd</span><span class="w"> </span>../aurora<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-aurora
+</code></pre></div>
+<hr />
+<h2 id="_8">トラブルシューティング<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="502-bad-gateway">502 Bad Gateway<a class="headerlink" href="#502-bad-gateway" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="c1"># 1. PM2の状態確認</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>pm2<span class="w"> </span>list
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="c1"># 2. ログ確認</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>pm2<span class="w"> </span>logs<span class="w"> </span>--lines<span class="w"> </span><span class="m">50</span><span class="w"> </span>--nostream
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a><span class="c1"># 3. ポートが実際にlistenしているか確認</span>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4000/health
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:3000
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>
+<a id="__codelineno-36-11" name="__codelineno-36-11" href="#__codelineno-36-11"></a><span class="c1"># 4. Nginx設定確認（proxy_pass先のポートが正しいか）</span>
+<a id="__codelineno-36-12" name="__codelineno-36-12" href="#__codelineno-36-12"></a>sudo<span class="w"> </span>cat<span class="w"> </span>/etc/nginx/sites-enabled/plofolia
+<a id="__codelineno-36-13" name="__codelineno-36-13" href="#__codelineno-36-13"></a>
+<a id="__codelineno-36-14" name="__codelineno-36-14" href="#__codelineno-36-14"></a><span class="c1"># 5. Nginxエラーログ確認</span>
+<a id="__codelineno-36-15" name="__codelineno-36-15" href="#__codelineno-36-15"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-50<span class="w"> </span>/var/log/nginx/error.log
+</code></pre></div>
+<p>よくある原因:</p>
+<ul>
+<li>PM2サービスが停止している → <code>pm2 restart all</code></li>
+<li><code>pm2 start</code> 時に <code>--cwd</code> を指定していない → Next.jsが <code>.next</code> を見つけられず起動失敗</li>
+<li>Nginxのproxy_passポートが間違っている（solは4000、terraは3000）</li>
+<li>HTTPS化後に環境変数（FRONTEND_URL等）が古いhttpのままでCORSエラー</li>
+<li><code>.env</code> 変更後に <code>--update-env</code> なしで再起動 → 環境変数が反映されない</li>
+</ul>
+<h3 id="db">DBパスワード認証エラー<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<p><code>sol/.env</code> の <code>DATABASE_URL</code> のパスワードとPostgreSQLのユーザーパスワードが一致しているか確認。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;ALTER USER plofolia WITH PASSWORD &#39;新しいパスワード&#39;;&quot;</span>
+</code></pre></div>
+<h3 id="s3nosuchbucket">S3アップロードエラー（NoSuchBucket）<a class="headerlink" href="#s3nosuchbucket" title="Permanent link">&para;</a></h3>
+<p><code>sol/.env</code> の <code>S3_BUCKET_NAME</code> が正しいか確認。変更した場合は <code>--update-env</code> で再起動：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>--update-env
+</code></pre></div>
+<h3 id="admin_jwt_secret-is-not-set-nova"><code>ADMIN_JWT_SECRET is not set</code> で nova が起動しない<a class="headerlink" href="#admin_jwt_secret-is-not-set-nova" title="Permanent link">&para;</a></h3>
+<p><code>sol/.env</code> に <code>ADMIN_JWT_SECRET</code> が設定されているか確認。<code>openssl rand -hex 64</code> で生成して設定する。</p>
+<h3 id="nextconfigts"><code>next.config.ts</code> エラー<a class="headerlink" href="#nextconfigts" title="Permanent link">&para;</a></h3>
+<p>このバージョンのNext.jsは <code>.ts</code> 拡張子の設定ファイルに未対応。<code>next.config.mjs</code> を使うこと（リポジトリ修正済み）。</p>
+<h3 id="float-is-not-a-function"><code>float is not a function</code> エラー<a class="headerlink" href="#float-is-not-a-function" title="Permanent link">&para;</a></h3>
+<p>drizzle-orm v0.31 では <code>float</code> が廃止。<code>doublePrecision</code> を使うこと（リポジトリ修正済み）。</p>
+<h3 id="pm2_2">PM2ログフォルダエラー<a class="headerlink" href="#pm2_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/log/pm2<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>ubuntu:ubuntu<span class="w"> </span>/var/log/pm2
+</code></pre></div>
+<h3 id="github">GitHubクローン時にユーザー名/パスワードを聞かれる<a class="headerlink" href="#github" title="Permanent link">&para;</a></h3>
+<p>GitHubはパスワード認証不可。PATをURLに埋め込む：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://plofolia-dev:&lt;PAT&gt;@github.com/plofolia-dev/plofolia.git
+</code></pre></div>
+<h3 id="certbotno-such-authorization">Certbot「No such authorization」エラー<a class="headerlink" href="#certbotno-such-authorization" title="Permanent link">&para;</a></h3>
+<p>Nginxの <code>server_name</code> がドメインと一致していない。先にNginx設定を更新してからCertbotを実行すること。</p>
+<h3 id="dnsservfail">DNS「SERVFAIL」エラー<a class="headerlink" href="#dnsservfail" title="Permanent link">&para;</a></h3>
+<p>お名前.comでAレコードを設定後、「設定する」ボタンを押し忘れている可能性がある。設定画面を再確認すること。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

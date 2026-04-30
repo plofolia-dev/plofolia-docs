@@ -1,0 +1,1554 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/mgmt/ROADMAP/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Plofolia プロダクトロードマップ - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plofolia" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plofolia プロダクトロードマップ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        決定済み方針
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="決定済み方針">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンテンツガイドライン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        マネタイズ方針（決定）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        マネタイズロードマップ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="マネタイズロードマップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-ko-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1（現在）: Ko-Fi 寄付のみ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2（近いうち）: クリエイターへのチップ機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3（成長期）: 有料サブスクリプション・単品販売
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4（将来）: プラットフォーム成熟
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンプライアンス・法務ロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UX 改善ロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クリエイター向け機能ロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エンジニアリング品質ロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora 管理画面ロードマップ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aurora 管理画面ロードマップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装済み機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        将来対応候補
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        カスタマーサポート運用ロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trust-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        信頼・安全（Trust &amp; Safety）ロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        グロース・ユーザー獲得ロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モバイルロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        プラットフォーム成熟ロードマップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        チーム・関係者ロードマップ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="チーム・関係者ロードマップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1（現在）: 創業者 + AI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-21001000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2（ユーザー100〜1,000人）: 外注・副業
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3100010000" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3（1,000〜10,000人）: 正社員採用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関係者を増やす際の準備事項
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="関係者を増やす際の準備事項">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクセス管理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内部ドキュメント整備（採用前に準備）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-iam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS IAM 権限設計（エンジニア追加時）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        全体ロードマップ サマリー
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="plofolia">Plofolia プロダクトロードマップ<a class="headerlink" href="#plofolia" title="Permanent link">&para;</a></h1>
+<p>サービスとして定めておくべき方針・将来の機能・優先順位をまとめたドキュメント。
+インフラのロードマップは <a href="../../dev/TECH_STACK/"><code>../dev/TECH_STACK.md</code></a>、セキュリティは <a href="../../policy/SECURITY/"><code>../policy/SECURITY.md</code></a> を参照。</p>
+<hr />
+<h2 id="_1">決定済み方針<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">コンテンツガイドライン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>詳細は <a href="../../policy/CONTENT_POLICY/">../policy/CONTENT_POLICY.md</a> を参照。</p>
+<table>
+<thead>
+<tr>
+<th>カテゴリ</th>
+<th>方針</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>実写・3DCG・AI生成</td>
+<td>OK（AI生成は要表記）</td>
+</tr>
+<tr>
+<td><strong>未成年に見える絵柄の性的描写</strong></td>
+<td><strong>絶対NG・例外なし</strong></td>
+</tr>
+<tr>
+<td>グロテスク・ゴア</td>
+<td>NSFWフラグ必須</td>
+</tr>
+<tr>
+<td><strong>二次創作（版権キャラ）</strong></td>
+<td>条件付きOK（成人キャラのみ）</td>
+</tr>
+<tr>
+<td>犯罪を促す内容・doxxing</td>
+<td>絶対NG・即BAN</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_3">マネタイズ方針（決定）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>Stripe（SFW用）+ CCBill（NSFW用）の二本立て。プラットフォーム手数料10%。</strong></p>
+<p><strong>方針の根拠:</strong></p>
+<ul>
+<li>Stripeの利用規約はNSFWコンテンツへの利用を制限しており、突然のアカウント停止リスクがある</li>
+<li>CCBillはOnlyFans等で実績ある成人コンテンツ専用決済</li>
+<li>手数料10%はOnlyFans（20%）より低く、Xから移住するクリエイターへの訴求になる</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>フェーズ</th>
+<th>決済手段</th>
+<th>用途</th>
+<th>手数料（決済会社）</th>
+<th>プラットフォーム手数料</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近いうち</td>
+<td><strong>Stripe</strong></td>
+<td>SFW扱いのチップ・投げ銭</td>
+<td>3.6% + ¥40</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>成長期</td>
+<td><strong>CCBill</strong></td>
+<td>有料サブスク・R18単品販売</td>
+<td>9.9% + $0.35</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>広告は採用しない。</strong> NSFWコンテンツに広告を配信できる広告ネットワークが限られており、ブランドセーフティの問題からクリエイターへの不信感を招くリスクがある。</p>
+<hr />
+<h2 id="_4">マネタイズロードマップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="phase-1-ko-fi">Phase 1（現在）: Ko-Fi 寄付のみ<a class="headerlink" href="#phase-1-ko-fi" title="Permanent link">&para;</a></h3>
+<ul>
+<li>サービスの認知向上・ユーザー獲得に集中する期間</li>
+</ul>
+<h3 id="phase-2">Phase 2（近いうち）: クリエイターへのチップ機能<a class="headerlink" href="#phase-2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Stripe でチップ送金機能を実装（SFW扱いのみ）</li>
+<li>プラットフォーム手数料: 取引の <strong>10%</strong></li>
+<li><strong>注意</strong>: StripeはNSFWコンテンツへの利用規約が厳しい。突然アカウント停止リスクあり。SFW用途のみStripeとし、NSFWはCCBillで対応</li>
+</ul>
+<h3 id="phase-3">Phase 3（成長期）: 有料サブスクリプション・単品販売<a class="headerlink" href="#phase-3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>月額フォロワー機能（クリエイターが月額○円のサブスクを設定）</li>
+<li>コンテンツ単品販売（Pay-per-view）</li>
+<li>CCBill / Segpay 対応（成人コンテンツ専用決済）</li>
+</ul>
+<h3 id="phase-4">Phase 4（将来）: プラットフォーム成熟<a class="headerlink" href="#phase-4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>クリエイターファンド（人気クリエイターへの還元）</li>
+<li>収益レポート・税務書類の自動生成</li>
+</ul>
+<hr />
+<h2 id="_5">コンプライアンス・法務ロードマップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>NSFW特化サービスは一般SNSより法務リスクが高い。</p>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>今すぐ</td>
+<td>コンテンツガイドライン</td>
+<td>上記「今すぐ決めるべきこと」参照</td>
+</tr>
+<tr>
+<td>近いうち</td>
+<td>プライバシーポリシー整備</td>
+<td>GDPR（EU）・CCPA（カリフォルニア州）対応の記述</td>
+</tr>
+<tr>
+<td>近いうち</td>
+<td>DMCA対応フロー</td>
+<td>著作権侵害申告の受付・削除・反論プロセスの整備</td>
+</tr>
+<tr>
+<td>近いうち</td>
+<td>利用規約の整備</td>
+<td>コンテンツガイドライン・禁止事項・免責事項を明文化</td>
+</tr>
+<tr>
+<td>近いうち</td>
+<td>年齢確認の強化</td>
+<td>現状は生年月日入力のみ。将来的にID確認（身分証）が必要になる可能性</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>18 U.S.C. § 2257</td>
+<td>米国向けにNSFWコンテンツの出演者年齢記録義務（海外展開時）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ux">UX 改善ロードマップ<a class="headerlink" href="#ux" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>機能</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完了</td>
+<td>タブタイトル未読数表示</td>
+<td>ブラウザタブに <code>(N) Plofolia</code> 形式で通知未読数を反映。Sidebar の unreadCount を document.title に連動</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>ハッシュタグ自動補完</td>
+<td>投稿フォームのタグ入力欄で既存ハッシュタグをサジェスト（250ms デバウンス・キーボード操作対応）</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>投稿ドラフト自動保存</td>
+<td>入力中の title/content/tags/NSFW/投稿タイプを localStorage に2秒デバウンスで保存。次回起動時に復元バナーを表示</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>NSFW 自動判定</td>
+<td>画像・動画アップロード時にブラウザ内 nsfwjs（MobileNetV2）で推定。hentai+porn&gt;0.6 で自動フラグ、&gt;0.35 で警告サジェスト。webpack ビルドは NormalModuleReplacementPlugin + noParse で UMD 解析エラーを回避</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>Web Push 通知</td>
+<td>FCM 連携でアプリ外にもリアルタイム通知を配信</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>全文検索</td>
+<td>Elasticsearch / pg_trgm で本文・プロフィールの全文検索対応</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">クリエイター向け機能ロードマップ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>Xからの移住先として選ばれるための差別化機能。</p>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>機能</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近いうち</td>
+<td>シャドウバン可視化の強化</td>
+<td>現在の分析ダッシュボードをより詳細・わかりやすく</td>
+</tr>
+<tr>
+<td>近いうち</td>
+<td>収益レポート</td>
+<td>チップ・サブスク収益の推移グラフ</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>OGP・シェア最適化</td>
+<td>投稿・プロフィール・タグ・シリーズの og:image / twitter:card 実装済み</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>SEO対応（sitemap.xml）</td>
+<td>静的ページ・タグ・プロフィール・シリーズを sitemap.xml に網羅</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>クリエイター認証バッジ</td>
+<td>本物のクリエイターであることの証明</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>データエクスポート</td>
+<td>投稿・フォロワーリストを自分でエクスポートできる</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>Xからのインポート</td>
+<td>過去ツイートや画像を移行できる仕組み</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">エンジニアリング品質ロードマップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>コードベースの信頼性・保守性の向上。関係者を増やす前に整えておくべき土台。</p>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近いうち</td>
+<td><strong>テスト自動化拡充</strong></td>
+<td>CI済みの Jest テストを拡張。API テスト（supertest）のカバレッジ向上</td>
+</tr>
+<tr>
+<td>近いうち</td>
+<td>E2E テスト導入</td>
+<td>Playwright で認証フロー・投稿フロー・タイムラインをE2E検証</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>passport-twitter 脆弱性対応</td>
+<td>passport-oauth1 直接実装に置き換え。xmldom CVE 解消済み</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>ファイルアップロード magic bytes</td>
+<td>画像・動画・音声の magic bytes 検証実装。MIME 偽装を2層でブロック</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>CSP ヘッダー</td>
+<td><code>terra/next.config.mjs</code> で全ページに Content-Security-Policy を付与（本番確認済み）</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>JWT リフレッシュトークン強化</td>
+<td>使用済みトークン追跡（<code>used_at</code>）+ 再使用検出で全セッション破棄</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>セキュリティログ</td>
+<td><code>security_logs</code> テーブル新設。ログイン/ログアウト/アップロード拒否等を非同期記録</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>コードカバレッジレポート</td>
+<td>Jest の coverage レポートを CI で可視化（coveralls / codecov）</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>型安全の強化</td>
+<td>API レスポンス型を sol ↔ terra で共有（monorepo 型定義）</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>パフォーマンス計測</td>
+<td>Core Web Vitals の CI チェック（Lighthouse CI）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="aurora">Aurora 管理画面ロードマップ<a class="headerlink" href="#aurora" title="Permanent link">&para;</a></h2>
+<h3 id="_8">実装済み機能<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ダッシュボード</td>
+<td>総ユーザー数・公開投稿数・未対応件数・BAN数・<strong>メール未認証数</strong></td>
+</tr>
+<tr>
+<td>ユーザー管理</td>
+<td>検索・フィルタ（BAN済み/メール未認証）・BAN/解除・削除・<strong>詳細ページ</strong></td>
+</tr>
+<tr>
+<td>ユーザー詳細ページ</td>
+<td>投稿数・フォロワー数・BAN履歴・<strong>メール手動認証</strong>・最近の投稿一覧</td>
+</tr>
+<tr>
+<td>投稿管理</td>
+<td>一覧・削除（操作ログ記録）</td>
+</tr>
+<tr>
+<td>投稿報告</td>
+<td>ステータスフィルタ・<strong>メディアプレビュー</strong>・管理者メモ・対応済み/却下</td>
+</tr>
+<tr>
+<td>BAN 異議申し立て</td>
+<td>ステータスフィルタ・承認（アンバン）/却下・管理者メモ</td>
+</tr>
+<tr>
+<td>バグ報告・要望</td>
+<td>ステータスフィルタ・管理者メモ・ユーザーへの返信</td>
+</tr>
+<tr>
+<td>お問い合わせ</td>
+<td>スレッド表示・管理者返信（SES メール通知付き）</td>
+</tr>
+<tr>
+<td>招待コード</td>
+<td>発行・有効期限設定・最大使用回数設定・無効化（admin のみ）</td>
+</tr>
+<tr>
+<td>操作ログ</td>
+<td>全管理操作の時系列ログ（admin のみ）</td>
+</tr>
+<tr>
+<td>アカウント管理</td>
+<td>モデレーターアカウント作成・削除・ロール変更（admin のみ）</td>
+</tr>
+<tr>
+<td>MFA 設定</td>
+<td>TOTP 設定・無効化・デバイス信頼（30日間スキップ）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">将来対応候補<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>機能</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近いうち</td>
+<td>ダッシュボード推移グラフ</td>
+<td>新規登録数・DAU・投稿数の7日間推移（時系列データ基盤が必要）</td>
+</tr>
+<tr>
+<td>近いうち</td>
+<td>お知らせ一括送信</td>
+<td>全ユーザーまたは特定ユーザーにサイト内通知を一括送信</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>AI モデレーション支援</td>
+<td>Claude API でトリアージ・返信文案作成</td>
+</tr>
+<tr>
+<td>見送り</td>
+<td>AWS コスト・容量管理</td>
+<td>実装コスト＞効果。AWS Console で直接管理する方針</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_10">カスタマーサポート運用ロードマップ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完了</td>
+<td>アプリ内問い合わせフォーム</td>
+<td><code>/contact</code> フォーム → Aurora でスレッド管理。ログイン中は送信後スレッドへ自動遷移</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>管理者返信メール通知</td>
+<td>Aurora から返信すると問い合わせ者のメールアドレスへ通知（SES 経由）</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>未ログインユーザーの返信手段</td>
+<td>返信メールの <code>support@plofolia.com</code> に返信することで会話継続。Gmail で受信・手動対応</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>メール → Aurora 自動連携</td>
+<td><code>support@</code> 宛の返信メールを Google Apps Script で検知 → Aurora スレッドに自動取り込み（詳細: <a href="../../ops/EMAIL_SETUP/">EMAIL_SETUP.md</a>）</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>SES Sandbox 解除</td>
+<td>本番環境で任意アドレスへのシステムメール送信を可能にする（AWS コンソールから申請）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="trust-safety">信頼・安全（Trust &amp; Safety）ロードマップ<a class="headerlink" href="#trust-safety" title="Permanent link">&para;</a></h2>
+<p>SNSとして不可欠な仕組み。後回しにするほど対応が大変になる。</p>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完了</td>
+<td>コンテンツ報告フロー整備</td>
+<td>投稿通報（PostReportModal） → Aurora <code>/post-reports</code> で審査・削除</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>Appeals（異議申し立て）</td>
+<td>BAN異議申し立て（BanAppealModal） → Aurora <code>/ban-appeals</code> で審査</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>モデレータロール</td>
+<td><code>user_role: moderator</code> を追加。Aurora ログイン・権限分離・アカウント管理（作成・削除・ロール変更）</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>モデレーション基準の文書化</td>
+<td><code>docs/policy/MODERATION_HANDBOOK.md</code> 作成。SLA・判断基準・BAN手順・エスカレーション基準を整備</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>Aurora アクセス簡略化</td>
+<td><code>https://aurora.plofolia.com</code> で SSH トンネル不要でアクセス可能。Let's Encrypt 証明書取得済み</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>Aurora セキュリティ強化</td>
+<td>HTTP Basic Auth + Nginx レートリミット（30req/min 全体・5req/min 認証）+ MFA（TOTP）+ デバイス信頼（30日間スキップ）実装済み</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>スパム・Bot検出</td>
+<td>大量フォロー・大量いいね等の自動検出</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>未成年保護強化</td>
+<td>年齢確認をすり抜けた未成年への対策</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>AI モデレーション支援</td>
+<td>Claude API でモデレーション判断のトリアージ・返信文案作成（Aurora 連携）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_11">グロース・ユーザー獲得ロードマップ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近いうち</td>
+<td>招待制の段階的解放</td>
+<td>現在実装済みの招待コードを活用してじわじわ広げる</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>OGP最適化</td>
+<td>投稿・プロフィール・タグ・シリーズ・ランディング対応済み</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>クリエイター招待プログラム</td>
+<td>招待した人が有料ユーザーになったらボーナス</td>
+</tr>
+<tr>
+<td>完了</td>
+<td>SEO（sitemap.xml）</td>
+<td>静的ページ・タグ・プロフィール・シリーズを sitemap.xml に網羅</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>イベント・コンテスト機能</td>
+<td>期間限定の企画・コンテスト開催</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_12">モバイルロードマップ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>項目</th>
+<th>内容</th>
+<th>注意点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>完了</td>
+<td>PWA対応</td>
+<td>Service Worker + manifest 実装。Android Chrome インストールプロンプト対応済み</td>
+<td>—</td>
+</tr>
+<tr>
+<td>近いうち</td>
+<td>プッシュ通知（Web Push）</td>
+<td>ブラウザのプッシュ通知（FCM）</td>
+<td>PWAと合わせて実装</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>ネイティブアプリ（iOS/Android）</td>
+<td>React Native で実装</td>
+<td>App Store / Google Play はNSFWアプリを基本拒否。SFW版のみ配信が現実的</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_13">プラットフォーム成熟ロードマップ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>将来</td>
+<td>公開API</td>
+<td>外部ツールがPlofoliaと連携できるAPIの公開</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>OAuth2プロバイダー</td>
+<td>他サービスがPlofoliaアカウントでログインできる</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>クリエイターファンド</td>
+<td>人気クリエイターへの還元制度</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_14">チーム・関係者ロードマップ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>現在は創業者 + Claude Code の2名体制。ユーザー増加に伴い段階的に関係者を増やす方針。</p>
+<h3 id="phase-1-ai">Phase 1（現在）: 創業者 + AI<a class="headerlink" href="#phase-1-ai" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>役割</th>
+<th>担当</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>プロダクト全般</td>
+<td>創業者</td>
+<td>意思決定・デザイン確認・運営</td>
+</tr>
+<tr>
+<td>コード実装</td>
+<td>Claude Code（AI）</td>
+<td>実装・コミット・デプロイまで</td>
+</tr>
+<tr>
+<td>モデレーション</td>
+<td>創業者</td>
+<td>Aurora 管理画面で対応</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-21001000">Phase 2（ユーザー100〜1,000人）: 外注・副業<a class="headerlink" href="#phase-21001000" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>コンテンツモデレーター（副業・委託）</strong>: 報告対応・BAN判断。Aurora の閲覧権限を付与。</li>
+<li><strong>デザイナー（単発委託）</strong>: UI改善・ブランドアイデンティティ強化。Figma 共有で対応。</li>
+<li><strong>法務アドバイザー（スポット）</strong>: 利用規約・プライバシーポリシーのレビュー、DMCA対応フロー構築。</li>
+</ul>
+<blockquote>
+<p><strong>アクセス権限の原則</strong>: 業務に必要な最小権限のみ付与。モデレーターに DB 直接アクセス不要・開発者に本番シークレット不要。</p>
+</blockquote>
+<h3 id="phase-3100010000">Phase 3（1,000〜10,000人）: 正社員採用<a class="headerlink" href="#phase-3100010000" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>採用優先度</th>
+<th>役割</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最優先</td>
+<td>カスタマーサポート / T&amp;S</td>
+<td>報告・問い合わせが創業者一人では対応不可能になる</td>
+</tr>
+<tr>
+<td>次</td>
+<td>バックエンドエンジニア</td>
+<td>決済・スケーリング実装を分担。コードレビュー体制を整える</td>
+</tr>
+<tr>
+<td>次</td>
+<td>フロントエンドエンジニア</td>
+<td>UIの品質・速度向上。デザインシステム構築</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>データアナリスト</td>
+<td>シャドウバン可視化・クリエイター分析ダッシュボードの強化</td>
+</tr>
+<tr>
+<td>将来</td>
+<td>法務・コンプライアンス</td>
+<td>NSFW規制・国際法対応。外注から内製へ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">関係者を増やす際の準備事項<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="_16">アクセス管理<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><strong>モデレータアカウントの発行（実装済み）:</strong>
+Aurora <code>/accounts</code> ページ（admin のみアクセス可）からユーザー名・メールアドレス・パスワードを入力して作成。
+ログインは <code>https://plofolia.com:3001</code> の管理パネルから。</p>
+<table>
+<thead>
+<tr>
+<th>追加する関係者</th>
+<th>付与するアクセス</th>
+<th>付与しないもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>モデレーター</td>
+<td>Aurora モデレータアカウント（投稿削除・報告対応・問い合わせ返信）</td>
+<td>BAN/ユーザー削除・招待コード・監査ログ・GitHub・AWS</td>
+</tr>
+<tr>
+<td>副業エンジニア</td>
+<td>GitHub（develop ブランチへの PR）・ローカル環境</td>
+<td>本番 AWS 認証情報・<code>sol/.env</code> の機密情報</td>
+</tr>
+<tr>
+<td>正社員エンジニア</td>
+<td>GitHub（全ブランチ）・AWS（必要なサービスのみ）</td>
+<td>ルートアカウント・支払い情報</td>
+</tr>
+<tr>
+<td>法務アドバイザー</td>
+<td>ドキュメント（docs/policy/）のみ</td>
+<td>コード・DB・ユーザーデータ</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_17">内部ドキュメント整備（採用前に準備）<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<ul>
+<li>[ ] オンボーディングガイド（開発環境セットアップ → ローカル動作確認まで）</li>
+<li>[ ] コードレビュー基準（PR テンプレート・マージ条件）</li>
+<li>[ ] モデレーションハンドブック（BAN 判断基準・ユーザー対応フレーズ集）</li>
+<li>[ ] インシデント対応手順（<a href="../../ops/RUNBOOK/">RUNBOOK.md</a> をベースに整備）</li>
+</ul>
+<h4 id="aws-iam">AWS IAM 権限設計（エンジニア追加時）<a class="headerlink" href="#aws-iam" title="Permanent link">&para;</a></h4>
+<p>現在は <code>plofolia-admin</code> IAM ユーザー1つで全操作している。エンジニアを追加する場合：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>plofolia-admin（創業者）: EC2・RDS・S3・SES・IAM 全権
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>plofolia-deploy（CI/CD）: EC2 Instance Connect + SSM のみ
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>plofolia-engineer（副業）: S3 読み取り + CloudWatch + Cost Explorer のみ
+</code></pre></div>
+<blockquote>
+<p>IAM ユーザーを追加する前に、本番シークレット（<code>JWT_SECRET</code>・<code>ADMIN_JWT_SECRET</code>）を定期ローテーションするポリシーを設けること。</p>
+</blockquote>
+<hr />
+<h2 id="_18">全体ロードマップ サマリー<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>現在（創業者 + Claude Code）
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> │
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> ├─ [done] コンテンツガイドライン策定（CONTENT_POLICY.md）
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> ├─ [done] セキュリティ強化（Rate Limiting・Nginxヘッダー・アカウントロック実装済み）
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> ├─ [done] DBバックアップ設定（pg_dump日次 + AMI週次）
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a> │
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>近いうち（〜数ヶ月・ユーザー100人超）
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a> ├─ [soon] チップ機能（Stripe）
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a> ├─ [soon] プライバシーポリシー・利用規約整備
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a> ├─ [soon] DMCA対応フロー
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a> ├─ [done] OGP・シェア最適化 + sitemap.xml（SEO）
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a> ├─ [done] PWA対応（Service Worker + manifest）
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a> ├─ [soon] Web Pushプッシュ通知（FCM連携）
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a> ├─ [soon] ステージングサーバー（TECH_STACK.md参照）
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a> ├─ [done] モデレータロール・Aurora 権限分離・アカウント管理
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a> ├─ [done] モデレーターハンドブック整備（MODERATION_HANDBOOK.md）
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a> ├─ [done] Aurora アクセス簡略化（aurora.plofolia.com HTTPS 公開済み）
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a> ├─ [soon] モデレーター採用（副業・委託）
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a> │
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>成長期（ユーザー1,000人〜）
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a> ├─ [growth] 有料サブスクリプション・単品販売
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a> ├─ [growth] CCBill対応
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a> ├─ [growth] DBレプリケーション（TECH_STACK.md参照）
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a> ├─ [growth] S3メディア移行
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a> ├─ [growth] CS / T&amp;S 採用（正社員・第1号）
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a> ├─ [growth] エンジニア採用（副業〜正社員）
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a> │
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>将来（10万ユーザー規模）
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a> ├─ [future] ネイティブアプリ（SFW版）
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a> ├─ [future] WAF + CloudFront
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a> ├─ [future] 公開API
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a> ├─ [future] ALB + RDS Multi-AZ（TECH_STACK.md参照）
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a> └─ [future] 法務・コンプライアンス内製化
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

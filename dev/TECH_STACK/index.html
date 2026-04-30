@@ -1,0 +1,1302 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/dev/TECH_STACK/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Plofolia 技術スタック・利用サービス一覧 - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plofolia" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plofolia 技術スタック・利用サービス一覧
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        システムアーキテクチャ図
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        技術スタック レイヤー図
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terra-aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フロントエンド（terra / aurora）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バックエンド（sol）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        インフラ・クラウド
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        開発環境・ツール
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外部サービス・プラットフォーム
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dnscom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNS設定（お名前.com）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tailwind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        カラーシステム（Tailwind カスタムカラー）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        将来の技術移行予定
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        インフラ可用性ロードマップ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="インフラ可用性ロードマップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現状の構成（単一EC2）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1 — DBバックアップ（実装済み）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2 — ステージングサーバー（ユーザーが増え始めたら）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3 — DBレプリケーション（本格稼働期）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-ha10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4 — 本格HA構成（10万ユーザー規模）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ロードマップ サマリー
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="plofolia">Plofolia 技術スタック・利用サービス一覧<a class="headerlink" href="#plofolia" title="Permanent link">&para;</a></h1>
+<p>プロジェクトで使用しているライブラリ・クラウドサービス・外部サービスのまとめ。</p>
+<hr />
+<h2 id="_1">システムアーキテクチャ図<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TB
+    subgraph Client["クライアント"]
+        Browser["ブラウザ（一般ユーザー）"]
+        AdminBrowser["ブラウザ（管理者）\nSSH ポートフォワード経由"]
+    end
+
+    subgraph EC2["AWS EC2 t3.micro (ap-northeast-1a)"]
+        Nginx["Nginx :443\nHTTPS + TLS / リバースプロキシ"]
+
+        subgraph Apps["PM2 管理プロセス"]
+            Terra["plofolia-terra :3000\nNext.js 14 — フロントエンド"]
+            Sol["plofolia-sol :4000\nExpress + Drizzle — メイン API"]
+            Nova["plofolia-nova :4001\nExpress — 管理 API"]
+            Aurora["plofolia-aurora :3001\nNext.js 14 — 管理 UI"]
+        end
+
+        PG[("PostgreSQL 16\n:5432")]
+        Storage[("uploads/\nローカルストレージ")]
+    end
+
+    subgraph AWS["AWS"]
+        SES["SES\nメール送信"]
+        S3["S3\n（将来移行）"]
+    end
+
+    subgraph OAuth["OAuth プロバイダー"]
+        Google["Google\nOAuth 2.0"]
+        Twitter["Twitter / X\nOAuth 1.0a"]
+    end
+
+    Browser      --&gt;|"HTTPS"| Nginx
+    AdminBrowser --&gt;|"ssh -L 3001"| Aurora
+
+    Nginx --&gt;|"/ → proxy_pass"| Terra
+    Nginx --&gt;|"/api/v1/ → proxy_pass"| Sol
+
+    Terra --&gt;|"fetch (REST)"| Sol
+    Terra -.-&gt;|"SSE 通知・DM"| Sol
+
+    Aurora --&gt;|"fetch (REST)"| Nova
+
+    Sol --- PG
+    Nova --- PG
+    Sol --- Storage
+    Sol --&gt;|"SMTP"| SES
+    Sol -.-&gt;|"将来"| S3
+    Sol --&gt;|"OAuth 2.0"| Google
+    Sol --&gt;|"OAuth 1.0a"| Twitter</code></pre>
+<hr />
+<h2 id="_2">技術スタック レイヤー図<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TB
+    subgraph FE["フロントエンド (terra / aurora)"]
+        direction LR
+        Next["Next.js 14\nApp Router + RSC"] --- Zustand["Zustand\n状態管理"]
+        TQ["TanStack Query\nデータフェッチ"] --- I18n["next-intl\nja / en / zh / ko / es"]
+        Tailwind["Tailwind CSS\nSolarized Dark"] --- SW["Service Worker\nPWA"]
+    end
+
+    subgraph BE["バックエンド (sol / nova)"]
+        direction LR
+        Express["Express.js"] --- Drizzle["Drizzle ORM"]
+        JWT["JWT 認証\n15分 + 7日"] --- Passport["Passport.js\n+ passport-oauth1"]
+        Zod["Zod\nバリデーション"] --- SSE_B["SSE サーバー\n通知・DM プッシュ"]
+        Nodemailer["nodemailer\n+ AWS SES"]
+    end
+
+    subgraph DB["データ"]
+        direction LR
+        PG["PostgreSQL 16"] --- Files["ローカルストレージ\nuploads/ → S3（将来）"]
+    end
+
+    subgraph Infra["インフラ"]
+        direction LR
+        EC2_I["AWS EC2\nt3.micro"] --- Nginx_I["Nginx\nHTTPS + proxy"]
+        PM2_I["PM2\nプロセス管理"] --- LE_I["Let's Encrypt\nSSL 自動更新"]
+    end
+
+    FE  --&gt;|"fetch / SSE"| BE
+    BE  --&gt;|"SQL / ファイル IO"| DB
+    DB  --&gt;|"runs on"| Infra</code></pre>
+<hr />
+<h2 id="terra-aurora">フロントエンド（terra / aurora）<a class="headerlink" href="#terra-aurora" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>カテゴリ</th>
+<th>使用技術</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>フレームワーク</td>
+<td><strong>Next.js 14</strong> (App Router)</td>
+<td>SSR + RSC</td>
+</tr>
+<tr>
+<td>言語</td>
+<td><strong>TypeScript</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>スタイリング</td>
+<td><strong>Tailwind CSS</strong></td>
+<td>Solarized Dark カスタムカラー（<code>sol.*</code>）</td>
+</tr>
+<tr>
+<td>状態管理</td>
+<td><strong>Zustand</strong> + <code>zustand/middleware/persist</code></td>
+<td>localStorageに認証情報を永続化</td>
+</tr>
+<tr>
+<td>データフェッチ</td>
+<td><strong>TanStack Query v5</strong></td>
+<td>キャッシュ・無限スクロール</td>
+</tr>
+<tr>
+<td>国際化</td>
+<td><strong>next-intl</strong></td>
+<td>ja / en / zh / ko / es の5言語</td>
+</tr>
+<tr>
+<td>アイコン</td>
+<td><strong>lucide-react</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>画像処理</td>
+<td><strong>next/image</strong> + Canvas API</td>
+<td>クロップ・エンコード</td>
+</tr>
+<tr>
+<td>メディアエンコード</td>
+<td><strong>MediaRecorder API</strong> + <strong>AudioContext API</strong></td>
+<td>ブラウザ内エンコード（WebM/Opus, WebP）</td>
+</tr>
+<tr>
+<td>HTTP クライアント</td>
+<td><strong>axios</strong> (<code>apiClient</code>)</td>
+<td>自動リフレッシュインターセプター付き</td>
+</tr>
+<tr>
+<td>フォーム</td>
+<td>React 組み込み（controlled components）</td>
+<td></td>
+</tr>
+<tr>
+<td>リアルタイム</td>
+<td><strong>EventSource (SSE)</strong></td>
+<td>通知（フォールバック: 60秒）・DM（フォールバック: 30秒）ポーリング</td>
+</tr>
+<tr>
+<td>PWA</td>
+<td><strong>Service Worker</strong> + Web App Manifest</td>
+<td><code>public/sw.js</code> + <code>manifest.ts</code>。Android Chrome インストールプロンプト対応</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="sol">バックエンド（sol）<a class="headerlink" href="#sol" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>カテゴリ</th>
+<th>使用技術</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ランタイム</td>
+<td><strong>Node.js 20</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>フレームワーク</td>
+<td><strong>Express</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>言語</td>
+<td><strong>TypeScript</strong></td>
+<td>tsx watch で hot reload</td>
+</tr>
+<tr>
+<td>ORM</td>
+<td><strong>Drizzle ORM</strong></td>
+<td>マイグレーション: drizzle-kit</td>
+</tr>
+<tr>
+<td>DB</td>
+<td><strong>PostgreSQL 16</strong></td>
+<td>EC2上にローカルインストール</td>
+</tr>
+<tr>
+<td>認証</td>
+<td><strong>JWT</strong></td>
+<td>アクセス15分 + リフレッシュ7日（httpOnly Cookie）</td>
+</tr>
+<tr>
+<td>OAuth</td>
+<td><strong>Passport.js</strong> + <strong>passport-oauth1</strong></td>
+<td>Google OAuth 2.0 / Twitter OAuth 1.0a（passport-twitter は xmldom CVE のため廃止・直接実装）</td>
+</tr>
+<tr>
+<td>ファイルアップロード</td>
+<td><strong>multer</strong></td>
+<td>ローカルストレージ or S3</td>
+</tr>
+<tr>
+<td>バリデーション</td>
+<td><strong>Zod</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>SSE</td>
+<td>Express <code>res.write</code> / <code>res.flush</code></td>
+<td>通知・DM</td>
+</tr>
+<tr>
+<td>メール</td>
+<td><strong>nodemailer</strong></td>
+<td>プロバイダー切替可（console / smtp / AWS SES）</td>
+</tr>
+<tr>
+<td>DNS検証</td>
+<td><code>dns.promises.resolveMx</code></td>
+<td>登録時のメールドメイン検証</td>
+</tr>
+<tr>
+<td>パスワードハッシュ</td>
+<td><strong>bcrypt</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>アカウントロック</td>
+<td>DB カラム（<code>login_fail_count</code> / <code>login_locked_until</code>）</td>
+<td>失敗5回で15分ロック。フロントに残り分数を表示（<code>ACCOUNT_LOCKED</code> 429）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_3">インフラ・クラウド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>用途</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS EC2</strong></td>
+<td>アプリサーバー</td>
+<td>t3.micro, Ubuntu 22.04, ap-northeast-1a</td>
+</tr>
+<tr>
+<td><strong>AWS S3</strong></td>
+<td>DBバックアップ + メディアストレージ（将来）</td>
+<td>バケット: <code>plofolia-media</code>（backups/db/ は稼働中・メディアは将来移行）</td>
+</tr>
+<tr>
+<td><strong>AWS SES</strong></td>
+<td>メール送信（本番）</td>
+<td>ドメイン: <code>plofolia.com</code></td>
+</tr>
+<tr>
+<td><strong>AWS EC2 Instance Connect</strong></td>
+<td>SSH接続（キー不要）</td>
+<td>60秒有効の一時公開鍵</td>
+</tr>
+<tr>
+<td><strong>IAM</strong></td>
+<td>AWS権限管理</td>
+<td>ユーザー: <code>plofolia-admin</code>（Account: 804501987696）</td>
+</tr>
+<tr>
+<td><strong>Nginx</strong></td>
+<td>リバースプロキシ</td>
+<td>HTTP→HTTPS リダイレクト + <code>proxy_pass</code></td>
+</tr>
+<tr>
+<td><strong>Let's Encrypt (Certbot)</strong></td>
+<td>SSL証明書</td>
+<td>自動更新設定済み（有効期限: 2026-07-26）</td>
+</tr>
+<tr>
+<td><strong>PM2</strong></td>
+<td>プロセス管理</td>
+<td>4サービス管理 + 自動再起動</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_4">開発環境・ツール<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>用途</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Docker Desktop</strong></td>
+<td>ローカルPostgreSQL + pgAdmin</td>
+<td>WSL2モード</td>
+</tr>
+<tr>
+<td><strong>docker compose</strong></td>
+<td>DBコンテナ管理</td>
+<td><code>plofolia_db</code> + pgAdmin</td>
+</tr>
+<tr>
+<td><strong>Cloudflare Tunnel</strong></td>
+<td>スマホ・別PCからローカルアクセス</td>
+<td><code>npm run dev:app</code> で自動起動</td>
+</tr>
+<tr>
+<td><strong>pgAdmin</strong></td>
+<td>DB管理GUI</td>
+<td>http://localhost:5050</td>
+</tr>
+<tr>
+<td><strong>GitHub Actions</strong></td>
+<td>CI</td>
+<td><code>.github/workflows/test.yml</code>（PostgreSQL + Jest）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_5">外部サービス・プラットフォーム<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>用途</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>コード管理・CI</td>
+<td>github.com/plofolia-dev/plofolia</td>
+</tr>
+<tr>
+<td><strong>お名前.com</strong></td>
+<td>ドメイン管理</td>
+<td>plofolia.com</td>
+</tr>
+<tr>
+<td><strong>Google OAuth</strong></td>
+<td>ソーシャルログイン</td>
+<td>Google Cloud Console → OAuth 2.0 クライアント</td>
+</tr>
+<tr>
+<td><strong>Twitter/X OAuth</strong></td>
+<td>ソーシャルログイン</td>
+<td>Twitter Developer Portal</td>
+</tr>
+<tr>
+<td><strong>Ko-Fi</strong></td>
+<td>寄付・サポート</td>
+<td>ko-fi.com/plofolia</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="dnscom">DNS設定（お名前.com）<a class="headerlink" href="#dnscom" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ホスト</th>
+<th>TYPE</th>
+<th>VALUE</th>
+<th>TTL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>（空）</td>
+<td>A</td>
+<td><code>13.115.254.4</code></td>
+<td>3600</td>
+</tr>
+<tr>
+<td>www</td>
+<td>A</td>
+<td><code>13.115.254.4</code></td>
+<td>3600</td>
+</tr>
+</tbody>
+</table>
+<p>ネームサーバー: <code>01.dnsv.jp</code> ～ <code>04.dnsv.jp</code></p>
+<hr />
+<h2 id="tailwind">カラーシステム（Tailwind カスタムカラー）<a class="headerlink" href="#tailwind" title="Permanent link">&para;</a></h2>
+<p>Solarized Dark テーマを <code>sol.*</code> プレフィックスでカスタム定義:</p>
+<table>
+<thead>
+<tr>
+<th>クラス</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text-sol-base3</code></td>
+<td>強調テキスト（最明）</td>
+</tr>
+<tr>
+<td><code>text-sol-base2</code></td>
+<td>見出し・ユーザー名</td>
+</tr>
+<tr>
+<td><code>text-sol-base1</code></td>
+<td>本文</td>
+</tr>
+<tr>
+<td><code>text-sol-base0</code></td>
+<td>セカンダリテキスト</td>
+</tr>
+<tr>
+<td><code>text-sol-base01</code></td>
+<td>プレースホルダー・補助テキスト</td>
+</tr>
+<tr>
+<td><code>text-sol-base03</code></td>
+<td>ボタン文字（濃い背景上）= #002b36</td>
+</tr>
+<tr>
+<td><code>text-sol-cyan</code></td>
+<td>アクセント・リンク</td>
+</tr>
+<tr>
+<td><code>text-sol-blue</code></td>
+<td>情報</td>
+</tr>
+<tr>
+<td><code>text-sol-yellow</code></td>
+<td>注意</td>
+</tr>
+<tr>
+<td><code>text-sol-orange</code></td>
+<td>警告</td>
+</tr>
+<tr>
+<td><code>text-sol-red</code></td>
+<td>エラー・削除</td>
+</tr>
+<tr>
+<td><code>text-sol-green</code></td>
+<td>成功</td>
+</tr>
+<tr>
+<td><code>text-sol-violet</code></td>
+<td>イラストカテゴリ</td>
+</tr>
+<tr>
+<td><code>text-brand-*</code></td>
+<td>ブランドカラー（メインのteal系）</td>
+</tr>
+<tr>
+<td><code>bg-surface-*</code></td>
+<td>UI背景（800=インプット, 900=ページ）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">将来の技術移行予定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>現状</th>
+<th>移行先</th>
+<th>タイミング</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>メディアストレージ</td>
+<td>EC2ローカル (<code>STORAGE_PROVIDER=local</code>)</td>
+<td>AWS S3</td>
+<td>有料ユーザー発生後</td>
+</tr>
+<tr>
+<td>決済</td>
+<td>Ko-Fi（寄付）</td>
+<td>Stripe（クリエイター間決済）→ CCBill追加</td>
+<td>成長期</td>
+</tr>
+<tr>
+<td>CDN</td>
+<td>なし</td>
+<td>CloudFront</td>
+<td>10万ユーザー規模</td>
+</tr>
+<tr>
+<td>メール</td>
+<td>AWS SES</td>
+<td>継続予定</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">インフラ可用性ロードマップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h3 id="ec2">現状の構成（単一EC2）<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>EC2 t3.micro (ap-northeast-1a)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── plofolia-sol    (Express, port 4000)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── plofolia-terra  (Next.js, port 3000)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── plofolia-nova   (Admin API, port 4001)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── plofolia-aurora (Admin UI, port 3001)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>└── PostgreSQL 16   (port 5432)  ← アプリと同居
+</code></pre></div>
+<p><strong>課題</strong>: 単一障害点（EC2障害 = 全サービス停止）</p>
+<hr />
+<h3 id="phase-1-db">Phase 1 — DBバックアップ（実装済み）<a class="headerlink" href="#phase-1-db" title="Permanent link">&para;</a></h3>
+<p><strong>目的</strong>: データ消失防止・誤削除からの復元</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>EC2 prod ──pg_dump (毎日 AM3:00 JST)──▶ S3 (backups/db/)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                          └── 30世代保持
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>EC2 prod ──AMIスナップショット (毎週日曜 AM3:30 JST)──▶ EC2 AMI
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                                                          └── 4世代保持
+</code></pre></div>
+<p><strong>実装内容</strong>:</p>
+<ul>
+<li><code>titan/backup-db.sh</code>: <code>pg_dump</code> + <code>gzip</code> → S3 (<code>s3://plofolia-media/backups/db/</code>)、30世代ローテーション</li>
+<li><code>titan/backup-ami.sh</code>: EC2 AMI スナップショット（<code>--no-reboot</code>）、4世代ローテーション</li>
+<li>cron 登録済み（<code>/home/ubuntu/logs/</code> にログ出力）</li>
+</ul>
+<p><strong>コスト</strong>: ~$4/月（AMI EBSスナップショット分のみ）</p>
+<p><strong>DB復元手順</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># S3からダウンロードして復元</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://plofolia-media/backups/db/plofolia_YYYYMMDD_HHMMSS.sql.gz<span class="w"> </span>/tmp/
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>gunzip<span class="w"> </span>-c<span class="w"> </span>/tmp/plofolia_YYYYMMDD_HHMMSS.sql.gz<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia
+</code></pre></div>
+<hr />
+<h3 id="phase-2">Phase 2 — ステージングサーバー（ユーザーが増え始めたら）<a class="headerlink" href="#phase-2" title="Permanent link">&para;</a></h3>
+<p><strong>目的</strong>: 本番デプロイ前の動作確認環境</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>EC2 prod (t3.micro)          EC2 staging (t3.micro)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>plofolia.com                 test.plofolia.com
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>origin/main ← デプロイ       origin/develop ← 自動デプロイ
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>PostgreSQL (独立)             PostgreSQL (独立・シードデータ)
+</code></pre></div>
+<p><strong>デプロイフロー（改善後）</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>develop ブランチ push
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  → CI (GitHub Actions) パス
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  → staging 自動デプロイ
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  → 動作確認OK
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  → main にマージ
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  → 本番デプロイ
+</code></pre></div>
+<p><strong>コスト</strong>: +$8-10/月（EC2 t3.micro 追加）</p>
+<hr />
+<h3 id="phase-3-db">Phase 3 — DBレプリケーション（本格稼働期）<a class="headerlink" href="#phase-3-db" title="Permanent link">&para;</a></h3>
+<p><strong>目的</strong>: DB障害時の自動フェイルオーバー、読み取り負荷分散</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>EC2 prod                      EC2 standby
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>PostgreSQL Primary  ──WAL──▶  PostgreSQL Hot Standby
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>(Read/Write)                  (Read-Only / 障害時Promote)
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>     │
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>     └── repmgr でヘルスチェック・自動昇格管理
+</code></pre></div>
+<p><strong>実装内容</strong>:</p>
+<ul>
+<li>PostgreSQL ストリーミングレプリケーション（WAL転送）</li>
+<li>repmgr による自動ヘルスチェック（10-30秒で検知）</li>
+<li>障害時: Standby を自動昇格 → Route 53 DNS 切り替え</li>
+<li>Standby は通常時も読み取りクエリに活用可能</li>
+</ul>
+<p><strong>設定概要</strong> (<code>postgresql.conf</code> on Primary):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>wal_level = replica
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>max_wal_senders = 3
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>wal_keep_size = 64MB
+</code></pre></div>
+<p><strong>コスト</strong>: +$8-10/月（EC2 t3.micro 追加のみ）</p>
+<hr />
+<h3 id="phase-4-ha10">Phase 4 — 本格HA構成（10万ユーザー規模）<a class="headerlink" href="#phase-4-ha10" title="Permanent link">&para;</a></h3>
+<p><strong>目的</strong>: 無停止デプロイ、自動スケーリング、マネージドDB</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>         Route 53
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>              │
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    ALB（Application Load Balancer）
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>     ↙                    ↘
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>EC2 app-1 (t3.small)   EC2 app-2 (t3.small)
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>     ↘                    ↙
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>        RDS PostgreSQL Multi-AZ
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>        Primary (ap-northeast-1a)
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>             ↕ 自動同期（60秒フェイルオーバー）
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>        Standby (ap-northeast-1c)
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>              │
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>        RDS Read Replica（読み取り専用）
+</code></pre></div>
+<p><strong>追加サービス</strong>:</p>
+<ul>
+<li><strong>ALB</strong>: ロードバランシング・ヘルスチェック・Blue-Greenデプロイ</li>
+<li><strong>RDS Multi-AZ</strong>: マネージドDB・自動バックアップ・自動フェイルオーバー</li>
+<li><strong>CloudFront</strong>: 静的アセットCDN・画像配信高速化</li>
+<li><strong>ElastiCache (Redis)</strong>: セッションキャッシュ・レート制限</li>
+</ul>
+<p><strong>コスト</strong>: +$100-150/月（ALB + RDS Multi-AZ + CloudFront）</p>
+<hr />
+<h3 id="_8">ロードマップ サマリー<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>フェーズ</th>
+<th>内容</th>
+<th>追加コスト</th>
+<th>目安タイミング</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 1</strong></td>
+<td>pg_dump→S3日次 + AMIスナップショット週次</td>
+<td>~$4/月</td>
+<td><strong>今すぐ</strong></td>
+</tr>
+<tr>
+<td><strong>Phase 2</strong></td>
+<td>ステージングサーバー (test.plofolia.com)</td>
+<td>+$8/月</td>
+<td>ユーザーが増え始めたら</td>
+</tr>
+<tr>
+<td><strong>Phase 3</strong></td>
+<td>PostgreSQLストリーミングレプリケーション + repmgr</td>
+<td>+$8/月</td>
+<td>本格稼働期</td>
+</tr>
+<tr>
+<td><strong>Phase 4</strong></td>
+<td>ALB + RDS Multi-AZ + CloudFront + ElastiCache</td>
+<td>+$100-150/月</td>
+<td>10万ユーザー規模</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>バックアップとレプリケーションは役割が異なる</strong>:</p>
+<ul>
+<li>バックアップ → 誤削除・データ破損からの復元（時間を遡れる）</li>
+<li>レプリケーション → サーバー障害時の自動継続（データは最新のまま）</li>
+<li>両方を組み合わせることで完全な可用性が実現できる</li>
+</ul>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

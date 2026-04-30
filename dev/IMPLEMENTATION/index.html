@@ -1,0 +1,1226 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/dev/IMPLEMENTATION/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>実装詳細・設計決定メモ - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              実装詳細・設計決定メモ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フロントエンド
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="フロントエンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solarized-dark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solarized Dark スタイル規則
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#react-hydration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        React Hydration エラー対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terrasrclibmediaencodets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メディアエンコード（terra/src/lib/mediaEncode.ts）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メディアエンコード（terra/src/lib/mediaEncode.ts）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#audiocontext" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AudioContext の生成タイミング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filetype-codecs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File.type に codecs を含めない
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フォーマット選択
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#muted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        muted 動画の音声取得
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nsfw-terrasrclibnsfwdetectts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NSFW 自動判定（terra/src/lib/nsfwDetect.ts）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timedcommentstsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タイムコメント（TimedComments.tsx）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="タイムコメント（TimedComments.tsx）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        固定高さ必須
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chatpanel-prop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        chatPanel prop のパス
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostForm ドラフト自動保存
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バックエンド
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="バックエンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sseserver-sent-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSE（Server-Sent Events）アーキテクチャ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        認証システム詳細
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メディアアップロードパイプライン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauthtwitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OAuth（Twitter）実装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        データモデル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データモデル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DB 名の経緯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クリエイタータイプ マルチ選択
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timedcommentcount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        timedCommentCount の取得
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同一メールで複数アカウント可
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postcard-nsfw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostCard の NSFW 表示状態
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多言語対応
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        マイグレーション
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        既知の罠・トラブルシューティング
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">実装詳細・設計決定メモ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>「なぜこうなっているのか」が分かりにくい実装や、罠になりやすい箇所のリファレンス。
+機能追加・リファクタ時に必ず参照すること。</p>
+<hr />
+<h2 id="_2">フロントエンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="solarized-dark">Solarized Dark スタイル規則<a class="headerlink" href="#solarized-dark" title="Permanent link">&para;</a></h3>
+<p>VideoPlayer・AudioPlayer・PostCard・タイムコメント等、全コンポーネントで Solarized Dark を統一する。</p>
+<p><strong>背景色</strong></p>
+<table>
+<thead>
+<tr>
+<th>クラス</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bg-sol-base03</code></td>
+<td>最も暗い背景（メインコンテナ）</td>
+</tr>
+<tr>
+<td><code>bg-sol-base02</code></td>
+<td>強調背景（選択状態・ホバー）</td>
+</tr>
+<tr>
+<td><code>bg-sol-base01</code></td>
+<td>ボーダー・区切り線</td>
+</tr>
+</tbody>
+</table>
+<p><strong>禁止事項</strong></p>
+<ul>
+<li><code>bg-black</code> / <code>bg-gray-*</code> — 使用禁止。必ず <code>bg-sol-base03</code> を使う</li>
+<li><code>text-white</code> / <code>text-gray-*</code> — 使用禁止。以下の Solarized テキストカラーを使う</li>
+</ul>
+<p><strong>テキストカラー（明度順）</strong></p>
+<table>
+<thead>
+<tr>
+<th>クラス</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text-sol-base3</code></td>
+<td>強調テキスト（見出し・重要ラベル）</td>
+</tr>
+<tr>
+<td><code>text-sol-base2</code></td>
+<td>通常テキスト（ユーザー名・本文）</td>
+</tr>
+<tr>
+<td><code>text-sol-base1</code></td>
+<td>セカンダリテキスト</td>
+</tr>
+<tr>
+<td><code>text-sol-base0</code></td>
+<td>補助テキスト</td>
+</tr>
+<tr>
+<td><code>text-sol-base01</code></td>
+<td>プレースホルダー・ラベル</td>
+</tr>
+<tr>
+<td><code>text-sol-base03</code></td>
+<td>濃い背景上のボタン文字（= #002b36）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>アクセントカラー</strong></p>
+<p><code>text-sol-cyan</code>（主アクセント）/ <code>text-sol-blue</code> / <code>text-sol-yellow</code> / <code>text-sol-orange</code> / <code>text-sol-red</code> / <code>text-sol-green</code> / <code>text-sol-violet</code></p>
+<hr />
+<h3 id="react-hydration">React Hydration エラー対応<a class="headerlink" href="#react-hydration" title="Permanent link">&para;</a></h3>
+<p>Next.js App Router で SSR と CSR の出力が食い違うと hydration エラー（#418/#425/#423）が発生する。
+<code>localStorage</code> や <code>Zustand persist</code> を参照するコンポーネントで頻発する。</p>
+<p><strong>パターン（authStore の <code>_hasHydrated</code> フラグ）</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// NG: hydration 前は undefined になりサーバーと不一致</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">isAuthenticated</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">UI</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">// OK: hydration 完了フラグが立つまでレンダリングをスキップ</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">_hasHydrated</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">isAuthenticated</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">UI</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><code>_hasHydrated</code> は <code>useAuthStore</code> の <code>onRehydrateStorage</code> コールバックで <code>true</code> にセットされる。
+PostCard・Header・TimelinePage 等、auth に依存するコンポーネントで必ず使う。</p>
+<p><strong>ブラウザキャッシュによる誤発生</strong></p>
+<p>古い JS キャッシュが残っている場合も同じエラーが出る。
+Ctrl+Shift+R または DevTools → Application → "Clear site data" で解消。</p>
+<hr />
+<h3 id="terrasrclibmediaencodets">メディアエンコード（<code>terra/src/lib/mediaEncode.ts</code>）<a class="headerlink" href="#terrasrclibmediaencodets" title="Permanent link">&para;</a></h3>
+<p>ブラウザ内で録画・トリミング・再エンコードを行う。罠が多い。</p>
+<h4 id="audiocontext">AudioContext の生成タイミング<a class="headerlink" href="#audiocontext" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// NG: await より後に生成すると suspended 状態になり音声録音が失敗する</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">someAsyncOperation</span><span class="p">()</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AudioContext</span><span class="p">()</span><span class="w"> </span><span class="c1">// suspended!</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">// OK: ユーザージェスチャーの同期コンテキストで先に生成</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AudioContext</span><span class="p">()</span><span class="w"> </span><span class="c1">// resumed</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">someAsyncOperation</span><span class="p">()</span>
+</code></pre></div>
+<p>ブラウザのオートプレイポリシーで <code>AudioContext</code> はユーザー操作の同期コンテキスト外で生成すると <code>suspended</code> になる。音声が無音になるがエラーは出ないため気づきにくい。</p>
+<h4 id="filetype-codecs">File.type に codecs を含めない<a class="headerlink" href="#filetype-codecs" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// NG: multer が MIME パースに失敗して text/plain と判断 → 400 エラー</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="ow">new</span><span class="w"> </span><span class="nx">File</span><span class="p">([</span><span class="nx">blob</span><span class="p">],</span><span class="w"> </span><span class="s1">&#39;audio.webm&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;audio/webm; codecs=opus&#39;</span><span class="w"> </span><span class="p">})</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">// OK</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="ow">new</span><span class="w"> </span><span class="nx">File</span><span class="p">([</span><span class="nx">blob</span><span class="p">],</span><span class="w"> </span><span class="s1">&#39;audio.webm&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;audio/webm&#39;</span><span class="w"> </span><span class="p">})</span>
+</code></pre></div>
+<h4 id="_3">フォーマット選択<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>メディア</th>
+<th>出力形式</th>
+<th>フォールバック</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>動画</td>
+<td>WebM（VP9/VP8）</td>
+<td>Safari は MP4</td>
+</tr>
+<tr>
+<td>音声</td>
+<td>WebM/Opus 128kbps</td>
+<td>Opus 非対応ブラウザは WAV</td>
+</tr>
+<tr>
+<td>画像</td>
+<td>WebP</td>
+<td>JPEG</td>
+</tr>
+</tbody>
+</table>
+<p>音声を WAV から WebM/Opus に変更した理由: WAV は無圧縮で 5分 ≈ 50MB。WebM/Opus なら ≈ 5MB。</p>
+<h4 id="muted">muted 動画の音声取得<a class="headerlink" href="#muted" title="Permanent link">&para;</a></h4>
+<p><code>video.muted = true</code> の状態では <code>AudioContext.createMediaElementSource()</code> が無音を返す。
+回避策: 元ファイルを <code>decodeAudioData()</code> でデコード → <code>AudioBufferSourceNode</code> → <code>MediaStreamDestination</code> 経由でミックスする。</p>
+<hr />
+<h3 id="nsfw-terrasrclibnsfwdetectts">NSFW 自動判定（<code>terra/src/lib/nsfwDetect.ts</code>）<a class="headerlink" href="#nsfw-terrasrclibnsfwdetectts" title="Permanent link">&para;</a></h3>
+<p>nsfwjs（MobileNetV2）をブラウザ内で実行して画像・動画の NSFW 確率を推定する。</p>
+<p><strong>閾値</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>hentai + porn &gt; 0.6          → autoFlag（NSFW フラグを自動セット）
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>hentai + porn + sexy * 0.5 &gt; 0.35  → suggest（フラグ推奨の警告表示）
+</code></pre></div>
+<p><strong>webpack 設定（<code>terra/next.config.mjs</code>）</strong></p>
+<p>nsfwjs の全モデルシャードが Browserify 形式（<code>require(factory, [])</code>）の UMD で、webpack 5 が静的解析できずビルドエラーになる。以下の設定で回避している:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// inception_v3 / mobilenet_v2_mid → スタブに置換（使わないので実行時も不要）</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="ow">new</span><span class="w"> </span><span class="nx">wp</span><span class="p">.</span><span class="nx">NormalModuleReplacementPlugin</span><span class="p">(</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="sr">/nsfwjs[\\/]dist[\\/]models[\\/](inception_v3|mobilenet_v2_mid)[\\/]/</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nx">stubPath</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">// mobilenet_v2 → noParse（解析スキップ、実行時に UMD として正常動作）</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nx">config</span><span class="p">.</span><span class="nx">module</span><span class="p">.</span><span class="nx">noParse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/nsfwjs[\\/]dist[\\/]models[\\/]mobilenet_v2[\\/]/</span>
+</code></pre></div>
+<p><strong>モデルのキャッシュ</strong></p>
+<p><code>getModel()</code> はモジュールレベルの <code>model</code> 変数でシングルトンを保持する。
+二重ロードを防ぐため <code>modelPromise</code> でインフライトのPromiseも追跡する。</p>
+<hr />
+<h3 id="timedcommentstsx">タイムコメント（<code>TimedComments.tsx</code>）<a class="headerlink" href="#timedcommentstsx" title="Permanent link">&para;</a></h3>
+<h4 id="_4">固定高さ必須<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// NG: コメントが増えるとコンテナが無限に縦伸びする</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;h-auto overflow-y-auto&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// OK: 固定高さを指定する</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;h-72 flex flex-col overflow-hidden&quot;</span><span class="p">&gt;</span>
+</code></pre></div>
+<h4 id="chatpanel-prop">chatPanel prop のパス<a class="headerlink" href="#chatpanel-prop" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>動画あり</strong>: VideoPlayer の <code>chatPanel</code> prop に <code>&lt;TimedComments /&gt;</code> → オーバーレイ表示</li>
+<li><strong>動画なし・音声あり</strong>: AudioPlayer の <code>chatPanel</code> prop → プレイヤー下部に表示</li>
+<li>動画と音声に同時に chatPanel を渡さない（<code>hasVideoMedia</code> フラグで制御）</li>
+</ul>
+<hr />
+<h3 id="postform">PostForm ドラフト自動保存<a class="headerlink" href="#postform" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">DRAFT_KEY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;plofolia_draft_post&#39;</span>
+</code></pre></div>
+<ul>
+<li>入力から 2 秒後に localStorage に保存（デバウンス）</li>
+<li>フォームマウント時に保存済みドラフトがあればバナーで通知</li>
+<li><code>title / content / tags / isNsfw / postType</code> を保存</li>
+</ul>
+<hr />
+<h2 id="_5">バックエンド<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="sseserver-sent-events">SSE（Server-Sent Events）アーキテクチャ<a class="headerlink" href="#sseserver-sent-events" title="Permanent link">&para;</a></h3>
+<p>通知・DM 未読バッジのリアルタイム配信に SSE を使用。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>GET /notifications/stream?token=XXX
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>GET /messages/stream?token=XXX
+</code></pre></div>
+<p><code>EventSource</code> はカスタムヘッダーを送れないため JWT をクエリパラメータで渡す。
+<code>authenticate</code> ミドルウェアが <code>req.query.token</code> にフォールバック対応済み。</p>
+<p><strong>サーバー側管理</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sseClients</span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="o">&lt;</span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nb">Set</span><span class="o">&lt;</span><span class="nx">Response</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">()</span>
+</code></pre></div>
+<p>一つのユーザーが複数タブを開いても対応できるよう Set で管理する。</p>
+<p><strong>keepalive</strong></p>
+<p>25 秒ごとにコメント行（<code>: keepalive\n\n</code>）を送信してコネクションを維持する。</p>
+<p><strong>フロントエンド</strong></p>
+<p>SSE 接続中はポーリングを抑制し、切断時は 60 秒フォールバックポーリングに切り替える。</p>
+<hr />
+<h3 id="_6">認証システム詳細<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><strong>JWT ペイロード</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nx">userId</span><span class="p">,</span><span class="w"> </span><span class="nx">username</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="nx">isAdult</span><span class="p">,</span><span class="w">       </span><span class="c1">// NSFW コンテンツ表示の可否に使用</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="nx">preferredLocale</span><span class="p">,</span><span class="w">  </span><span class="c1">// next-intl の言語切替に使用</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="nx">role</span><span class="p">,</span><span class="w">          </span><span class="c1">// user | admin | moderator</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="p">}</span>
+</code></pre></div>
+<p><strong>ブラウザ言語検出と JWT 連動</strong></p>
+<ol>
+<li>未ログイン: next-intl middleware が <code>Accept-Language</code> ヘッダーで自動検出</li>
+<li>ログイン時: <code>auth.service.ts</code> の <code>issueTokens()</code> で <code>users.preferredLocale</code> を JWT に焼き込む</li>
+<li>フロント <code>authStore.ts</code> の <code>setTokens()</code> で JWT をデコードして <code>NEXT_LOCALE</code> cookie をセット</li>
+<li>次ページ遷移から next-intl がその言語で表示</li>
+</ol>
+<p><strong>ログインブロック条件</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">emailVerificationToken</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">emailVerifiedAt</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span>
+</code></pre></div>
+<p>つまり「メール送信済み・未確認」状態のみブロック。OAuth ユーザーはこのカラムが null なので影響なし。</p>
+<p><strong>MFA デバイス信頼（Aurora 管理画面）</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>信頼済みデバイスの仕組み:
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  生成: crypto.randomBytes(32).toString(&#39;hex&#39;)  → 64 文字 hex
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  保存: SHA-256 ハッシュをDBに保存（raw token は localStorage にのみ存在）
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  検証: リクエストの raw token を SHA-256 → DB の hash と比較
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  有効期限: 30日
+</code></pre></div>
+<p>信頼済みデバイスから再ログインすると TOTP をスキップできる。</p>
+<p><strong>モデレータ権限マトリクス</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>admin</th>
+<th>moderator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ダッシュボード・閲覧</td>
+<td>o</td>
+<td>o</td>
+</tr>
+<tr>
+<td>投稿削除・報告/バグ/問い合わせ対応</td>
+<td>o</td>
+<td>o</td>
+</tr>
+<tr>
+<td>BAN / unban / ユーザー削除</td>
+<td>o</td>
+<td>x</td>
+</tr>
+<tr>
+<td>監査ログ・招待コード</td>
+<td>o</td>
+<td>x</td>
+</tr>
+<tr>
+<td>アカウント管理（<code>/accounts</code>）</td>
+<td>o</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>adminAuthenticate</code>: admin + moderator が通過</li>
+<li><code>requireAdmin</code>: admin のみ通過</li>
+</ul>
+<p><strong>最後の admin は降格不可</strong>: <code>PATCH /admin/accounts/:userId/role</code> で自分自身・最後の admin を変更しようとすると <code>LAST_ADMIN</code> エラーを返す。</p>
+<hr />
+<h3 id="_7">メディアアップロードパイプライン<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><strong>magic bytes 検証（二重チェック）</strong></p>
+<ol>
+<li>multer の <code>fileFilter</code> で <code>file.mimetype</code> を確認（MIME 宣言チェック）</li>
+<li><code>magic-bytes.js</code> でファイル先頭バイトを読んで実際のフォーマットを確認（MIME 偽装対策）</li>
+</ol>
+<p>両方通過したファイルだけが保存される。</p>
+<p><strong>ファイル名</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>uploads/&lt;postId&gt;/&lt;uuid&gt;.&lt;ext&gt;
+</code></pre></div>
+<p><code>postId</code> ディレクトリで投稿ごとに分離。削除時は <code>postId</code> ディレクトリごと消せる。</p>
+<hr />
+<h3 id="oauthtwitter">OAuth（Twitter）実装<a class="headerlink" href="#oauthtwitter" title="Permanent link">&para;</a></h3>
+<p><code>passport-twitter</code> を廃止して <code>passport-oauth1</code> で直接実装（<code>TwitterOAuth1Strategy</code>）。</p>
+<p>廃止理由: <code>passport-twitter</code> が <code>xmldom</code> 経由で critical CVE（xtraverse）を持っていた。</p>
+<p>Twitter OAuth 1.0a はリクエストトークンをセッションで管理する必要があるため <code>session: true</code> を指定する。
+<code>OAUTH_CALLBACK_BASE</code> を <code>http://localhost:3000</code>（Next.js）にするとセッション Cookie が失われて認証が通らない。必ず <code>http://localhost:4000</code>（sol 直）にすること。</p>
+<hr />
+<h2 id="_8">データモデル<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="db">DB 名の経緯<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<p>DB名・ユーザー名は旧称 <code>plotia</code> だったが 2026-04-30 にリネーム済み。</p>
+<p>ローカル Docker と EC2 本番でクレデンシャルが異なる:</p>
+<table>
+<thead>
+<tr>
+<th>環境</th>
+<th>DB名</th>
+<th>ユーザー</th>
+<th>パスワード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ローカル Docker</td>
+<td><code>plofolia</code></td>
+<td><code>plofolia</code></td>
+<td><code>plofolia_secret</code></td>
+</tr>
+<tr>
+<td>EC2 本番</td>
+<td><code>plofolia</code></td>
+<td><code>plofolia</code></td>
+<td>（CLAUDE.local.md 参照）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_9">クリエイタータイプ マルチ選択<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>users.creatorTypeId  ← 後方互換のため主タイプを保持し続ける
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>user_creator_types   ← マルチ選択の実体（userId, creatorTypeId, isPrimary）
+</code></pre></div>
+<p>API では <code>creatorTypeCodes: string[]</code> で送る（最大 5 つ、先頭が主タイプ）。
+<code>viewer</code> は他タイプと排他（選ぶと他がクリア、他を選ぶと viewer がクリア）。</p>
+<hr />
+<h3 id="timedcommentcount">timedCommentCount の取得<a class="headerlink" href="#timedcommentcount" title="Permanent link">&para;</a></h3>
+<p>タイムラインと個別投稿の両方で timedCommentCount が必要なため、<strong>2 か所に同じサブクエリを追加</strong>している。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">// sol/src/api/posts/posts.service.ts の getPostById 等</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nx">timedCommentCount</span><span class="o">:</span><span class="w"> </span><span class="kt">sql</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="sb">`(SELECT COUNT(*)::int FROM timed_comments WHERE post_id = </span><span class="si">${</span><span class="nx">posts</span><span class="p">.</span><span class="nx">id</span><span class="si">}</span><span class="sb">)`</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1">// sol/src/api/timeline/timeline.service.ts の buildPostSelect() にも同じものが必要</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1">// ここを忘れると timeline/global や timeline/following でだけ count が 0 になる</span>
+</code></pre></div>
+<hr />
+<h3 id="_10">同一メールで複数アカウント可<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><code>users.email</code> の unique 制約を削除済み（migration 0024）。ユーザー名のみが一意制約を持つ。</p>
+<p>ログイン identifier 方式: <code>@</code> を含む文字列はメールアドレス、含まない場合はユーザー名として DB 検索する。</p>
+<hr />
+<h3 id="postcard-nsfw">PostCard の NSFW 表示状態<a class="headerlink" href="#postcard-nsfw" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>状態</th>
+<th>動作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未ログイン</td>
+<td>投稿は表示。メディアを「R18 — ログインして閲覧」リンクに差し替え（クリック解除不可）</td>
+</tr>
+<tr>
+<td>ログイン済み・成人・<code>hideNsfw=false</code></td>
+<td>メディアを表示（<code>blurNsfw=true</code> の場合はクリックで blur 解除）</td>
+</tr>
+<tr>
+<td>ログイン済み・成人・<code>hideNsfw=true</code></td>
+<td><code>return null</code>（完全非表示）</td>
+</tr>
+<tr>
+<td>ログイン済み・非成人</td>
+<td><code>return null</code>（完全非表示）</td>
+</tr>
+</tbody>
+</table>
+<p>デフォルト: <code>hideNsfw: true</code> / <code>blurNsfw: true</code>（新規ユーザーは NSFW 初期非表示）。</p>
+<hr />
+<h2 id="_11">多言語対応<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>翻訳ファイルは 5 言語すべてを同時に更新すること。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>terra/messages/ja.json
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>terra/messages/en.json
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>terra/messages/zh.json
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>terra/messages/ko.json
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>terra/messages/es.json
+</code></pre></div>
+<p>1 ファイルでも欠けると <code>MISSING_MESSAGE</code> エラーでページ全体がクラッシュする（白画面）。</p>
+<hr />
+<h2 id="_12">マイグレーション<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p><strong>ローカル</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nb">cd</span><span class="w"> </span>sol
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>npm<span class="w"> </span>run<span class="w"> </span>db:generate<span class="w">   </span><span class="c1"># schema/*.ts の変更からSQLを生成</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>npm<span class="w"> </span>run<span class="w"> </span>db:migrate<span class="w">    </span><span class="c1"># ローカル Docker に適用</span>
+</code></pre></div>
+<p><strong>EC2 本番</strong>（<code>drizzle-kit push</code> は使わず SQL 直接適用）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>&lt;pw&gt;<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span>-f<span class="w"> </span>~/plofolia/sol/src/db/migrations/0033_xxxx.sql
+</code></pre></div>
+<p><code>drizzle.__drizzle_migrations</code> テーブルに適用履歴が記録される。
+マイグレーション番号が飛んでいる場合は全件確認して欠けている番号を適用する。</p>
+<hr />
+<h2 id="_13">既知の罠・トラブルシューティング<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>現象</th>
+<th>原因と対処</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>terra の hot reload が効かなくなった</td>
+<td><code>npm run build</code> をローカルで実行してしまった。<code>.next/</code> を削除して <code>next dev</code> を再起動</td>
+</tr>
+<tr>
+<td>Twitter OAuth がローカルで失敗する</td>
+<td><code>OAUTH_CALLBACK_BASE=http://localhost:3000</code> になっている。<code>http://localhost:4000</code> に変更</td>
+</tr>
+<tr>
+<td>ソーシャルログインが動かない</td>
+<td>Google/Twitter コンソールにコールバック URL を登録していない。LOCAL_DEV.md の OAuth セクションを参照</td>
+</tr>
+<tr>
+<td>タイムラインだけ timedCommentCount が 0</td>
+<td><code>timeline.service.ts</code> の <code>buildPostSelect()</code> にサブクエリを追加し忘れている</td>
+</tr>
+<tr>
+<td>動画投稿で音声が録音されない</td>
+<td><code>AudioContext</code> を <code>await</code> より後で生成している。ユーザージェスチャーの同期コンテキストで先に生成すること</td>
+</tr>
+<tr>
+<td>動画アップロードが 400 になる</td>
+<td><code>File.type</code> に <code>video/webm; codecs=vp9</code> など codecs が入っている。<code>video/webm</code> のみにする</td>
+</tr>
+<tr>
+<td>翻訳追加後に白画面</td>
+<td>5 言語すべてのメッセージファイルに追加していない</td>
+</tr>
+<tr>
+<td>React hydration error #418</td>
+<td><code>_hasHydrated</code> を確認していないコンポーネントが auth 状態を直接参照している</td>
+</tr>
+<tr>
+<td>pm2 で環境変数が反映されない</td>
+<td><code>NEXT_PUBLIC_*</code> 変数はビルド時に焼き込まれるため <code>npm run build</code> してから <code>pm2 restart --update-env</code></td>
+</tr>
+<tr>
+<td>aurora にアクセスできない</td>
+<td><code>https://aurora.plofolia.com</code> は HTTP Basic Auth あり。認証情報は CLAUDE.local.md を参照</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

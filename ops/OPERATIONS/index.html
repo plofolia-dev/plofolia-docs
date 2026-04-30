@@ -1,0 +1,1809 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/ops/OPERATIONS/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Plofolia 日常運用ガイド - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plofolia" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plofolia 日常運用ガイド
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目次
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. サービス状態の確認
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. サービス状態の確認">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ヘルスチェック（EC2上）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        外部からのチェック
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. ログの確認
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. ログの確認">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        リアルタイムログ（全サービス）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#100" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特定サービスのログ（直近100行）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nginxアクセスログ / エラーログ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ログのクリア（ディスク節約）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. コードのデプロイ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. コードのデプロイ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通常のデプロイ（推奨）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        手動でEC2上から実行する場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特定サービスのみ再起動
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. DBメンテナンス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. DBメンテナンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2psql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC2上でpsqlに接続
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        よく使うクエリ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dockerdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ローカルのDockerDBに接続
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. マイグレーションの適用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. マイグレーションの適用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        開発時（ローカル）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本番EC2への適用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. バグ報告の対応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. バグ報告の対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claude-code-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code からの確認（ローカルDB）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC2本番DBのバグ確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora（管理画面）での対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. SSL証明書の更新
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. SSL証明書の更新">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        有効期限の確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        手動更新（期限が近い場合）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自動更新のテスト
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 管理画面（Aurora）へのアクセス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 管理画面（Aurora）へのアクセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アクセス方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aurora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora でできること
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. EC2への接続方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. EC2への接続方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-titandeployps1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法1: titan/deploy.ps1（コード更新のみ）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法2: SSHで直接接続
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 環境変数の確認・更新
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 環境変数の確認・更新">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ec2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC2上の環境変数ファイル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terraenvlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現在の terra/.env.local（本番）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        環境変数変更後の反映手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. バックアップ戦略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. バックアップ戦略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SNSにおけるバックアップの考え方
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-pg_dump-rsync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1（現状推奨）: pg_dump + メディアrsync
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1（現状推奨）: pg_dump + メディアrsync">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DBバックアップスクリプト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メディアファイルバックアップスクリプト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cronec2-crontab-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cron設定（EC2上で crontab -e）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-walpitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2（推奨）: WALアーカイビング（PITR対応）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 2（推奨）: WALアーカイビング（PITR対応）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresqlconf-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        postgresql.conf に追加（EC2上）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1wal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ベースバックアップ（週1回・WALの起点）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DB復元手順
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DB復元手順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pg_dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通常のリストア（pg_dump から）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PITRリストア（任意時点に戻す）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メディアファイルの復元
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バックアップ確認コマンド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バックアップとレプリケーションの違い
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 招待コードの運用
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 招待コードの運用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        招待コードの発行手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        招待コードの確認・無効化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        招待制を解除する場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ec2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC2 インフラ情報
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="plofolia">Plofolia 日常運用ガイド<a class="headerlink" href="#plofolia" title="Permanent link">&para;</a></h1>
+<p>EC2本番環境の日常的な運用作業をまとめたドキュメント。</p>
+<hr />
+<h2 id="_1">目次<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1-サービス状態の確認">サービス状態の確認</a></li>
+<li><a href="#2-ログの確認">ログの確認</a></li>
+<li><a href="#3-コードのデプロイ">コードのデプロイ</a></li>
+<li><a href="#4-dbメンテナンス">DBメンテナンス</a></li>
+<li><a href="#5-マイグレーションの適用">マイグレーションの適用</a></li>
+<li><a href="#6-バグ報告の対応">バグ報告の対応</a></li>
+<li><a href="#7-ssl証明書の更新">SSL証明書の更新</a></li>
+<li><a href="#8-管理画面auroraへのアクセス">管理画面（Aurora）へのアクセス</a></li>
+<li><a href="#9-ec2への接続方法">EC2への接続方法</a></li>
+<li><a href="#10-環境変数の確認更新">環境変数の確認・更新</a></li>
+<li><a href="#11-バックアップ戦略">バックアップ戦略</a></li>
+<li><a href="#12-招待コードの運用">招待コードの運用</a></li>
+</ol>
+<hr />
+<h2 id="1">1. サービス状態の確認<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pm2<span class="w"> </span>status
+</code></pre></div>
+<p>4つのサービスが全て <code>online</code> であれば正常:</p>
+<table>
+<thead>
+<tr>
+<th>PM2名</th>
+<th>ポート</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>plofolia-sol</code></td>
+<td>4000</td>
+<td>メインAPI</td>
+</tr>
+<tr>
+<td><code>plofolia-nova</code></td>
+<td>4001</td>
+<td>管理API</td>
+</tr>
+<tr>
+<td><code>plofolia-terra</code></td>
+<td>3000</td>
+<td>フロントエンド</td>
+</tr>
+<tr>
+<td><code>plofolia-aurora</code></td>
+<td>3001</td>
+<td>管理画面</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ec2">ヘルスチェック（EC2上）<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4000/health<span class="w">   </span><span class="c1"># → {&quot;status&quot;:&quot;ok&quot;}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4001/health<span class="w">   </span><span class="c1"># → {&quot;status&quot;:&quot;ok&quot;}</span>
+</code></pre></div>
+<h3 id="_2">外部からのチェック<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://plofolia.com/api/v1/health
+</code></pre></div>
+<hr />
+<h2 id="2">2. ログの確認<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">リアルタイムログ（全サービス）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pm2<span class="w"> </span>logs
+</code></pre></div>
+<h3 id="100">特定サービスのログ（直近100行）<a class="headerlink" href="#100" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-terra<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-nova<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-aurora<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+</code></pre></div>
+<h3 id="nginx">Nginxアクセスログ / エラーログ<a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-100<span class="w"> </span>/var/log/nginx/access.log
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-50<span class="w"> </span>/var/log/nginx/error.log
+</code></pre></div>
+<h3 id="_4">ログのクリア（ディスク節約）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>pm2<span class="w"> </span>flush<span class="w">   </span><span class="c1"># PM2の全ログをクリア</span>
+</code></pre></div>
+<hr />
+<h2 id="3">3. コードのデプロイ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="_5">通常のデプロイ（推奨）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>ローカルでコードを確認後、ワンコマンドでデプロイ:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c"># ローカル（PowerShell）から実行</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">.\</span><span class="n">titan</span><span class="p">\</span><span class="n">deploy</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<p>スクリプトが自動で行うこと:</p>
+<ol>
+<li>EC2に一時公開鍵をプッシュ（60秒有効）</li>
+<li><code>git push origin develop</code></li>
+<li>EC2上で <code>git fetch &amp;&amp; git reset --hard origin/develop</code></li>
+<li>変更があったサービスのみビルド・PM2再起動</li>
+<li>terra には <code>--update-env</code> を付与</li>
+</ol>
+<blockquote>
+<p><strong>初回のみ</strong>: <code>E:\DEV\plofolia\ec2_key</code> が存在しない場合、スクリプトが自動生成する。</p>
+</blockquote>
+<h3 id="ec2_1">手動でEC2上から実行する場合<a class="headerlink" href="#ec2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>git<span class="w"> </span>fetch<span class="w"> </span>origin<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>origin/develop
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>./titan/deploy.sh
+</code></pre></div>
+<h3 id="_6">特定サービスのみ再起動<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>--update-env
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-terra<span class="w"> </span>--update-env
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>pm2<span class="w"> </span>restart<span class="w"> </span>all
+</code></pre></div>
+<hr />
+<h2 id="4-db">4. DBメンテナンス<a class="headerlink" href="#4-db" title="Permanent link">&para;</a></h2>
+<h3 id="ec2psql">EC2上でpsqlに接続<a class="headerlink" href="#ec2psql" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia
+</code></pre></div>
+<h3 id="_7">よく使うクエリ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">-- ユーザー数</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1">-- 直近の投稿</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1">-- openなバグ報告</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="n">description</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">),</span><span class="w"> </span><span class="n">created_at</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="k">FROM</span><span class="w"> </span><span class="n">bug_reports</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;open&#39;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1">-- ユーザー詳細確認</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="k">role</span><span class="p">,</span><span class="w"> </span><span class="n">email_verified_at</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;xxx&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="dockerdb">ローカルのDockerDBに接続<a class="headerlink" href="#dockerdb" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>plofolia_db<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia
+</code></pre></div>
+<hr />
+<h2 id="5">5. マイグレーションの適用<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="_8">開発時（ローカル）<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>sol
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>npm<span class="w"> </span>run<span class="w"> </span>db:generate<span class="w">   </span><span class="c1"># schema変更後にSQLファイルを生成</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>npm<span class="w"> </span>run<span class="w"> </span>db:migrate<span class="w">    </span><span class="c1"># ローカルDBに適用</span>
+</code></pre></div>
+<h3 id="ec2_2">本番EC2への適用<a class="headerlink" href="#ec2_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="c1"># 特定ファイルを適用</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">  </span>-f<span class="w"> </span>~/plofolia/sol/src/db/migrations/&lt;ファイル名&gt;.sql
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># 全ファイルを順番に適用（初回セットアップ時など）</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span>~/plofolia/sol/src/db/migrations/*.sql<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Applying </span><span class="nv">$f</span><span class="s2">...&quot;</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">  </span><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$f</span><span class="s2">&quot;</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="k">done</span>
+</code></pre></div>
+<p>マイグレーション適用後は sol を再起動:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol
+</code></pre></div>
+<hr />
+<h2 id="6">6. バグ報告の対応<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="claude-code-db">Claude Code からの確認（ローカルDB）<a class="headerlink" href="#claude-code-db" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>npm<span class="w"> </span>run<span class="w"> </span>bugs<span class="w">            </span><span class="c1"># openのみ</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>npm<span class="w"> </span>run<span class="w"> </span>bugs<span class="w"> </span>all<span class="w">        </span><span class="c1"># 全ステータス</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>npm<span class="w"> </span>run<span class="w"> </span>bugs<span class="w"> </span>resolved<span class="w">   </span><span class="c1"># 解決済み</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>node<span class="w"> </span>titan/bugs.js<span class="w"> </span>&lt;UUID&gt;<span class="w">  </span><span class="c1"># 特定バグの詳細</span>
+</code></pre></div>
+<h3 id="ec2db">EC2本番DBのバグ確認<a class="headerlink" href="#ec2db" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>-c<span class="w"> </span><span class="s2">&quot;SELECT id, category, status, LEFT(description,80) FROM bug_reports WHERE status=&#39;open&#39; ORDER BY created_at DESC;&quot;</span>
+</code></pre></div>
+<h3 id="aurora">Aurora（管理画面）での対応<a class="headerlink" href="#aurora" title="Permanent link">&para;</a></h3>
+<ol>
+<li>SSHトンネルを張る（→ <a href="#8-管理画面auroraへのアクセス">管理画面へのアクセス</a> 参照）</li>
+<li>http://localhost:3001 にアクセス</li>
+<li>「バグ報告」メニュー → ステータス変更・管理者メモを記入</li>
+</ol>
+<hr />
+<h2 id="7-ssl">7. SSL証明書の更新<a class="headerlink" href="#7-ssl" title="Permanent link">&para;</a></h2>
+<p>証明書は Let's Encrypt で90日有効。Certbotが自動更新するため通常は手動対応不要。</p>
+<h3 id="_9">有効期限の確認<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo<span class="w"> </span>certbot<span class="w"> </span>certificates
+</code></pre></div>
+<p>現在の有効期限: <strong>2026-07-26</strong></p>
+<h3 id="_10">手動更新（期限が近い場合）<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo<span class="w"> </span>certbot<span class="w"> </span>renew
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+<h3 id="_11">自動更新のテスト<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
+</code></pre></div>
+<hr />
+<h2 id="8-aurora">8. 管理画面（Aurora）へのアクセス<a class="headerlink" href="#8-aurora" title="Permanent link">&para;</a></h2>
+<p>Aurora は HTTPS で公開済み。<strong>SSHトンネル不要</strong>。</p>
+<h3 id="_12">アクセス方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>URL</strong>: <code>https://aurora.plofolia.com</code></li>
+<li><strong>HTTP Basic Auth</strong> ダイアログが出たら:</li>
+<li>ユーザー名: <code>aurora</code></li>
+<li>パスワード: <code>wE3aioEqMBk36iVqDLCNKLc+</code>（CLAUDE.local.md 参照）</li>
+<li><strong>Aurora ログイン画面</strong>:</li>
+<li>ユーザー名またはメール: <code>admin</code></li>
+<li>パスワード: <code>Password123!</code>（admin アカウント）</li>
+<li>MFA 設定済みの場合は認証アプリの6桁コードを入力</li>
+</ol>
+<blockquote>
+<p>JWTは <strong>15分で失効</strong>（自動更新なし）。操作中に「ログインしてください」が出たら再ログイン。</p>
+</blockquote>
+<h3 id="aurora_1">Aurora でできること<a class="headerlink" href="#aurora_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>メニュー</th>
+<th>内容</th>
+<th>権限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ダッシュボード</td>
+<td>統計サマリー（ユーザー数・投稿数・未認証数等）</td>
+<td>admin/mod</td>
+</tr>
+<tr>
+<td>ユーザー</td>
+<td>検索・BAN済み/メール未認証フィルタ・ユーザー詳細</td>
+<td>admin/mod</td>
+</tr>
+<tr>
+<td>ユーザー詳細</td>
+<td>投稿一覧・BAN/解除・削除・メール手動認証</td>
+<td>admin のみ</td>
+</tr>
+<tr>
+<td>投稿</td>
+<td>投稿一覧・削除</td>
+<td>admin/mod</td>
+</tr>
+<tr>
+<td>投稿報告</td>
+<td>報告一覧・メディアプレビュー・対応・却下</td>
+<td>admin/mod</td>
+</tr>
+<tr>
+<td>BAN異議申し立て</td>
+<td>一覧・承認（アンバン）・却下</td>
+<td>admin/mod</td>
+</tr>
+<tr>
+<td>バグ報告・要望</td>
+<td>一覧・ステータス変更・返信</td>
+<td>admin/mod</td>
+</tr>
+<tr>
+<td>お問い合わせ</td>
+<td>スレッド表示・返信</td>
+<td>admin/mod</td>
+</tr>
+<tr>
+<td>招待コード</td>
+<td>発行・管理</td>
+<td>admin のみ</td>
+</tr>
+<tr>
+<td>操作ログ</td>
+<td>全管理操作の履歴</td>
+<td>admin のみ</td>
+</tr>
+<tr>
+<td>アカウント管理</td>
+<td>モデレーターアカウント作成・削除・ロール変更</td>
+<td>admin のみ</td>
+</tr>
+<tr>
+<td>MFA設定</td>
+<td>TOTP 設定・信頼済みデバイス管理</td>
+<td>admin/mod</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-ec2">9. EC2への接続方法<a class="headerlink" href="#9-ec2" title="Permanent link">&para;</a></h2>
+<h3 id="1-titandeployps1">方法1: titan/deploy.ps1（コード更新のみ）<a class="headerlink" href="#1-titandeployps1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="p">.\</span><span class="n">titan</span><span class="p">\</span><span class="n">deploy</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<h3 id="2-ssh">方法2: SSHで直接接続<a class="headerlink" href="#2-ssh" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># 1. 一時公開鍵をプッシュ（PowerShellで）</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nv">$aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;C:\Program Files\Amazon\AWSCLIV2\aws.exe&quot;</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nv">$pubKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Get-Content<span class="w"> </span><span class="s2">&quot;E:\DEV\plofolia\ec2_key.pub&quot;</span><span class="w"> </span>-Raw
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="p">&amp;</span><span class="w"> </span><span class="nv">$aws</span><span class="w"> </span>ec2-instance-connect<span class="w"> </span>send-ssh-public-key<span class="w"> </span><span class="sb">`</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">  </span>--instance-id<span class="w"> </span>i-04f92f1a7aad49ef2<span class="w"> </span><span class="sb">`</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">  </span>--availability-zone<span class="w"> </span>ap-northeast-1a<span class="w"> </span><span class="sb">`</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">  </span>--instance-os-user<span class="w"> </span>ubuntu<span class="w"> </span><span class="sb">`</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">  </span>--ssh-public-key<span class="w"> </span><span class="nv">$pubKey</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="c1"># 2. Bashから接続</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>-o<span class="w"> </span><span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no<span class="w"> </span>ubuntu@13.115.254.4
+</code></pre></div>
+<p>SSH鍵ファイル: <code>E:\DEV\plofolia\ec2_key</code>（初回は deploy.ps1 が自動生成）</p>
+<hr />
+<h2 id="10">10. 環境変数の確認・更新<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h3 id="ec2_3">EC2上の環境変数ファイル<a class="headerlink" href="#ec2_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>サービス</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>~/plofolia/sol/.env</code></td>
+<td>メインAPI・管理API共通</td>
+</tr>
+<tr>
+<td><code>~/plofolia/terra/.env.local</code></td>
+<td>フロントエンド（ビルド時焼き込み）</td>
+</tr>
+<tr>
+<td><code>~/plofolia/aurora/.env.local</code></td>
+<td>管理フロントエンド</td>
+</tr>
+</tbody>
+</table>
+<h3 id="terraenvlocal">現在の terra/.env.local（本番）<a class="headerlink" href="#terraenvlocal" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>NEXT_PUBLIC_API_URL=https://plofolia.com/api/v1
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>NEXT_PUBLIC_APP_NAME=Plofolia
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>NEXT_PUBLIC_DONATION_URL=https://ko-fi.com/plofolia
+</code></pre></div>
+<h3 id="_13">環境変数変更後の反映手順<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p><strong>sol の場合</strong>（ビルド不要、再起動のみ）:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>plofolia-nova<span class="w"> </span>--update-env
+</code></pre></div>
+<p><strong>terra の場合</strong>（<code>NEXT_PUBLIC_*</code> はビルド時焼き込みのため再ビルドが必要）:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia/terra
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>npm<span class="w"> </span>run<span class="w"> </span>build
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-terra<span class="w"> </span>--update-env
+</code></pre></div>
+<hr />
+<hr />
+<h2 id="11">11. バックアップ戦略<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<h3 id="sns">SNSにおけるバックアップの考え方<a class="headerlink" href="#sns" title="Permanent link">&para;</a></h3>
+<p>バックアップ対象はDBとメディアファイルの2種類あり、役割も異なる。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>Plofolia のデータ
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>├── PostgreSQL DB
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>│   ├── [最重要] users, posts, follows, DMs, series
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>│   ├── [重要]   likes, bookmarks, notifications
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>│   └── [低]     view_count などの集計値（再計算可）
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>│
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>└── メディアファイル (uploads/)        ← 現在EC2ローカル
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>    └── [最重要] ユーザーの作品（画像・動画・音声）
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>                   失ったら二度と戻らない・信頼問題に直結
+</code></pre></div>
+<blockquote>
+<p><strong>重要</strong>: <code>pg_dump</code> はDB内のURL文字列しかバックアップしない。
+ファイル本体（<code>uploads/</code>）は別途バックアップが必要。</p>
+</blockquote>
+<hr />
+<h3 id="phase-1-pg_dump-rsync">Phase 1（現状推奨）: pg_dump + メディアrsync<a class="headerlink" href="#phase-1-pg_dump-rsync" title="Permanent link">&para;</a></h3>
+<h4 id="db">DBバックアップスクリプト<a class="headerlink" href="#db" title="Permanent link">&para;</a></h4>
+<p>EC2上の <code>/home/ubuntu/backup_db.sh</code> として設置:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nv">FILE</span><span class="o">=</span><span class="s2">&quot;plofolia_backup_</span><span class="si">${</span><span class="nv">DATE</span><span class="si">}</span><span class="s2">.sql.gz&quot;</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">FILE</span><span class="si">}</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">FILE</span><span class="si">}</span><span class="w"> </span>s3://plofolia-media/db-backups/<span class="si">${</span><span class="nv">FILE</span><span class="si">}</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>rm<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">FILE</span><span class="si">}</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="c1"># 30世代より古いものを削除</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://plofolia-media/db-backups/<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span>-30<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-I<span class="o">{}</span><span class="w"> </span>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://plofolia-media/db-backups/<span class="o">{}</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">] DB backup done: </span><span class="si">${</span><span class="nv">FILE</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h4 id="_14">メディアファイルバックアップスクリプト<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>EC2上の <code>/home/ubuntu/backup_media.sh</code> として設置:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>/home/ubuntu/plofolia/sol/uploads/<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span>s3://plofolia-media/media-backups/<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span>--delete<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">  </span>--storage-class<span class="w"> </span>STANDARD_IA
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;[</span><span class="k">$(</span>date<span class="k">)</span><span class="s2">] Media backup done&quot;</span>
+</code></pre></div>
+<h4 id="cronec2-crontab-e">cron設定（EC2上で <code>crontab -e</code>）<a class="headerlink" href="#cronec2-crontab-e" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a># DBバックアップ: 毎日深夜3時
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>0 3 * * * /home/ubuntu/backup_db.sh &gt;&gt; /var/log/backup_db.log 2&gt;&amp;1
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a># メディアバックアップ: 毎日深夜4時
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>0 4 * * * /home/ubuntu/backup_media.sh &gt;&gt; /var/log/backup_media.log 2&gt;&amp;1
+</code></pre></div>
+<hr />
+<h3 id="phase-2-walpitr">Phase 2（推奨）: WALアーカイビング（PITR対応）<a class="headerlink" href="#phase-2-walpitr" title="Permanent link">&para;</a></h3>
+<p>pg_dump では「昨日3時の状態」にしか戻れないが、WALアーカイビングを有効にすると<strong>任意の時点（分単位）に復元できる</strong>。</p>
+<blockquote>
+<p>例: 「今日14:32に誤って全投稿を削除してしまった」→ 14:31の状態に復元可能</p>
+</blockquote>
+<h4 id="postgresqlconf-ec2">postgresql.conf に追加（EC2上）<a class="headerlink" href="#postgresqlconf-ec2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/postgresql/16/main/postgresql.conf
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="na">archive_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">on</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="na">archive_command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;aws s3 cp %p s3://plofolia-media/wal-archive/%f&#39;</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="na">archive_timeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">300</span><span class="w">   </span><span class="c1"># 最大5分でWALを強制アーカイブ</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>postgresql
+</code></pre></div>
+<h4 id="1wal">ベースバックアップ（週1回・WALの起点）<a class="headerlink" href="#1wal" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># crontab に追加</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="m">0</span><span class="w"> </span>pg_basebackup<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-D<span class="w"> </span>/tmp/pgbase<span class="w"> </span>-Ft<span class="w"> </span>-z<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>/tmp/pgbase/base.tar.gz<span class="w"> </span>s3://plofolia-media/pgbase/base_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>.tar.gz<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/tmp/pgbase
+</code></pre></div>
+<hr />
+<h3 id="db_1">DB復元手順<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
+<h4 id="pg_dump">通常のリストア（pg_dump から）<a class="headerlink" href="#pg_dump" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># S3から最新バックアップをダウンロード</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://plofolia-media/db-backups/<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5<span class="w">  </span><span class="c1"># 一覧確認</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://plofolia-media/db-backups/plofolia_backup_YYYYMMDD_hhmmss.sql.gz<span class="w"> </span>/tmp/
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="c1"># DBを空にしてリストア</span>
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a><span class="w">  </span>-c<span class="w"> </span><span class="s2">&quot;DROP SCHEMA public CASCADE; CREATE SCHEMA public;&quot;</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>gunzip<span class="w"> </span>-c<span class="w"> </span>/tmp/plofolia_backup_YYYYMMDD_hhmmss.sql.gz<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia
+</code></pre></div>
+<h4 id="pitr">PITRリストア（任意時点に戻す）<a class="headerlink" href="#pitr" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># 1. PostgreSQLを停止</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>postgresql
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># 2. データディレクトリをバックアップ</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/var/lib/postgresql/16/main<span class="w"> </span>/var/lib/postgresql/16/main.bak
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a><span class="c1"># 3. ベースバックアップを展開</span>
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://plofolia-media/pgbase/base_YYYYMMDD.tar.gz<span class="w"> </span>/tmp/
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/var/lib/postgresql/16/main
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-xzf<span class="w"> </span>/tmp/base_YYYYMMDD.tar.gz<span class="w"> </span>-C<span class="w"> </span>/var/lib/postgresql/16/main
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>postgres:postgres<span class="w"> </span>/var/lib/postgresql/16/main
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a><span class="c1"># 4. リカバリ設定（postgresql.conf に追記）</span>
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a><span class="c1"># restore_command = &#39;aws s3 cp s3://plofolia-media/wal-archive/%f %p&#39;</span>
+<a id="__codelineno-35-15" name="__codelineno-35-15" href="#__codelineno-35-15"></a><span class="c1"># recovery_target_time = &#39;2026-04-29 14:31:00&#39;  # 復元したい時刻</span>
+<a id="__codelineno-35-16" name="__codelineno-35-16" href="#__codelineno-35-16"></a>
+<a id="__codelineno-35-17" name="__codelineno-35-17" href="#__codelineno-35-17"></a><span class="c1"># 5. PostgreSQLを起動（リカバリモードで自動実行）</span>
+<a id="__codelineno-35-18" name="__codelineno-35-18" href="#__codelineno-35-18"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>postgresql
+</code></pre></div>
+<h4 id="_15">メディアファイルの復元<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://plofolia-media/media-backups/<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">  </span>/home/ubuntu/plofolia/sol/uploads/
+</code></pre></div>
+<hr />
+<h3 id="_16">バックアップ確認コマンド<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="c1"># DBバックアップ一覧（S3）</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://plofolia-media/db-backups/<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a><span class="c1"># メディアバックアップのサイズ確認</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://plofolia-media/media-backups/<span class="w"> </span>--recursive<span class="w"> </span>--human-readable<span class="w"> </span>--summarize<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-2
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a><span class="c1"># WALアーカイブ確認</span>
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://plofolia-media/wal-archive/<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a><span class="c1"># バックアップログ確認</span>
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>tail<span class="w"> </span>-20<span class="w"> </span>/var/log/backup_db.log
+<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>tail<span class="w"> </span>-20<span class="w"> </span>/var/log/backup_media.log
+</code></pre></div>
+<hr />
+<h3 id="_17">バックアップとレプリケーションの違い<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>バックアップ</th>
+<th>レプリケーション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目的</td>
+<td>誤削除・破損からの復元</td>
+<td>サーバー障害時の継続稼働</td>
+</tr>
+<tr>
+<td>データ</td>
+<td>過去の任意時点に戻せる</td>
+<td>常に最新の状態を維持</td>
+</tr>
+<tr>
+<td>復元時間</td>
+<td>数分〜数十分</td>
+<td>数十秒〜数分</td>
+</tr>
+<tr>
+<td>実装フェーズ</td>
+<td>Phase 1（今すぐ）</td>
+<td>Phase 3（本格稼働期）</td>
+</tr>
+</tbody>
+</table>
+<p>両方組み合わせることで完全な可用性が実現できる。</p>
+<hr />
+<h2 id="12">12. 招待コードの運用<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<p>現在は招待制ベータ（<code>INVITE_CODE_REQUIRED=true</code>）で稼働中。
+有効な招待コードがないとユーザー登録できない。</p>
+<h3 id="_18">招待コードの発行手順<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><strong>Aurora（管理画面）から発行する（推奨）:</strong></p>
+<ol>
+<li><code>https://aurora.plofolia.com</code> にアクセス（admin アカウントでログイン）</li>
+<li>
+<p>左メニューの「招待コード」をクリック → 「新規発行」</p>
+</li>
+<li>
+<p>設定項目:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ラベル</td>
+<td>誰に渡すかのメモ（任意）</td>
+<td><code>Discord-beta</code></td>
+</tr>
+<tr>
+<td>コードを指定</td>
+<td>空欄でランダム生成。指定する場合は英数字</td>
+<td><code>DISCORD2025</code></td>
+</tr>
+<tr>
+<td>最大使用回数</td>
+<td>空欄で無制限。人数を絞る場合に指定</td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td>有効期限</td>
+<td>空欄で無期限。期間限定配布の場合に指定</td>
+<td><code>2026-05-31T23:59</code></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>「発行する」をクリック → コードをコピーして配布</li>
+</ol>
+<p><strong>DB から直接発行する場合（緊急時）:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="s2">INSERT INTO invite_codes (id, code, label, max_uses, used_count, is_active, created_at, updated_at)</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="s2">VALUES (gen_random_uuid(), &#39;DISCORD2025&#39;, &#39;Discord beta&#39;, 50, 0, true, NOW(), NOW());</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="_19">招待コードの確認・無効化<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1">-- 有効なコード一覧</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">code</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">used_count</span><span class="p">,</span><span class="w"> </span><span class="n">max_uses</span><span class="p">,</span><span class="w"> </span><span class="n">expires_at</span><span class="p">,</span><span class="w"> </span><span class="n">is_active</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">invite_codes</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">is_active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="c1">-- コードを無効化</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">invite_codes</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">is_active</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;XXXXX&#39;</span><span class="p">;</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="c1">-- 使用済みカウントをリセット</span>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">invite_codes</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">used_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;XXXXX&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="_20">招待制を解除する場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="c1"># EC2 上の sol/.env を編集</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>ssh<span class="w"> </span>ubuntu@13.115.254.4
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>nano<span class="w"> </span>~/plofolia/sol/.env
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="c1"># INVITE_CODE_REQUIRED=true → INVITE_CODE_REQUIRED=false に変更</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>--update-env
+</code></pre></div>
+<blockquote>
+<p>フロントエンド側の入力欄も非表示にするには <code>terra/.env.local</code> の
+<code>NEXT_PUBLIC_INVITE_CODE_REQUIRED</code> を <code>false</code> にして <code>npm run build</code> が必要。</p>
+</blockquote>
+<hr />
+<h2 id="ec2_4">EC2 インフラ情報<a class="headerlink" href="#ec2_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>インスタンスID</td>
+<td><code>i-04f92f1a7aad49ef2</code></td>
+</tr>
+<tr>
+<td>AZ</td>
+<td><code>ap-northeast-1a</code></td>
+</tr>
+<tr>
+<td>IPアドレス</td>
+<td><code>13.115.254.4</code></td>
+</tr>
+<tr>
+<td>OS</td>
+<td>Ubuntu 22.04 LTS</td>
+</tr>
+<tr>
+<td>インスタンスタイプ</td>
+<td>t3.micro</td>
+</tr>
+<tr>
+<td>IAMユーザー</td>
+<td><code>plofolia-admin</code>（Account: 804501987696）</td>
+</tr>
+<tr>
+<td>DB名</td>
+<td><code>plofolia</code></td>
+</tr>
+<tr>
+<td>DBユーザー</td>
+<td><code>plofolia</code> / <code>polotiaakplt</code></td>
+</tr>
+<tr>
+<td>SSL有効期限</td>
+<td>2026-07-26（自動更新）</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

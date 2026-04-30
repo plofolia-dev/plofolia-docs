@@ -1,0 +1,855 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/dev/CONTRIBUTING/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>開発フロー - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              開発フロー
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ブランチ構成
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通常の開発サイクル
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="通常の開発サイクル">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-claude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 実装（Claude が担当）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 動作確認（ユーザーが確認）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-claude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. デプロイ（Claude が実行・ユーザーが承認後）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        役割分担
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="役割分担">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        開発フロー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断・意思決定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#claude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude が自律実行してよいこと（確認不要）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#claude_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude が必ずユーザーに確認してから実行すること
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コミットメッセージの書き方
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ローカル開発
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        関連ドキュメント
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">開発フロー<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">ブランチ構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ブランチ</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>develop</code></td>
+<td>普段の開発・CI（GitHub Actions でテスト自動実行）</td>
+</tr>
+<tr>
+<td><code>main</code></td>
+<td>本番サーバーが参照する</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_3">通常の開発サイクル<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="1-claude">1. 実装（Claude が担当）<a class="headerlink" href="#1-claude" title="Permanent link">&para;</a></h3>
+<p><code>develop</code> ブランチでコードを変更・コミット・push まで行う。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>develop
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># コード変更 → commit → push origin develop</span>
+</code></pre></div>
+<h3 id="2">2. 動作確認（ユーザーが確認）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<p>ローカルの dev サーバー（<code>npm run dev:app</code>）または Cloudflare Tunnel 経由で確認。
+問題なければデプロイ承認を Claude に伝える。</p>
+<h3 id="3-claude">3. デプロイ（Claude が実行・ユーザーが承認後）<a class="headerlink" href="#3-claude" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># ローカル（PowerShell）からワンコマンドで完結</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">.\</span><span class="n">titan</span><span class="p">\</span><span class="n">deploy</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<p>詳細は <a href="../../ops/DEPLOY/">../ops/DEPLOY.md</a> を参照。</p>
+<hr />
+<h2 id="_4">役割分担<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">開発フロー<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>作業</th>
+<th>担当</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コード変更・コミット</td>
+<td>Claude</td>
+</tr>
+<tr>
+<td><code>git push origin develop</code></td>
+<td>Claude（自律実行）</td>
+</tr>
+<tr>
+<td>ローカル動作確認・デプロイ承認</td>
+<td>ユーザー</td>
+</tr>
+<tr>
+<td><code>.\titan\deploy.ps1</code>（EC2デプロイ）</td>
+<td>Claude（ユーザー承認後）</td>
+</tr>
+<tr>
+<td><code>main</code> へのマージ</td>
+<td>Claude（ユーザー承認後）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">判断・意思決定<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>作業</th>
+<th>担当</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>機能追加・削除の判断</td>
+<td>ユーザー</td>
+<td>Claude はオプションを提案するが決定はユーザー</td>
+</tr>
+<tr>
+<td>デザイン・UI の最終承認</td>
+<td>ユーザー</td>
+<td>Claude が実装・Cloudflare Tunnel で確認してもらう</td>
+</tr>
+<tr>
+<td>コンテンツポリシー・利用規約の判断</td>
+<td>ユーザー</td>
+<td>Claude は草案を作るが法的判断はユーザー</td>
+</tr>
+<tr>
+<td>BAN・モデレーション判断</td>
+<td>ユーザー</td>
+<td>現フェーズは Aurora 管理画面でユーザーが対応</td>
+</tr>
+<tr>
+<td>EC2 デプロイ実行</td>
+<td>Claude</td>
+<td>ユーザーが「デプロイOK」と言った後に自律実行</td>
+</tr>
+<tr>
+<td>DB マイグレーション実行（本番）</td>
+<td>Claude</td>
+<td>ユーザー承認後に SSH で実行</td>
+</tr>
+<tr>
+<td>AWS リソースの作成・削除</td>
+<td>Claude</td>
+<td>費用に影響するため事前に内容を報告してから実行</td>
+</tr>
+</tbody>
+</table>
+<h3 id="claude">Claude が自律実行してよいこと（確認不要）<a class="headerlink" href="#claude" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>作業</th>
+<th>備考</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ローカルでのコード変更・ファイル編集</td>
+<td>可逆的な操作</td>
+</tr>
+<tr>
+<td><code>git commit</code> / <code>git push origin develop</code></td>
+<td>develop ブランチへの push のみ</td>
+</tr>
+<tr>
+<td>EC2 での Nginx reload・PM2 restart</td>
+<td>ダウンタイムが数秒以内</td>
+</tr>
+<tr>
+<td>ドキュメント更新</td>
+<td>コードに影響しない</td>
+</tr>
+<tr>
+<td><code>npm audit</code> / ログ確認</td>
+<td>読み取りのみ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="claude_1">Claude が必ずユーザーに確認してから実行すること<a class="headerlink" href="#claude_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>作業</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main</code> ブランチへのマージ・push</td>
+<td>本番に影響するため</td>
+</tr>
+<tr>
+<td>DB スキーマ変更（本番マイグレーション）</td>
+<td>データ消失リスク</td>
+</tr>
+<tr>
+<td>AWS リソースの新規作成・削除</td>
+<td>費用・アーキテクチャに影響</td>
+</tr>
+<tr>
+<td>EC2 インスタンスの停止・再起動</td>
+<td>サービス停止を伴う</td>
+</tr>
+<tr>
+<td>外部サービスの設定変更（DNS・SSL等）</td>
+<td>本番サービスに即時影響</td>
+</tr>
+<tr>
+<td><code>.env</code> などの機密情報変更</td>
+<td>セキュリティリスク</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_7">コミットメッセージの書き方<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>feat:     新機能追加
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>fix:      バグ修正
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>docs:     ドキュメント更新
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>refactor: リファクタリング
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>style:    デザイン変更
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>chore:    設定・依存関係の変更
+</code></pre></div>
+<hr />
+<h2 id="_8">ローカル開発<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>詳細は <a href="../LOCAL_DEV/">LOCAL_DEV.md</a> を参照。（同フォルダ内）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm<span class="w"> </span>run<span class="w"> </span>db:up<span class="w">      </span><span class="c1"># Docker DBを起動</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npm<span class="w"> </span>run<span class="w"> </span>dev:app<span class="w">    </span><span class="c1"># sol + terra + Cloudflare Tunnel を一括起動</span>
+</code></pre></div>
+<hr />
+<h2 id="_9">関連ドキュメント<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ドキュメント</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../LOCAL_DEV/">LOCAL_DEV.md</a></td>
+<td>ローカル開発環境のセットアップ手順</td>
+</tr>
+<tr>
+<td><a href="../TECH_STACK/">TECH_STACK.md</a></td>
+<td>技術スタック・インフラロードマップ</td>
+</tr>
+<tr>
+<td><a href="../../ops/DEPLOY/">../ops/DEPLOY.md</a></td>
+<td>EC2本番デプロイ手順</td>
+</tr>
+<tr>
+<td><a href="../../ops/OPERATIONS/">../ops/OPERATIONS.md</a></td>
+<td>日常運用・DBメンテナンス・バックアップ</td>
+</tr>
+<tr>
+<td><a href="../../ops/RUNBOOK/">../ops/RUNBOOK.md</a></td>
+<td>障害対応・トラブルシューティング</td>
+</tr>
+<tr>
+<td><a href="../../policy/SECURITY/">../policy/SECURITY.md</a></td>
+<td>セキュリティチェックリスト</td>
+</tr>
+<tr>
+<td><a href="../../policy/CONTENT_POLICY/">../policy/CONTENT_POLICY.md</a></td>
+<td>コンテンツポリシー</td>
+</tr>
+<tr>
+<td><a href="../../mgmt/ROADMAP/">../mgmt/ROADMAP.md</a></td>
+<td>プロダクトロードマップ</td>
+</tr>
+<tr>
+<td><a href="../../mgmt/COST/">../mgmt/COST.md</a></td>
+<td>コスト管理・費用予測</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

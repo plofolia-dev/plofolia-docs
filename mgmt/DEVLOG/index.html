@@ -1,0 +1,2715 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/mgmt/DEVLOG/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>開発ログ - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              開発ログ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-306" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-30（セッション6）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-30（セッション6）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mfa-aws30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MFA デバイス信頼機能（AWS方式・30日間スキップ）実装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MFA デバイス信頼機能（AWS方式・30日間スキップ）実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        仕組み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装内容
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        デプロイ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-305" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-30（セッション5）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-30（セッション5）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aurora-mfahttp-basic-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora MFA認証・HTTP Basic Auth・レートリミット実装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aurora MFA認証・HTTP Basic Auth・レートリミット実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MFA（二要素認証）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx-auroraplofoliacom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nginx セキュリティ強化（aurora.plofolia.com）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-304" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-30（セッション4）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-30（セッション4）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#trust-safety-aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trust &amp; Safety 文書化 + Aurora アクセス簡略化 + アカウント管理ロール変更
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trust &amp; Safety 文書化 + Aurora アクセス簡略化 + アカウント管理ロール変更">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docspolicymoderation_handbookmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モデレーターハンドブック新規作成（docs/policy/MODERATION_HANDBOOK.md）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aurora-auroraplofoliacom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora アクセス簡略化（aurora.plofolia.com サブドメイン公開準備）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aurora-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora UI から管理パネル表記を削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アカウント管理ロール変更機能追加
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-303" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-30（セッション3）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-30（セッション3）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セキュリティ残項目の整理・次フェーズへ移行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-302" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-30（セッション2）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-30（セッション2）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3789" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セキュリティ中優先度 #3・#7・#8・#9 実装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="セキュリティ中優先度 #3・#7・#8・#9 実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3-magic-bytes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #3 ファイルアップロード magic bytes 検証強化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-content-security-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #7 Content Security Policy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #8 JWT リフレッシュトークン再使用検出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        #9 セキュリティログ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC2 デプロイ・migration 適用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-30
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-30">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#osseositemapxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OS自動セキュリティアップデート・SEO（sitemap.xml）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OS自動セキュリティアップデート・SEO（sitemap.xml）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#osec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OS自動セキュリティアップデート（EC2）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seo-sitemapxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SEO対応 — sitemap.xml にシリーズ追加
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI 修正（セッション引き継ぎ）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DBバックアップ・アカウントロック実装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DBバックアップ・アカウントロック実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dbtitan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DBバックアップ（titan/）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-0033" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ログイン失敗アカウントロック（migration 0033）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ogppassport-twitter-cve-pwa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OGP最適化・passport-twitter CVE 対応・PWA 対応
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OGP最適化・passport-twitter CVE 対応・PWA 対応">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ogpterra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OGP最適化（terra/）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passport-twitter-cve-sol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        passport-twitter CVE 対応（sol/）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwa-terra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PWA 対応（terra/）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モデレータロール実装・Aurora 認証刷新
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="モデレータロール実装・Aurora 認証刷新">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db-migration-0032" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モデレータロール (DB migration 0032)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aurora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora 認証刷新
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メール環境整備・問い合わせフロー改善
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メール環境整備・問い合わせフロー改善">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-workspace-supportplofoliacom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Workspace 設定（support@plofolia.com 双方向メール）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        問い合わせフォーム改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ドキュメント整備
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本番 DB マイグレーション（直接 SQL）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-29
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-29">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ドキュメント整備・インフラ強化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ドキュメント整備・インフラ強化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ドキュメント再編成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC2 バックアップ設置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        EC2 Nginx セキュリティヘッダー追加
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#npm-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        npm audit 結果
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postcard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PostCard デザイン
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI・セキュリティ・ツール整備（同日続き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CI・セキュリティ・ツール整備（同日続き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ci-package-lockjson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI 修正（package-lock.json 不整合）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terra-nextjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        terra Next.js アップグレード
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions-slack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions Slack 通知追加
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notion-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notion MCP 設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ツール・将来方針の記録
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notion ドキュメント移行 + 自動同期フック（同日続き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notion ドキュメント移行 + 自動同期フック（同日続き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#notion-mcp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notion MCP 接続確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs-notion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docs/ → Notion 全移行完了
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#claude-code-posttooluse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code PostToolUse フック実装
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セキュリティ・ドキュメント整備（同日続き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="セキュリティ・ドキュメント整備（同日続き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lint-staged" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        絵文字防止チェック（lint-staged）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        機密情報コミット防止
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#claudelocalmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CLAUDE.local.md による機密情報の分離
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ドキュメント追加
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sync-notionjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        sync-notion.js 改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-29_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-29（続き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-29（続き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aurora_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora 管理画面・セキュリティ・インフラ整備
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aurora 管理画面・セキュリティ・インフラ整備">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aurora_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora パスフレーズ認証
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aurora_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aurora 招待コードバグ修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Notion 同期フック非同期化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titansync-notionjs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        titan/sync-notion.js 改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セキュリティ強化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        モバイルレスポンシブ対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sentry 導入（保留）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-29_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-29（続き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-29（続き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwaseooauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PWA・SEO・OAuth・画像グリッド修正
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PWA・SEO・OAuth・画像グリッド修正">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PWA 対応
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OAuth オンボーディング 生年月日必須化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ci_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CI シードデータ不足の修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        画像グリッド 3・4枚バグ修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#seo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SEO 対策
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-oauth-403-birthday" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google OAuth 403 解消（birthday スコープ削除）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本番 DB クリーンアップ → シード再実行
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-29_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-29（続き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-29（続き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アカウント・認証改善・投稿通報フロー実装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="アカウント・認証改善・投稿通報フロー実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        登録・ログイン改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        投稿通報フロー（C + D）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-29_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-29（続き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-29（続き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nsfwogp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        認証・NSFW・モバイル・OGP・タイムライン改善
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="認証・NSFW・モバイル・OGP・タイムライン改善">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メール認証完了時の自動リダイレクト
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nsfw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NSFW デフォルト設定変更
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bottomnav" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スマホキーボード展開時の BottomNav 重複バグ修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discord-ogp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discord OGP 画像プレビュー修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nsfw_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        未ログイン時の NSFW 表示方針変更
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-29_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-29（続き）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-29（続き）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        UI 修正・表記統一・お問い合わせシステム実装
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI 修正・表記統一・お問い合わせシステム実装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nsfw_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タイル表示 NSFW バグ修正
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ログイン画面 UI 改善
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r18-nsfw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R18 → NSFW 表記統一
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dmca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DMCA アイコン変更
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db-aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        お問い合わせフォーム実装（フォーム → DB → Aurora 管理）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        お問い合わせスレッド返信機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04-30_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04-30
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2026-04-30">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google-workspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メールアドレス参照の除去・Google Workspace 設定ドキュメント整備
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メールアドレス参照の除去・Google Workspace 設定ドキュメント整備">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メールアドレス参照を全ページから除去
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メール設定方針の確定・ドキュメント作成
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-workspace_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google Workspace 設定完了（同日）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-04 以前（前セッションの主な実装）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">開発ログ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>セッションをまたいで「何をやったか」を記録する運用ログ。
+TODO は <a href="/TODO.md">/TODO.md</a> を参照。</p>
+<hr />
+<h2 id="2026-04-306">2026-04-30（セッション6）<a class="headerlink" href="#2026-04-306" title="Permanent link">&para;</a></h2>
+<h3 id="mfa-aws30">MFA デバイス信頼機能（AWS方式・30日間スキップ）実装<a class="headerlink" href="#mfa-aws30" title="Permanent link">&para;</a></h3>
+<p>Aurora MFA の「毎回コードを求められる」問題を解消するため、AWS方式のデバイス信頼を実装。</p>
+<h4 id="_2">仕組み<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>MFA 認証完了後、バックエンドが 64-char hex のランダムトークンを生成し SHA-256 ハッシュを DB に保存（30日有効）</li>
+<li>raw トークンをクライアントに返却 → Aurora が <code>aurora-device-token</code> + <code>aurora-device-token-expiry</code> として localStorage に保存</li>
+<li>次回ログイン時、localStorage からトークンを読み取りパスワードと一緒に送信</li>
+<li>バックエンドで DB のハッシュと照合 → 一致すれば MFA をスキップしてアクセストークンを直接発行</li>
+</ol>
+<h4 id="_3">実装内容<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>DB</strong>: <code>admin_trusted_devices</code> テーブル追加（migration <code>0038_admin_trusted_devices.sql</code>・EC2 DB 適用済み）</li>
+<li>カラム: <code>id</code>, <code>user_id</code>, <code>token_hash</code>, <code>expires_at</code>, <code>created_at</code></li>
+<li>インデックス: <code>user_id</code> + <code>token_hash</code> 両方</li>
+<li><strong>sol <code>admin.auth.ts</code></strong>: 全面書き直し</li>
+<li><code>adminLogin(identifier, password, deviceToken?)</code>: 有効な <code>deviceToken</code> が DB にあれば MFA をスキップ</li>
+<li><code>verifyMfaLogin()</code>: TOTP 検証後に <code>admin_trusted_devices</code> へ INSERT し、raw トークンをレスポンスに含める</li>
+<li><code>disableMfa()</code>: MFA 無効化時に <code>DELETE FROM admin_trusted_devices WHERE user_id = ...</code> で全デバイストークンを削除</li>
+<li>期限切れトークンは <code>adminLogin</code> 時に非同期でクリーンアップ（fire-and-forget）</li>
+<li><strong>sol <code>admin-app.ts</code></strong>: <code>loginSchema</code> に <code>deviceToken: z.string().optional()</code> を追加し <code>adminLogin</code> に渡す</li>
+<li><strong>aurora <code>api/auth/route.ts</code></strong>: 第1ステップで <code>deviceToken</code> を admin API に転送、第2ステップで <code>deviceToken</code> をレスポンスに含めて返却</li>
+<li><strong>aurora <code>login/page.tsx</code></strong>:</li>
+<li><code>useEffect</code> でマウント時に localStorage のトークンを読み取り（期限チェック付き）</li>
+<li>ステップ1送信時に <code>deviceToken</code> を body に含める</li>
+<li>MFA 認証成功後に <code>data.deviceToken</code> を localStorage に30日有効期限で保存</li>
+</ul>
+<h4 id="_4">デプロイ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>cf3e701</code> でコミット・push</li>
+<li>EC2: <code>npm run build</code> → <code>pm2 restart plofolia-sol plofolia-nova</code> → migration 0038 適用 → aurora <code>npm run build</code> + <code>pm2 restart plofolia-aurora</code></li>
+</ul>
+<hr />
+<h2 id="2026-04-305">2026-04-30（セッション5）<a class="headerlink" href="#2026-04-305" title="Permanent link">&para;</a></h2>
+<h3 id="aurora-mfahttp-basic-auth">Aurora MFA認証・HTTP Basic Auth・レートリミット実装<a class="headerlink" href="#aurora-mfahttp-basic-auth" title="Permanent link">&para;</a></h3>
+<h4 id="mfa">MFA（二要素認証）<a class="headerlink" href="#mfa" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>sol</strong>: <code>otplib</code> を使いTOTP MFA を実装（<code>adminLogin</code> → pendingToken 発行 → <code>verifyMfaLogin</code>）</li>
+<li><code>users</code> テーブルに <code>mfa_secret</code> / <code>mfa_enabled</code> カラムを追加（migration <code>0037_mfa.sql</code>・EC2適用済み）</li>
+<li>エンドポイント新設: <code>GET/DELETE /auth/mfa</code>, <code>POST /auth/mfa/setup</code>, <code>POST /auth/mfa/verify-setup</code></li>
+<li>pendingToken: <code>mfaPending: true</code> フラグ付き5分有効JWT（第1ステップ成功後に発行）</li>
+<li><strong>aurora</strong>: ログイン画面を2ステップMFAフローに刷新（pendingToken があれば6桁コード入力に切り替え）</li>
+<li><strong>aurora</strong>: MFA設定ページ（<code>/mfa</code>）新設 — QRコード表示・有効化・無効化。全ロールが自分のMFAを管理可能</li>
+<li><strong>aurora</strong>: AdminShell サイドバー下部に「MFA設定」リンクを追加</li>
+<li><strong>aurora</strong>: <code>/accounts</code> ページに <code>mfaEnabled</code> バッジ表示（緑の ShieldCheck アイコン）</li>
+<li><strong>aurora</strong>: <code>/api/mfa/*</code> Next.js API ルートを新設（admin API <code>POST 4001/auth/mfa/*</code> へのプロキシ）</li>
+<li><code>otplib</code> v13（ESM-only）でビルドエラー → v12 にダウングレード（CJS互換）</li>
+</ul>
+<h4 id="nginx-auroraplofoliacom">Nginx セキュリティ強化（<code>aurora.plofolia.com</code>）<a class="headerlink" href="#nginx-auroraplofoliacom" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>HTTP Basic Auth</strong>: <code>aurora</code> ユーザーのみ通過（<code>/etc/nginx/.htpasswd_aurora</code>）。認証情報は別途共有</li>
+<li><strong>レートリミット（Nginx層）</strong>:</li>
+<li>全体: <code>aurora_general</code> 30req/min（burst 20）</li>
+<li><code>/api/auth</code> のみ: <code>aurora_login</code> 5req/min（burst 3）— ブルートフォース対策</li>
+<li><code>X-Robots-Tag: noindex, nofollow</code> ヘッダーを追加（検索エンジンのインデックス防止）</li>
+<li>レートリミットゾーン定義を <code>/etc/nginx/conf.d/rate-limit.conf</code> に分離</li>
+</ul>
+<hr />
+<h2 id="2026-04-304">2026-04-30（セッション4）<a class="headerlink" href="#2026-04-304" title="Permanent link">&para;</a></h2>
+<h3 id="trust-safety-aurora">Trust &amp; Safety 文書化 + Aurora アクセス簡略化 + アカウント管理ロール変更<a class="headerlink" href="#trust-safety-aurora" title="Permanent link">&para;</a></h3>
+<h4 id="docspolicymoderation_handbookmd">モデレーターハンドブック新規作成（<code>docs/policy/MODERATION_HANDBOOK.md</code>）<a class="headerlink" href="#docspolicymoderation_handbookmd" title="Permanent link">&para;</a></h4>
+<ul>
+<li>P0〜P3 の SLA テーブル（P0 未成年コンテンツ: 1時間以内・P1 ハラスメント: 24時間・P2 一般違反: 72時間・P3 グレーゾーン: 7日）</li>
+<li>日常業務フロー（通報キュー確認 → 判断 → 管理者メモ記録）</li>
+<li>違反カテゴリ別の NG/OK 判断基準（未成年コンテンツ・ハラスメント・スパム・グレーゾーン表）</li>
+<li>BAN 操作手順（moderator は BAN 不可 → admin にエスカレーション）</li>
+<li>異議申し立て処理フロー（5営業日以内に判断）</li>
+<li>バグ報告・お問い合わせ一次振り分け表</li>
+<li>エスカレーション基準（P0・法執行機関・メディア・サービス全体影響等）</li>
+<li>よくある操作リファレンス（Aurora 操作チートシート）</li>
+</ul>
+<h4 id="aurora-auroraplofoliacom">Aurora アクセス簡略化（<code>aurora.plofolia.com</code> サブドメイン公開準備）<a class="headerlink" href="#aurora-auroraplofoliacom" title="Permanent link">&para;</a></h4>
+<ul>
+<li>admin よりも目立たない <code>aurora.plofolia.com</code> サブドメインを採用</li>
+<li>Nginx <code>/etc/nginx/sites-available/admin-plofolia</code> を作成・有効化（<code>server_name aurora.plofolia.com; proxy_pass http://127.0.0.1:3001</code>）</li>
+<li>DNS は お名前.com で管理。A レコード <code>aurora → 13.115.254.4</code> をユーザーが設定済みだが浸透待ち</li>
+<li>DNS 浸透確認後に certbot 実行済み。<code>https://aurora.plofolia.com</code> で HTTPS アクセス可能（証明書期限: 2026-07-29）</li>
+</ul>
+<h4 id="aurora-ui">Aurora UI から管理パネル表記を削除<a class="headerlink" href="#aurora-ui" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>layout.tsx</code>: ブラウザタブのタイトルを <code>Plofolia Admin</code> → <code>Aurora</code> に変更</li>
+<li><code>login/page.tsx</code>: <code>ShieldAlert</code> アイコン・<code>Plofolia Admin</code> テキスト・<code>管理者専用パネル</code>・下部注記（「このページは管理者のみ...」）をすべて削除。ニュートラルなアイコンとフォームのみ</li>
+<li><code>AdminShell.tsx</code>: サイドバーの <code>Admin Panel</code> ラベルと <code>Plofolia</code> テキストを削除。ログイン中のユーザー名のみ表示</li>
+</ul>
+<h4 id="_5">アカウント管理ロール変更機能追加<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>PATCH /admin/accounts/:userId/role</code> エンドポイント追加（<code>admin.routes.ts</code> / <code>admin.controller.ts</code> / <code>admin.service.ts</code>）</li>
+<li>ガード: 自分自身のロール変更禁止・最後の admin を moderator に降格禁止（<code>LAST_ADMIN</code> エラー）</li>
+<li>監査ログ: <code>admin_action</code> enum に <code>update_user</code> を追加（migration <code>0036_admin_action_update_user.sql</code>・EC2 DB 適用済み）</li>
+<li>Aurora <code>/accounts</code> ページに <code>ArrowLeftRight</code> アイコンのロール変更ボタン追加（自分以外全アカウントに表示）</li>
+<li>変更前後のロールを視覚的に確認できるモーダル（sol-yellow の「変更する」ボタン）</li>
+</ul>
+<hr />
+<h2 id="2026-04-303">2026-04-30（セッション3）<a class="headerlink" href="#2026-04-303" title="Permanent link">&para;</a></h2>
+<h3 id="_6">セキュリティ残項目の整理・次フェーズへ移行<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><strong>セキュリティ SECURITY.md の最終状態:</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>状況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rate Limiting</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nginx セキュリティヘッダー</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ファイルアップロード検証強化</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>4</td>
+<td>npm audit</td>
+<td>実施済み</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Security Groups 確認</td>
+<td><strong>未対応（要 AWS コンソール確認）</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>ログイン失敗アカウントロック</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CSP</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>8</td>
+<td>JWT リフレッシュトークンローテーション</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>9</td>
+<td>セキュリティログ</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>10</td>
+<td>OS 自動セキュリティアップデート</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>11</td>
+<td>二要素認証（2FA）</td>
+<td>低優先度・将来対応</td>
+</tr>
+<tr>
+<td>12</td>
+<td>WAF</td>
+<td>低優先度・CloudFront 導入時に検討</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Dependabot</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>14</td>
+<td>ユーザーデータの完全削除（GDPR）</td>
+<td>低優先度・将来対応</td>
+</tr>
+</tbody>
+</table>
+<p><strong>#5 Security Groups 確認の内容（手動作業）:</strong></p>
+<ul>
+<li>AWSコンソール → EC2 → Security Groups でインバウンドルールを確認</li>
+<li>許可すべき: 22（SSH、自分の IP のみ）/ 80 / 443</li>
+<li>閉じるべき: 4000 / 4001 / 3000 / 3001 / 5432 が外部公開されていないか確認</li>
+</ul>
+<p>セキュリティフェーズ完了。次フェーズの機能実装へ移行。</p>
+<hr />
+<h2 id="2026-04-302">2026-04-30（セッション2）<a class="headerlink" href="#2026-04-302" title="Permanent link">&para;</a></h2>
+<h3 id="3789">セキュリティ中優先度 #3・#7・#8・#9 実装<a class="headerlink" href="#3789" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="3-magic-bytes">#3 ファイルアップロード magic bytes 検証強化<a class="headerlink" href="#3-magic-bytes" title="Permanent link">&para;</a></h4>
+<ul>
+<li>既存の画像のみ検証を動画・音声まで拡張（<code>sol/src/lib/sanitize.ts</code>）</li>
+<li>追加タイプ:</li>
+<li><code>video/webm</code> / <code>audio/webm</code>: <code>1A 45 DF A3</code>（EBML ヘッダー）</li>
+<li><code>video/mp4</code> / <code>video/quicktime</code>: offset4 <code>66 74 79 70</code>（ftyp ボックス）</li>
+<li><code>audio/mpeg</code>（MP3）: <code>FF FB</code> / <code>FF F3</code> / <code>FF F2</code> / <code>ID3</code> の4パターン</li>
+<li><code>audio/wav</code>: <code>RIFF</code> + offset8 <code>WAVE</code>（AND 条件）</li>
+<li>WebP・WAV は複数シグネチャの AND 条件、MP3 は OR 条件で正しく判定</li>
+</ul>
+<h4 id="7-content-security-policy">#7 Content Security Policy<a class="headerlink" href="#7-content-security-policy" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>terra/next.config.mjs</code> に <code>async headers()</code> を追加して全ページに CSP 適用</li>
+<li>本番（<code>https://plofolia.com/en</code>）で <code>Content-Security-Policy</code> ヘッダーを curl で確認済み</li>
+<li>本番は <code>unsafe-eval</code> を除外、dev のみ追加（Next.js hot reload のため）</li>
+</ul>
+<h4 id="8-jwt">#8 JWT リフレッシュトークン再使用検出<a class="headerlink" href="#8-jwt" title="Permanent link">&para;</a></h4>
+<ul>
+<li>migration <code>0034_refresh_token_rotation.sql</code>: <code>refresh_tokens</code> テーブルに <code>used_at</code> カラム追加</li>
+<li><code>auth.service.ts</code> の <code>refresh()</code>:</li>
+<li>旧トークンを削除→「使用済み（<code>used_at = now()</code>）」マークに変更</li>
+<li>使用済みトークン再提示時 → 全セッション破棄 → <code>TOKEN_REUSE_DETECTED</code> (401)</li>
+<li>使用済みトークンのクリーンアップ: 30日超で削除（リフレッシュ時に同ユーザー分を削除）</li>
+<li><code>terra/src/lib/apiError.ts</code> に <code>TOKEN_REUSE_DETECTED</code> のメッセージを追加</li>
+</ul>
+<h4 id="9">#9 セキュリティログ<a class="headerlink" href="#9" title="Permanent link">&para;</a></h4>
+<ul>
+<li>migration <code>0035_security_logs.sql</code>: <code>security_logs</code> テーブル新設（<code>event / user_id / ip / user_agent / detail / created_at</code>）</li>
+<li><code>sol/src/services/securityLogger.ts</code>: <code>logSecurityEvent()</code> ユーティリティ（失敗は握りつぶして本体処理を止めない）</li>
+<li><code>auth.controller.ts</code> から8イベントを記録:</li>
+<li><code>login_success</code> / <code>login_failure</code> / <code>login_locked</code> / <code>logout</code></li>
+<li><code>token_reuse_detected</code> / <code>password_reset_request</code> / <code>password_reset_success</code></li>
+<li><code>middleware/upload.ts</code> から <code>upload_rejected</code> を記録</li>
+</ul>
+<h4 id="ec2-migration">EC2 デプロイ・migration 適用<a class="headerlink" href="#ec2-migration" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>deploy.ps1</code> で sol + terra を一括デプロイ</li>
+<li>EC2 で <code>psql -f</code> により 0034・0035 migration を直接適用（Drizzle <code>migrate()</code> は再起動時に自動適用されるが、念のため手動確認）</li>
+</ul>
+<hr />
+<h2 id="2026-04-30">2026-04-30<a class="headerlink" href="#2026-04-30" title="Permanent link">&para;</a></h2>
+<h3 id="osseositemapxml">OS自動セキュリティアップデート・SEO（sitemap.xml）<a class="headerlink" href="#osseositemapxml" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="osec2">OS自動セキュリティアップデート（EC2）<a class="headerlink" href="#osec2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>unattended-upgrades</code> インストール・有効化済み（<code>dpkg-reconfigure</code> で設定）</li>
+<li><code>/etc/apt/apt.conf.d/51plofolia-unattended</code> を追加:</li>
+<li>セキュリティパッチのみ自動適用（<code>-security</code> origin のみ許可）</li>
+<li>未使用依存関係の自動削除: <code>true</code></li>
+<li>自動再起動: <code>false</code>（カーネルアップデートは手動再起動）</li>
+<li>ドライラン確認済み（現在適用待ちパッチなし = 最新状態）</li>
+</ul>
+<h4 id="seo-sitemapxml">SEO対応 — sitemap.xml にシリーズ追加<a class="headerlink" href="#seo-sitemapxml" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>sol/src/api/series/</code>: <code>GET /series/public</code> エンドポイントを追加（認証不要・最大1000件）</li>
+<li><code>listPublicSeries()</code>: アクティブユーザーのシリーズを <code>updatedAt</code> 降順で返す</li>
+<li>ルートは <code>/mine</code> より前に配置（<code>:seriesId</code> パターンマッチング優先度問題を回避）</li>
+<li><code>terra/src/app/sitemap.ts</code>:</li>
+<li><code>seriesEntries()</code> を追加（全ロケール × シリーズ ID の URL を生成）</li>
+<li><code>INTERNAL_API_URL</code> 環境変数対応（サーバーサイドから内部 URL を直接呼び出し可能）</li>
+<li>既存 sitemap 構成（静的ページ・トレンドタグ・公開プロフィール）は変更なし</li>
+</ul>
+<h4 id="ci">CI 修正（セッション引き継ぎ）<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>_journal.json</code> に migration 0029〜0033 が未登録だった問題を修正</li>
+<li>journal エントリを5件追加 → CI の <code>npm run db:migrate</code> が正常に全マイグレーションを実行するようになった</li>
+</ul>
+<hr />
+<h3 id="db">DBバックアップ・アカウントロック実装<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="dbtitan">DBバックアップ（<code>titan/</code>）<a class="headerlink" href="#dbtitan" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>titan/backup-db.sh</code>: pg_dump → gzip → S3（<code>plofolia-media/backups/db/</code>）日次 AM3:00 JST。30世代ローテーション。<code>sol/.env</code> から AWS 認証情報を読み込む</li>
+<li><code>titan/backup-ami.sh</code>: EC2 AMI スナップショット（<code>--no-reboot</code>）週次 AM3:30 JST。4世代ローテーション（旧 AMI + 関連スナップショットも削除）</li>
+<li>AWS IAM: ローカルの <code>plofolia-admin</code> CLI で <code>PlofoliaEC2AMIBackup</code> ポリシーを作成し <code>plofolia-s3</code> ユーザーに付与（<code>ec2:CreateImage</code> 等6権限）</li>
+<li>EC2 cron: 旧 <code>backup_db.sh</code> エントリを新スクリプトに置き換え。ログは <code>/home/ubuntu/logs/</code> に出力</li>
+<li>手動テスト: <code>backup-db.sh</code> で S3 アップロード確認済み（200KB・3世代）、<code>backup-ami.sh</code> で AMI 作成確認済み（<code>ami-009dc6002eaa7a75d</code>）</li>
+</ul>
+<h4 id="migration-0033">ログイン失敗アカウントロック（migration 0033）<a class="headerlink" href="#migration-0033" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>users</code> テーブルに <code>login_fail_count</code> (integer, default 0) / <code>login_locked_until</code> (timestamptz) を追加</li>
+<li><code>sol/src/api/auth/auth.service.ts</code>: ログイン失敗5回で15分ロック。ロック中は <code>ACCOUNT_LOCKED</code> (429) + <code>details.minutesRemaining</code> を返す。成功時にカウントをリセット</li>
+<li><code>sol/src/middleware/errorHandler.ts</code>: 4xx エラーに <code>details</code> フィールドを付与する対応を追加</li>
+<li><code>terra/src/lib/apiError.ts</code>: <code>ACCOUNT_LOCKED</code> の残り分数を動的に表示（ja/en 両対応）</li>
+<li>EC2 にマイグレーション（<code>ALTER TABLE users ADD COLUMN ...</code>）適用・PM2 再起動済み</li>
+</ul>
+<hr />
+<h3 id="ogppassport-twitter-cve-pwa">OGP最適化・passport-twitter CVE 対応・PWA 対応<a class="headerlink" href="#ogppassport-twitter-cve-pwa" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="ogpterra">OGP最適化（<code>terra/</code>）<a class="headerlink" href="#ogpterra" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>profile/[username]/page.tsx</code>: <code>normalizeMediaUrl()</code> を追加し、avatar URL のドメインを <code>APP_URL</code> に正規化（localhost で保存された URL が Discord 等で壊れる問題を修正）</li>
+<li><code>tag/[name]/page.tsx</code>: <code>generateMetadata</code> を新規追加（タグ名・説明文入り OG 画像）</li>
+<li><code>series/[seriesId]/page.tsx</code>: <code>generateMetadata</code> を新規追加（シリーズタイトル・著者名を API フェッチして OG 画像生成）</li>
+<li><code>[locale]/page.tsx</code> (ランディング): <code>og:image</code> / <code>twitter:card summary_large_image</code> を追加（これまで画像指定がなかった）</li>
+</ul>
+<h4 id="passport-twitter-cve-sol">passport-twitter CVE 対応（<code>sol/</code>）<a class="headerlink" href="#passport-twitter-cve-sol" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>passport-twitter@1.x</code> を完全削除。依存チェーン <code>xtraverse → xmldom</code> に critical/high CVE が複数あった</li>
+<li><code>passport-oauth1</code> を直接依存として追加し、<code>TwitterOAuth1Strategy</code> クラスでサブクラス化</li>
+<li><code>userProfile()</code> で Twitter API v1.1 <code>account/verify_credentials.json?include_email=true</code> を直接フェッチしてプロフィールを取得</li>
+<li>OAuth 1.0a のリクエストトークンは既存のセッション（<code>express-session</code>）で管理するため、フローの互換性を維持</li>
+<li><code>npm audit</code> で xmldom critical 脆弱性が消滅。残存は drizzle-orm (high, 識別子エスケープ) と esbuild (moderate, dev-only) のみ</li>
+</ul>
+<h4 id="pwa-terra">PWA 対応（<code>terra/</code>）<a class="headerlink" href="#pwa-terra" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>public/sw.js</code>: 最小 Service Worker を追加</li>
+<li><code>install</code> 時に manifest / icons を事前キャッシュ</li>
+<li><code>/_next/static/*</code> はキャッシュファースト（長期キャッシュ）</li>
+<li><code>/api/*</code> は常にネットワーク（キャッシュ除外）</li>
+<li>その他はネットワークファースト + キャッシュフォールバック</li>
+<li><code>src/components/PwaRegister.tsx</code>: <code>useEffect</code> で <code>navigator.serviceWorker.register('/sw.js')</code> を実行するクライアントコンポーネント</li>
+<li><code>layout.tsx</code>: <code>&lt;PwaRegister /&gt;</code> を body に追加</li>
+<li><code>manifest.ts</code>: <code>id: '/'</code> / <code>scope: '/'</code> を追加、アイコン purpose を <code>any</code> / <code>maskable</code> に分離 → Android Chrome のインストールプロンプト表示条件を満たす構成に</li>
+</ul>
+<p><strong>CI 修正:</strong> <code>passport-oauth1</code> が <code>passport-twitter</code> の transitive dep として消えていたため、Jest テストが <code>Cannot find module 'passport-oauth1'</code> で7スイート全落ちしていた。直接依存として追加後、全40件通過。</p>
+<hr />
+<h3 id="aurora">モデレータロール実装・Aurora 認証刷新<a class="headerlink" href="#aurora" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="db-migration-0032">モデレータロール (DB migration 0032)<a class="headerlink" href="#db-migration-0032" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>user_role</code> enum に <code>'moderator'</code> を追加（EC2 で <code>ALTER TYPE ... ADD VALUE</code> を直接実行）</li>
+<li>sol <code>adminAuthenticate</code> ミドルウェア: admin + moderator 両方が通過できるように変更</li>
+<li>sol <code>requireAdmin</code> ミドルウェア: admin 専用操作（BAN/unban/削除/監査ログ/招待コード）を保護</li>
+<li>sol <code>admin.auth.ts</code>: ユーザー名またはメールアドレスどちらでもログイン可能に変更（admin + moderator 対応）</li>
+<li>sol アカウント管理 API: <code>GET/POST /admin/accounts</code>（一覧・作成）、<code>DELETE /admin/accounts/:userId</code>（削除）</li>
+</ul>
+<p><strong>権限マトリクス:</strong></p>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th>Admin</th>
+<th>Moderator</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ダッシュボード・ユーザー/投稿閲覧</td>
+<td>o</td>
+<td>o</td>
+</tr>
+<tr>
+<td>投稿削除・報告/バグ報告/BAN異議/問い合わせ対応</td>
+<td>o</td>
+<td>o</td>
+</tr>
+<tr>
+<td>BAN/unban/ユーザー削除</td>
+<td>o</td>
+<td>x</td>
+</tr>
+<tr>
+<td>監査ログ・招待コード</td>
+<td>o</td>
+<td>x</td>
+</tr>
+<tr>
+<td>アカウント管理（モデレーター作成・削除）</td>
+<td>o</td>
+<td>x</td>
+</tr>
+</tbody>
+</table>
+<h4 id="aurora_1">Aurora 認証刷新<a class="headerlink" href="#aurora_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ログイン画面: パスフレーズ単一入力 → ユーザー名 + パスワードのフォームに変更</li>
+<li><code>aurora/src/app/api/auth/route.ts</code>: <code>AURORA_PASSPHRASE</code> 検証を廃止、ユーザー名+パスワードを sol 管理 API に直接フォワード</li>
+<li><code>adminAuthStore</code>: <code>role</code> フィールドを追加（JWT から解析・localStorage に永続化）</li>
+<li><code>AdminShell</code>: ロールに応じたナビゲーション（モデレータには監査ログ・招待コード・アカウント管理を非表示）。サイドバーに <code>MOD</code> バッジ表示</li>
+<li><code>aurora/src/app/accounts/</code>: モデレーターアカウントの作成・削除ページを新設</li>
+</ul>
+<hr />
+<h3 id="_7">メール環境整備・問い合わせフロー改善<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="google-workspace-supportplofoliacom">Google Workspace 設定（<code>support@plofolia.com</code> 双方向メール）<a class="headerlink" href="#google-workspace-supportplofoliacom" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Google Workspace Business Starter 契約（$6/月）</li>
+<li><code>support@plofolia.com</code> ユーザー作成</li>
+<li>お名前.com（<code>*.dnsv.jp</code>）に DNS レコードを設定:</li>
+<li>MX × 5（Gmail 受信）、DKIM（<code>google._domainkey</code> TXT）、SPF（Google + SES 合算）、DMARC</li>
+<li>AWS SES の <code>MAIL_FROM</code> を <code>support@plofolia.com</code> に変更・PM2 再起動済み</li>
+<li>詳細手順: <code>docs/ops/EMAIL_SETUP.md</code></li>
+</ul>
+<p><strong>注意点（ハマりどころ）:</strong></p>
+<ul>
+<li>DKIM レコードはルートドメイン <code>@</code> ではなく <code>google._domainkey</code> に設定すること</li>
+<li>Google Workspace セットアップ時に「ドメインはすでに使用されています」と表示 → 管理者パスワード再設定フローで解決</li>
+</ul>
+<h4 id="_8">問い合わせフォーム改善<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>ContactPage.tsx</code>: ログイン中ユーザーは送信後に <code>/contact/history/:id</code> へ自動リダイレクト</li>
+<li><code>ContactPage.tsx</code>: 未ログインの完了画面に「ご返信の際はご入力のメールアドレスにお知らせします」を表示</li>
+<li><code>mailer.ts</code>: <code>buildContactReplyEmail</code> テンプレートを追加（返信内容 + スレッドリンクボタン）</li>
+<li><code>admin.service.ts</code>: Aurora 管理画面から返信すると問い合わせ者へメール通知（fire-and-forget）</li>
+<li>ログイン中ユーザー: スレッドへのリンクボタン付き</li>
+<li>未ログインユーザー: 「このメールに返信してください」案内（support@ で受信可能）</li>
+</ul>
+<h4 id="_9">ドキュメント整備<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>docs/ops/EMAIL_SETUP.md</code>: 将来実装「メール → Aurora 自動連携」の設計を記述（Google Apps Script + Webhook 方式）</li>
+<li><code>docs/mgmt/ROADMAP.md</code>: カスタマーサポート運用ロードマップを追加</li>
+</ul>
+<h4 id="db-sql">本番 DB マイグレーション（直接 SQL）<a class="headerlink" href="#db-sql" title="Permanent link">&para;</a></h4>
+<p>EC2 の Drizzle マイグレーションが out-of-sync だったため、<code>contact_inquiries</code> / <code>contact_messages</code> テーブルを psql で直接作成（migrations 0029〜0031 相当）。base64 エンコード経由で実行。</p>
+<hr />
+<h2 id="2026-04-29">2026-04-29<a class="headerlink" href="#2026-04-29" title="Permanent link">&para;</a></h2>
+<h3 id="_10">ドキュメント整備・インフラ強化<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="_11">ドキュメント再編成<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>docs/dev/</code> : CONTRIBUTING.md, LOCAL_DEV.md, TECH_STACK.md（開発者向け）</li>
+<li><code>docs/ops/</code> : DEPLOY.md, OPERATIONS.md, RUNBOOK.md, COST.md（運用・インフラ）</li>
+<li><code>docs/policy/</code> : CONTENT_POLICY.md, SECURITY.md（ポリシー・ガイドライン）</li>
+<li><code>docs/mgmt/</code> : ROADMAP.md, COST.md（マネジメント・戦略）</li>
+<li>COST.md 新規作成: 月額コスト・フェーズ別予測・S3詳細・損益分岐点</li>
+<li>ROADMAP.md にチーム・関係者ロードマップを追加（Phase別採用計画・アクセス権限設計）</li>
+<li>TODO.md 新規作成: セッションをまたいで作業継続するための作業ログ</li>
+</ul>
+<h4 id="ec2">EC2 バックアップ設置<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>/home/ubuntu/scripts/backup_db.sh</code> 作成・設置</li>
+<li><code>crontab: 0 3 * * *</code> で毎日3時に pg_dump → S3 自動バックアップ</li>
+<li>バックアップ先: <code>s3://plofolia-media/backups/db/</code>（STANDARD_IA クラス）</li>
+<li>ローカルは7日分のみ保持</li>
+<li>テスト実行済み: 200K のダンプを S3 アップロードまで確認</li>
+</ul>
+<h4 id="ec2-nginx">EC2 Nginx セキュリティヘッダー追加<a class="headerlink" href="#ec2-nginx" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>/etc/nginx/sites-available/plofolia</code> に以下を追加・適用:</li>
+<li><code>X-Frame-Options: SAMEORIGIN</code></li>
+<li><code>X-Content-Type-Options: nosniff</code></li>
+<li><code>X-XSS-Protection: 1; mode=block</code></li>
+<li><code>Referrer-Policy: strict-origin-when-cross-origin</code></li>
+<li><code>Strict-Transport-Security: max-age=31536000; includeSubDomains</code></li>
+<li><code>Permissions-Policy: camera=(), microphone=(), geolocation=()</code></li>
+<li><code>nginx -t</code> 成功・<code>systemctl reload nginx</code> 適用済み</li>
+</ul>
+<h4 id="npm-audit">npm audit 結果<a class="headerlink" href="#npm-audit" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>sol</strong>: <code>passport-twitter@1.0.4</code> が依存する <code>xmldom</code> に critical 脆弱性あり</li>
+<li>xmldom の npm 公開版には修正バージョンが存在しない（advisories が参照する 0.9.3 は未リリース）</li>
+<li>攻撃経路: Twitter OAuth サーバーの応答を攻撃者が制御する必要があるため現実的リスクは低い</li>
+<li><strong>対応方針</strong>: passport-twitter を定期的にアップデート確認。代替ライブラリへの移行を将来検討</li>
+<li><code>drizzle-kit</code> の脆弱性は devDependency（本番影響なし）</li>
+<li><strong>terra</strong>: package-lock.json が古い → <code>npm install</code> で再生成が必要（TODO に残す）</li>
+</ul>
+<h4 id="postcard">PostCard デザイン<a class="headerlink" href="#postcard" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ボーダーレスフィード + カテゴリカラーアクセントバー（3px 上線）をデプロイ済み</li>
+<li><strong>ユーザーが承認済み（2026-04-29）</strong></li>
+</ul>
+<hr />
+<h3 id="ci_1">CI・セキュリティ・ツール整備（同日続き）<a class="headerlink" href="#ci_1" title="Permanent link">&para;</a></h3>
+<h4 id="ci-package-lockjson">CI 修正（package-lock.json 不整合）<a class="headerlink" href="#ci-package-lockjson" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>sol/package-lock.json</code> に xmldom override の残骸が残り <code>npm ci</code> が失敗していた</li>
+<li><code>npm install</code> で lockfile を正規状態に戻し、commit <code>e1966cc</code> で修正・push</li>
+</ul>
+<h4 id="terra-nextjs">terra Next.js アップグレード<a class="headerlink" href="#terra-nextjs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>next@14.2.4</code> → <code>14.2.35</code> にアップグレード（PostCSS XSS <strong>critical</strong> 脆弱性を解消）</li>
+<li>残り9件は ESLint ツールチェーン（devDependency・ビルド時のみ）で対応不要と判断</li>
+<li><strong>terra npm audit は完了・対応方針確定</strong></li>
+</ul>
+<h4 id="github-actions-slack">GitHub Actions Slack 通知追加<a class="headerlink" href="#github-actions-slack" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>.github/workflows/test.yml</code> に Slack 通知ステップを追加</li>
+<li>CI 失敗時: 常に <code>#dev-alerts</code> へ通知（コミット・実行者・詳細リンク付き）</li>
+<li>CI 成功時: <code>develop</code> ブランチのみ通知</li>
+<li><code>SLACK_WEBHOOK_URL</code> を GitHub Secrets に登録済み（ユーザー作業）</li>
+</ul>
+<h4 id="notion-mcp">Notion MCP 設定<a class="headerlink" href="#notion-mcp" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Claude Code のローカル MCP に <code>@notionhq/notion-mcp-server</code> を追加</li>
+<li>設定ファイル: <code>C:\Users\saepo\.claude.json</code>（plofolia プロジェクトスコープ）</li>
+<li>Notion 統合名: <code>Claude Code</code>、対象ページ: <code>Plofolia Docs</code>（共有設定済み）</li>
+<li><strong>次回セッション再起動後に接続確認 → ドキュメント移行</strong></li>
+</ul>
+<h4 id="_12">ツール・将来方針の記録<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ドキュメント管理: Notion に移行（外部メンバーが加わるタイミング）</li>
+<li>両項目を TODO.md の低優先に追記済み</li>
+</ul>
+<hr />
+<h3 id="notion">Notion ドキュメント移行 + 自動同期フック（同日続き）<a class="headerlink" href="#notion" title="Permanent link">&para;</a></h3>
+<h4 id="notion-mcp_1">Notion MCP 接続確認<a class="headerlink" href="#notion-mcp_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Claude Code 再起動後に <code>@notionhq/notion-mcp-server</code> の接続を確認</li>
+<li>Notion 統合「Claude Code」に <code>Plofolia Docs</code> ページを共有済み（<code>…</code> → 接続を追加）</li>
+<li>MCP ツール（<code>post-page</code>, <code>patch-block-children</code> 等）が正常に動作することを確認</li>
+</ul>
+<h4 id="docs-notion">docs/ → Notion 全移行完了<a class="headerlink" href="#docs-notion" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>Plofolia Docs</code> 配下に4セクション・12サブページを作成</li>
+<li><code>dev/</code>: CONTRIBUTING.md, LOCAL_DEV.md, TECH_STACK.md</li>
+<li><code>ops/</code>: DEPLOY.md, OPERATIONS.md, RUNBOOK.md</li>
+<li><code>mgmt/</code>: COST.md, ROADMAP.md, LEGAL.md, DEVLOG.md</li>
+<li><code>policy/</code>: CONTENT_POLICY.md, SECURITY.md</li>
+<li>Markdown をそのまま Notion ブロック（見出し/箇条書き/コードブロック/区切り線）に変換してアップロード</li>
+<li>Notion API の制約上、children は <code>post-page</code> と別に <code>patch-block-children</code> で追加</li>
+</ul>
+<h4 id="claude-code-posttooluse">Claude Code PostToolUse フック実装<a class="headerlink" href="#claude-code-posttooluse" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>titan/sync-notion.js</code> を新規作成</li>
+<li>Edit/Write ツール使用後に Claude Code から stdin 経由で JSON ペイロードを受け取る</li>
+<li>編集ファイルのパスが <code>docs/</code> 配下 + PAGE_MAP に存在する場合のみ動作</li>
+<li>Notion ページの既存ブロックを全削除 → Markdown を再変換して再アップロード</li>
+<li>100ブロック/リクエスト制限・2000文字/テキスト制限に対応</li>
+<li>対象外ファイルは即時終了（Claude Code の操作を遅延させない）</li>
+<li><code>.claude/settings.json</code> に <code>hooks.PostToolUse</code> を追加</li>
+<li>matcher: <code>Edit|Write</code></li>
+<li>command: <code>node titan/sync-notion.js</code></li>
+<li>commit <code>51bb5ee</code> で push 済み</li>
+</ul>
+<p><strong>Notion ページ ID マッピング（titan/sync-notion.js 内に記載）:</strong></p>
+<ul>
+<li>docs/dev/CONTRIBUTING.md → <code>350999af-12ce-81de-848e-f7d55e9d84ef</code></li>
+<li>docs/dev/LOCAL_DEV.md → <code>350999af-12ce-81dc-ba30-ebea4f9d9a36</code></li>
+<li>docs/dev/TECH_STACK.md → <code>350999af-12ce-8167-8847-e44cb445555b</code></li>
+<li>docs/ops/DEPLOY.md → <code>350999af-12ce-810c-a5d8-c87efb58f4ae</code></li>
+<li>docs/ops/OPERATIONS.md → <code>350999af-12ce-8146-a157-d637efd75ed9</code></li>
+<li>docs/ops/RUNBOOK.md → <code>350999af-12ce-81f0-b30e-d7d409c0397c</code></li>
+<li>docs/mgmt/COST.md → <code>350999af-12ce-8160-a735-d84bc5b01e60</code></li>
+<li>docs/mgmt/ROADMAP.md → <code>350999af-12ce-818d-b8c7-da65fd1d5246</code></li>
+<li>docs/mgmt/LEGAL.md → <code>350999af-12ce-8187-9621-de64ea33af8c</code></li>
+<li>docs/mgmt/DEVLOG.md → <code>350999af-12ce-8127-a8d8-d223e16bc77c</code></li>
+<li>docs/policy/CONTENT_POLICY.md → <code>350999af-12ce-811a-b839-e9ee76dc8de3</code></li>
+<li>docs/policy/SECURITY.md → <code>350999af-12ce-81a5-ad42-cd63afe984fb</code></li>
+</ul>
+<hr />
+<h3 id="_13">セキュリティ・ドキュメント整備（同日続き）<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="lint-staged">絵文字防止チェック（lint-staged）<a class="headerlink" href="#lint-staged" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>titan/check-no-emoji.js</code> を新規作成</li>
+<li>補助面絵文字（U+1F000-U+1FFFF）と BMP シンボル範囲（U+2600-U+27BF）を検出</li>
+<li>コミット前に exit 1 でブロック</li>
+<li><code>package.json</code> の lint-staged に追加（<code>*.{ts,tsx,js,jsx,json,md}</code> 対象）</li>
+<li><code>TODO.md</code> の既存絵文字見出しをテキスト表記（<code>[高]</code> / <code>[中]</code> / <code>[低]</code> / <code>[完了]</code>）に変換</li>
+</ul>
+<h4 id="_14">機密情報コミット防止<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>titan/check-no-secrets.js</code> を新規作成</li>
+<li>Notion トークン・AWS アクセスキー・Slack Webhook URL・秘密鍵ヘッダー等のパターンを検出</li>
+<li>JS/TS/JSON ファイルのコミット前チェック（markdown は対象外）</li>
+<li><code>titan/sync-notion.js</code>: Notion トークンのハードコードを除去</li>
+<li><code>.notion-token</code> ファイルまたは <code>NOTION_TOKEN</code> 環境変数から読み込む方式に変更</li>
+<li><code>.gitignore</code> に追加: <code>ec2_key</code>・<code>ec2_key.pub</code>・<code>ec2_tmp_key_deploy</code>・<code>.notion-token</code>・<code>CLAUDE.local.md</code></li>
+</ul>
+<h4 id="claudelocalmd">CLAUDE.local.md による機密情報の分離<a class="headerlink" href="#claudelocalmd" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>CLAUDE.local.md</code> を新規作成（gitignored）</li>
+<li>EC2 IP・インスタンス ID・IAM アカウント ID・DB 認証情報を記載</li>
+<li>SSH 接続コマンド（実値付き）を収録</li>
+<li>新規マシンでのセットアップ手順も記載</li>
+<li><code>CLAUDE.md</code> の先頭に <code>@CLAUDE.local.md</code> インポートを追加</li>
+<li>機密値は <code>CLAUDE.local.md 参照</code> というプレースホルダーに置き換え</li>
+<li>Claude Code 起動時に両ファイルが読み込まれるため運用上の支障なし</li>
+</ul>
+<h4 id="_15">ドキュメント追加<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>docs/dev/DESIGN.md</code>: Solarized Dark パレット・テキストカラー規則・コンポーネント別ガイドライン・禁止事項</li>
+<li><code>docs/mgmt/OVERVIEW.md</code>: プロジェクト概要・命名由来（Plot+Portfolio）・差別化ポイント・関係者紹介用サマリ</li>
+<li>強み: シャドウバンがない・タイムコメント・NSFW/AI アーティストに優しい・エゴサーチ</li>
+<li>命名由来: Plofolia = Plot（WIP/SNS）+ Portfolio（完成作品ショーケース）</li>
+<li>両ドキュメントを Notion にも同期済み（PAGE_MAP に追加）</li>
+</ul>
+<h4 id="sync-notionjs">sync-notion.js 改善<a class="headerlink" href="#sync-notionjs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>--all</code> オプション: 全 14 ページを一括再同期</li>
+<li>ファイルパスを引数で指定して個別同期も可能</li>
+<li>不明なコードブロック言語を <code>plain text</code> にフォールバック（<code>env</code> 等に対応）</li>
+<li>Notion ページ追加: DESIGN.md（<code>351999af-12ce-8110-ba01-c3e8aa829d84</code>）・OVERVIEW.md（<code>351999af-12ce-81cb-8f60-e5985210c4ff</code>）</li>
+</ul>
+<hr />
+<h2 id="2026-04-29_1">2026-04-29（続き）<a class="headerlink" href="#2026-04-29_1" title="Permanent link">&para;</a></h2>
+<h3 id="aurora_2">Aurora 管理画面・セキュリティ・インフラ整備<a class="headerlink" href="#aurora_2" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="aurora_3">Aurora パスフレーズ認証<a class="headerlink" href="#aurora_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ログイン画面をメール+パスワードからパスフレーズ1フィールドに変更</li>
+<li><code>aurora/src/app/api/auth/route.ts</code>（Next.js API Route）新規作成</li>
+<li>パスフレーズを <code>AURORA_PASSPHRASE</code> 環境変数と照合</li>
+<li>一致したら内部で nova admin API（port 4001）の <code>/auth/login</code> を呼び出し JWT を取得</li>
+<li>JWT をクライアントに返す（既存の adminAuthStore/Bearer 認証フローをそのまま維持）</li>
+<li>aurora/.env.local に <code>AURORA_PASSPHRASE</code>・<code>AURORA_ADMIN_EMAIL</code>・<code>AURORA_ADMIN_PASSWORD</code> 追加</li>
+<li>現在のパスフレーズ: EC2 の <code>aurora/.env.local</code> の <code>AURORA_PASSPHRASE</code> を参照</li>
+<li>SSH トンネル（<code>-L 3001:localhost:3001</code>）経由でのみアクセス可能</li>
+</ul>
+<h4 id="aurora_4">Aurora 招待コードバグ修正<a class="headerlink" href="#aurora_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>aurora/src/app/invites/page.tsx</code> の API パスが <code>/invites</code> になっていたのを <code>/admin/invites</code> に修正</li>
+<li>他ページ（useAdmin.ts）は正しく <code>/admin/*</code> を使用しており、招待コードページのみ漏れていた</li>
+</ul>
+<h4 id="notion_1">Notion 同期フック非同期化<a class="headerlink" href="#notion_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>.claude/settings.json</code> のフックコマンドを <code>node titan/sync-notion.js &amp;</code> に変更</li>
+<li>docs/ ファイル編集時に Claude Code がフック完了を待たなくなりレスポンスが改善</li>
+</ul>
+<h4 id="titansync-notionjs">titan/sync-notion.js 改善<a class="headerlink" href="#titansync-notionjs" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>deleteBlock()</code> が archived ブロックに対して 400 を返す場合をスキップするよう修正</li>
+<li>commit <code>3a6731f</code></li>
+</ul>
+<h4 id="_16">セキュリティ強化<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>GitHub MFA 設定</strong>（ユーザーが実施）— GitHub アカウントに TOTP 認証アプリを設定済み</li>
+<li><strong>AWS MFA 設定</strong>（ユーザーが実施）— root アカウント・IAM ユーザー <code>plofolia-admin</code> の両方に MFA 設定済み</li>
+<li><strong>AWS Budgets アラート</strong>（ユーザーが実施）— $50/月・80%/100% でメール通知設定済み</li>
+</ul>
+<h4 id="_17">モバイルレスポンシブ対応<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<ul>
+<li>TimelineTabs: ドメインタブラベルをモバイルで非表示、AI フィルタ・カラム選択を <code>hidden sm:flex</code></li>
+<li>FeedList: グリッドレイアウトをブレークポイント別に調整（2/3/4カラム）</li>
+<li>PostCard: 画像グリッドの <code>max-h</code> をモバイルで 320px・sm 以上で 480px</li>
+<li>AppShell: iOS safe-area 対応（<code>pb-nav-safe</code> カスタム CSS + <code>viewport-fit: cover</code>）</li>
+<li>Sidebar: アカウントメニューポップアップの幅を固定（<code>w-[260px]</code>）</li>
+</ul>
+<h4 id="sentry">Sentry 導入（保留）<a class="headerlink" href="#sentry" title="Permanent link">&para;</a></h4>
+<ul>
+<li>t3.micro（1GB RAM）での terra ビルドが OOM でクラッシュするため実装を取り消し</li>
+<li>将来の対応方針: EC2 インスタンスタイプを t3.small 以上に変更、または CI ビルドに移行してから再挑戦</li>
+</ul>
+<hr />
+<h2 id="2026-04-29_2">2026-04-29（続き）<a class="headerlink" href="#2026-04-29_2" title="Permanent link">&para;</a></h2>
+<h3 id="pwaseooauth">PWA・SEO・OAuth・画像グリッド修正<a class="headerlink" href="#pwaseooauth" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="pwa">PWA 対応<a class="headerlink" href="#pwa" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>terra/src/app/manifest.ts</code> 新規作成（Web App Manifest: standalone・Solarized Dark テーマ色）</li>
+<li><code>terra/src/app/icon.tsx</code> / <code>apple-icon.tsx</code> 新規作成（Next.js 標準ファイルによるファビコン自動生成）</li>
+<li><code>terra/src/app/icons/[size]/route.tsx</code> 新規作成（ImageResponse による 192x192 / 512x512 動的 PWA アイコン）</li>
+<li><code>viewport.themeColor: '#2aa198'</code> を locale layout に追加</li>
+</ul>
+<h4 id="oauth">OAuth オンボーディング 生年月日必須化<a class="headerlink" href="#oauth" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>OAuthOnboardingForm.tsx</code>: birthDate フィールドを必須に変更（<code>required</code> 属性・必須マーク・バリデーション追加）</li>
+<li><code>GET /users/me</code> でサーバー上の birthDate を取得してフォームに自動入力（Google 以外で既登録の場合も対応）</li>
+<li>Google People API から birthDate 自動取得を実装（後述の理由で削除）</li>
+</ul>
+<h4 id="ci_2">CI シードデータ不足の修正<a class="headerlink" href="#ci_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>sol/src/db/migrations/0028_seed_reference_data.sql</code> 新規作成</li>
+<li><code>creator_types</code>（15件）・<code>content_categories</code>（5件）を <code>ON CONFLICT (code) DO NOTHING</code> でマイグレーションに含める</li>
+<li>CI は <code>npm run db:migrate</code> のみ実行するため、このマイグレーションがないと <code>creator-types</code> テスト等が失敗していた</li>
+</ul>
+<h4 id="34">画像グリッド 3・4枚バグ修正<a class="headerlink" href="#34" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>PostCard.tsx</code>: multi-image グリッドに付いていた <code>max-h-[320px]</code> を削除</li>
+<li>3枚レイアウト: CSS Grid <code>row-span-2</code> で左1枚・右2枚の Twitter 風サイドバイサイドを実現</li>
+<li>4枚レイアウト: <code>aspect-square</code> で全セルを正方形に統一。<code>max-h</code> によるクリップを排除</li>
+</ul>
+<h4 id="seo">SEO 対策<a class="headerlink" href="#seo" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>terra/public/robots.txt</code>: <code>/*/post/</code> の Disallow を削除（投稿クロールを許可）、NSFW はページ単位で <code>noindex</code> 付与</li>
+<li><code>terra/src/app/[locale]/post/[id]/page.tsx</code>: NSFW 投稿に <code>robots: { index: false }</code> + hreflang alternates + CreativeWork JSON-LD</li>
+<li><code>terra/src/app/[locale]/profile/[username]/page.tsx</code>: ProfilePage/Person JSON-LD + hreflang alternates</li>
+<li><code>terra/src/app/sitemap.ts</code>: <code>profileEntries()</code> 追加（<code>GET /users/public</code> で公開プロフィールをサイトマップに含める）</li>
+<li><code>sol</code>: <code>GET /users/public?limit=200</code> エンドポイント新規追加</li>
+</ul>
+<h4 id="google-oauth-403-birthday">Google OAuth 403 解消（birthday スコープ削除）<a class="headerlink" href="#google-oauth-403-birthday" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>user.birthday.read</code> はセンシティブスコープのため Google の公式審査が必要。審査未完了のため全ユーザーが <code>403: access_denied</code> になった</li>
+<li><code>sol/src/api/oauth/oauth.routes.ts</code>: birthday スコープと People API 呼び出しを削除し <code>profile</code> + <code>email</code> のみに戻す</li>
+<li>生年月日はオンボーディングフォームで手入力（Google 審査通過後に再追加予定）</li>
+</ul>
+<h4 id="db_1">本番 DB クリーンアップ → シード再実行<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>本番 DB に入っていたシードデータ（<code>@example.com</code> ユーザー 60名・投稿 1011件）を削除</li>
+<li><code>db:seed</code> → <code>db:seed:media</code> → <code>db:seed:bulk</code> → <code>db:seed:viral</code> を EC2 上で再実行して戻した</li>
+</ul>
+<hr />
+<h2 id="2026-04-29_3">2026-04-29（続き）<a class="headerlink" href="#2026-04-29_3" title="Permanent link">&para;</a></h2>
+<h3 id="_18">アカウント・認証改善・投稿通報フロー実装<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="_19">登録・ログイン改善<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>同一メールアドレスで複数アカウント登録可能に</strong></li>
+<li><code>users.email</code> の unique 制約を削除（migration 0024）</li>
+<li><code>EMAIL_TAKEN</code> エラーを廃止。ユーザー名の一意性のみ維持</li>
+<li><strong>ユーザー名またはメールアドレスでログイン可能に</strong></li>
+<li><code>LoginInput.email</code> → <code>LoginInput.identifier</code> に変更</li>
+<li><code>@</code> を含む場合はメールアドレス、含まない場合はユーザー名として検索</li>
+<li>LoginForm のラベル・プレースホルダーを多言語（5言語）対応で更新</li>
+<li><strong>ユーザー名の最大文字数を 50 → 30 に変更</strong>（バリデーション・フロント両方）</li>
+<li>生年月日を必須に変更（前セッション）・招待コードのバックエンド検証を有効化（前セッション）</li>
+</ul>
+<h4 id="c-d">投稿通報フロー（C + D）<a class="headerlink" href="#c-d" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>DB</strong>: <code>post_reports</code> テーブル追加（migration 0025）</li>
+<li>カテゴリ: <code>spam</code> / <code>underage_content</code> / <code>copyright</code> / <code>harassment</code> / <code>inappropriate</code> / <code>other</code></li>
+<li>ステータス: <code>open</code> / <code>reviewed</code> / <code>dismissed</code></li>
+<li>同一ユーザーが同一投稿を重複報告すると無視（unique 制約）</li>
+<li><strong>Backend（sol）</strong>:</li>
+<li><code>POST /posts/:id/report</code> — 認証必須、カテゴリ + 詳細を受け取る</li>
+<li><code>GET /admin/post-reports</code> — ステータスフィルタ・カーソルページネーション</li>
+<li><code>PATCH /admin/post-reports/:id</code> — ステータス変更・管理者メモ更新</li>
+<li><strong>terra</strong>:</li>
+<li>PostCard の「...」メニュー（他者の投稿）に「報告」を追加（artCard・textCard 両方）</li>
+<li><code>PostReportModal.tsx</code>: カテゴリ選択ラジオ + 詳細テキスト（500文字）+ 送信後完了画面</li>
+<li><strong>Aurora</strong>:</li>
+<li><code>/post-reports</code> 管理ページ: ステータスフィルタ・カテゴリバッジ・展開操作・管理者メモ・ステータス変更ボタン</li>
+<li>AdminShell サイドバーに「投稿報告」リンクを追加（Flag アイコン）</li>
+</ul>
+<hr />
+<h2 id="2026-04-29_4">2026-04-29（続き）<a class="headerlink" href="#2026-04-29_4" title="Permanent link">&para;</a></h2>
+<h3 id="nsfwogp">認証・NSFW・モバイル・OGP・タイムライン改善<a class="headerlink" href="#nsfwogp" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="_20">メール認証完了時の自動リダイレクト<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>GET /auth/check-verified?email=XXX</code> エンドポイント追加（認証不要、<code>{ verified: boolean }</code> を返す）</li>
+<li><code>auth.service.ts</code>: <code>checkVerified(email)</code> — emailVerifiedAt の有無をチェック</li>
+<li><code>VerifyEmailSentView.tsx</code>: 認証待機画面で5秒ごとにポーリング</li>
+<li>認証完了を検知したら緑チェックの完了画面を表示し、1.5秒後に <code>/auth/onboarding</code> へ自動リダイレクト</li>
+</ul>
+<h4 id="nsfw">NSFW デフォルト設定変更<a class="headerlink" href="#nsfw" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>uiStore.ts</code>: <code>hideNsfw</code> / <code>blurNsfw</code> のデフォルト値を <code>false</code> → <code>true</code> に変更</li>
+<li>新規アカウント（localStorage に保存値がないユーザー）は NSFW が初期非表示になる</li>
+<li>既存ユーザーは localStorage の保存値を維持（変更なし）</li>
+</ul>
+<h4 id="bottomnav">スマホキーボード展開時の BottomNav 重複バグ修正<a class="headerlink" href="#bottomnav" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>BottomNav.tsx</code>: Visual Viewport API でキーボード展開を検知</li>
+<li><code>window.innerHeight - window.visualViewport.height &gt; 100</code> の場合 BottomNav を非表示</li>
+<li>音声メディア詳細の返信欄でキーボードが開いたとき BottomNav が投稿欄に重なる問題が解消</li>
+</ul>
+<h4 id="discord-ogp">Discord OGP 画像プレビュー修正<a class="headerlink" href="#discord-ogp" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>terra/src/app/[locale]/post/[id]/page.tsx</code> の <code>generateMetadata</code> に <code>normalizeMediaUrl()</code> を追加</li>
+<li><code>publicUrl</code> が <code>http://localhost:4000/uploads/...</code> 等の内部URLの場合、パスを抽出して <code>APP_URL</code> に変換</li>
+<li>Discord ボットは Next.js rewrites を経由しないため、内部URLが og:image に入るとプレビューが壊れていた</li>
+</ul>
+<h4 id="nsfw_1">未ログイン時の NSFW 表示方針変更<a class="headerlink" href="#nsfw_1" title="Permanent link">&para;</a></h4>
+<p><strong>旧動作</strong>: グローバルタイムラインで未ログイン時は NSFW 投稿をバックエンドでフィルタし完全非表示
+<strong>新動作</strong>: 未ログイン時も NSFW 投稿をタイムラインに表示（投稿の存在・著者・R18バッジは見える）。NSFW メディアのみ「R18 — ログインして閲覧」リンクに差し替え</p>
+<p>実装箇所:</p>
+<ul>
+<li><code>timeline.controller.ts</code>: <code>getGlobal</code> で <code>isViewerAdult: req.user ? req.user.isAdult : true</code>（未ログインも NSFW を返す）</li>
+<li><code>PostCard.tsx</code>:</li>
+<li><code>showNsfw</code> 初期値に <code>!hideNsfw</code> も追加</li>
+<li><code>return null</code> 条件を <code>isAuthenticated()</code> が true のユーザーのみに限定</li>
+<li>NSFW プレースホルダー: 未ログイン → ログインリンク / 成人ログイン → クリック解除 / 非成人ログイン → 固定表示</li>
+</ul>
+<hr />
+<h2 id="2026-04-29_5">2026-04-29（続き）<a class="headerlink" href="#2026-04-29_5" title="Permanent link">&para;</a></h2>
+<h3 id="ui">UI 修正・表記統一・お問い合わせシステム実装<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="nsfw_2">タイル表示 NSFW バグ修正<a class="headerlink" href="#nsfw_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>FeedList.tsx</code> の <code>TileItem</code> コンポーネントに認証状態チェックを追加</li>
+<li>未ログイン時: 画像を非表示にして「NSFW — ログインして閲覧」リンクのプレースホルダーを表示</li>
+<li>ログイン済み成人・<code>hideNsfw=true</code> または非成人: フィルタリングで非表示</li>
+<li><code>useAuthStore</code> の <code>isAuthenticated</code> / <code>isAdult</code> / <code>_hasHydrated</code> を <code>TileItem</code> 内で参照するよう変更</li>
+</ul>
+<h4 id="ui_1">ログイン画面 UI 改善<a class="headerlink" href="#ui_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>ログインフォームのタイトルをクリックするとウェルカムページ（<code>/${locale}</code>）に遷移するリンクに変更</li>
+<li>ID/メールアドレス入力欄のプレースホルダーテキストを削除（サンプル文字列が入力欄に表示されていた問題を解消）</li>
+</ul>
+<h4 id="r18-nsfw">R18 → NSFW 表記統一<a class="headerlink" href="#r18-nsfw" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>PostCard.tsx</code>・<code>FeedList.tsx</code> 内のすべての「R18」バッジ・テキストを「NSFW」に統一</li>
+<li><code>check-no-emoji.js</code> の emoji 正規表現を修正</li>
+<li>国旗（Regional Indicator Symbols: U+1F1E0-U+1F1FF）を除外</li>
+<li><code>SettingsPage.tsx</code> の国籍 UI で国旗を使用しているため、チェック対象外に</li>
+</ul>
+<h4 id="dmca">DMCA アイコン変更<a class="headerlink" href="#dmca" title="Permanent link">&para;</a></h4>
+<ul>
+<li>サイドバーの DMCA エントリのアイコンを <code>Shield</code> → <code>Scale</code> に変更（プライバシーと同一アイコンだった問題を解消）</li>
+</ul>
+<h4 id="db-aurora">お問い合わせフォーム実装（フォーム → DB → Aurora 管理）<a class="headerlink" href="#db-aurora" title="Permanent link">&para;</a></h4>
+<p><strong>背景</strong>: <code>contact@plofolia.com</code> 等のメールアドレスに MX レコードがなく、メール窓口が機能しない状態だった。メール依存をやめてアプリ内フォームで管理する方式に変更。</p>
+<ul>
+<li><strong>DB</strong>: <code>contact_inquiries</code> テーブル追加（migration 0029）</li>
+<li>カテゴリ: <code>general</code> / <code>billing</code> / <code>dmca</code> / <code>bug</code> / <code>other</code></li>
+<li>ステータス: <code>open</code> / <code>responded</code> / <code>closed</code></li>
+<li>ログイン中なら <code>user_id</code> も保存</li>
+<li><strong>Backend（sol）</strong>:</li>
+<li><code>POST /api/v1/contact</code> — 認証不要。ログイン時は <code>userId</code> を紐付け</li>
+<li><code>GET /admin/contact-inquiries</code> — ステータスフィルタ・カーソルページネーション</li>
+<li><code>PATCH /admin/contact-inquiries/:id</code> — ステータス変更・管理者メモ・返信内容を保存</li>
+<li><strong>terra</strong>:</li>
+<li><code>ContactPage.tsx</code> をメールリンクから送信フォームに全面リニューアル（名前・メール・カテゴリ・件名・本文）</li>
+<li><code>PrivacyPage.tsx</code>・<code>TermsPage.tsx</code> の <code>mailto:</code> リンクをお問い合わせページへのリンクに変更</li>
+<li><strong>Aurora</strong>:</li>
+<li><code>/contact-inquiries</code> 管理ページを新規作成</li>
+<li>AdminShell サイドバーに「お問い合わせ」リンクを追加（Mail アイコン）</li>
+<li>展開時に返信内容・管理者メモを入力し「返信済みにする」「クローズ」操作が可能</li>
+</ul>
+<h4 id="_21">お問い合わせスレッド返信機能<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>DB</strong>: <code>contact_messages</code> テーブル追加（migration 0030）でスレッド形式の会話を実現</li>
+<li><code>sender_type</code>: <code>user</code> または <code>admin</code></li>
+<li>最初の問い合わせ本文は <code>contact_inquiries.message</code> に保存（重複なし）</li>
+<li>返信以降のメッセージを時系列で保持</li>
+<li><strong>Backend（sol）</strong>:</li>
+<li><code>GET /contact/mine</code> — 自分の問い合わせ一覧（認証必須）</li>
+<li><code>GET /contact/:id</code> — スレッド詳細取得（自分の問い合わせのみ・認証必須）</li>
+<li><code>POST /contact/:id/reply</code> — ユーザー追加返信。クローズ済みは 400 <code>INQUIRY_CLOSED</code>。返信すると <code>responded</code> → <code>open</code> に戻す</li>
+<li><code>GET /admin/contact-inquiries/:id/messages</code> — 管理者がスレッド全件取得</li>
+<li><code>POST /admin/contact-inquiries/:id/reply</code> — 管理者返信。自動で <code>responded</code> ステータスに変更</li>
+<li><strong>terra</strong>:</li>
+<li><code>ContactPage.tsx</code>: ヘッダーに「履歴」リンク追加（ログイン中のみ表示）。送信完了後に履歴ページへ誘導</li>
+<li><code>/contact/history</code> — 自分の問い合わせ一覧（ステータスバッジ・最終更新日付き）</li>
+<li><code>/contact/history/:id</code> — スレッドビュー。ユーザー（左・青）と運営（右・緑）の発言を色分け表示。Ctrl+Enter 送信対応の返信フォーム。クローズ時は入力不可でロックアイコンを表示</li>
+<li><strong>Aurora</strong>:</li>
+<li>問い合わせ行を展開するとスレッドを表示しながら管理者が返信可能</li>
+<li>「返信する」ボタンで <code>contact_messages</code> に挿入 + ステータスを <code>responded</code> に自動変更</li>
+</ul>
+<hr />
+<h2 id="2026-04-30_1">2026-04-30<a class="headerlink" href="#2026-04-30_1" title="Permanent link">&para;</a></h2>
+<h3 id="google-workspace">メールアドレス参照の除去・Google Workspace 設定ドキュメント整備<a class="headerlink" href="#google-workspace" title="Permanent link">&para;</a></h3>
+<p><strong>完了した作業:</strong></p>
+<h4 id="_22">メールアドレス参照を全ページから除去<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>背景</strong>: お問い合わせシステムをアプリ内フォームに移行したにもかかわらず、各ページに <code>dmca@plofolia.com</code>・<code>support@plofolia.com</code> 等の機能しないメールアドレスが残っていた</li>
+<li><strong>ContactPage.tsx</strong>: メールアドレス入力欄を削除。説明文を「履歴ページのスレッドで返信を確認」に変更</li>
+<li><strong>DmcaPage.tsx</strong>: セクション5の <code>mailto:dmca@plofolia.com</code> リンクをお問い合わせフォームへのリンクに変更。エラー文からメール誘導の文言を除去</li>
+<li><strong>RefundPage.tsx</strong>: セクション5の <code>mailto:support@plofolia.com</code> リンクをお問い合わせフォームへのリンクに変更。「返金・決済カテゴリを選択して」案内文を追加</li>
+<li><strong>sol contact API</strong>: <code>email</code> フィールドを optional に変更（Zod スキーマ）</li>
+<li><strong>migration 0031</strong>: <code>contact_inquiries.email</code> カラムを nullable に変更</li>
+</ul>
+<h4 id="_23">メール設定方針の確定・ドキュメント作成<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>方針決定</strong>:</li>
+<li>受信・手動返信: Google Workspace（<code>support@plofolia.com</code>、$6/月）</li>
+<li>システム送信（認証メール等）: AWS SES（現状維持）</li>
+<li>メール → Aurora チケット連携は将来対応（現状は Gmail と Aurora を別管理）</li>
+<li><strong><code>docs/ops/EMAIL_SETUP.md</code> 新規作成</strong>:</li>
+<li>Google Workspace 契約手順</li>
+<li>お名前.com DNS 設定（MX・SPF・DKIM・DMARC レコード）</li>
+<li>sol の <code>MAIL_FROM</code> 更新手順</li>
+<li>SES 単独受信（Lambda 転送）を不採用とした理由を記録</li>
+</ul>
+<h4 id="google-workspace_1">Google Workspace 設定完了（同日）<a class="headerlink" href="#google-workspace_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Google Workspace Business Starter 契約（$6/月）</li>
+<li><code>support@plofolia.com</code> ユーザー作成</li>
+<li>お名前.com DNS 設定:</li>
+<li>MX レコード 5件（Gmail 受信）</li>
+<li>TXT <code>google._domainkey</code> — DKIM 認証（Google Workspace）</li>
+<li>TXT <code>@</code> — <code>v=spf1 include:_spf.google.com include:amazonses.com ~all</code>（Google + SES 共存）</li>
+<li>TXT <code>_dmarc</code> — <code>v=DMARC1; p=none;</code></li>
+<li>DKIM 「認証を開始」完了・DNS 反映確認済み</li>
+<li>EC2 <code>sol/.env</code> の <code>MAIL_FROM</code> を <code>no-reply@plofolia.com</code> → <code>support@plofolia.com</code> に変更・sol/nova 再起動</li>
+<li><code>docs/ops/EMAIL_SETUP.md</code> を設定済み状態に更新（実際の DNS レコード値・設定済みフラグを反映）</li>
+</ul>
+<hr />
+<h2 id="2026-04">2026-04 以前（前セッションの主な実装）<a class="headerlink" href="#2026-04" title="Permanent link">&para;</a></h2>
+<ul>
+<li>ミュート/ブロック・ブックマーク・通知 SSE リアルタイム化</li>
+<li>タイムコメント自動スクロール改善・全画面横並びレイアウト</li>
+<li>シリーズ投稿機能（API + フロントエンド）</li>
+<li>多言語対応拡充（ja/en/zh/ko/es の5言語）</li>
+<li>招待コード登録フロー・発行管理画面（Aurora）</li>
+<li>メール認証フロー・DNS MX レコード検証</li>
+<li>DM リアルタイムチャット（SSE）・未読バッジ</li>
+<li>OAuth（Google/Twitter）+ オンボーディングフロー</li>
+<li>AI 学習拒否宣言・閲覧地域フィルタリング・国籍表示</li>
+<li>検索オートコンプリート（250ms デバウンス）</li>
+<li>通知の一括削除・既読削除</li>
+<li>Rate Limiting 実装（ログイン10回/15分・API200回/15分）</li>
+<li>管理システム（ユーザー BAN・投稿削除・監査ログ・バグ報告管理）</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

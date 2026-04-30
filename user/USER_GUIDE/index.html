@@ -1,0 +1,1973 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/user/USER_GUIDE/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../ENGINEER_GUIDE/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>ユーザーガイド - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plofolia" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ユーザーガイド
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目次
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-plofolia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Plofolia とは？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Plofolia とは？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        こんな場所です
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        名前の由来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向いているクリエイター
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. アカウント登録
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. アカウント登録">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        招待コードについて
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        登録手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-xtwitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google / X（Twitter）でログインする場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. プロフィールの設定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. プロフィールの設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本情報
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クリエイタータイプ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. コンテンツを投稿する
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. コンテンツを投稿する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        投稿できるメディア
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        投稿手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        動画・音声のトリミング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ハッシュタグ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        投稿の削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. タイムラインを見る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. タイムラインを見る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3つのタブ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フォロー中タイムライン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        地域フィルタリング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nsfw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NSFW コンテンツの表示設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. クリエイターとつながる
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. クリエイターとつながる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フォロー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        いいね・リポスト・ブックマーク
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ダイレクトメッセージ（DM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ミュート・ブロック
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 特別な機能の使い方
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 特別な機能の使い方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タイムコメント
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        シリーズ機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 学習拒否宣言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クリエイター分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. プライバシー・安全設定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. プライバシー・安全設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンテンツポリシー（絶対に守ってほしいこと）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アカウントのセキュリティ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 困ったときは
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 困ったときは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バグを報告する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        お問い合わせ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アカウント BAN への異議申し立て
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. よくある質問（FAQ）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目次
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-plofolia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Plofolia とは？
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Plofolia とは？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        こんな場所です
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        名前の由来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向いているクリエイター
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. アカウント登録
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. アカウント登録">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        招待コードについて
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        登録手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-xtwitter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Google / X（Twitter）でログインする場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. プロフィールの設定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. プロフィールの設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本情報
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クリエイタータイプ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. コンテンツを投稿する
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. コンテンツを投稿する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        投稿できるメディア
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        投稿手順
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        動画・音声のトリミング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ハッシュタグ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        投稿の削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. タイムラインを見る
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. タイムラインを見る">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3つのタブ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フォロー中タイムライン
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        地域フィルタリング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nsfw" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NSFW コンテンツの表示設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. クリエイターとつながる
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. クリエイターとつながる">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フォロー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        いいね・リポスト・ブックマーク
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ダイレクトメッセージ（DM）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ミュート・ブロック
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 特別な機能の使い方
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 特別な機能の使い方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        タイムコメント
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        シリーズ機能
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AI 学習拒否宣言
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クリエイター分析
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. プライバシー・安全設定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. プライバシー・安全設定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンテンツポリシー（絶対に守ってほしいこと）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アカウントのセキュリティ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 困ったときは
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. 困ったときは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        バグを報告する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        お問い合わせ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        アカウント BAN への異議申し立て
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. よくある質問（FAQ）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="plofolia">Plofolia 使い方ガイド<a class="headerlink" href="#plofolia" title="Permanent link">&para;</a></h1>
+<p>クローズドベータにご参加いただきありがとうございます。<br />
+このガイドでは Plofolia の基本的な使い方と主な機能を説明します。</p>
+<hr />
+<h2 id="_1">目次<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1-plofolia-とは">Plofolia とは？</a></li>
+<li><a href="#2-アカウント登録">アカウント登録</a></li>
+<li><a href="#3-プロフィールの設定">プロフィールの設定</a></li>
+<li><a href="#4-コンテンツを投稿する">コンテンツを投稿する</a></li>
+<li><a href="#5-タイムラインを見る">タイムラインを見る</a></li>
+<li><a href="#6-クリエイターとつながる">クリエイターとつながる</a></li>
+<li><a href="#7-特別な機能の使い方">特別な機能の使い方</a></li>
+<li><a href="#8-プライバシー安全設定">プライバシー・安全設定</a></li>
+<li><a href="#9-困ったときは">困ったときは</a></li>
+<li><a href="#10-よくある質問faq">よくある質問（FAQ）</a></li>
+</ol>
+<hr />
+<h2 id="1-plofolia">1. Plofolia とは？<a class="headerlink" href="#1-plofolia" title="Permanent link">&para;</a></h2>
+<p><strong>Plofolia（プロフォリア）</strong> は、クリエイターのための SNS プラットフォームです。</p>
+<h3 id="_2">こんな場所です<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>シャドウバンがない</strong> — 投稿がフォロワーに届かなくなることはありません</li>
+<li><strong>NSFW・AI 生成コンテンツに対応</strong> — 規制に怯えず作品を発表できます</li>
+<li><strong>日常の WIP も完成作品も一か所に</strong> — X のように気軽に投稿しながら、プロフィールページを作品ポートフォリオとして使えます</li>
+</ul>
+<pre class="mermaid"><code>mindmap
+  root((Plofolia))
+    投稿する
+      画像 最大4枚
+      動画 1本
+      音声 カバー画像付き
+      ハッシュタグ
+    タイムラインを見る
+      手描きタブ
+      AI生成タブ
+      映像タブ
+      フォロー中
+    クリエイター機能
+      シリーズ
+      AI学習拒否宣言
+      クリエイター分析
+    インタラクション
+      いいね
+      リポスト
+      ブックマーク
+      タイムコメント
+      DM
+    フィルタリング
+      地域フィルタ
+      NSFW表示設定
+      ミュート
+      ブロック</code></pre>
+<h3 id="_3">名前の由来<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>Plofolia</strong> = <strong>Plo</strong>t（制作過程・WIP の投稿）+ Port<strong>folia</strong>（ポートフォリオ）</p>
+<h3 id="_4">向いているクリエイター<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>X でシャドウバンを経験したイラストレーター</li>
+<li>AI 生成コンテンツを発表する場を探している方（AI 絵師・AI 映像作家）</li>
+<li>NSFW 作品を安心して公開したい方</li>
+<li>動画・音声作品でファンとリアルタイムに交流したい方</li>
+<li>作品をポートフォリオとして整理・公開したい方</li>
+</ul>
+<hr />
+<h2 id="2">2. アカウント登録<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="_5">招待コードについて<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>現在クローズドベータ期間中のため、登録には<strong>招待コード</strong>が必要です。<br />
+招待コードをお持ちでない場合は、ベータ招待を受けた方からコードを受け取ってください。</p>
+<h3 id="_6">登録手順<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    A([plofolia.com にアクセス]) --&gt; B["「登録」をクリック"]
+    B --&gt; C["招待コードを入力"]
+    C --&gt; D{コードは有効？}
+    D --&gt;|無効| C
+    D --&gt;|有効| E["ユーザー名・メール・\nパスワードを入力"]
+    E --&gt; F["「登録する」をクリック"]
+    F --&gt; G["確認メールが届く\n迷惑メールフォルダも確認"]
+    G --&gt; H["メール内のリンクをクリック"]
+    H --&gt; I(["ログイン完了!"])</code></pre>
+<ol>
+<li><code>https://plofolia.com</code> にアクセス</li>
+<li>「登録」ボタンをクリック</li>
+<li>招待コードを入力</li>
+<li>ユーザー名・メールアドレス・パスワードを入力</li>
+<li>ユーザー名: 3〜30文字、英数字とアンダースコアのみ（例: <code>yuki_art</code>）</li>
+<li>パスワード: 8文字以上</li>
+<li>「登録する」をクリック</li>
+<li>登録したメールアドレスに確認メールが届きます</li>
+<li>メール内の「メールアドレスを確認する」ボタンをクリック</li>
+<li>確認完了後、ログインできるようになります</li>
+</ol>
+<blockquote>
+<p><strong>メールが届かない場合</strong>: 迷惑メールフォルダを確認してください。それでもない場合は「確認メールを再送する」ボタンを使ってください。</p>
+</blockquote>
+<h3 id="google-xtwitter">Google / X（Twitter）でログインする場合<a class="headerlink" href="#google-xtwitter" title="Permanent link">&para;</a></h3>
+<p>登録・ログイン画面の「Google でログイン」または「X でログイン」ボタンから、既存のアカウントで登録できます。メールアドレスの確認は不要です。</p>
+<hr />
+<h2 id="3">3. プロフィールの設定<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>登録後、まずプロフィールを設定しましょう。右上のアイコン → 「設定」から変更できます。</p>
+<h3 id="_7">基本情報<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>アイコン</td>
+<td>正方形の画像（JPG / PNG / WebP）。アップロード後にクロップできます</td>
+</tr>
+<tr>
+<td>ヘッダー画像</td>
+<td>プロフィールページの背景画像</td>
+</tr>
+<tr>
+<td>表示名</td>
+<td>自由に設定できる名前（ユーザー名とは別）</td>
+</tr>
+<tr>
+<td>自己紹介</td>
+<td>160文字以内。改行・URL も使えます</td>
+</tr>
+<tr>
+<td>国籍</td>
+<td>任意。プロフィールに国旗が表示されます</td>
+</tr>
+<tr>
+<td>生年月日</td>
+<td>18歳以上かどうかの確認に使用します。公開されません</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">クリエイタータイプ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>自分の活動ジャンルを選択します（複数選択可・最大5つ）。</p>
+<table>
+<thead>
+<tr>
+<th>タイプ</th>
+<th>向いている方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>イラストレーター</td>
+<td>手描きの絵を投稿する方</td>
+</tr>
+<tr>
+<td>AI絵師</td>
+<td>AI で生成した画像を投稿する方</td>
+</tr>
+<tr>
+<td>映像作家</td>
+<td>動画を投稿する方</td>
+</tr>
+<tr>
+<td>AI映像作家</td>
+<td>AI で生成した動画を投稿する方</td>
+</tr>
+<tr>
+<td>音声クリエイター</td>
+<td>音声・音楽を投稿する方</td>
+</tr>
+<tr>
+<td>AI音声クリエイター</td>
+<td>AI で生成した音声を投稿する方</td>
+</tr>
+<tr>
+<td>漫画家</td>
+<td>漫画・コミックを投稿する方</td>
+</tr>
+<tr>
+<td>コスプレイヤー</td>
+<td>コスプレ写真を投稿する方</td>
+</tr>
+<tr>
+<td>写真家</td>
+<td>写真を投稿する方</td>
+</tr>
+<tr>
+<td>VTuber</td>
+<td>VTuber 活動をしている方</td>
+</tr>
+<tr>
+<td>閲覧専用</td>
+<td>投稿せず作品を楽しみたい方</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>タイプは後から変更できます。</p>
+</blockquote>
+<hr />
+<h2 id="4">4. コンテンツを投稿する<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="_9">投稿できるメディア<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart TD
+    POST["投稿モーダルを開く"]
+    POST --&gt; A["画像のみ\n最大4枚\nJPG / PNG / WebP / GIF"]
+    POST --&gt; B["動画のみ\n1本\nWebM / MP4"]
+    POST --&gt; C["音声のみ\n1本\nWebM / MP3"]
+    POST --&gt; D["音声 + カバー画像\n音声1本 + 画像1枚"]
+    POST --&gt; E["テキストのみ\n本文だけの投稿"]
+
+    A -. "同時不可" .- B
+    B -. "同時不可" .- C</code></pre>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>対応形式</th>
+<th>制限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>画像</td>
+<td>JPG / PNG / WebP / GIF</td>
+<td>最大4枚（動画と同時不可）</td>
+</tr>
+<tr>
+<td>動画</td>
+<td>WebM / MP4</td>
+<td>1本のみ（画像と同時不可）</td>
+</tr>
+<tr>
+<td>音声</td>
+<td>WebM / MP3</td>
+<td>1本のみ（カバー画像も設定可）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_10">投稿手順<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ol>
+<li>画面下部（スマホ）またはサイドバー（PC）の「投稿」ボタンをクリック</li>
+<li>本文を入力（最大1000文字）</li>
+<li>画像・動画・音声を追加（任意）</li>
+<li>必要に応じてオプションを設定:</li>
+<li><strong>NSFW</strong>: 成人向けコンテンツの場合はチェック（年齢確認済みユーザーのみ表示）</li>
+<li><strong>AI生成</strong>: AI で作成したコンテンツの場合はチェック（必須）</li>
+<li>「投稿する」をクリック</li>
+</ol>
+<h3 id="_11">動画・音声のトリミング<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>投稿前にブラウザ上でトリミングできます。開始・終了位置をドラッグして調整してください。</p>
+<h3 id="_12">ハッシュタグ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>本文に <code>#タグ名</code> を含めると、タグとして認識されます。タグ検索・トレンドに表示されます。</p>
+<h3 id="_13">投稿の削除<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>自分の投稿の「…」メニュー → 「削除」から削除できます。削除したコンテンツは復元できません。</p>
+<hr />
+<h2 id="5">5. タイムラインを見る<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="3_1">3つのタブ<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<p>タイムラインは制作スタイルで分かれています。好きなタブを選んでください。</p>
+<pre class="mermaid"><code>flowchart LR
+    TL["タイムライン"]
+    TL --&gt; T1["手描きタブ\nイラストレーター\n漫画家 / 写真家\nコスプレイヤー"]
+    TL --&gt; T2["AI生成タブ\nAI絵師\nAI映像作家\nAI音声クリエイター"]
+    TL --&gt; T3["映像タブ\n映像作家\nVTuber\n動画投稿者"]
+    TL --&gt; T4["フォロー中\nフォロー済みの\nクリエイターのみ"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>タブ</th>
+<th>表示されるコンテンツ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>手描き</td>
+<td>イラストレーター・漫画家・写真家等の投稿</td>
+</tr>
+<tr>
+<td>AI生成</td>
+<td>AI 絵師・AI 映像作家・AI 音声クリエイターの投稿</td>
+</tr>
+<tr>
+<td>映像</td>
+<td>映像作家・VTuber・動画投稿者の投稿</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">フォロー中タイムライン<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>フォローしているクリエイターの投稿のみ表示するタイムライン。<br />
+「ホーム」アイコンをクリックしてから「フォロー中」タブに切り替えてください。</p>
+<h3 id="_15">地域フィルタリング<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>設定 → 「閲覧地域」で、特定の国籍のクリエイターの投稿だけを表示できます。<br />
+日本語作品のみ見たい方などに便利です。</p>
+<h3 id="nsfw">NSFW コンテンツの表示設定<a class="headerlink" href="#nsfw" title="Permanent link">&para;</a></h3>
+<p>設定 → 「表示設定」から NSFW 表示の ON / OFF、ぼかし表示を切り替えられます。<br />
+初期設定は非表示です（18歳以上の確認が取れたアカウントのみ変更可）。</p>
+<hr />
+<h2 id="6">6. クリエイターとつながる<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="_16">フォロー<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>クリエイターのプロフィールページの「フォロー」ボタンをクリックするか、投稿のアイコンからフォローできます。</p>
+<h3 id="_17">いいね・リポスト・ブックマーク<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>投稿の下のアクションバーから操作できます。</p>
+<table>
+<thead>
+<tr>
+<th>ボタン</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ハート</td>
+<td>いいね（クリエイターへの通知が届きます）</td>
+</tr>
+<tr>
+<td>リポスト</td>
+<td>自分のフォロワーのタイムラインにシェア</td>
+</tr>
+<tr>
+<td>ブックマーク</td>
+<td>後で読む。「ブックマーク」ページでまとめて確認可</td>
+</tr>
+<tr>
+<td>時計アイコン</td>
+<td>タイムコメント数を表示（クリックで詳細ページへ）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dm">ダイレクトメッセージ（DM）<a class="headerlink" href="#dm" title="Permanent link">&para;</a></h3>
+<p>フォローしているクリエイターにメッセージを送れます。<br />
+サイドバーのメッセージアイコンから新しいスレッドを開始してください。<br />
+既読・新着はリアルタイムで更新されます。</p>
+<h3 id="_18">ミュート・ブロック<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>見たくないユーザーの投稿を非表示にできます。</p>
+<ul>
+<li><strong>ミュート</strong>: 投稿がタイムラインに表示されなくなります。相手には通知されません</li>
+<li><strong>ブロック</strong>: 互いの投稿が見えなくなります。DM も送受信できません</li>
+</ul>
+<p>操作方法: 投稿の「…」メニュー または プロフィールページの「その他」ボタン</p>
+<hr />
+<h2 id="7">7. 特別な機能の使い方<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="_19">タイムコメント<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>動画・音声投稿の「この瞬間」にコメントを残せる機能です。</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as あなた
+    participant P as 動画プレイヤー
+    participant S as Plofolia
+
+    U-&gt;&gt;P: 動画を再生
+    loop 再生中
+        P-&gt;&gt;P: 現在位置を更新
+        P-&gt;&gt;U: ±3秒のコメントを画面に流す
+    end
+
+    Note over U,P: コメントしたい場面で
+    U-&gt;&gt;S: コメントを入力して送信
+    S-&gt;&gt;S: 現在の再生位置（例: 12.5秒）に紐づけて保存
+
+    Note over U,S: 別の人が再生するとき
+    S-&gt;&gt;P: タイムコメント一覧を取得
+    P-&gt;&gt;U: 12.5秒付近でコメントをオーバーレイ表示
+    U-&gt;&gt;P: コメントをクリック → 12.5秒にジャンプ</code></pre>
+<p><strong>コメントの見方:</strong></p>
+<ul>
+<li>動画・音声の再生中、画面に流れてきます（YouTube Live 風オーバーレイ）</li>
+<li>投稿詳細ページではコメントリストで一覧表示されます</li>
+</ul>
+<p><strong>コメントの投稿方法:</strong></p>
+<ol>
+<li>動画・音声を再生します</li>
+<li>コメントしたい場面で、テキストボックスに入力して送信</li>
+<li>コメントは入力した時点の再生位置に紐づきます</li>
+</ol>
+<p><strong>コメントをクリック</strong>: その時刻にジャンプできます。</p>
+<h3 id="_20">シリーズ機能<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>複数の投稿をまとめて「シリーズ」として公開できます。連載漫画・シリーズ動画などに便利です。</p>
+<p><strong>シリーズを作る:</strong></p>
+<ol>
+<li>自分の投稿の「…」メニュー → 「シリーズに追加」</li>
+<li>新しいシリーズを作成するか、既存のシリーズを選択</li>
+<li>シリーズはプロフィールページの「シリーズ」タブに表示されます</li>
+</ol>
+<h3 id="ai">AI 学習拒否宣言<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h3>
+<p>自分の作品が AI 学習に使われることを拒否する意思表示ができます。</p>
+<p><strong>設定方法:</strong></p>
+<ol>
+<li>設定 → 「AI 学習拒否」</li>
+<li>「AI 学習拒否を宣言する」をオン</li>
+<li>プロフィールページにバッジが表示されます</li>
+</ol>
+<blockquote>
+<p>この宣言はクローラーへの技術的な指示（robots_directives: <code>noai, noimageai</code>）も設定します。<br />
+ただし、すべての AI 学習を法的・技術的に防止できるものではありません。</p>
+</blockquote>
+<h3 id="_21">クリエイター分析<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>自分の投稿のパフォーマンスを確認できます。<br />
+プロフィールページの「分析」から、いいね・フォロワー数の推移・シャドウバン検知状況を確認できます。</p>
+<hr />
+<h2 id="8">8. プライバシー・安全設定<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h3 id="_22">コンテンツポリシー（絶対に守ってほしいこと）<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>以下のコンテンツは<strong>即削除・永久 BAN</strong> の対象になります:</p>
+<ul>
+<li><strong>未成年に見えるキャラクターの性的描写</strong>（成人設定であっても NG）</li>
+<li>リベンジポルノ・非同意の性的画像</li>
+<li>実在人物の AI ディープフェイク（性的なもの）</li>
+<li>ハラスメント・ストーキング行為</li>
+<li>個人情報の無断公開</li>
+</ul>
+<p>詳しいルールはアプリ内のコンテンツポリシーをご確認ください。</p>
+<h3 id="_23">アカウントのセキュリティ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>パスワード</strong>: 8文字以上の強力なパスワードを設定してください</li>
+<li><strong>ログイン</strong>: 5回連続失敗すると15分間ログインできなくなります</li>
+<li><strong>ログイン履歴</strong>: 不審なログインを検知した場合はセキュリティ通知が届きます</li>
+<li><strong>パスワードリセット</strong>: ログイン画面の「パスワードを忘れた」から再設定できます</li>
+</ul>
+<hr />
+<h2 id="9">9. 困ったときは<a class="headerlink" href="#9" title="Permanent link">&para;</a></h2>
+<h3 id="_24">バグを報告する<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>アプリが正常に動作しない場合は、ぜひ教えてください。</p>
+<p><strong>方法1: サイドバーの「バグを報告」ボタン</strong>（推奨）</p>
+<ul>
+<li>スクリーンショットを最大3枚添付できます</li>
+<li>自動的にブラウザ情報が送信されます</li>
+</ul>
+<p><strong>方法2: エラー画面から直接報告</strong></p>
+<ul>
+<li>ページが白くなった場合は「このエラーを報告する」ボタンをクリック</li>
+<li>エラーの詳細が自動で入力されます</li>
+</ul>
+<h3 id="_25">お問い合わせ<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>サービスに関するご質問・ご意見はアプリ内の「お問い合わせ」フォームからご連絡ください。<br />
+メニュー → 「お問い合わせ」から送信できます。</p>
+<p>送信後は「お問い合わせ履歴」から返信の確認・追加メッセージの送信ができます。</p>
+<h3 id="ban">アカウント BAN への異議申し立て<a class="headerlink" href="#ban" title="Permanent link">&para;</a></h3>
+<p>誤ってアカウントが停止された場合は、お問い合わせフォームから異議を申し立てることができます。</p>
+<hr />
+<h2 id="10-faq">10. よくある質問（FAQ）<a class="headerlink" href="#10-faq" title="Permanent link">&para;</a></h2>
+<p><strong>Q. 投稿が表示されない</strong><br />
+A. NSFW 投稿は成人向け表示をオンにしないと表示されません（設定 → 表示設定）。また、ミュート・ブロックしているユーザーの投稿は表示されません。</p>
+<p><strong>Q. フォロワーが増えない / 投稿が広がらない</strong><br />
+A. 現在クローズドベータ中のためユーザー数が少ない状態です。ハッシュタグを使うと発見されやすくなります。シャドウバンは実装していないため、投稿が非表示になることはありません。</p>
+<p><strong>Q. 動画・音声がアップロードできない</strong><br />
+A. 対応形式（動画: WebM / MP4、音声: WebM / MP3）であることをご確認ください。また、画像と動画は同時にアップロードできません。</p>
+<p><strong>Q. タイムコメントが流れない</strong><br />
+A. 動画を再生中にコメントが流れます。投稿詳細ページで動画を開いてから確認してください。コメントがない場合は0件と表示されます。</p>
+<p><strong>Q. DM が届かない</strong><br />
+A. リアルタイム受信（SSE）が正常に動作していない可能性があります。ページを再読み込みしてください。それでも届かない場合はバグとして報告をお願いします。</p>
+<p><strong>Q. メールアドレスの確認メールが届かない</strong><br />
+A. 迷惑メールフォルダをご確認ください。届いていない場合は登録画面の「確認メールを再送する」をクリックしてください。</p>
+<p><strong>Q. ユーザー名を変更できますか？</strong><br />
+A. 現在、ユーザー名の変更機能はありません（今後実装予定）。</p>
+<p><strong>Q. アカウントを削除したい</strong><br />
+A. お問い合わせフォームからご連絡ください。手動で対応します（削除機能は今後実装予定）。</p>
+<p><strong>Q. NSFW 投稿をするには何が必要ですか？</strong><br />
+A. アカウント設定で生年月日を入力し、18歳以上であることを確認する必要があります。確認後、投稿時に「NSFW」フラグをつけることができます。</p>
+<p><strong>Q. 招待コードはどこで入手できますか？</strong><br />
+A. 現在のベータ招待者に連絡してコードを受け取ってください。今後オープンベータに移行する予定です。</p>
+<hr />
+<p>ご利用いただきありがとうございます。<br />
+バグや改善提案は積極的に受け付けています。一緒に Plofolia をよいサービスにしていきましょう。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

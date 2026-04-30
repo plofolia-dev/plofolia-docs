@@ -1,0 +1,1200 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="クリエイター向け SNS プラットフォーム Plofolia の公式ドキュメント">
+      
+      
+        <meta name="author" content="Plofolia Team">
+      
+      
+        <link rel="canonical" href="https://plofolia-dev.github.io/plofolia-docs/policy/SECURITY/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Plofolia セキュリティガイド - Plofolia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plofolia" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Plofolia Docs" class="md-header__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plofolia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plofolia セキュリティガイド
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/USER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  ユーザーガイド
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  エンジニア向け技術解説
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Plofolia Docs" class="md-nav__button md-logo" aria-label="Plofolia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plofolia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ホーム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/USER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ユーザーガイド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user/ENGINEER_GUIDE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エンジニア向け技術解説
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        対応状況サマリー
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高優先度（今すぐやるべき）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高優先度（今すぐやるべき）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Rate Limiting — 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Nginxセキュリティヘッダー — 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ファイルアップロード検証強化 — 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-npm-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. npm audit（既知の脆弱性チェック）— 継続対応中
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-ec2-security-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. EC2 Security Groupsの確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        中優先度（近いうちに）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="中優先度（近いうちに）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. ログイン失敗のアカウントロック — 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-content-security-policycsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Content Security Policy（CSP）— 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-jwt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. JWTリフレッシュトークンのローテーション — 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. セキュリティログの整備 — 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. OS自動セキュリティアップデート — 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        低優先度（将来的に）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="低優先度（将来的に）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-2fa-aurora-mfa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 二要素認証（2FA）— 実装済み（Aurora MFA + デバイス信頼）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-wafweb-application-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. WAF（Web Application Firewall）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dependabot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Dependabot（依存関係自動監視）— 実装済み
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. ユーザーデータの完全削除
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現在実装済みのセキュリティ対策（参考）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="plofolia">Plofolia セキュリティガイド<a class="headerlink" href="#plofolia" title="Permanent link">&para;</a></h1>
+<p>セキュリティ上の課題・対応状況・今後の対応方針をまとめたドキュメント。</p>
+<hr />
+<h2 id="_1">対応状況サマリー<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>難易度</th>
+<th>効果</th>
+<th>優先度</th>
+<th>状況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Rate Limiting</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nginxセキュリティヘッダー</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ファイルアップロード検証強化</td>
+<td>中</td>
+<td>高</td>
+<td>高</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>4</td>
+<td>npm audit（脆弱性チェック）</td>
+<td>低</td>
+<td>中</td>
+<td>高</td>
+<td>実施済み</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Security Groups確認</td>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+<td>未対応（要確認）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ログイン失敗アカウントロック</td>
+<td>中</td>
+<td>高</td>
+<td>中</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Content Security Policy</td>
+<td>中</td>
+<td>中</td>
+<td>中</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>8</td>
+<td>JWTリフレッシュトークンローテーション</td>
+<td>中</td>
+<td>中</td>
+<td>中</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>9</td>
+<td>セキュリティログの整備</td>
+<td>中</td>
+<td>中</td>
+<td>中</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>10</td>
+<td>OS自動セキュリティアップデート</td>
+<td>低</td>
+<td>高</td>
+<td>中</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>11</td>
+<td>二要素認証（2FA）</td>
+<td>高</td>
+<td>高</td>
+<td>低</td>
+<td><strong>実装済み（Aurora MFA）</strong></td>
+</tr>
+<tr>
+<td>12</td>
+<td>WAF（Web Application Firewall）</td>
+<td>中</td>
+<td>中</td>
+<td>低</td>
+<td>未対応</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Dependabot（依存関係自動監視）</td>
+<td>低</td>
+<td>中</td>
+<td>低</td>
+<td>実装済み</td>
+</tr>
+<tr>
+<td>14</td>
+<td>ユーザーデータの完全削除</td>
+<td>中</td>
+<td>中</td>
+<td>低</td>
+<td>未対応</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_2">高優先度（今すぐやるべき）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="1-rate-limiting">1. Rate Limiting — 実装済み<a class="headerlink" href="#1-rate-limiting" title="Permanent link">&para;</a></h3>
+<p>ブルートフォース攻撃・DoS攻撃を防ぐ最初の防衛線。<code>express-rate-limit</code> で実装済み。</p>
+<ul>
+<li>ログイン: 10回/15分</li>
+<li>API全体: 200回/15分</li>
+</ul>
+<hr />
+<h3 id="2-nginx">2. Nginxセキュリティヘッダー — 実装済み<a class="headerlink" href="#2-nginx" title="Permanent link">&para;</a></h3>
+<p>ブラウザ側のセキュリティ機能を有効化。EC2上の Nginx に以下を設定済み（2026-04-29）。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">add_header</span><span class="w"> </span><span class="s">X-Frame-Options</span><span class="w"> </span><span class="s">&quot;SAMEORIGIN&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">add_header</span><span class="w"> </span><span class="s">X-Content-Type-Options</span><span class="w"> </span><span class="s">&quot;nosniff&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w"> </span><span class="s">&quot;strict-origin-when-cross-origin&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">&quot;max-age=31536000</span><span class="p">;</span><span class="w"> </span><span class="k">includeSubDomains&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">add_header</span><span class="w"> </span><span class="s">Permissions-Policy</span><span class="w"> </span><span class="s">&quot;camera=(),</span><span class="w"> </span><span class="s">microphone=(),</span><span class="w"> </span><span class="s">geolocation=()&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+</code></pre></div>
+<hr />
+<h3 id="3">3. ファイルアップロード検証強化 — 実装済み<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>拡張子偽装（<code>.jpg</code> に見せかけたスクリプト等）への対策。MIMEタイプをファイルのバイナリ内容（magic number）から検証する。</p>
+<p><strong>実装内容</strong> (<code>sol/src/lib/sanitize.ts</code> + <code>sol/src/middleware/upload.ts</code>):</p>
+<ul>
+<li>multer の <code>fileFilter</code> で宣言 MIME タイプを許可リストと照合（第1層）</li>
+<li><code>validateUploadedFile()</code> でバッファの magic bytes を検証（第2層）</li>
+<li>空ファイル・サイズ超過もここで検出し DB 書き込み前に弾く</li>
+</ul>
+<p><strong>検証対象タイプとマジックバイト</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>MIME タイプ</th>
+<th>magic bytes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image/jpeg</code></td>
+<td><code>FF D8 FF</code></td>
+</tr>
+<tr>
+<td><code>image/png</code></td>
+<td><code>89 50 4E 47</code></td>
+</tr>
+<tr>
+<td><code>image/webp</code></td>
+<td><code>52 49 46 46</code>（RIFF）+ offset8 <code>WEBP</code></td>
+</tr>
+<tr>
+<td><code>image/gif</code></td>
+<td><code>47 49 46 38</code></td>
+</tr>
+<tr>
+<td><code>video/webm</code></td>
+<td><code>1A 45 DF A3</code>（EBML）</td>
+</tr>
+<tr>
+<td><code>video/mp4</code></td>
+<td>offset4 <code>66 74 79 70</code>（ftyp）</td>
+</tr>
+<tr>
+<td><code>audio/webm</code></td>
+<td><code>1A 45 DF A3</code>（EBML）</td>
+</tr>
+<tr>
+<td><code>audio/mpeg</code>（MP3）</td>
+<td><code>FF FB</code> / <code>FF F3</code> / <code>FF F2</code> / <code>ID3</code></td>
+</tr>
+<tr>
+<td><code>audio/wav</code></td>
+<td><code>RIFF</code> + offset8 <code>WAVE</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="4-npm-audit">4. npm audit（既知の脆弱性チェック）— 継続対応中<a class="headerlink" href="#4-npm-audit" title="Permanent link">&para;</a></h3>
+<p>依存パッケージに既知の脆弱性がないか確認。2026-04-30 最終実施。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>sol<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>audit
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>terra<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>audit
+</code></pre></div>
+<p><strong>2026-04-30 時点の対応状況（sol）:</strong></p>
+<table>
+<thead>
+<tr>
+<th>パッケージ</th>
+<th>深刻度</th>
+<th>内容</th>
+<th>対応状況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xmldom</code>（passport-twitter 経由）</td>
+<td>critical / high</td>
+<td>XML パース脆弱性</td>
+<td>解消済み: <code>passport-twitter</code> を <code>passport-oauth1</code> 直接実装に置き換え</td>
+</tr>
+<tr>
+<td><code>drizzle-orm &lt; 0.45.2</code></td>
+<td>high</td>
+<td>SQL 識別子エスケープ不備（SQL injection）</td>
+<td>保留: 0.31→0.45 はメジャー破壊的変更。ユーザー入力を識別子として使用しているコードは存在しないため実質リスク低。次のメジャーアップグレード時に対応</td>
+</tr>
+<tr>
+<td><code>esbuild ≤ 0.24.2</code>（drizzle-kit 経由）</td>
+<td>moderate</td>
+<td>dev server リクエスト露出</td>
+<td>対応不要: <code>drizzle-kit</code> は dev-only ツール、本番サーバーには含まれない</td>
+</tr>
+</tbody>
+</table>
+<p>terra は2026-04-30 現在 <code>npm audit</code> で脆弱性ゼロ。</p>
+<hr />
+<h3 id="5-ec2-security-groups">5. EC2 Security Groupsの確認<a class="headerlink" href="#5-ec2-security-groups" title="Permanent link">&para;</a></h3>
+<p>外部から直接アクセスできるポートを最小限にする。AWSコンソールで確認。</p>
+<p><strong>許可すべきポート（Inbound）</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>ポート</th>
+<th>用途</th>
+<th>許可元</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td>SSH</td>
+<td>自分のIPのみ（EC2 Instance Connect経由）</td>
+</tr>
+<tr>
+<td>80</td>
+<td>HTTP</td>
+<td>0.0.0.0/0（HTTPS redirect用）</td>
+</tr>
+<tr>
+<td>443</td>
+<td>HTTPS</td>
+<td>0.0.0.0/0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>閉じるべきポート</strong>: 4000, 4001, 3000, 3001, 5432 は外部から直接アクセス不可にする。</p>
+<hr />
+<h2 id="_3">中優先度（近いうちに）<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="6">6. ログイン失敗のアカウントロック — 実装済み<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>パスワードブルートフォースへの対策。Rate Limiting（IP単位）と組み合わせて2層防御。</p>
+<p><strong>実装内容</strong>:</p>
+<ul>
+<li>連続失敗5回でアカウントを15分ロック（<code>login_fail_count</code> / <code>login_locked_until</code> カラム）</li>
+<li>ロック中は <code>ACCOUNT_LOCKED</code> (429) を返し、残り分数をフロントに表示</li>
+<li>ログイン成功時にカウントを自動リセット</li>
+<li>migration: <code>0033_login_lockout.sql</code>、実装: <code>sol/src/api/auth/auth.service.ts</code></li>
+</ul>
+<hr />
+<h3 id="7-content-security-policycsp">7. Content Security Policy（CSP）— 実装済み<a class="headerlink" href="#7-content-security-policycsp" title="Permanent link">&para;</a></h3>
+<p>XSS攻撃の被害を最小化する。悪意あるスクリプトの実行をブラウザ側でブロック。</p>
+<p><strong>実装先</strong>: <code>terra/next.config.mjs</code>（<code>async headers()</code> で全ページに適用）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>default-src &#39;self&#39;;
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>script-src &#39;self&#39; &#39;unsafe-inline&#39;;   ← Next.js 14 hydration に必要。dev は unsafe-eval も追加
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>style-src &#39;self&#39; &#39;unsafe-inline&#39;;    ← Tailwind CSS インラインスタイル
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>img-src &#39;self&#39; data: blob: https://plofolia.com https://*.amazonaws.com https://*.cloudfront.net;
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>connect-src &#39;self&#39; https://plofolia.com;   ← API・SSE（Nginx 経由で同一オリジン）
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>media-src &#39;self&#39; blob: https://plofolia.com https://*.amazonaws.com https://*.cloudfront.net;
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>worker-src &#39;self&#39; blob:;   ← Service Worker + MediaRecorder blob
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>frame-ancestors &#39;self&#39;;
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>base-uri &#39;self&#39;;
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>form-action &#39;self&#39;;
+</code></pre></div>
+<hr />
+<h3 id="8-jwt">8. JWTリフレッシュトークンのローテーション — 実装済み<a class="headerlink" href="#8-jwt" title="Permanent link">&para;</a></h3>
+<p>使用するたびに新しいリフレッシュトークンを発行し旧トークンを無効化。再使用検出でトークン盗難を検知する。</p>
+<p><strong>実装内容</strong> (<code>sol/src/api/auth/auth.service.ts</code> + migration <code>0034_refresh_token_rotation.sql</code>):</p>
+<ul>
+<li>リフレッシュ時に旧トークンを「削除」ではなく「使用済み（<code>used_at</code>）」としてマーク</li>
+<li>使用済みトークンが再度提示された場合 → 盗難と判断し対象ユーザーの全セッションを無効化 → <code>TOKEN_REUSE_DETECTED</code> を返す</li>
+<li>使用済みトークンは30日後にクリーンアップ（リフレッシュ時に同ユーザーの古い済みトークンを削除）</li>
+<li>フロント: <code>TOKEN_REUSE_DETECTED</code> 受信時にセキュリティアラートメッセージを表示</li>
+</ul>
+<hr />
+<h3 id="9">9. セキュリティログの整備 — 実装済み<a class="headerlink" href="#9" title="Permanent link">&para;</a></h3>
+<p>インシデント発生時の調査・不審なアクセスの事後追跡のために記録する。</p>
+<p><strong>実装内容</strong>:</p>
+<ul>
+<li><code>security_logs</code> テーブル（migration <code>0035_security_logs.sql</code>）: <code>event / userId / ip / userAgent / detail / createdAt</code></li>
+<li><code>sol/src/services/securityLogger.ts</code>: <code>logSecurityEvent()</code> ユーティリティ（エラーは握りつぶしてメイン処理を止めない）</li>
+<li><code>auth.controller.ts</code>: ログイン成功・失敗・ロック・ログアウト・トークン盗難・パスワードリセット を記録</li>
+<li><code>middleware/upload.ts</code>: ファイルタイプ拒否・magic bytes 不一致を記録</li>
+</ul>
+<p><strong>記録イベント一覧</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>イベント</th>
+<th>トリガー</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>login_success</code></td>
+<td>ログイン成功</td>
+</tr>
+<tr>
+<td><code>login_failure</code></td>
+<td>パスワード不正</td>
+</tr>
+<tr>
+<td><code>login_locked</code></td>
+<td>アカウントロック発動</td>
+</tr>
+<tr>
+<td><code>logout</code></td>
+<td>ログアウト</td>
+</tr>
+<tr>
+<td><code>token_reuse_detected</code></td>
+<td>使用済みリフレッシュトークン再提示</td>
+</tr>
+<tr>
+<td><code>password_reset_request</code></td>
+<td>パスワードリセットメール送信</td>
+</tr>
+<tr>
+<td><code>password_reset_success</code></td>
+<td>パスワードリセット完了</td>
+</tr>
+<tr>
+<td><code>upload_rejected</code></td>
+<td>不正ファイルアップロード</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="10-os">10. OS自動セキュリティアップデート — 実装済み<a class="headerlink" href="#10-os" title="Permanent link">&para;</a></h3>
+<p>EC2（Ubuntu 22.04）にセキュリティパッチを自動適用。</p>
+<p><strong>設定内容（EC2）</strong>:</p>
+<ul>
+<li><code>unattended-upgrades</code> インストール・有効化済み</li>
+<li><code>/etc/apt/apt.conf.d/51plofolia-unattended</code> で追加設定:</li>
+<li>セキュリティパッチのみ自動適用（通常アップデートは除外）</li>
+<li>未使用依存関係の自動削除: <code>true</code></li>
+<li>自動再起動: <code>false</code>（カーネルアップデートは手動再起動）</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 設定確認</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cat<span class="w"> </span>/etc/apt/apt.conf.d/20auto-upgrades
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>cat<span class="w"> </span>/etc/apt/apt.conf.d/51plofolia-unattended
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># ドライラン</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>sudo<span class="w"> </span>unattended-upgrade<span class="w"> </span>--dry-run
+</code></pre></div>
+<hr />
+<h2 id="_4">低優先度（将来的に）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="11-2fa-aurora-mfa">11. 二要素認証（2FA）— 実装済み（Aurora MFA + デバイス信頼）<a class="headerlink" href="#11-2fa-aurora-mfa" title="Permanent link">&para;</a></h3>
+<p>Aurora 管理画面を対象に TOTP MFA を実装済み（一般ユーザー向けは将来対応）。</p>
+<p><strong>実装内容</strong>:</p>
+<ul>
+<li><code>otplib@12</code>（CJS互換）で TOTP を実装。Google Authenticator / Authy 対応</li>
+<li>QRコードで設定（<code>/mfa</code> ページ）、有効化・無効化もUIから操作可能</li>
+<li>ログインフロー: パスワード認証 → 5分有効の pendingToken 発行 → TOTP コード入力で検証</li>
+<li><strong>デバイス信頼（AWS方式）</strong>: MFA 認証後に 64-char hex トークンを発行し SHA-256 ハッシュを <code>admin_trusted_devices</code> に保存（30日間有効）。次回ログイン時に有効なトークンがあれば MFA をスキップ</li>
+<li>MFA 無効化時は全信頼済みデバイスも削除</li>
+</ul>
+<p><strong>関連ファイル</strong>:</p>
+<ul>
+<li><code>sol/src/api/admin/admin.auth.ts</code> — ログイン・MFA検証・デバイス信頼ロジック</li>
+<li><code>sol/src/db/schema/adminTrustedDevices.ts</code> + migration <code>0038_admin_trusted_devices.sql</code></li>
+<li><code>aurora/src/app/mfa/page.tsx</code> — MFA設定UI</li>
+<li><code>aurora/src/app/login/page.tsx</code> — デバイストークンの localStorage 管理</li>
+</ul>
+<hr />
+<h3 id="12-wafweb-application-firewall">12. WAF（Web Application Firewall）<a class="headerlink" href="#12-wafweb-application-firewall" title="Permanent link">&para;</a></h3>
+<p>AWS WAFをALB or CloudFrontと組み合わせてSQLインジェクション・XSSパターンをブロック。CloudFront導入（Phase 4）と同時に検討。</p>
+<p><strong>コスト目安</strong>: $5/月 + リクエスト数に応じた従量課金</p>
+<hr />
+<h3 id="13-dependabot">13. Dependabot（依存関係自動監視）— 実装済み<a class="headerlink" href="#13-dependabot" title="Permanent link">&para;</a></h3>
+<p><code>.github/dependabot.yml</code> を追加済み（2026-04-29）。sol/terra/aurora + GitHub Actions を週次チェック。</p>
+<hr />
+<h3 id="14">14. ユーザーデータの完全削除<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<p>GDPR・忘れられる権利への対応。アカウント削除時に確実に実施する。</p>
+<p><strong>削除対象</strong>:</p>
+<ul>
+<li>DBのユーザーレコード・投稿・DM・いいね・フォロー等（ON DELETE CASCADEで連鎖削除）</li>
+<li>S3/uploadsのメディアファイル（DBレコードから逆引きして削除）</li>
+<li>バックアップからの削除は技術的に困難なため、バックアップの保持期間ポリシーで対応</li>
+</ul>
+<hr />
+<h2 id="_5">現在実装済みのセキュリティ対策（参考）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>実装内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>認証</td>
+<td>JWT（アクセス15分 + リフレッシュ7日・httpOnly Cookie）</td>
+</tr>
+<tr>
+<td>パスワード</td>
+<td>bcryptハッシュ</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>Let's Encrypt（Nginx経由）</td>
+</tr>
+<tr>
+<td>Rate Limiting</td>
+<td>ログイン10回/15分・API200回/15分（express-rate-limit）</td>
+</tr>
+<tr>
+<td>アカウントロック</td>
+<td>ログイン失敗5回で15分ロック（<code>login_fail_count</code> / <code>login_locked_until</code>、フロントに残り分数表示）</td>
+</tr>
+<tr>
+<td>Nginxセキュリティヘッダー</td>
+<td>X-Frame-Options・HSTS・X-Content-Type-Options・Referrer-Policy 等6種</td>
+</tr>
+<tr>
+<td>メール認証</td>
+<td>登録時にメール確認必須（未確認はログイン不可）</td>
+</tr>
+<tr>
+<td>メールドメイン検証</td>
+<td>登録時にDNS MXレコードを検証（無効ドメインを拒否）</td>
+</tr>
+<tr>
+<td>OAuth</td>
+<td>Passport.js + passport-oauth1（Google OAuth 2.0 / Twitter OAuth 1.0a。passport-twitter は CVE のため廃止）</td>
+</tr>
+<tr>
+<td>ファイルアップロード検証</td>
+<td>multer fileFilter（MIME許可リスト）+ magic bytes 検証（画像/動画/音声）（<code>sol/src/lib/sanitize.ts</code>）</td>
+</tr>
+<tr>
+<td>Content Security Policy</td>
+<td><code>terra/next.config.mjs</code> の <code>async headers()</code> で全ページに CSP ヘッダーを付与</td>
+</tr>
+<tr>
+<td>JWTリフレッシュローテーション</td>
+<td>使用済みトークンを <code>used_at</code> でマーク・再使用検出で全セッション破棄（<code>sol/src/api/auth/auth.service.ts</code>）</td>
+</tr>
+<tr>
+<td>セキュリティログ</td>
+<td><code>security_logs</code> テーブル（migration 0035）+ <code>securityLogger.ts</code>。ログイン/ログアウト/アップロード拒否等を記録</td>
+</tr>
+<tr>
+<td>入力バリデーション</td>
+<td>Zod（APIリクエスト）</td>
+</tr>
+<tr>
+<td>NSFW制限</td>
+<td>年齢確認済みユーザーのみアクセス可</td>
+</tr>
+<tr>
+<td>SQL injection</td>
+<td>Drizzle ORM（パラメータバインディング）</td>
+</tr>
+<tr>
+<td>管理画面（Aurora）</td>
+<td>HTTP Basic Auth + Nginx レートリミット（30req/min 全体・5req/min 認証）+ TOTP MFA + デバイス信頼（30日間スキップ）</td>
+</tr>
+<tr>
+<td>依存関係監視</td>
+<td>Dependabot（GitHub Actions週次チェック）</td>
+</tr>
+<tr>
+<td>クロール制御</td>
+<td>robots.txt（NSFW投稿・認証ページをクロール拒否）</td>
+</tr>
+<tr>
+<td>機密情報管理</td>
+<td>CLAUDE.local.md を gitignore 分離、pre-commit シークレット検出</td>
+</tr>
+<tr>
+<td>DBバックアップ</td>
+<td>pg_dump → gzip → S3（plofolia-media/backups/db/）日次 AM3:00 JST、30世代ローテーション（<code>titan/backup-db.sh</code>）</td>
+</tr>
+<tr>
+<td>AMIスナップショット</td>
+<td>EC2 AMI 週次（日曜 AM3:30 JST）、4世代ローテーション（<code>titan/backup-ami.sh</code>）</td>
+</tr>
+<tr>
+<td>OS自動セキュリティアップデート</td>
+<td><code>unattended-upgrades</code>（セキュリティパッチのみ・自動再起動なし）<code>/etc/apt/apt.conf.d/51plofolia-unattended</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.sections", "navigation.expand", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
