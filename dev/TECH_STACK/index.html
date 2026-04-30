@@ -975,7 +975,7 @@
     end
 
     Browser      --&gt;|"HTTPS"| Nginx
-    AdminBrowser --&gt;|"ssh -L 3001"| Aurora
+    AdminBrowser --&gt;|"HTTPS (Basic Auth)"| Aurora
 
     Nginx --&gt;|"/ → proxy_pass"| Terra
     Nginx --&gt;|"/api/v1/ → proxy_pass"| Sol
