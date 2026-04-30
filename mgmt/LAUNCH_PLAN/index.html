@@ -535,14 +535,14 @@
 <tr>
 <td>メール</td>
 <td><strong>AWS SES Sandbox解除</strong></td>
-<td>未対応</td>
-<td>Sandbox のままだと認証メールが検証済みアドレスにしか届かない。AWSコンソール → SES → Request production access</td>
+<td>対応済み</td>
+<td><code>support@plofolia.com</code> から本番送信可能。認証メール稼働中</td>
 </tr>
 <tr>
 <td>メール</td>
 <td><strong>送受信メールアドレス整備</strong></td>
-<td>未対応</td>
-<td>dmca@plofolia.com / privacy@plofolia.com を実際に受信できる状態にする（Google Workspace $6/月 or Zoho Mail 無料）</td>
+<td>対応済み</td>
+<td>Google Workspace で <code>support@plofolia.com</code> 受信設定済み。問い合わせはアプリ内 <code>/contact</code> フォームで対応</td>
 </tr>
 <tr>
 <td>監視</td>
@@ -585,7 +585,13 @@
 <td>パフォーマンス</td>
 <td><strong>OGP 画像 CDN</strong></td>
 <td>未対応</td>
-<td>S3 + CloudFront で画像配信（現在 EC2 ローカル保存）。ユーザーが増えてから</td>
+<td>S3 + CloudFront で画像配信（現在 S3 直配信）。ユーザーが増えてから CloudFront を追加</td>
+</tr>
+<tr>
+<td>インフラ</td>
+<td><strong>メンテナンスページ</strong></td>
+<td>対応済み</td>
+<td>Nginx 502/503/504 フォールバック + 手動モード（<code>/var/www/plofolia-maintenance/</code>）</td>
 </tr>
 </tbody>
 </table>

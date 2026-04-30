@@ -961,12 +961,12 @@
         end
 
         PG[("PostgreSQL 16\n:5432")]
-        Storage[("uploads/\nローカルストレージ")]
+        Storage[("uploads/\nS3ストレージ")]
     end
 
     subgraph AWS["AWS"]
         SES["SES\nメール送信"]
-        S3["S3\n（将来移行）"]
+        S3["S3\nplofolia-media"]
     end
 
     subgraph OAuth["OAuth プロバイダー"]
@@ -989,7 +989,7 @@
     Nova --- PG
     Sol --- Storage
     Sol --&gt;|"SMTP"| SES
-    Sol -.-&gt;|"将来"| S3
+    Sol --&gt;|"Upload / Serve"| S3
     Sol --&gt;|"OAuth 2.0"| Google
     Sol --&gt;|"OAuth 1.0a"| Twitter</code></pre>
 <hr />
@@ -1012,7 +1012,7 @@
 
     subgraph DB["データ"]
         direction LR
-        PG["PostgreSQL 16"] --- Files["ローカルストレージ\nuploads/ → S3（将来）"]
+        PG["PostgreSQL 16"] --- Files["AWS S3\nplofolia-media"]
     end
 
     subgraph Infra["インフラ"]
@@ -1203,8 +1203,8 @@
 </tr>
 <tr>
 <td><strong>AWS S3</strong></td>
-<td>DBバックアップ + メディアストレージ（将来）</td>
-<td>バケット: <code>plofolia-media</code>（backups/db/ は稼働中・メディアは将来移行）</td>
+<td>DBバックアップ + メディアストレージ</td>
+<td>バケット: <code>plofolia-media</code>（バックアップ・メディア両方稼働中）</td>
 </tr>
 <tr>
 <td><strong>AWS SES</strong></td>

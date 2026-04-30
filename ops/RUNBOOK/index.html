@@ -711,6 +711,67 @@
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
+        メンテナンスモード
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="メンテナンスモード">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        有効化（計画メンテナンス時）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        解除
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nextjs-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自動フォールバック（Next.js / API が落ちた場合）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        メンテナンスページのHTML更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         緊急時コマンド一覧
       
     </span>
@@ -836,7 +897,7 @@
 <tr>
 <td>Nginx proxy先ポートが違う</td>
 <td>nginx設定ミス</td>
-<td><code>sudo cat /etc/nginx/sites-enabled/plofolia</code> でポート確認</td>
+<td><code>sudo cat /etc/nginx/sites-enabled/plotia</code> でポート確認</td>
 </tr>
 </tbody>
 </table>
@@ -863,15 +924,22 @@
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-terra<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
 </code></pre></div>
 <p>TypeScriptコンパイルエラーの場合はコードを修正してpush → 再デプロイ。</p>
-<p><strong>terra ビルドがメモリ不足で失敗（t3.micro）</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># EC2上でswapを確認</span>
+<p><strong>terra ビルドがメモリ不足でクラッシュ（t3.micro）</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># EC2上でswapを確認（通常2GBのswapfileが存在する）</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>free<span class="w"> </span>-h
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># swapがなければ作成（1GB）</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>sudo<span class="w"> </span>fallocate<span class="w"> </span>-l<span class="w"> </span>1G<span class="w"> </span>/swapfile
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/swapfile
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>sudo<span class="w"> </span>mkswap<span class="w"> </span>/swapfile
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>sudo<span class="w"> </span>swapon<span class="w"> </span>/swapfile
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>swapon<span class="w"> </span>--show
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># PM2サービスを停止してメモリを確保してからビルド</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>pm2<span class="w"> </span>stop<span class="w"> </span>all
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia/terra
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s1">&#39;--max-old-space-size=750&#39;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>pm2<span class="w"> </span>start<span class="w"> </span>all
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>pm2<span class="w"> </span>save
 </code></pre></div>
+<blockquote>
+<p>ポイント: サービスを停止してから <code>NODE_OPTIONS=--max-old-space-size=750</code> を付けてビルドすること。
+サービス起動中のビルドはメモリ競合でOOMになることがある。</p>
+</blockquote>
 <h3 id="db">DBマイグレーションを適用するのを忘れた<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># EC2上で最新マイグレーションを確認・適用</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4
@@ -993,7 +1061,7 @@
 </ol>
 <h3 id="nginx-sse">Nginx の SSE 設定確認<a class="headerlink" href="#nginx-sse" title="Permanent link">&para;</a></h3>
 <p>Nginx のタイムアウトが短いと SSE接続が切れる。設定確認:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span>-A5<span class="w"> </span><span class="s1">&#39;stream&#39;</span><span class="w"> </span>/etc/nginx/sites-enabled/plofolia
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span>-A5<span class="w"> </span><span class="s1">&#39;stream&#39;</span><span class="w"> </span>/etc/nginx/sites-enabled/plotia
 </code></pre></div>
 <p>必要なディレクティブ:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">proxy_buffering</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
@@ -1028,30 +1096,51 @@
 </code></pre></div>
 <p>admin が存在しない場合は seed を実行（<strong>本番DBへの seed は要注意</strong>）。</p>
 <hr />
-<h2 id="_11">緊急時コマンド一覧<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># 全サービスを再起動</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>pm2<span class="w"> </span>restart<span class="w"> </span>all
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="c1"># 全サービスのログをリアルタイムで確認</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>pm2<span class="w"> </span>logs
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="c1"># 特定サービスのログ（直近100行）</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>
-<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="c1"># PM2プロセス一覧</span>
-<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>pm2<span class="w"> </span>status
-<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>
-<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="c1"># Nginx設定テスト → リロード</span>
-<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a>
-<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="c1"># ディスク使用量確認</span>
-<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a>df<span class="w"> </span>-h
-<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a>
-<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="c1"># メモリ使用量確認</span>
-<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a>free<span class="w"> </span>-h
-<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a>
-<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="c1"># PostgreSQL接続確認</span>
-<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT COUNT(*) FROM users;&quot;</span>
+<h2 id="_11">メンテナンスモード<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>Nginxレベルでメンテナンスページ（静的HTML）を有効にする方法。</p>
+<h3 id="_12">有効化（計画メンテナンス時）<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># メンテナンスモードON（全リクエストを503ページにリダイレクト）</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>sudo<span class="w"> </span>touch<span class="w"> </span>/var/www/plofolia-maintenance/enabled
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+<h3 id="_13">解除<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># メンテナンスモードOFF</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/var/www/plofolia-maintenance/enabled
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+<h3 id="nextjs-api">自動フォールバック（Next.js / API が落ちた場合）<a class="headerlink" href="#nextjs-api" title="Permanent link">&para;</a></h3>
+<p>設定変更不要。Nginxが502/503/504エラーを検知すると <code>/var/www/plofolia-maintenance/maintenance.html</code> を自動で返す。</p>
+<h3 id="html">メンテナンスページのHTML更新<a class="headerlink" href="#html" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># ローカルで titan/maintenance.html を編集後、EC2にアップロード</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>scp<span class="w"> </span>-i<span class="w"> </span>E:/DEV/plofolia/ec2_key<span class="w"> </span>titan/maintenance.html<span class="w"> </span>ubuntu@13.115.254.4:/tmp/
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>ssh<span class="w"> </span>-i<span class="w"> </span>E:/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span><span class="s2">&quot;sudo cp /tmp/maintenance.html /var/www/plofolia-maintenance/maintenance.html&quot;</span>
+</code></pre></div>
+<hr />
+<h2 id="_14">緊急時コマンド一覧<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># 全サービスを再起動</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>pm2<span class="w"> </span>restart<span class="w"> </span>all
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># 全サービスのログをリアルタイムで確認</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>pm2<span class="w"> </span>logs
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="c1"># 特定サービスのログ（直近100行）</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="c1"># PM2プロセス一覧</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>pm2<span class="w"> </span>status
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="c1"># Nginx設定テスト → リロード</span>
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="c1"># ディスク使用量確認</span>
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>df<span class="w"> </span>-h
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>
+<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a><span class="c1"># メモリ使用量確認</span>
+<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a>free<span class="w"> </span>-h
+<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a>
+<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a><span class="c1"># PostgreSQL接続確認</span>
+<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT COUNT(*) FROM users;&quot;</span>
 </code></pre></div>
 
 
