@@ -862,9 +862,9 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>default-src &#39;self&#39;;
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>script-src &#39;self&#39; &#39;unsafe-inline&#39;;   ← Next.js 14 hydration に必要。dev は unsafe-eval も追加
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>style-src &#39;self&#39; &#39;unsafe-inline&#39;;    ← Tailwind CSS インラインスタイル
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>img-src &#39;self&#39; data: blob: https://plofolia.com https://*.amazonaws.com https://*.cloudfront.net;
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>img-src &#39;self&#39; data: blob: https://plofolia.com https://*.amazonaws.com https://*.cloudfront.net https://picsum.photos https://fastly.picsum.photos https://upload.wikimedia.org;
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>connect-src &#39;self&#39; https://plofolia.com;   ← API・SSE（Nginx 経由で同一オリジン）
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>media-src &#39;self&#39; blob: https://plofolia.com https://*.amazonaws.com https://*.cloudfront.net;
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>media-src &#39;self&#39; blob: https://plofolia.com https://*.amazonaws.com https://*.cloudfront.net https://www.soundhelix.com https://www.w3schools.com https://upload.wikimedia.org;
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>worker-src &#39;self&#39; blob:;   ← Service Worker + MediaRecorder blob
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>frame-ancestors &#39;self&#39;;
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>base-uri &#39;self&#39;;

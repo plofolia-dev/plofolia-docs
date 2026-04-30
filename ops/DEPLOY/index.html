@@ -990,8 +990,8 @@
 <h3 id="deploysh">deploy.sh の動作<a class="headerlink" href="#deploysh" title="Permanent link">&para;</a></h3>
 <p><code>titan/deploy.sh</code> は変更されたフォルダを自動検出してビルド・PM2再起動まで行う。</p>
 <blockquote>
-<p><strong>重要</strong>: バックエンド（sol）の変更は <code>npm run build</code> でTypeScriptをコンパイルしてから <code>pm2 restart plofolia-sol</code> すること。
-ビルドなしでrestart しても古い <code>dist/app.js</code> が動き続けるため変更が反映されない。</p>
+<p><strong>重要</strong>: バックエンド（sol）の変更は <code>npm run build</code> でTypeScriptをコンパイルし、<code>npm run db:migrate</code> でDBマイグレーションを適用してから <code>pm2 restart plofolia-sol</code> すること。
+<code>titan/deploy.sh</code> はビルド後に自動で <code>npm run db:migrate</code> を実行するため、手動実行時も忘れずに。</p>
 </blockquote>
 <hr />
 <h2 id="_2">前提条件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
