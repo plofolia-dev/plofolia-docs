@@ -793,7 +793,7 @@
 </ul>
 <hr />
 <h2 id="_5">コンプライアンス・法務ロードマップ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>NSFW特化サービスは一般SNSより法務リスクが高い。</p>
+<p>クリエイター向けSNSとして、法務リスクに予め備えておく。</p>
 <table>
 <thead>
 <tr>
@@ -880,7 +880,7 @@
 </table>
 <hr />
 <h2 id="_6">クリエイター向け機能ロードマップ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>Xからの移住先として選ばれるための差別化機能。</p>
+<p>クリエイターファーストの差別化機能。</p>
 <table>
 <thead>
 <tr>
@@ -1046,10 +1046,6 @@
 <td>アカウント管理</td>
 <td>モデレーターアカウント作成・削除・ロール変更（admin のみ）</td>
 </tr>
-<tr>
-<td>MFA 設定</td>
-<td>TOTP 設定・無効化・デバイス信頼（30日間スキップ）</td>
-</tr>
 </tbody>
 </table>
 <h3 id="_9">将来対応候補<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -1162,7 +1158,7 @@
 <tr>
 <td>完了</td>
 <td>Aurora セキュリティ強化</td>
-<td>HTTP Basic Auth + Nginx レートリミット（30req/min 全体・5req/min 認証）+ MFA（TOTP）+ デバイス信頼（30日間スキップ）実装済み</td>
+<td>HTTP Basic Auth + Nginx レートリミット（30req/min 全体・5req/min 認証）実装済み</td>
 </tr>
 <tr>
 <td>将来</td>
@@ -1359,7 +1355,7 @@
 <h4 id="_16">アクセス管理<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p><strong>モデレータアカウントの発行（実装済み）:</strong>
 Aurora <code>/accounts</code> ページ（admin のみアクセス可）からユーザー名・メールアドレス・パスワードを入力して作成。
-ログインは <code>https://plofolia.com:3001</code> の管理パネルから。</p>
+ログインは <code>https://aurora.plofolia.com</code> の管理パネルから。</p>
 <table>
 <thead>
 <tr>
