@@ -341,17 +341,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solarized-dark" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solarized Dark スタイル規則
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#react-hydration" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -686,76 +675,9 @@
 <h1 id="_1">実装詳細・設計決定メモ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>「なぜこうなっているのか」が分かりにくい実装や、罠になりやすい箇所のリファレンス。
 機能追加・リファクタ時に必ず参照すること。</p>
+<p>Solarized Dark スタイル規則（カラーパレット・禁止事項）は <a href="../DESIGN/">DESIGN.md</a> を参照。</p>
 <hr />
 <h2 id="_2">フロントエンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<h3 id="solarized-dark">Solarized Dark スタイル規則<a class="headerlink" href="#solarized-dark" title="Permanent link">&para;</a></h3>
-<p>VideoPlayer・AudioPlayer・PostCard・タイムコメント等、全コンポーネントで Solarized Dark を統一する。</p>
-<p><strong>背景色</strong></p>
-<table>
-<thead>
-<tr>
-<th>クラス</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bg-sol-base03</code></td>
-<td>最も暗い背景（メインコンテナ）</td>
-</tr>
-<tr>
-<td><code>bg-sol-base02</code></td>
-<td>強調背景（選択状態・ホバー）</td>
-</tr>
-<tr>
-<td><code>bg-sol-base01</code></td>
-<td>ボーダー・区切り線</td>
-</tr>
-</tbody>
-</table>
-<p><strong>禁止事項</strong></p>
-<ul>
-<li><code>bg-black</code> / <code>bg-gray-*</code> — 使用禁止。必ず <code>bg-sol-base03</code> を使う</li>
-<li><code>text-white</code> / <code>text-gray-*</code> — 使用禁止。以下の Solarized テキストカラーを使う</li>
-</ul>
-<p><strong>テキストカラー（明度順）</strong></p>
-<table>
-<thead>
-<tr>
-<th>クラス</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text-sol-base3</code></td>
-<td>強調テキスト（見出し・重要ラベル）</td>
-</tr>
-<tr>
-<td><code>text-sol-base2</code></td>
-<td>通常テキスト（ユーザー名・本文）</td>
-</tr>
-<tr>
-<td><code>text-sol-base1</code></td>
-<td>セカンダリテキスト</td>
-</tr>
-<tr>
-<td><code>text-sol-base0</code></td>
-<td>補助テキスト</td>
-</tr>
-<tr>
-<td><code>text-sol-base01</code></td>
-<td>プレースホルダー・ラベル</td>
-</tr>
-<tr>
-<td><code>text-sol-base03</code></td>
-<td>濃い背景上のボタン文字（= #002b36）</td>
-</tr>
-</tbody>
-</table>
-<p><strong>アクセントカラー</strong></p>
-<p><code>text-sol-cyan</code>（主アクセント）/ <code>text-sol-blue</code> / <code>text-sol-yellow</code> / <code>text-sol-orange</code> / <code>text-sol-red</code> / <code>text-sol-green</code> / <code>text-sol-violet</code></p>
-<hr />
 <h3 id="react-hydration">React Hydration エラー対応<a class="headerlink" href="#react-hydration" title="Permanent link">&para;</a></h3>
 <p>Next.js App Router で SSR と CSR の出力が食い違うと hydration エラー（#418/#425/#423）が発生する。
 <code>localStorage</code> や <code>Zustand persist</code> を参照するコンポーネントで頻発する。</p>

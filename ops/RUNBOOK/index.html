@@ -25,7 +25,7 @@
     
     
       
-        <title>Plofolia トラブル対応ランブック - Plofolia Docs</title>
+        <title>Plofolia 障害対応・トラブルシューティング - Plofolia Docs</title>
       
     
     
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Plofolia トラブル対応ランブック
+              Plofolia 障害対応・トラブルシューティング
             
           </span>
         </div>
@@ -340,50 +340,354 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-p1p4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. サイトに繋がらない（全面ダウン）
+        1. 重大度レベル（P1〜P4）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. サイトに繋がらない（全面ダウン）">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 初動対応フロー
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 初動対応フロー">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH 接続（ローカル PowerShell から）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        状態確認コマンド（EC2 上）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-p1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. P1: 全サービス停止
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. P1: 全サービス停止">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: EC2 インスタンスの確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: SSH 接続できるか確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-pm2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: PM2 サービスを再起動
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: Nginx を確認・再起動
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: ディスクフル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-oom-kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: メモリ不足（OOM Kill）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-p1-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. P1: DB 破損 / データ消失
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. P1: DB 破損 / データ消失">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 現状確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: バックアップ一覧を確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-pg_dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: リストア（pg_dump 方式）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-pitr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 特定時点へのロールバック（PITR）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: EC2 全体を失った場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-p1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. P1: セキュリティ侵害
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. P1: セキュリティ侵害">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 被害を広げない（封じ込め）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: セキュリティログを確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: 影響範囲の特定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4: 全セッションを無効化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-ban" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5: 不審なアカウントを BAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-nginx-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6: Nginx の IP ブロック
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7: パスワード・シークレット変更
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 8: インシデント記録
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. P2: 単一サービス停止
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. P2: 単一サービス停止">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        確認手順
+        確認・復旧
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-502-bad-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 502 Bad Gateway
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 502 Bad Gateway">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        確認手順
+        よくある原因と対処
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        terra が起動しない場合
       
     </span>
   </a>
@@ -396,15 +700,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#7-p2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. デプロイが失敗した
+        7. P2: メディアファイル消失
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. デプロイが失敗した">
+    <nav class="md-nav" aria-label="7. P2: メディアファイル消失">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: 現状確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-s3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: S3 バックアップから復元
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-p3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. P3: デプロイ失敗・ロールバック
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. P3: デプロイ失敗・ロールバック">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -419,10 +762,32 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#db" class="md-nav__link">
+  <a href="#a-git" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DBマイグレーションを適用するのを忘れた
+        パターン A: git で前のコミットに戻す
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パターン B: DB マイグレーションを誤って適用した
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-ami" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        パターン C: AMI スナップショットから完全リストア
       
     </span>
   </a>
@@ -435,22 +800,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-db" class="md-nav__link">
+  <a href="#9-p3-ddos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. DB接続エラー
+        9. P3: 過負荷 / DDoS
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. DB接続エラー">
+    <nav class="md-nav" aria-label="9. P3: 過負荷 / DDoS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        確認手順
+        現状確認
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特定 IP からの攻撃
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        過負荷でサービスが応答しない
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rate Limiting の一時強化
       
     </span>
   </a>
@@ -463,264 +861,113 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-react-hydration-418425423" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. React hydration エラー（#418/#425/#423）
+        10. 症状別トラブルシューティング
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. React hydration エラー（#418/#425/#423）">
+    <nav class="md-nav" aria-label="10. 症状別トラブルシューティング">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#10-1-502-bad-gateway" class="md-nav__link">
     <span class="md-ellipsis">
       
-        原因
+        10-1. 502 Bad Gateway
       
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#10-2-react-hydration-418425423" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10-2. React Hydration エラー（#418/#425/#423）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-3-missing_message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10-3. 翻訳キー欠落クラッシュ（MISSING_MESSAGE）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10-4. ログイン・認証の不具合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10-5. ファイルアップロードエラー
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-6-ssedm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10-6. SSE（リアルタイム通知/DM）が届かない
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-7-aurora" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10-7. 管理画面（Aurora）に入れない
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. メンテナンスモード
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. メンテナンスモード">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        確認・対処
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-missing_message" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 翻訳キー欠落クラッシュ（MISSING_MESSAGE）
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. 翻訳キー欠落クラッシュ（MISSING_MESSAGE）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        確認手順
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. ログイン・認証の不具合
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. ログイン・認証の不具合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        「ログインできない」
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#jwt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        JWTが期限切れで弾かれる
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oauthgoogletwitter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OAuth（Google/Twitter）ログインが失敗する
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. ファイルアップロードエラー
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. ファイルアップロードエラー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#400-bad-request" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        400 Bad Request が返る
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        アップロードしたファイルが表示されない
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-ssedm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. SSE（リアルタイム通知/DM）が届かない
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="9. SSE（リアルタイム通知/DM）が届かない">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        確認手順
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nginx-sse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Nginx の SSE 設定確認
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-aurora" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. 管理画面（Aurora）に入れない
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. 管理画面（Aurora）に入れない">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aurora-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Aurora へのアクセス（SSHトンネル不要）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#http-basic-auth" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        「HTTP Basic Auth ダイアログが繰り返し出る」
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#invalid-credentials" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        「Invalid credentials」でログインできない
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        メンテナンスモード
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="メンテナンスモード">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         有効化（計画メンテナンス時）
@@ -731,7 +978,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         解除
@@ -756,7 +1003,7 @@
   <a href="#html" class="md-nav__link">
     <span class="md-ellipsis">
       
-        メンテナンスページのHTML更新
+        メンテナンスページの HTML 更新
       
     </span>
   </a>
@@ -769,10 +1016,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#12" class="md-nav__link">
     <span class="md-ellipsis">
       
-        緊急時コマンド一覧
+        12. 緊急時コマンド一覧
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. ポストモーテムテンプレート
       
     </span>
   </a>
@@ -796,78 +1054,448 @@
 
 
 
-<h1 id="plofolia">Plofolia トラブル対応ランブック<a class="headerlink" href="#plofolia" title="Permanent link">&para;</a></h1>
-<p>現象別に「何を確認するか」をステップ順に記載。焦らず上から順にチェックすること。</p>
+<h1 id="plofolia">Plofolia 障害対応・トラブルシューティング<a class="headerlink" href="#plofolia" title="Permanent link">&para;</a></h1>
+<p>障害発生時の初動・復旧手順と、症状別の開発者向けトラブルシューティングをまとめたドキュメント。<br />
+パニックになっても上から順に読めば動けるよう設計してある。</p>
 <hr />
 <h2 id="_1">目次<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ol>
-<li><a href="#1-サイトに繋がらない全面ダウン">サイトに繋がらない（全面ダウン）</a></li>
-<li><a href="#2-502-bad-gateway">502 Bad Gateway</a></li>
-<li><a href="#3-デプロイが失敗した">デプロイが失敗した</a></li>
-<li><a href="#4-db接続エラー">DB接続エラー</a></li>
-<li><a href="#5-react-hydration-エラー418425423">React hydration エラー（#418/#425/#423）</a></li>
-<li><a href="#6-翻訳キー欠落クラッシュmissing_message">翻訳キー欠落クラッシュ（MISSING_MESSAGE）</a></li>
-<li><a href="#7-ログイン認証の不具合">ログイン・認証の不具合</a></li>
-<li><a href="#8-ファイルアップロードエラー">ファイルアップロードエラー</a></li>
-<li><a href="#9-sseリアルタイム通知dmが届かない">SSE（リアルタイム通知/DM）が届かない</a></li>
-<li><a href="#10-管理画面auroraに入れない">管理画面（Aurora）に入れない</a></li>
+<li><a href="#1-重大度レベルp1p4">重大度レベル（P1〜P4）</a></li>
+<li><a href="#2-初動対応フロー">初動対応フロー</a></li>
+<li><a href="#3-p1-全サービス停止">P1: 全サービス停止</a></li>
+<li><a href="#4-p1-db-破損--データ消失">P1: DB 破損 / データ消失</a></li>
+<li><a href="#5-p1-セキュリティ侵害">P1: セキュリティ侵害</a></li>
+<li><a href="#6-p2-単一サービス停止">P2: 単一サービス停止</a></li>
+<li><a href="#7-p2-メディアファイル消失">P2: メディアファイル消失</a></li>
+<li><a href="#8-p3-デプロイ失敗ロールバック">P3: デプロイ失敗・ロールバック</a></li>
+<li><a href="#9-p3-過負荷--ddos">P3: 過負荷 / DDoS</a></li>
+<li><a href="#10-症状別トラブルシューティング">症状別トラブルシューティング</a></li>
+<li><a href="#11-メンテナンスモード">メンテナンスモード</a></li>
+<li><a href="#12-緊急時コマンド一覧">緊急時コマンド一覧</a></li>
+<li><a href="#13-ポストモーテムテンプレート">ポストモーテムテンプレート</a></li>
 </ol>
 <hr />
-<h2 id="1">1. サイトに繋がらない（全面ダウン）<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://plofolia.com → 到達不能
+<h2 id="1-p1p4">1. 重大度レベル（P1〜P4）<a class="headerlink" href="#1-p1p4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>レベル</th>
+<th>定義</th>
+<th>例</th>
+<th>目標復旧時間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>サービス全体が使えない、またはデータ消失・漏洩リスク</td>
+<td>全面ダウン / DB破損 / 不正アクセス</td>
+<td>1時間以内</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>一部機能が停止しているが主要フローは動いている</td>
+<td>1サービスのみ停止 / 画像表示不可 / 通知届かない</td>
+<td>4時間以内</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>機能は動いているが品質・信頼性が低下している</td>
+<td>デプロイ失敗 / レスポンス遅延 / エラー率上昇</td>
+<td>24時間以内</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>軽微な問題。ユーザー影響が最小限または限定的</td>
+<td>特定ページのレイアウト崩れ / 翻訳キー欠落</td>
+<td>次回デプロイ</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2">2. 初動対応フロー<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>障害を検知したら最初にこの手順を実行する。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>1. 重大度を判断（上の表を参照）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>2. EC2 に SSH 接続（下記の共通手順を参照）
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>3. pm2 status → 異常なサービスを特定
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>4. pm2 logs &lt;service&gt; --lines 100 --nostream → エラー原因を確認
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>5. 当てはまるシナリオの手順へ進む
 </code></pre></div>
-<h3 id="_2">確認手順<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p><strong>Step 1: EC2インスタンスが起動しているか</strong></p>
-<p>AWSコンソール → EC2 → インスタンス → <code>i-04f92f1a7aad49ef2</code> のステータスを確認。<br />
-停止していれば「インスタンスを起動」を押す。</p>
-<p><strong>Step 2: EC2にSSH接続できるか</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># ローカルから（PowerShell）</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$aws</span> <span class="p">=</span> <span class="s2">&quot;C:\Program Files\Amazon\AWSCLIV2\aws.exe&quot;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">$pubKey</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="s2">&quot;E:\DEV\plofolia\ec2_key.pub&quot;</span> <span class="n">-Raw</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">&amp;</span> <span class="nv">$aws</span> <span class="n">ec2-instance-connect</span> <span class="nb">send-ssh</span><span class="n">-public-key</span> <span class="p">`</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  <span class="p">-</span><span class="n">-instance-id</span> <span class="n">i</span><span class="p">-</span><span class="n">04f92f1a7aad49ef2</span> <span class="p">`</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  <span class="p">-</span><span class="n">-availability-zone</span> <span class="n">ap-northeast</span><span class="p">-</span><span class="n">1a</span> <span class="p">`</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  <span class="p">-</span><span class="n">-instance-os-user</span> <span class="n">ubuntu</span> <span class="p">`</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  <span class="p">-</span><span class="n">-ssh-public-key</span> <span class="nv">$pubKey</span>
+<h3 id="ssh-powershell">SSH 接続（ローカル PowerShell から）<a class="headerlink" href="#ssh-powershell" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$aws</span> <span class="p">=</span> <span class="s2">&quot;C:\Program Files\Amazon\AWSCLIV2\aws.exe&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$pubKey</span> <span class="p">=</span> <span class="nb">Get-Content</span> <span class="s2">&quot;E:\DEV\plofolia\ec2_key.pub&quot;</span> <span class="n">-Raw</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">&amp;</span> <span class="nv">$aws</span> <span class="n">ec2-instance-connect</span> <span class="nb">send-ssh</span><span class="n">-public-key</span> <span class="p">`</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  <span class="p">-</span><span class="n">-instance-id</span> <span class="n">i</span><span class="p">-</span><span class="n">04f92f1a7aad49ef2</span> <span class="p">`</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  <span class="p">-</span><span class="n">-availability-zone</span> <span class="n">ap-northeast</span><span class="p">-</span><span class="n">1a</span> <span class="p">`</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  <span class="p">-</span><span class="n">-instance-os-user</span> <span class="n">ubuntu</span> <span class="p">`</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  <span class="p">-</span><span class="n">-ssh-public-key</span> <span class="nv">$pubKey</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="n">ssh</span> <span class="n">-i</span> <span class="n">E</span><span class="p">:\</span><span class="n">DEV</span><span class="p">\</span><span class="n">plofolia</span><span class="p">\</span><span class="n">ec2_key</span> <span class="n">-o</span> <span class="n">StrictHostKeyChecking</span><span class="p">=</span><span class="n">no</span> <span class="n">ubuntu</span><span class="nv">@13</span><span class="p">.</span><span class="n">115</span><span class="p">.</span><span class="n">254</span><span class="p">.</span><span class="n">4</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>-o<span class="w"> </span><span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no<span class="w"> </span>ubuntu@13.115.254.4
-</code></pre></div>
-<p>接続できなければ → セキュリティグループでポート22が開いているか確認。</p>
-<p><strong>Step 3: PM2サービスの状態確認</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pm2<span class="w"> </span>status
-</code></pre></div>
-<p><code>errored</code> または <code>stopped</code> のサービスがあれば:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pm2<span class="w"> </span>logs<span class="w"> </span>&lt;service-name&gt;<span class="w"> </span>--lines<span class="w"> </span><span class="m">50</span><span class="w"> </span>--nostream
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>pm2<span class="w"> </span>restart<span class="w"> </span>&lt;service-name&gt;
-</code></pre></div>
-<p><strong>Step 4: Nginxの状態確認</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nginx
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-</code></pre></div>
-<p><strong>Step 5: ディスク容量確認</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>df<span class="w"> </span>-h
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># /dev/root が 95%以上 → ログやキャッシュを削除</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>pm2<span class="w"> </span>flush<span class="w">              </span><span class="c1"># PM2ログをクリア</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force<span class="w">  </span><span class="c1"># npmキャッシュ削除</span>
+<h3 id="ec2">状態確認コマンド（EC2 上）<a class="headerlink" href="#ec2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pm2<span class="w"> </span>status<span class="w">                                      </span><span class="c1"># サービス一覧</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>pm2<span class="w"> </span>logs<span class="w"> </span>--lines<span class="w"> </span><span class="m">50</span><span class="w"> </span>--nostream<span class="w">                  </span><span class="c1"># 全サービスの直近ログ</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nginx<span class="w">                     </span><span class="c1"># Nginx の状態</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql<span class="w">                </span><span class="c1"># PostgreSQL の状態</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>df<span class="w"> </span>-h<span class="w">                                           </span><span class="c1"># ディスク使用量</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>free<span class="w"> </span>-h<span class="w">                                         </span><span class="c1"># メモリ使用量</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4000/health<span class="w">            </span><span class="c1"># sol ヘルスチェック</span>
 </code></pre></div>
 <hr />
-<h2 id="2-502-bad-gateway">2. 502 Bad Gateway<a class="headerlink" href="#2-502-bad-gateway" title="Permanent link">&para;</a></h2>
-<p>Nginxは動いているが、バックエンドに接続できない状態。</p>
-<h3 id="_3">確認手順<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><strong>Step 1: ポートがlistenしているか確認</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># sol（メインAPI）</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4000/health<span class="w">   </span><span class="c1"># → {&quot;status&quot;:&quot;ok&quot;} でなければ異常</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># terra（フロントエンド）</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:3000<span class="w">          </span><span class="c1"># → HTMLが返れば正常</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="c1"># nova（管理API）</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4001/health
+<h2 id="3-p1">3. P1: 全サービス停止<a class="headerlink" href="#3-p1" title="Permanent link">&para;</a></h2>
+<p><code>https://plofolia.com</code> に到達できない。</p>
+<h3 id="step-1-ec2">Step 1: EC2 インスタンスの確認<a class="headerlink" href="#step-1-ec2" title="Permanent link">&para;</a></h3>
+<p>AWS コンソール → EC2 → インスタンス <code>i-04f92f1a7aad49ef2</code> のステータスを確認。</p>
+<ul>
+<li><strong>停止中</strong> → 「インスタンスを起動」で起動。起動後 2〜3 分待ってから再確認。</li>
+<li><strong>実行中</strong> → Step 2 へ。</li>
+</ul>
+<h3 id="step-2-ssh">Step 2: SSH 接続できるか確認<a class="headerlink" href="#step-2-ssh" title="Permanent link">&para;</a></h3>
+<p>上記の SSH 接続コマンドを実行。接続できなければ:</p>
+<ul>
+<li>セキュリティグループでポート 22 が開いているか AWS コンソールで確認</li>
+<li>EC2 Instance Connect でブラウザから接続を試みる（AWS コンソール → 接続 → EC2 Instance Connect）</li>
+</ul>
+<h3 id="step-3-pm2">Step 3: PM2 サービスを再起動<a class="headerlink" href="#step-3-pm2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>pm2<span class="w"> </span>status
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>pm2<span class="w"> </span>restart<span class="w"> </span>all
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>pm2<span class="w"> </span>status<span class="w">   </span><span class="c1"># 全サービスが online になるまで待つ</span>
 </code></pre></div>
-<p><strong>Step 2: PM2ログで原因特定</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-terra<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<p>それでも起動しないサービスがあれば:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># エラー内容を確認して下のシナリオへ進む</span>
+</code></pre></div>
+<h3 id="step-4-nginx">Step 4: Nginx を確認・再起動<a class="headerlink" href="#step-4-nginx" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>nginx
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w">           </span><span class="c1"># 設定構文チェック</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+<h3 id="step-5">Step 5: ディスクフル<a class="headerlink" href="#step-5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>df<span class="w"> </span>-h
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># /dev/root が 95% 以上なら空き確保</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>pm2<span class="w"> </span>flush<span class="w">                         </span><span class="c1"># PM2 ログをクリア（数十〜数百MB空く場合がある）</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>sudo<span class="w"> </span>journalctl<span class="w"> </span>--vacuum-size<span class="o">=</span>100M<span class="w">  </span><span class="c1"># systemd ジャーナルを 100MB に圧縮</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>find<span class="w"> </span>/tmp<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.gz&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+1<span class="w"> </span>-delete<span class="w">  </span><span class="c1"># 古い一時ファイルを削除</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force
+</code></pre></div>
+<h3 id="step-6-oom-kill">Step 6: メモリ不足（OOM Kill）<a class="headerlink" href="#step-6-oom-kill" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>free<span class="w"> </span>-h
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;oom\|killed&quot;</span><span class="w">   </span><span class="c1"># OOM Killer の発動ログを確認</span>
+</code></pre></div>
+<p>OOM Kill が発生していた場合:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># swap が有効か確認</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>swapon<span class="w"> </span>--show
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># swap がなければ作成（2GB 推奨）</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>sudo<span class="w"> </span>fallocate<span class="w"> </span>-l<span class="w"> </span>2G<span class="w"> </span>/swapfile
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/swapfile
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>sudo<span class="w"> </span>mkswap<span class="w"> </span>/swapfile
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>sudo<span class="w"> </span>swapon<span class="w"> </span>/swapfile
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># 永続化</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;/swapfile none swap sw 0 0&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/fstab
+</code></pre></div>
+<p>PM2 を再起動してメモリ使用量を監視:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pm2<span class="w"> </span>restart<span class="w"> </span>all
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s1">&#39;free -h &amp;&amp; pm2 status&#39;</span>
+</code></pre></div>
+<hr />
+<h2 id="4-p1-db">4. P1: DB 破損 / データ消失<a class="headerlink" href="#4-p1-db" title="Permanent link">&para;</a></h2>
+<p>ログに <code>relation does not exist</code> / <code>database is corrupt</code> / <code>FATAL: could not open file</code> などが出る。<br />
+または誤った SQL で大量データを削除してしまった場合。</p>
+<h3 id="step-1">Step 1: 現状確認<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT COUNT(*) FROM users;&quot;</span>
+</code></pre></div>
+<p>接続できない場合はまず PostgreSQL を再起動:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>postgresql
+</code></pre></div>
+<h3 id="step-2">Step 2: バックアップ一覧を確認<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://plofolia-media/backups/db/<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
+</code></pre></div>
+<h3 id="step-3-pg_dump">Step 3: リストア（pg_dump 方式）<a class="headerlink" href="#step-3-pg_dump" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://plofolia-media/backups/db/plofolia_YYYYMMDD_HHMMSS.sql.gz<span class="w"> </span>/tmp/
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>pm2<span class="w"> </span>stop<span class="w"> </span>plofolia-sol<span class="w"> </span>plofolia-nova
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">  </span>-c<span class="w"> </span><span class="s2">&quot;DROP SCHEMA public CASCADE; CREATE SCHEMA public;&quot;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>gunzip<span class="w"> </span>-c<span class="w"> </span>/tmp/plofolia_YYYYMMDD_HHMMSS.sql.gz<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>db:migrate<span class="w">   </span><span class="c1"># リストア後にスキーマが古い場合</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>plofolia-nova
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>pm2<span class="w"> </span>status
+</code></pre></div>
+<h3 id="step-4-pitr">Step 4: 特定時点へのロールバック（PITR）<a class="headerlink" href="#step-4-pitr" title="Permanent link">&para;</a></h3>
+<p>WAL アーカイビングを有効化している場合のみ対応可能（OPERATIONS.md #11 参照）。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>postgresql
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>sudo<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>/var/lib/postgresql/16/main<span class="w"> </span>/var/lib/postgresql/16/main_before_recovery
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://plofolia-media/pgbase/<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-5
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://plofolia-media/pgbase/base_YYYYMMDD.tar.gz<span class="w"> </span>/tmp/
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/postgresql/16/main
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>/var/lib/postgresql/16/main
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>sudo<span class="w"> </span>tar<span class="w"> </span>-xzf<span class="w"> </span>/tmp/base_YYYYMMDD.tar.gz<span class="w"> </span>-C<span class="w"> </span>/var/lib/postgresql/16/main
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>postgres:postgres<span class="w"> </span>/var/lib/postgresql/16/main
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;cat &gt;&gt; /var/lib/postgresql/16/main/postgresql.conf &lt;&lt; &#39;EOF&#39;</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="s2">restore_command = &#39;aws s3 cp s3://plofolia-media/wal-archive/%f %p&#39;</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="s2">recovery_target_time = &#39;2026-04-30 14:31:00&#39;   # 復元したい時刻（JST）</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="s2">recovery_target_action = &#39;promote&#39;</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="s2">EOF&quot;</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>postgresql
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>/var/log/postgresql/postgresql-16-main.log
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>plofolia-nova
+</code></pre></div>
+<blockquote>
+<p><strong>重要</strong>: リカバリ後は <code>postgresql.conf</code> からリカバリ設定を削除し <code>sudo systemctl reload postgresql</code> を実行すること。</p>
+</blockquote>
+<h3 id="step-5-ec2">Step 5: EC2 全体を失った場合<a class="headerlink" href="#step-5-ec2" title="Permanent link">&para;</a></h3>
+<p>MIGRATION.md の「EC2 インスタンス移行」を参照。</p>
+<hr />
+<h2 id="5-p1">5. P1: セキュリティ侵害<a class="headerlink" href="#5-p1" title="Permanent link">&para;</a></h2>
+<p>不正アクセス・データ漏洩・アカウント乗っ取りが疑われる場合。</p>
+<h3 id="step-1_1">Step 1: 被害を広げない（封じ込め）<a class="headerlink" href="#step-1_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># セキュリティグループで全インバウンドを即時遮断（AWS コンソール）</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># → EC2 → セキュリティグループ → インバウンドルールを全削除</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="c1"># ※ SSH も遮断されるため事前に作業を完了させること</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># または Nginx を停止してサービスのみ遮断（SSH は維持）</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>nginx
+</code></pre></div>
+<h3 id="step-2_1">Step 2: セキュリティログを確認<a class="headerlink" href="#step-2_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s2">SELECT event, user_id, ip, user_agent, created_at, detail</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="s2">FROM security_logs</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="s2">WHERE created_at &gt; NOW() - INTERVAL &#39;24 hours&#39;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="s2">ORDER BY created_at DESC LIMIT 100;&quot;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>sudo<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Failed\|Accepted\|Invalid&quot;</span><span class="w"> </span>/var/log/auth.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-50
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-200<span class="w"> </span>/var/log/nginx/access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+</code></pre></div>
+<h3 id="step-3">Step 3: 影響範囲の特定<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s2">SELECT username, email, role, created_at FROM users</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="s2">WHERE role IN (&#39;admin&#39;,&#39;moderator&#39;) ORDER BY created_at DESC;&quot;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>find<span class="w"> </span>~/plofolia<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.js&quot;</span><span class="w"> </span>-newer<span class="w"> </span>~/plofolia/package.json<span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s2">&quot;*/node_modules/*&quot;</span><span class="w"> </span>-not<span class="w"> </span>-path<span class="w"> </span><span class="s2">&quot;*/.next/*&quot;</span>
+</code></pre></div>
+<h3 id="step-4">Step 4: 全セッションを無効化<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="s2">DELETE FROM refresh_tokens;&quot;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># 管理者パスワード変更（Aurora → アカウント管理 から）</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># 緊急時のみ DB で直接更新:</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># node -e &quot;const b=require(&#39;bcrypt&#39;); b.hash(&#39;新パスワード&#39;,10).then(h=&gt;console.log(h))&quot;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># UPDATE users SET password_hash=&#39;ハッシュ&#39; WHERE username=&#39;admin&#39;;</span>
+</code></pre></div>
+<h3 id="step-5-ban">Step 5: 不審なアカウントを BAN<a class="headerlink" href="#step-5-ban" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="s2">UPDATE users SET is_banned = true WHERE username = &#39;不審なアカウント名&#39;;&quot;</span>
+</code></pre></div>
+<h3 id="step-6-nginx-ip">Step 6: Nginx の IP ブロック<a class="headerlink" href="#step-6-nginx-ip" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/plofolia
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># server ブロック内に追加: deny 攻撃元IP;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+<h3 id="step-7">Step 7: パスワード・シークレット変更<a class="headerlink" href="#step-7" title="Permanent link">&para;</a></h3>
+<p>侵害が確認された場合:</p>
+<ol>
+<li>EC2 SSH キーペアを再生成（AWS コンソール → EC2 → キーペア）</li>
+<li><code>JWT_SECRET</code> を変更（<code>sol/.env</code> → <code>pm2 restart --update-env</code>）</li>
+<li>DB パスワードを変更（<code>ALTER USER plofolia WITH PASSWORD '新パスワード'</code>）</li>
+<li>AWS IAM アクセスキーをローテーション（コンソール → IAM → セキュリティ認証情報）</li>
+</ol>
+<h3 id="step-8">Step 8: インシデント記録<a class="headerlink" href="#step-8" title="Permanent link">&para;</a></h3>
+<p><a href="#13-ポストモーテムテンプレート">ポストモーテムテンプレート</a> を使って記録する。</p>
+<hr />
+<h2 id="6-p2">6. P2: 単一サービス停止<a class="headerlink" href="#6-p2" title="Permanent link">&para;</a></h2>
+<p>1 サービスだけが <code>errored</code> / <code>stopped</code> になっている場合。</p>
+<h3 id="_2">確認・復旧<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>pm2<span class="w"> </span>status
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol
+</code></pre></div>
+<h3 id="_3">よくある原因と対処<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ログのキーワード</th>
+<th>原因</th>
+<th>対処</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EADDRINUSE: address already in use</code></td>
+<td>前のプロセスが残っている</td>
+<td><code>lsof -i :4000 \| grep LISTEN</code> → <code>kill &lt;PID&gt;</code> → <code>pm2 restart</code></td>
+</tr>
+<tr>
+<td><code>Cannot find module</code></td>
+<td><code>npm install</code> 未実施</td>
+<td><code>cd ~/plofolia/sol &amp;&amp; npm install &amp;&amp; pm2 restart plofolia-sol</code></td>
+</tr>
+<tr>
+<td><code>ECONNREFUSED 127.0.0.1:5432</code></td>
+<td>PostgreSQL が停止</td>
+<td><code>sudo systemctl start postgresql</code></td>
+</tr>
+<tr>
+<td><code>password authentication failed</code></td>
+<td>DB 認証情報の不一致</td>
+<td><code>cat ~/plofolia/sol/.env</code> で <code>DATABASE_URL</code> を確認</td>
+</tr>
+<tr>
+<td><code>relation "xxx" does not exist</code></td>
+<td>マイグレーション未適用</td>
+<td>OPERATIONS.md #5「マイグレーションの適用」参照</td>
+</tr>
+<tr>
+<td><code>JavaScript heap out of memory</code></td>
+<td>メモリ不足（t3.micro）</td>
+<td>swap を増量（→ <a href="#step-6-メモリ不足oom-kill">P1 全面ダウン Step 6</a> 参照）</td>
+</tr>
+<tr>
+<td><code>SyntaxError</code> / <code>TypeError</code> (起動直後)</td>
+<td>TypeScript ビルドが古い</td>
+<td><code>cd sol &amp;&amp; npm run build &amp;&amp; pm2 restart plofolia-sol</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="terra">terra が起動しない場合<a class="headerlink" href="#terra" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-terra<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia/terra
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>rm<span class="w"> </span>-rf<span class="w"> </span>.next
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s2">&quot;--max-old-space-size=1500&quot;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-terra<span class="w"> </span>--update-env
+</code></pre></div>
+<hr />
+<h2 id="7-p2">7. P2: メディアファイル消失<a class="headerlink" href="#7-p2" title="Permanent link">&para;</a></h2>
+<p>画像・動画・音声が 404 で表示されない。<code>uploads/</code> ディレクトリが空。</p>
+<h3 id="step-1_2">Step 1: 現状確認<a class="headerlink" href="#step-1_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ls<span class="w"> </span>-lh<span class="w"> </span>~/plofolia/sol/uploads/
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>du<span class="w"> </span>-sh<span class="w"> </span>~/plofolia/sol/uploads/
+</code></pre></div>
+<h3 id="step-2-s3">Step 2: S3 バックアップから復元<a class="headerlink" href="#step-2-s3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://plofolia-media/media-backups/<span class="w"> </span>--recursive<span class="w"> </span>--human-readable<span class="w"> </span>--summarize<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-3
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://plofolia-media/media-backups/<span class="w"> </span>~/plofolia/sol/uploads/
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>curl<span class="w"> </span>-I<span class="w"> </span>https://plofolia.com/api/v1/uploads/images/XXXXXX.jpg
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="c1"># 200 が返れば正常</span>
+</code></pre></div>
+<hr />
+<h2 id="8-p3">8. P3: デプロイ失敗・ロールバック<a class="headerlink" href="#8-p3" title="Permanent link">&para;</a></h2>
+<h3 id="titandeployps1">titan/deploy.ps1 が途中で止まった<a class="headerlink" href="#titandeployps1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">.\</span><span class="n">titan</span><span class="p">\</span><span class="n">deploy</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<p>よくある失敗パターン:</p>
+<p><strong>公開鍵プッシュのタイムアウト（60秒制限）</strong><br />
+→ キーを再プッシュして再実行。スクリプトは冪等なので再実行可能。</p>
+<p><strong>git push が rejected</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop<span class="w"> </span>--rebase
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>develop
+</code></pre></div>
+<p><strong>terra ビルドがメモリ不足でクラッシュ（t3.micro）</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>free<span class="w"> </span>-h
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>swapon<span class="w"> </span>--show
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>pm2<span class="w"> </span>stop<span class="w"> </span>all
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia/terra
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s1">&#39;--max-old-space-size=750&#39;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>pm2<span class="w"> </span>start<span class="w"> </span>all
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>pm2<span class="w"> </span>save
+</code></pre></div>
+<blockquote>
+<p>ポイント: サービスを停止してからビルドすること。起動中のビルドはメモリ競合で OOM になることがある。</p>
+</blockquote>
+<p><strong>DBマイグレーションを適用するのを忘れた</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span>-f<span class="w"> </span>~/plofolia/sol/src/db/migrations/&lt;ファイル名&gt;.sql
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol
+</code></pre></div>
+<h3 id="a-git">パターン A: git で前のコミットに戻す<a class="headerlink" href="#a-git" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-5
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;コミットハッシュ&gt;
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="nb">cd</span><span class="w"> </span>sol<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>plofolia-nova
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="c1"># terra も戻す場合</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="nb">cd</span><span class="w"> </span>terra<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s2">&quot;--max-old-space-size=1500&quot;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-terra<span class="w"> </span>--update-env
+</code></pre></div>
+<p>ローカルからも revert:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>git<span class="w"> </span>revert<span class="w"> </span>HEAD
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>develop
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>.<span class="se">\t</span>itan<span class="se">\d</span>eploy.ps1
+</code></pre></div>
+<h3 id="b-db">パターン B: DB マイグレーションを誤って適用した<a class="headerlink" href="#b-db" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>cat<span class="w"> </span>~/plofolia/sol/src/db/migrations/&lt;ファイル名&gt;.sql
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="s">-- 例: カラムを追加していた場合</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="s">ALTER TABLE users DROP COLUMN IF EXISTS new_column;</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="s">EOF</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="s2">DELETE FROM drizzle.__drizzle_migrations WHERE hash = &#39;...対象ハッシュ...&#39;;&quot;</span>
+</code></pre></div>
+<blockquote>
+<p><strong>教訓</strong>: マイグレーションは本番適用前にローカルで必ず検証すること。破壊的なマイグレーション（カラム削除・型変更）は特に慎重に。</p>
+</blockquote>
+<h3 id="c-ami">パターン C: AMI スナップショットから完全リストア<a class="headerlink" href="#c-ami" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>AWS コンソールで実行:
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>1. EC2 → AMI → 最新の plofolia-ami-YYYYMMDD を選択
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>2. 「AMIからインスタンスを起動」
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>3. 同じインスタンスタイプ（t3.micro）・セキュリティグループ・キーペアで起動
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>4. 起動後に Elastic IP を新インスタンスに付け替える
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>   ※ EIP 未使用の場合は Route 53 や Nginx の upstream を変更する
+</code></pre></div>
+<hr />
+<h2 id="9-p3-ddos">9. P3: 過負荷 / DDoS<a class="headerlink" href="#9-p3-ddos" title="Permanent link">&para;</a></h2>
+<h3 id="_4">現状確認<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>top
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>htop<span class="w">   </span><span class="c1"># sudo apt install htop</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>ss<span class="w"> </span>-s
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>sudo<span class="w"> </span>netstat<span class="w"> </span>-ntp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:443<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-1000<span class="w"> </span>/var/log/nginx/access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+</code></pre></div>
+<h3 id="ip">特定 IP からの攻撃<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/nginx/sites-available/plofolia
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="c1"># server ブロック外（http ブロック内）に: deny 攻撃元IP;</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+</code></pre></div>
+<h3 id="_5">過負荷でサービスが応答しない<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>pm2<span class="w"> </span>stop<span class="w"> </span>plofolia-terra<span class="w">   </span><span class="c1"># フロントエンドを一時停止（API は継続）</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="c1"># 原因調査後に再起動</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>pm2<span class="w"> </span>start<span class="w"> </span>plofolia-terra
+</code></pre></div>
+<h3 id="rate-limiting">Rate Limiting の一時強化<a class="headerlink" href="#rate-limiting" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>nano<span class="w"> </span>~/plofolia/sol/.env
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="c1"># RATE_LIMIT_MAX=50  ← デフォルト 200 を下げる</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol<span class="w"> </span>--update-env
+</code></pre></div>
+<hr />
+<h2 id="10">10. 症状別トラブルシューティング<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h3 id="10-1-502-bad-gateway">10-1. 502 Bad Gateway<a class="headerlink" href="#10-1-502-bad-gateway" title="Permanent link">&para;</a></h3>
+<p>Nginx は動いているがバックエンドに接続できない状態。</p>
+<p><strong>Step 1: ポートが listen しているか確認</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4000/health<span class="w">   </span><span class="c1"># → {&quot;status&quot;:&quot;ok&quot;} でなければ異常</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:3000<span class="w">          </span><span class="c1"># → HTML が返れば正常</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4001/health
+</code></pre></div>
+<p><strong>Step 2: PM2 ログで原因特定</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-terra<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
 </code></pre></div>
 <p><strong>Step 3: よくある原因と対処</strong></p>
 <table>
@@ -895,252 +1523,203 @@
 <td><code>pm2 restart plofolia-sol --update-env</code></td>
 </tr>
 <tr>
-<td>Nginx proxy先ポートが違う</td>
-<td>nginx設定ミス</td>
+<td>Nginx proxy 先ポートが違う</td>
+<td>nginx 設定ミス</td>
 <td><code>sudo cat /etc/nginx/sites-enabled/plotia</code> でポート確認</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Step 4: Nginxエラーログ確認</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-50<span class="w"> </span>/var/log/nginx/error.log
+<p><strong>Step 4: Nginx エラーログ確認</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>sudo<span class="w"> </span>tail<span class="w"> </span>-50<span class="w"> </span>/var/log/nginx/error.log
 </code></pre></div>
 <hr />
-<h2 id="3">3. デプロイが失敗した<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
-<h3 id="titandeployps1">titan/deploy.ps1 が途中で止まった<a class="headerlink" href="#titandeployps1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c"># ローカルで確認</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="p">.\</span><span class="n">titan</span><span class="p">\</span><span class="n">deploy</span><span class="p">.</span><span class="n">ps1</span>
-</code></pre></div>
-<p>よくある失敗パターン:</p>
-<p><strong>公開鍵プッシュのタイムアウト（60秒制限）</strong>
-→ キーを再プッシュして再実行。スクリプトは冪等なので再実行可能。</p>
-<p><strong>git push が rejected</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>develop<span class="w"> </span>--rebase
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>develop
-</code></pre></div>
-<p><strong>EC2側のビルドエラー（npm run build 失敗）</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># EC2にSSH接続してログを確認</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-terra<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
-</code></pre></div>
-<p>TypeScriptコンパイルエラーの場合はコードを修正してpush → 再デプロイ。</p>
-<p><strong>terra ビルドがメモリ不足でクラッシュ（t3.micro）</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># EC2上でswapを確認（通常2GBのswapfileが存在する）</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>free<span class="w"> </span>-h
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>swapon<span class="w"> </span>--show
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># PM2サービスを停止してメモリを確保してからビルド</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>pm2<span class="w"> </span>stop<span class="w"> </span>all
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nb">cd</span><span class="w"> </span>~/plofolia/terra
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nv">NODE_OPTIONS</span><span class="o">=</span><span class="s1">&#39;--max-old-space-size=750&#39;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>build
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>pm2<span class="w"> </span>start<span class="w"> </span>all
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>pm2<span class="w"> </span>save
-</code></pre></div>
-<blockquote>
-<p>ポイント: サービスを停止してから <code>NODE_OPTIONS=--max-old-space-size=750</code> を付けてビルドすること。
-サービス起動中のビルドはメモリ競合でOOMになることがある。</p>
-</blockquote>
-<h3 id="db">DBマイグレーションを適用するのを忘れた<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># EC2上で最新マイグレーションを確認・適用</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">  </span>-f<span class="w"> </span>~/plofolia/sol/src/db/migrations/&lt;ファイル名&gt;.sql
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>pm2<span class="w"> </span>restart<span class="w"> </span>plofolia-sol
-</code></pre></div>
-<hr />
-<h2 id="4-db">4. DB接続エラー<a class="headerlink" href="#4-db" title="Permanent link">&para;</a></h2>
-<p>ログに <code>ECONNREFUSED</code> / <code>password authentication failed</code> / <code>relation does not exist</code> が出る場合。</p>
-<h3 id="_4">確認手順<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p><strong>Step 1: PostgreSQLが起動しているか</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>postgresql<span class="w">  </span><span class="c1"># 停止していれば起動</span>
-</code></pre></div>
-<p><strong>Step 2: 接続確認</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT 1;&quot;</span>
-</code></pre></div>
-<p><strong>Step 3: パスワード不一致</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;ALTER USER plofolia WITH PASSWORD &#39;polotiaakplt&#39;;&quot;</span>
-</code></pre></div>
-<p><strong>Step 4: テーブルが存在しない（マイグレーション未適用）</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;\dt&quot;</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># 全マイグレーションを一括適用</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="k">for</span><span class="w"> </span>f<span class="w"> </span><span class="k">in</span><span class="w"> </span>~/plofolia/sol/src/db/migrations/*.sql<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Applying </span><span class="nv">$f</span><span class="s2">...&quot;</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$f</span><span class="s2">&quot;</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="k">done</span>
-</code></pre></div>
-<hr />
-<h2 id="5-react-hydration-418425423">5. React hydration エラー（#418/#425/#423）<a class="headerlink" href="#5-react-hydration-418425423" title="Permanent link">&para;</a></h2>
+<h3 id="10-2-react-hydration-418425423">10-2. React Hydration エラー（#418/#425/#423）<a class="headerlink" href="#10-2-react-hydration-418425423" title="Permanent link">&para;</a></h3>
 <p>ブラウザコンソールに <code>Hydration failed</code> / <code>Text content does not match</code> が出る、またはページが白くなる。</p>
-<h3 id="_5">原因<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>Zustand の <code>persist</code> が localStorage から auth状態を復元するタイミングと、サーバーサイドレンダリングのタイミングがずれる。</p>
-<h3 id="_6">確認・対処<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p><strong>発生しているコンポーネントを特定</strong></p>
-<p>ブラウザDevTools → Console → エラーのスタックトレースからコンポーネント名を確認。</p>
+<p><strong>原因</strong>: Zustand の <code>persist</code> が localStorage から auth 状態を復元するタイミングと、SSR のタイミングがずれる。</p>
 <p><strong>修正パターン（実装済み）</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">// authStore.ts の _hasHydrated フラグを使う</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">isAuthenticated</span><span class="p">,</span><span class="w"> </span><span class="nx">_hasHydrated</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useAuthStore</span><span class="p">()</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1">// NG: SSR と CSR で値が異なり hydration mismatch になる</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="p">{</span><span class="nx">isAuthenticated</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">AuthOnlyUI</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span>
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1">// OK: hydration 完了後のみ条件付きレンダリング</span>
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="p">{</span><span class="nx">_hasHydrated</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">isAuthenticated</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">AuthOnlyUI</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">isAuthenticated</span><span class="p">,</span><span class="w"> </span><span class="nx">_hasHydrated</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useAuthStore</span><span class="p">()</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="c1">// NG: SSR と CSR で値が異なり hydration mismatch になる</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a><span class="p">{</span><span class="nx">isAuthenticated</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">AuthOnlyUI</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a><span class="c1">// OK: hydration 完了後のみ条件付きレンダリング</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7" href="#__codelineno-40-7"></a><span class="p">{</span><span class="nx">_hasHydrated</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">isAuthenticated</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">AuthOnlyUI</span><span class="w"> </span><span class="o">/&gt;</span><span class="p">}</span>
 </code></pre></div>
-<p>または <code>mounted</code> パターン（Headerなど）:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">mounted</span><span class="p">,</span><span class="w"> </span><span class="nx">setMounted</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setMounted</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span><span class="w"> </span><span class="p">[])</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">authed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mounted</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">isAuthenticated</span><span class="p">()</span>
+<p>または <code>mounted</code> パターン（Header など）:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">mounted</span><span class="p">,</span><span class="w"> </span><span class="nx">setMounted</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setMounted</span><span class="p">(</span><span class="kc">true</span><span class="p">),</span><span class="w"> </span><span class="p">[])</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">authed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">mounted</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">isAuthenticated</span><span class="p">()</span>
 </code></pre></div>
-<p>修正済みコンポーネント: <code>Header</code>, <code>TimelinePage</code>, <code>PostCard</code>, <code>PostDetail</code>, <code>TimedComments</code>, <code>ProfilePage</code>, <code>Sidebar</code>, <code>BottomNav</code></p>
+<p><strong>ブラウザキャッシュが原因の場合</strong>: Ctrl+Shift+R または DevTools → Application → Clear site data で解消。</p>
 <hr />
-<h2 id="6-missing_message">6. 翻訳キー欠落クラッシュ（MISSING_MESSAGE）<a class="headerlink" href="#6-missing_message" title="Permanent link">&para;</a></h2>
-<p>ページが白くなり、PM2ログに <code>MISSING_MESSAGE: xxx.yyy (ja)</code> が出る。</p>
-<h3 id="_7">確認手順<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="10-3-missing_message">10-3. 翻訳キー欠落クラッシュ（MISSING_MESSAGE）<a class="headerlink" href="#10-3-missing_message" title="Permanent link">&para;</a></h3>
+<p>ページが白くなり、PM2 ログに <code>MISSING_MESSAGE: xxx.yyy (ja)</code> が出る。</p>
 <p><strong>Step 1: ログで欠落キーを特定</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-terra<span class="w"> </span>--lines<span class="w"> </span><span class="m">50</span><span class="w"> </span>--nostream<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>MISSING
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-terra<span class="w"> </span>--lines<span class="w"> </span><span class="m">50</span><span class="w"> </span>--nostream<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>MISSING
 </code></pre></div>
-<p><strong>Step 2: 該当キーを全5言語ファイルに追加</strong></p>
-<p>翻訳ファイルは <code>terra/messages/</code> 以下:</p>
-<ul>
-<li><code>ja.json</code> / <code>en.json</code> / <code>zh.json</code> / <code>ko.json</code> / <code>es.json</code></li>
-</ul>
-<p><strong>重要</strong>: 1言語でもキーが欠けていると、その言語でクラッシュする。必ず5ファイル全て更新すること。</p>
+<p><strong>Step 2: 該当キーを全 5 言語ファイルに追加</strong></p>
+<p><code>terra/messages/</code> 以下の <code>ja.json</code> / <code>en.json</code> / <code>zh.json</code> / <code>ko.json</code> / <code>es.json</code>。<br />
+<strong>重要</strong>: 1 言語でもキーが欠けていると、その言語でクラッシュする。必ず 5 ファイル全て更新すること。</p>
 <p><strong>Step 3: 修正後にデプロイ</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="p">.\</span><span class="n">titan</span><span class="p">\</span><span class="n">deploy</span><span class="p">.</span><span class="n">ps1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="p">.\</span><span class="n">titan</span><span class="p">\</span><span class="n">deploy</span><span class="p">.</span><span class="n">ps1</span>
 </code></pre></div>
 <hr />
-<h2 id="7">7. ログイン・認証の不具合<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
-<h3 id="_8">「ログインできない」<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="10-4">10-4. ログイン・認証の不具合<a class="headerlink" href="#10-4" title="Permanent link">&para;</a></h3>
+<p><strong>「ログインできない」</strong></p>
 <ol>
 <li>メール認証が完了しているか確認（未認証ユーザーはログイン不可）</li>
-<li>パスワードが正しいか確認</li>
-<li>Aurora で状態確認:</li>
-<li><code>https://aurora.plofolia.com</code> → ユーザー一覧 → 「メール未認証」フィルタ</li>
-<li>対象ユーザーの詳細ページ → 「メール認証を手動で完了させる」ボタンを押す</li>
+<li>Aurora で確認: <code>https://aurora.plofolia.com</code> → ユーザー一覧 → 「メール未認証」フィルタ → 「メール認証を手動で完了させる」</li>
 </ol>
 <p><strong>緊急時（DB 直接操作）:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">-- 状態確認</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">email_verified_at</span><span class="p">,</span><span class="w"> </span><span class="n">email_verification_token</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;xxx@example.com&#39;</span><span class="p">;</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1">-- 手動認証（Aurora から操作できない場合のみ）</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">email_verified_at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="n">email_verification_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;xxx@example.com&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="c1">-- 状態確認</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">email_verified_at</span><span class="p">,</span><span class="w"> </span><span class="n">email_verification_token</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;xxx@example.com&#39;</span><span class="p">;</span>
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a><span class="c1">-- 手動認証（Aurora から操作できない場合のみ）</span>
+<a id="__codelineno-44-6" name="__codelineno-44-6" href="#__codelineno-44-6"></a><span class="k">UPDATE</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">email_verified_at</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="n">email_verification_token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span>
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="#__codelineno-44-7"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;xxx@example.com&#39;</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="jwt">JWTが期限切れで弾かれる<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h3>
+<p><strong>JWT が期限切れで弾かれる</strong></p>
 <ul>
-<li>アクセストークン: 15分で期限切れ → リフレッシュトークン（7日）で自動更新</li>
+<li>アクセストークン: 15 分で期限切れ → リフレッシュトークン（7 日）で自動更新</li>
 <li>リフレッシュも切れた場合は再ログインが必要（仕様通り）</li>
 </ul>
-<h3 id="oauthgoogletwitter">OAuth（Google/Twitter）ログインが失敗する<a class="headerlink" href="#oauthgoogletwitter" title="Permanent link">&para;</a></h3>
+<p><strong>OAuth（Google/Twitter）ログインが失敗する</strong></p>
 <ul>
-<li>Googleコンソールのコールバック URL に <code>https://plofolia.com/api/v1/oauth/google/callback</code> が登録されているか確認</li>
-<li>Twitterコンソールも同様に確認</li>
+<li>Google コンソールのコールバック URL に <code>https://plofolia.com/api/v1/oauth/google/callback</code> が登録されているか確認</li>
+<li>Twitter コンソールも同様に確認</li>
 </ul>
 <hr />
-<h2 id="8">8. ファイルアップロードエラー<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
-<h3 id="400-bad-request">400 Bad Request が返る<a class="headerlink" href="#400-bad-request" title="Permanent link">&para;</a></h3>
+<h3 id="10-5">10-5. ファイルアップロードエラー<a class="headerlink" href="#10-5" title="Permanent link">&para;</a></h3>
+<p><strong>400 Bad Request が返る</strong></p>
 <ul>
-<li>動画MIMEタイプに codecs パラメータが含まれていないか確認（<code>video/webm; codecs=vp9</code> → <code>video/webm</code> に変換済み）</li>
-<li>ファイルサイズ制限（画像4枚、動画1本のみ、音声+カバー画像1枚）を超えていないか</li>
+<li>動画 MIME タイプに codecs パラメータが含まれていないか確認（<code>video/webm; codecs=vp9</code> → <code>video/webm</code> に変換済み）</li>
+<li>ファイル数制限（画像 4 枚、動画 1 本のみ、音声+カバー画像 1 枚）を超えていないか</li>
 </ul>
-<h3 id="_9">アップロードしたファイルが表示されない<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># EC2上でストレージパスを確認</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>ls<span class="w"> </span>-la<span class="w"> </span>~/plofolia/sol/uploads/
+<p><strong>アップロードしたファイルが表示されない</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>ls<span class="w"> </span>-la<span class="w"> </span>~/plofolia/sol/uploads/
 </code></pre></div>
 <p><code>STORAGE_PROVIDER=local</code> の場合、ファイルは EC2 の <code>sol/uploads/</code> に保存される。</p>
 <hr />
-<h2 id="9-ssedm">9. SSE（リアルタイム通知/DM）が届かない<a class="headerlink" href="#9-ssedm" title="Permanent link">&para;</a></h2>
-<h3 id="_10">確認手順<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="10-6-ssedm">10-6. SSE（リアルタイム通知/DM）が届かない<a class="headerlink" href="#10-6-ssedm" title="Permanent link">&para;</a></h3>
 <ol>
-<li>ブラウザDevToolsの Network タブ → <code>stream?token=</code> で始まるリクエストが <code>pending</code> になっているか確認</li>
-<li>25秒ごとに keepalive（<code>: keepalive</code>）が流れているか確認</li>
-<li>SSE接続が失敗している場合、フロントは60秒ポーリングにフォールバックする（通知は遅れるが届く）</li>
+<li>ブラウザ DevTools の Network タブ → <code>stream?token=</code> で始まるリクエストが <code>pending</code> になっているか確認</li>
+<li>25 秒ごとに keepalive（<code>: keepalive</code>）が流れているか確認</li>
+<li>SSE 接続が失敗している場合、フロントは 60 秒ポーリングにフォールバックする（通知は遅れるが届く）</li>
 </ol>
-<h3 id="nginx-sse">Nginx の SSE 設定確認<a class="headerlink" href="#nginx-sse" title="Permanent link">&para;</a></h3>
-<p>Nginx のタイムアウトが短いと SSE接続が切れる。設定確認:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span>-A5<span class="w"> </span><span class="s1">&#39;stream&#39;</span><span class="w"> </span>/etc/nginx/sites-enabled/plotia
+<p><strong>Nginx の SSE 設定確認</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>sudo<span class="w"> </span>grep<span class="w"> </span>-A5<span class="w"> </span><span class="s1">&#39;stream&#39;</span><span class="w"> </span>/etc/nginx/sites-enabled/plotia
 </code></pre></div>
 <p>必要なディレクティブ:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="k">proxy_buffering</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="k">proxy_cache</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="k">proxy_read_timeout</span><span class="w"> </span><span class="s">3600s</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">proxy_buffering</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="k">proxy_cache</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="k">proxy_read_timeout</span><span class="w"> </span><span class="s">3600s</span><span class="p">;</span>
 </code></pre></div>
 <hr />
-<h2 id="10-aurora">10. 管理画面（Aurora）に入れない<a class="headerlink" href="#10-aurora" title="Permanent link">&para;</a></h2>
-<h3 id="aurora-ssh">Aurora へのアクセス（SSHトンネル不要）<a class="headerlink" href="#aurora-ssh" title="Permanent link">&para;</a></h3>
-<p><code>https://aurora.plofolia.com</code> で直接アクセス可能。</p>
+<h3 id="10-7-aurora">10-7. 管理画面（Aurora）に入れない<a class="headerlink" href="#10-7-aurora" title="Permanent link">&para;</a></h3>
+<p><strong>アクセス手順</strong></p>
+<p><code>https://aurora.plofolia.com</code> で直接アクセス可能（SSH トンネル不要）。</p>
 <ol>
-<li><strong>HTTP Basic Auth</strong> ダイアログ:</li>
-<li>ユーザー名: <code>aurora</code> / パスワード: CLAUDE.local.md 参照</li>
-<li><strong>Aurora ログイン画面</strong>:</li>
-<li>ユーザー名: <code>admin</code> / パスワード: <code>Password123!</code></li>
-<li>MFA 設定済みならアプリの6桁コードを入力</li>
+<li><strong>HTTP Basic Auth</strong> ダイアログ: ユーザー名 <code>aurora</code> / パスワードは CLAUDE.local.md 参照</li>
+<li><strong>Aurora ログイン画面</strong>: ユーザー名 <code>admin</code> / パスワード <code>Password123!</code></li>
 </ol>
 <blockquote>
-<p>JWTは <strong>15分で失効</strong>。操作中に認証エラーが出たら再ログインする。</p>
+<p>JWT は <strong>15 分で失効</strong>。操作中に認証エラーが出たら再ログインする。</p>
 </blockquote>
-<h3 id="http-basic-auth">「HTTP Basic Auth ダイアログが繰り返し出る」<a class="headerlink" href="#http-basic-auth" title="Permanent link">&para;</a></h3>
+<p><strong>「HTTP Basic Auth ダイアログが繰り返し出る」</strong></p>
 <p>Nginx レベルの認証失敗。CLAUDE.local.md に記載のパスワードを正確に入力する。<br />
 パスワードを変更した場合は EC2 上で htpasswd ファイルを再生成:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-bc<span class="w"> </span>/etc/nginx/.htpasswd_aurora<span class="w"> </span>aurora<span class="w"> </span><span class="s1">&#39;新しいパスワード&#39;</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>sudo<span class="w"> </span>htpasswd<span class="w"> </span>-bc<span class="w"> </span>/etc/nginx/.htpasswd_aurora<span class="w"> </span>aurora<span class="w"> </span><span class="s1">&#39;新しいパスワード&#39;</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="#__codelineno-48-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
 </code></pre></div>
-<h3 id="invalid-credentials">「Invalid credentials」でログインできない<a class="headerlink" href="#invalid-credentials" title="Permanent link">&para;</a></h3>
+<p><strong>「Invalid credentials」でログインできない</strong></p>
 <p>admin アカウントが存在するか確認:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ssh<span class="w"> </span>-i<span class="w"> </span>/e/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span>-c<span class="w"> </span><span class="s2">&quot;SELECT username, role, email_verified_at FROM users WHERE role = &#39;admin&#39;;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="#__codelineno-49-2"></a><span class="w">  </span>-c<span class="w"> </span><span class="s2">&quot;SELECT username, role, email_verified_at FROM users WHERE role = &#39;admin&#39;;&quot;</span>
 </code></pre></div>
-<p>admin が存在しない場合は seed を実行（<strong>本番DBへの seed は要注意</strong>）。</p>
 <hr />
-<h2 id="_11">メンテナンスモード<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p>Nginxレベルでメンテナンスページ（静的HTML）を有効にする方法。</p>
-<h3 id="_12">有効化（計画メンテナンス時）<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># メンテナンスモードON（全リクエストを503ページにリダイレクト）</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>sudo<span class="w"> </span>touch<span class="w"> </span>/var/www/plofolia-maintenance/enabled
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<h2 id="11">11. メンテナンスモード<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<p>Nginx レベルでメンテナンスページ（静的 HTML）を有効にする方法。</p>
+<h3 id="_6">有効化（計画メンテナンス時）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>sudo<span class="w"> </span>touch<span class="w"> </span>/var/www/plofolia-maintenance/enabled
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
 </code></pre></div>
-<h3 id="_13">解除<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># メンテナンスモードOFF</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/var/www/plofolia-maintenance/enabled
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<h3 id="_7">解除<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/var/www/plofolia-maintenance/enabled
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
 </code></pre></div>
 <h3 id="nextjs-api">自動フォールバック（Next.js / API が落ちた場合）<a class="headerlink" href="#nextjs-api" title="Permanent link">&para;</a></h3>
-<p>設定変更不要。Nginxが502/503/504エラーを検知すると <code>/var/www/plofolia-maintenance/maintenance.html</code> を自動で返す。</p>
-<h3 id="html">メンテナンスページのHTML更新<a class="headerlink" href="#html" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># ローカルで titan/maintenance.html を編集後、EC2にアップロード</span>
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>scp<span class="w"> </span>-i<span class="w"> </span>E:/DEV/plofolia/ec2_key<span class="w"> </span>titan/maintenance.html<span class="w"> </span>ubuntu@13.115.254.4:/tmp/
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>ssh<span class="w"> </span>-i<span class="w"> </span>E:/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="w">  </span><span class="s2">&quot;sudo cp /tmp/maintenance.html /var/www/plofolia-maintenance/maintenance.html&quot;</span>
+<p>設定変更不要。Nginx が 502/503/504 エラーを検知すると <code>/var/www/plofolia-maintenance/maintenance.html</code> を自動で返す。</p>
+<h3 id="html">メンテナンスページの HTML 更新<a class="headerlink" href="#html" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>scp<span class="w"> </span>-i<span class="w"> </span>E:/DEV/plofolia/ec2_key<span class="w"> </span>titan/maintenance.html<span class="w"> </span>ubuntu@13.115.254.4:/tmp/
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a>ssh<span class="w"> </span>-i<span class="w"> </span>E:/DEV/plofolia/ec2_key<span class="w"> </span>ubuntu@13.115.254.4<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="w">  </span><span class="s2">&quot;sudo cp /tmp/maintenance.html /var/www/plofolia-maintenance/maintenance.html&quot;</span>
 </code></pre></div>
 <hr />
-<h2 id="_14">緊急時コマンド一覧<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># 全サービスを再起動</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>pm2<span class="w"> </span>restart<span class="w"> </span>all
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
-<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># 全サービスのログをリアルタイムで確認</span>
-<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>pm2<span class="w"> </span>logs
-<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a><span class="c1"># 特定サービスのログ（直近100行）</span>
-<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
-<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>
-<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="c1"># PM2プロセス一覧</span>
-<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>pm2<span class="w"> </span>status
-<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>
-<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="c1"># Nginx設定テスト → リロード</span>
-<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
-<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>
-<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="c1"># ディスク使用量確認</span>
-<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>df<span class="w"> </span>-h
-<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>
-<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a><span class="c1"># メモリ使用量確認</span>
-<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a>free<span class="w"> </span>-h
-<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a>
-<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a><span class="c1"># PostgreSQL接続確認</span>
-<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT COUNT(*) FROM users;&quot;</span>
+<h2 id="12">12. 緊急時コマンド一覧<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="c1"># 全サービスを再起動</span>
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a>pm2<span class="w"> </span>restart<span class="w"> </span>all
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a>
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a><span class="c1"># 全サービスのログをリアルタイムで確認</span>
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a>pm2<span class="w"> </span>logs
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a>
+<a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a><span class="c1"># 特定サービスのログ（直近100行）</span>
+<a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a>pm2<span class="w"> </span>logs<span class="w"> </span>plofolia-sol<span class="w"> </span>--lines<span class="w"> </span><span class="m">100</span><span class="w"> </span>--nostream
+<a id="__codelineno-53-9" name="__codelineno-53-9" href="#__codelineno-53-9"></a>
+<a id="__codelineno-53-10" name="__codelineno-53-10" href="#__codelineno-53-10"></a><span class="c1"># PM2プロセス一覧</span>
+<a id="__codelineno-53-11" name="__codelineno-53-11" href="#__codelineno-53-11"></a>pm2<span class="w"> </span>status
+<a id="__codelineno-53-12" name="__codelineno-53-12" href="#__codelineno-53-12"></a>
+<a id="__codelineno-53-13" name="__codelineno-53-13" href="#__codelineno-53-13"></a><span class="c1"># Nginx設定テスト → リロード</span>
+<a id="__codelineno-53-14" name="__codelineno-53-14" href="#__codelineno-53-14"></a>sudo<span class="w"> </span>nginx<span class="w"> </span>-t<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>nginx
+<a id="__codelineno-53-15" name="__codelineno-53-15" href="#__codelineno-53-15"></a>
+<a id="__codelineno-53-16" name="__codelineno-53-16" href="#__codelineno-53-16"></a><span class="c1"># ディスク使用量確認</span>
+<a id="__codelineno-53-17" name="__codelineno-53-17" href="#__codelineno-53-17"></a>df<span class="w"> </span>-h
+<a id="__codelineno-53-18" name="__codelineno-53-18" href="#__codelineno-53-18"></a>
+<a id="__codelineno-53-19" name="__codelineno-53-19" href="#__codelineno-53-19"></a><span class="c1"># メモリ使用量確認</span>
+<a id="__codelineno-53-20" name="__codelineno-53-20" href="#__codelineno-53-20"></a>free<span class="w"> </span>-h
+<a id="__codelineno-53-21" name="__codelineno-53-21" href="#__codelineno-53-21"></a>
+<a id="__codelineno-53-22" name="__codelineno-53-22" href="#__codelineno-53-22"></a><span class="c1"># PostgreSQL接続確認</span>
+<a id="__codelineno-53-23" name="__codelineno-53-23" href="#__codelineno-53-23"></a><span class="nv">PGPASSWORD</span><span class="o">=</span>polotiaakplt<span class="w"> </span>psql<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span>plofolia<span class="w"> </span>-d<span class="w"> </span>plofolia<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT COUNT(*) FROM users;&quot;</span>
+<a id="__codelineno-53-24" name="__codelineno-53-24" href="#__codelineno-53-24"></a>
+<a id="__codelineno-53-25" name="__codelineno-53-25" href="#__codelineno-53-25"></a><span class="c1"># sol ヘルスチェック</span>
+<a id="__codelineno-53-26" name="__codelineno-53-26" href="#__codelineno-53-26"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://127.0.0.1:4000/health
+<a id="__codelineno-53-27" name="__codelineno-53-27" href="#__codelineno-53-27"></a>
+<a id="__codelineno-53-28" name="__codelineno-53-28" href="#__codelineno-53-28"></a><span class="c1"># PM2ログクリア</span>
+<a id="__codelineno-53-29" name="__codelineno-53-29" href="#__codelineno-53-29"></a>pm2<span class="w"> </span>flush
+</code></pre></div>
+<hr />
+<h2 id="13">13. ポストモーテムテンプレート<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<p>障害が収束したら 24 時間以内に記録する。<code>docs/mgmt/DEVLOG.md</code> に追記する。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="gu">### YYYY-MM-DD HH:MM JST インシデント報告</span>
+<a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a>
+<a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a><span class="gs">**重大度**</span>: P1 / P2 / P3
+<a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a>
+<a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a><span class="gs">**発生時刻**</span>: YYYY-MM-DD HH:MM JST  
+<a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a><span class="gs">**検知時刻**</span>: YYYY-MM-DD HH:MM JST（発生から X 分後）  
+<a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a><span class="gs">**復旧時刻**</span>: YYYY-MM-DD HH:MM JST（ダウンタイム合計: X 分）
+<a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a>
+<a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a><span class="gs">**症状**</span>:
+<a id="__codelineno-54-10" name="__codelineno-54-10" href="#__codelineno-54-10"></a>（ユーザーから見てどう見えていたか）
+<a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a>
+<a id="__codelineno-54-12" name="__codelineno-54-12" href="#__codelineno-54-12"></a><span class="gs">**根本原因**</span>:
+<a id="__codelineno-54-13" name="__codelineno-54-13" href="#__codelineno-54-13"></a>（何が、なぜ起きたか）
+<a id="__codelineno-54-14" name="__codelineno-54-14" href="#__codelineno-54-14"></a>
+<a id="__codelineno-54-15" name="__codelineno-54-15" href="#__codelineno-54-15"></a><span class="gs">**対応タイムライン**</span>:
+<a id="__codelineno-54-16" name="__codelineno-54-16" href="#__codelineno-54-16"></a>
+<a id="__codelineno-54-17" name="__codelineno-54-17" href="#__codelineno-54-17"></a><span class="k">-</span><span class="w"> </span>HH:MM 検知
+<a id="__codelineno-54-18" name="__codelineno-54-18" href="#__codelineno-54-18"></a><span class="k">-</span><span class="w"> </span>HH:MM 原因特定
+<a id="__codelineno-54-19" name="__codelineno-54-19" href="#__codelineno-54-19"></a><span class="k">-</span><span class="w"> </span>HH:MM 復旧作業開始
+<a id="__codelineno-54-20" name="__codelineno-54-20" href="#__codelineno-54-20"></a><span class="k">-</span><span class="w"> </span>HH:MM 復旧完了
+<a id="__codelineno-54-21" name="__codelineno-54-21" href="#__codelineno-54-21"></a>
+<a id="__codelineno-54-22" name="__codelineno-54-22" href="#__codelineno-54-22"></a><span class="gs">**影響範囲**</span>:
+<a id="__codelineno-54-23" name="__codelineno-54-23" href="#__codelineno-54-23"></a>
+<a id="__codelineno-54-24" name="__codelineno-54-24" href="#__codelineno-54-24"></a><span class="k">-</span><span class="w"> </span>影響したユーザー数・機能
+<a id="__codelineno-54-25" name="__codelineno-54-25" href="#__codelineno-54-25"></a><span class="k">-</span><span class="w"> </span>データ損失の有無
+<a id="__codelineno-54-26" name="__codelineno-54-26" href="#__codelineno-54-26"></a>
+<a id="__codelineno-54-27" name="__codelineno-54-27" href="#__codelineno-54-27"></a><span class="gs">**再発防止策**</span>:
+<a id="__codelineno-54-28" name="__codelineno-54-28" href="#__codelineno-54-28"></a>
+<a id="__codelineno-54-29" name="__codelineno-54-29" href="#__codelineno-54-29"></a><span class="k">- [ ]</span> 対策1（担当: / 期限: ）
+<a id="__codelineno-54-30" name="__codelineno-54-30" href="#__codelineno-54-30"></a><span class="k">- [ ]</span> 対策2（担当: / 期限: ）
 </code></pre></div>
 
 
