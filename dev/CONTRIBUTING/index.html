@@ -488,6 +488,28 @@
   <a href="#issue" class="md-nav__link">
     <span class="md-ellipsis">
       
+        Issue を作成するタイミング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue をクローズするタイミング
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         Issue の開発サイクル
       
     </span>
@@ -791,31 +813,75 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>fix/issue-3-rate-limit
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>infra/issue-2-db-backup
 </code></pre></div>
-<h3 id="issue">Issue の開発サイクル<a class="headerlink" href="#issue" title="Permanent link">&para;</a></h3>
+<h3 id="issue">Issue を作成するタイミング<a class="headerlink" href="#issue" title="Permanent link">&para;</a></h3>
+<p>以下のいずれかに該当したら Issue を作成する。Claude Code が発見した場合は即座に作成してよい。</p>
+<table>
+<thead>
+<tr>
+<th>きっかけ</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>バグ・不具合の発見</td>
+<td>動作がおかしい、エラーが出る</td>
+</tr>
+<tr>
+<td>セキュリティ上の懸念</td>
+<td>脆弱性・認証の抜け穴</td>
+</tr>
+<tr>
+<td>未実装機能の把握</td>
+<td>ロードマップ記載・ユーザーガイドに書いたが未実装</td>
+</tr>
+<tr>
+<td>技術的負債</td>
+<td>リファクタリング・型安全化・テスト不足</td>
+</tr>
+<tr>
+<td>インフラ作業</td>
+<td>設定変更・監視追加・証明書更新</td>
+</tr>
+<tr>
+<td>法務・運用上の作業</td>
+<td>DMCA対応・メールボックス整備など</td>
+</tr>
+</tbody>
+</table>
+<h3 id="issue_1">Issue をクローズするタイミング<a class="headerlink" href="#issue_1" title="Permanent link">&para;</a></h3>
+<p><strong>動作確認が完了した時点でクローズする。</strong> コード実装だけではクローズしない。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>実装完了 → ローカル動作確認 → EC2デプロイ → 本番で動作確認 → Issue クローズ
+</code></pre></div>
+<ul>
+<li>コードの変更を伴わない作業（インフラ設定・法務手続き等）は、作業が完了した時点でクローズ</li>
+<li>ユーザーが確認してから「クローズしてよい」と伝えるか、Claude が本番確認済みと判断した場合にクローズする</li>
+</ul>
+<h3 id="issue_2">Issue の開発サイクル<a class="headerlink" href="#issue_2" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Issue の内容を確認し、<code>develop</code> ブランチから作業ブランチを切る</li>
-<li>実装 → ローカル動作確認 → ユーザーに確認</li>
+<li>実装 → ローカル動作確認 → ユーザーに報告</li>
 <li>承認後 <code>develop</code> へマージ → EC2 デプロイ</li>
-<li>Issue をクローズ（PR の <code>Closes #番号</code> またはユーザーが手動クローズ）</li>
+<li><strong>本番で動作確認</strong>してから Issue をクローズ（<code>Closes #番号</code> をコミット/PR に含めるか、手動クローズ）</li>
 </ol>
 <hr />
 <h2 id="_9">コミットメッセージの書き方<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>feat:     新機能追加
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>fix:      バグ修正
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>docs:     ドキュメント更新
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>refactor: リファクタリング
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>style:    デザイン変更
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>chore:    設定・依存関係の変更
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>feat:     新機能追加
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>fix:      バグ修正
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>docs:     ドキュメント更新
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>refactor: リファクタリング
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>style:    デザイン変更
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>chore:    設定・依存関係の変更
 </code></pre></div>
 <p>Issue 番号を含める場合:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>feat: Web Push通知を実装する (#1)
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>fix: レート制限のNginx proxy設定を修正 (#3)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>feat: Web Push通知を実装する (#1)
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>fix: レート制限のNginx proxy設定を修正 (#3)
 </code></pre></div>
 <hr />
 <h2 id="_10">ローカル開発<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p>詳細は <a href="../LOCAL_DEV/">LOCAL_DEV.md</a> を参照。（同フォルダ内）</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>npm<span class="w"> </span>run<span class="w"> </span>db:up<span class="w">      </span><span class="c1"># Docker DBを起動</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>npm<span class="w"> </span>run<span class="w"> </span>dev:app<span class="w">    </span><span class="c1"># sol + terra + Cloudflare Tunnel を一括起動</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>npm<span class="w"> </span>run<span class="w"> </span>db:up<span class="w">      </span><span class="c1"># Docker DBを起動</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>npm<span class="w"> </span>run<span class="w"> </span>dev:app<span class="w">    </span><span class="c1"># sol + terra + Cloudflare Tunnel を一括起動</span>
 </code></pre></div>
 <hr />
 <h2 id="_11">関連ドキュメント<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
