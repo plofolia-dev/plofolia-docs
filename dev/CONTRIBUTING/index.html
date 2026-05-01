@@ -451,7 +451,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#github-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Issues によるタスク管理
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Issues によるタスク管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ラベル体系
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ブランチ命名規則
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issue の開発サイクル
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         コミットメッセージの書き方
@@ -462,7 +512,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         ローカル開発
@@ -473,7 +523,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         関連ドキュメント
@@ -682,22 +732,93 @@
 </tbody>
 </table>
 <hr />
-<h2 id="_7">コミットメッセージの書き方<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>feat:     新機能追加
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>fix:      バグ修正
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>docs:     ドキュメント更新
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>refactor: リファクタリング
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>style:    デザイン変更
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>chore:    設定・依存関係の変更
+<h2 id="github-issues">GitHub Issues によるタスク管理<a class="headerlink" href="#github-issues" title="Permanent link">&para;</a></h2>
+<p>タスク・バグ・機能要望はすべて GitHub Issues で管理する。</p>
+<ul>
+<li>リポジトリ: https://github.com/plofolia-dev/plofolia/issues</li>
+<li>Claude Code は MCP（GitHub MCP Server）を通じて Issues を直接参照・作成できる</li>
+</ul>
+<h3 id="_7">ラベル体系<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ラベル</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enhancement</code></td>
+<td>新機能・改善要望</td>
+</tr>
+<tr>
+<td><code>bug</code></td>
+<td>バグ報告</td>
+</tr>
+<tr>
+<td><code>security</code></td>
+<td>セキュリティ関連</td>
+</tr>
+<tr>
+<td><code>infrastructure</code></td>
+<td>インフラ・デプロイ</td>
+</tr>
+<tr>
+<td><code>testing</code></td>
+<td>テスト整備</td>
+</tr>
+<tr>
+<td><code>tech-debt</code></td>
+<td>技術的負債</td>
+</tr>
+<tr>
+<td><code>priority: high</code></td>
+<td>優先度高（近いうち対応）</td>
+</tr>
+<tr>
+<td><code>priority: medium</code></td>
+<td>優先度中</td>
+</tr>
+<tr>
+<td><code>priority: low</code></td>
+<td>優先度低（将来対応）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">ブランチ命名規則<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>Issue に対応する作業は以下の形式でブランチを作成する:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>feat/issue-1-web-push
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>fix/issue-3-rate-limit
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>infra/issue-2-db-backup
+</code></pre></div>
+<h3 id="issue">Issue の開発サイクル<a class="headerlink" href="#issue" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Issue の内容を確認し、<code>develop</code> ブランチから作業ブランチを切る</li>
+<li>実装 → ローカル動作確認 → ユーザーに確認</li>
+<li>承認後 <code>develop</code> へマージ → EC2 デプロイ</li>
+<li>Issue をクローズ（PR の <code>Closes #番号</code> またはユーザーが手動クローズ）</li>
+</ol>
+<hr />
+<h2 id="_9">コミットメッセージの書き方<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>feat:     新機能追加
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>fix:      バグ修正
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>docs:     ドキュメント更新
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>refactor: リファクタリング
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>style:    デザイン変更
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>chore:    設定・依存関係の変更
+</code></pre></div>
+<p>Issue 番号を含める場合:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>feat: Web Push通知を実装する (#1)
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>fix: レート制限のNginx proxy設定を修正 (#3)
 </code></pre></div>
 <hr />
-<h2 id="_8">ローカル開発<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="_10">ローカル開発<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p>詳細は <a href="../LOCAL_DEV/">LOCAL_DEV.md</a> を参照。（同フォルダ内）</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm<span class="w"> </span>run<span class="w"> </span>db:up<span class="w">      </span><span class="c1"># Docker DBを起動</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npm<span class="w"> </span>run<span class="w"> </span>dev:app<span class="w">    </span><span class="c1"># sol + terra + Cloudflare Tunnel を一括起動</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>npm<span class="w"> </span>run<span class="w"> </span>db:up<span class="w">      </span><span class="c1"># Docker DBを起動</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>npm<span class="w"> </span>run<span class="w"> </span>dev:app<span class="w">    </span><span class="c1"># sol + terra + Cloudflare Tunnel を一括起動</span>
 </code></pre></div>
 <hr />
-<h2 id="_9">関連ドキュメント<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_11">関連ドキュメント<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>

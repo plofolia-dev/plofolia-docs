@@ -584,6 +584,45 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#github-issues-claude-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Issues と Claude Code の連携
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Issues と Claude Code の連携">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claude-code-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Claude Code に MCP を設定する
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issues を参照する
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -753,7 +792,7 @@ Email: <code>admin@plofolia.dev</code> / Password: <code>admin</code></p>
 </tr>
 <tr>
 <td><code>npm run db:seed:assets</code></td>
-<td>外部からメディアファイルをDLしてエンコード（初回のみ）</td>
+<td>外部からメディアファイルをDLしてエンコード（ffmpeg必須・初回のみ）</td>
 <td>数分</td>
 </tr>
 <tr>
@@ -767,13 +806,22 @@ Email: <code>admin@plofolia.dev</code> / Password: <code>admin</code></p>
 <td>数秒</td>
 </tr>
 <tr>
+<td><code>npm run db:seed:influencers</code></td>
+<td>インフルエンサー3名 + 超バズ投稿 + 大量タイムコメント約9920件</td>
+<td>数秒</td>
+</tr>
+<tr>
 <td><code>npm run db:seed:reset -- --confirm</code></td>
 <td>全データ削除（<code>NODE_ENV=production</code> では実行不可）</td>
 <td>即時</td>
 </tr>
 </tbody>
 </table>
-<p>実行順: <code>seed</code> → <code>seed:media</code> → <code>seed:assets</code> → <code>seed:bulk</code> → <code>seed:viral</code></p>
+<p>実行順: <code>seed</code> → <code>seed:media</code> → <code>seed:assets</code> → <code>seed:bulk</code> → <code>seed:viral</code> → <code>seed:influencers</code></p>
+<blockquote>
+<p><strong>注意</strong>: <code>seed:assets</code> は ffmpeg が必要。未インストールの場合は音声が WebM 変換されず外部URL（SoundHelix）が DB に残る。<br />
+ffmpeg インストール: <code>winget install ffmpeg</code>（Windows）または <code>sudo apt install ffmpeg</code>（EC2）</p>
+</blockquote>
 <p>動作確認: <code>http://localhost:4000/health</code> → <code>{"status":"ok"}</code></p>
 <h3 id="4-terra">4. terra（メインフロントエンド）セットアップ<a class="headerlink" href="#4-terra" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>E:<span class="se">\D</span>EV<span class="se">\p</span>lofolia<span class="se">\t</span>erra
@@ -973,11 +1021,40 @@ Email: <code>admin@plofolia.dev</code> / Password: <code>admin</code></p>
 <h3 id="aurora">aurora 管理画面での対応<a class="headerlink" href="#aurora" title="Permanent link">&para;</a></h3>
 <p>http://localhost:3001 → 「バグ報告」メニュー → ステータス変更・管理者メモを記入</p>
 <hr />
+<h2 id="github-issues-claude-code">GitHub Issues と Claude Code の連携<a class="headerlink" href="#github-issues-claude-code" title="Permanent link">&para;</a></h2>
+<p>タスク・バグ・機能要望は GitHub Issues で管理する。Claude Code は GitHub MCP サーバーを通じて Issues を直接参照・作成できる。</p>
+<h3 id="claude-code-mcp">Claude Code に MCP を設定する<a class="headerlink" href="#claude-code-mcp" title="Permanent link">&para;</a></h3>
+<p><code>.mcp.json</code>（プロジェクトルート・gitignored）に以下を記載し、Claude Code を再起動する:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="nt">&quot;github&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdio&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npx&quot;</span><span class="p">,</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;-y&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@modelcontextprotocol/server-github&quot;</span><span class="p">],</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">        </span><span class="nt">&quot;GITHUB_PERSONAL_ACCESS_TOKEN&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ghp_xxxxxxxx&quot;</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="p">}</span>
+</code></pre></div>
+<p>または Claude Code CLI で:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>claude<span class="w"> </span>mcp<span class="w"> </span>add<span class="w"> </span>github<span class="w"> </span>-s<span class="w"> </span>project<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span>-e<span class="w"> </span><span class="s2">&quot;GITHUB_PERSONAL_ACCESS_TOKEN=ghp_xxxxxxxx&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span>--<span class="w"> </span>npx<span class="w"> </span>-y<span class="w"> </span>@modelcontextprotocol/server-github
+</code></pre></div>
+<h3 id="issues">Issues を参照する<a class="headerlink" href="#issues" title="Permanent link">&para;</a></h3>
+<p>Claude Code に <code>GitHub Issues を確認して</code> と伝えると、現在のオープンIssue一覧を取得できる。</p>
+<ul>
+<li>Issueリスト: https://github.com/plofolia-dev/plofolia/issues</li>
+<li>ラベル・優先度の詳細は <a href="../CONTRIBUTING/">CONTRIBUTING.md</a> を参照</li>
+</ul>
+<hr />
 <h2 id="_11">停止手順<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># 各サービス: Ctrl+C</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># DB 停止</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>npm<span class="w"> </span>run<span class="w"> </span>db:down
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># 各サービス: Ctrl+C</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># DB 停止</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>npm<span class="w"> </span>run<span class="w"> </span>db:down
 </code></pre></div>
 
 
