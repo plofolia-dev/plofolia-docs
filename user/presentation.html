@@ -221,7 +221,7 @@
   </div>
   <div class="slide-footer">
     <span class="muted">2026年5月 — エンジニアチーム向け提案資料</span>
-    <span class="slide-num">1 / 12</span>
+    <span class="slide-num">1 / 13</span>
   </div>
 </div>
 
@@ -258,7 +258,7 @@
 
   <div class="slide-footer">
     <span class="muted">既存サービス（X / pixiv / Misskey）では解決されていない</span>
-    <span class="slide-num">2 / 12</span>
+    <span class="slide-num">2 / 13</span>
   </div>
 </div>
 
@@ -318,7 +318,7 @@
 
   <div class="slide-footer">
     <span class="muted">命名: Plo(t) + (Port)folia</span>
-    <span class="slide-num">3 / 12</span>
+    <span class="slide-num">3 / 13</span>
   </div>
 </div>
 
@@ -369,7 +369,7 @@
 
   <div class="slide-footer">
     <span class="muted">一次ターゲット: 最初の500人 — 日本のイラスト・映像・音声クリエイター</span>
-    <span class="slide-num">4 / 12</span>
+    <span class="slide-num">4 / 13</span>
   </div>
 </div>
 
@@ -436,7 +436,7 @@
 
   <div class="slide-footer">
     <span class="muted">その他: DM・通知 SSE リアルタイム / シリーズ機能 / 5言語対応 / PWA対応</span>
-    <span class="slide-num">5 / 12</span>
+    <span class="slide-num">5 / 13</span>
   </div>
 </div>
 
@@ -529,7 +529,7 @@
 
   <div class="slide-footer">
     <span class="muted">単一EC2で全プロセスを同居。ユーザー増加に伴い段階的にスケール予定</span>
-    <span class="slide-num">6 / 12</span>
+    <span class="slide-num">6 / 13</span>
   </div>
 </div>
 
@@ -618,12 +618,134 @@
 
   <div class="slide-footer">
     <span class="muted">フルスタック TypeScript で型安全性を保証。将来の水平スケールも設計済み</span>
-    <span class="slide-num">7 / 12</span>
+    <span class="slide-num">7 / 13</span>
   </div>
 </div>
 
-<!-- ==================== SLIDE 8: FEATURES LIST ==================== -->
+<!-- ==================== SLIDE 8: DESIGN ==================== -->
 <div class="slide" id="s8">
+  <div class="slide-label">デザイン</div>
+  <h2>Solarized Dark テーマで UI を統一</h2>
+
+  <div class="cols-2" style="gap:2rem;">
+    <div>
+      <p class="lead" style="font-size:1rem;margin-bottom:1.5rem;">
+        全コンポーネントを <strong class="accent">Solarized Dark</strong> カラーパレットで統一。
+        ブランドカラーは <strong style="color:#2aa198;">#2aa198（sol-cyan）</strong>。<br>
+        <code style="font-size:.85rem;color:var(--base01);">bg-black / text-white / text-gray-*</code> は使用禁止とし、
+        パレット外の色が混入しない設計ルールを徹底している。
+      </p>
+
+      <!-- Palette swatches -->
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:.75rem;color:var(--base01);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">背景・テキスト（明暗スケール）</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#002b36;border:1px solid #0d4555;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base03</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#073642;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base02</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#586e75;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base01</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#839496;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base0</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#93a1a1;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base1</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#eee8d5;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base2</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:.75rem;color:var(--base01);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">アクセントカラー</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#2aa198;box-shadow:0 0 12px rgba(42,161,152,.5);"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">cyan<br>ブランド</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#268bd2;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">blue<br>リンク</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#859900;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">green<br>成功</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#b58900;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">yellow<br>警告</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#cb4b16;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">orange<br>危険</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#dc322f;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">red<br>エラー</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="width:48px;height:48px;border-radius:8px;background:#6c71c4;"></div>
+            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">violet<br>汎用</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card card-accent" style="margin-bottom:1rem;">
+        <h3 style="margin-bottom:.6rem;">Solarized Dark を採用した理由</h3>
+        <ul class="checklist" style="font-size:.9rem;">
+          <li>長時間利用しても目が疲れにくい低コントラスト設計</li>
+          <li>明暗8段階のスケールで情報の階層を自然に表現できる</li>
+          <li>アクセントカラー7色がすべて意味を持ち、UIの文脈で使い分けられる</li>
+          <li>クリエイターの作品（画像・映像・音声）を引き立てるダーク背景</li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-bottom:1rem;">
+        <h3 style="margin-bottom:.6rem;">全コンポーネントで徹底</h3>
+        <table style="font-size:.85rem;">
+          <thead><tr><th>コンポーネント</th><th>統一ポイント</th></tr></thead>
+          <tbody>
+            <tr><td>VideoPlayer</td><td>bg-sol-base03 ベースのカスタムコントロール</td></tr>
+            <tr><td>AudioPlayer</td><td>波形ビジュアライザーも sol-cyan でカラーリング</td></tr>
+            <tr><td>ボタン・フォーム</td><td>主アクションは bg-sol-cyan / text-sol-base03</td></tr>
+            <tr><td>管理画面（Aurora）</td><td>同一パレットをそのまま適用</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:.4rem;font-size:.85rem;color:var(--base01);">デザインルール（禁止事項）</h3>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
+          <span style="font-size:.8rem;padding:3px 10px;border-radius:4px;background:rgba(220,50,47,.12);color:#dc322f;text-decoration:line-through;">bg-black</span>
+          <span style="font-size:.8rem;padding:3px 10px;border-radius:4px;background:rgba(220,50,47,.12);color:#dc322f;text-decoration:line-through;">text-white</span>
+          <span style="font-size:.8rem;padding:3px 10px;border-radius:4px;background:rgba(220,50,47,.12);color:#dc322f;text-decoration:line-through;">text-gray-*</span>
+          <span style="font-size:.8rem;padding:3px 10px;border-radius:4px;background:rgba(220,50,47,.12);color:#dc322f;text-decoration:line-through;">h-auto（TCパネル）</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">詳細ガイドライン: docs/dev/DESIGN.md</span>
+    <span class="slide-num">8 / 13</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 9: FEATURES LIST ==================== -->
+<div class="slide" id="s9">
   <div class="slide-label">実装済み機能</div>
   <h2>MVP として稼働中の機能</h2>
 
@@ -670,12 +792,12 @@
 
   <div class="slide-footer">
     <span class="muted">マイグレーション: 0043ファイル / テーブル数: 25以上 / API エンドポイント: 60以上</span>
-    <span class="slide-num">8 / 12</span>
+    <span class="slide-num">9 / 13</span>
   </div>
 </div>
 
-<!-- ==================== SLIDE 9: BUSINESS MODEL ==================== -->
-<div class="slide" id="s9">
+<!-- ==================== SLIDE 10: BUSINESS MODEL ==================== -->
+<div class="slide" id="s10">
   <div class="slide-label">ビジネスモデル</div>
   <h2>収益化方針</h2>
 
@@ -722,12 +844,12 @@
 
   <div class="slide-footer">
     <span class="muted">収益化方針が確定した時点でこのスライドを更新する</span>
-    <span class="slide-num">9 / 12</span>
+    <span class="slide-num">10 / 13</span>
   </div>
 </div>
 
-<!-- ==================== SLIDE 10: ROADMAP ==================== -->
-<div class="slide" id="s10">
+<!-- ==================== SLIDE 11: ROADMAP ==================== -->
+<div class="slide" id="s11">
   <div class="slide-label">ロードマップ</div>
   <h2>フェーズ別マイルストーン</h2>
 
@@ -799,12 +921,12 @@
 
   <div class="slide-footer">
     <span class="muted">収益化方針はユーザー獲得後に改めて決定する</span>
-    <span class="slide-num">10 / 12</span>
+    <span class="slide-num">11 / 13</span>
   </div>
 </div>
 
-<!-- ==================== SLIDE 11: COST & SCALE ==================== -->
-<div class="slide" id="s11">
+<!-- ==================== SLIDE 12: COST & SCALE ==================== -->
+<div class="slide" id="s12">
   <div class="slide-label">コスト・スケール計画</div>
   <h2>インフラコストとスケールアップ</h2>
 
@@ -910,12 +1032,12 @@
 
   <div class="slide-footer">
     <span class="muted">現在は単一EC2で安定稼働中。スケール時も 1ENV変数で S3・DB 移行可能な設計</span>
-    <span class="slide-num">11 / 12</span>
+    <span class="slide-num">12 / 13</span>
   </div>
 </div>
 
-<!-- ==================== SLIDE 12: SUMMARY ==================== -->
-<div class="slide" id="s12">
+<!-- ==================== SLIDE 13: SUMMARY ==================== -->
+<div class="slide" id="s13">
   <div class="slide-label">まとめ</div>
   <h2>なぜ今、Plofolia に投資するか</h2>
 
@@ -987,14 +1109,14 @@
 
   <div class="slide-footer">
     <span class="muted">plofolia.com — GitHub: plofolia-dev/plofolia</span>
-    <span class="slide-num">12 / 12</span>
+    <span class="slide-num">13 / 13</span>
   </div>
 </div>
 
 </div><!-- /slides -->
 
 <script>
-  const TOTAL = 12;
+  const TOTAL = 13;
   let cur = 1;
 
   function goTo(n) {
