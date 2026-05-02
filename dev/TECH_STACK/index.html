@@ -961,7 +961,7 @@
         end
 
         PG[("PostgreSQL 16\n:5432")]
-        Storage[("uploads/\nS3ストレージ")]
+        S3Local[("AWS S3\nplofolia-media")]
     end
 
     subgraph AWS["AWS"]
@@ -987,9 +987,8 @@
 
     Sol --- PG
     Nova --- PG
-    Sol --- Storage
     Sol --&gt;|"SMTP"| SES
-    Sol --&gt;|"Upload / Serve"| S3
+    Sol --&gt;|"Upload / Serve"| S3Local
     Sol --&gt;|"OAuth 2.0"| Google
     Sol --&gt;|"OAuth 1.0a"| Twitter</code></pre>
 <hr />
@@ -1460,12 +1459,6 @@ Cloudflare Tunnel は固定サブドメイン（<code>*.trycloudflare.com</code>
 </thead>
 <tbody>
 <tr>
-<td>メディアストレージ</td>
-<td>EC2ローカル (<code>STORAGE_PROVIDER=local</code>)</td>
-<td>AWS S3</td>
-<td>有料ユーザー発生後</td>
-</tr>
-<tr>
 <td>決済</td>
 <td>Ko-Fi（寄付）</td>
 <td>Stripe（クリエイター間決済）→ CCBill追加</td>
@@ -1482,6 +1475,12 @@ Cloudflare Tunnel は固定サブドメイン（<code>*.trycloudflare.com</code>
 <td>AWS SES</td>
 <td>継続予定</td>
 <td></td>
+</tr>
+<tr>
+<td>DB</td>
+<td>EC2 上に PostgreSQL 16 を同居</td>
+<td>RDS Multi-AZ</td>
+<td>Phase 4（HA期）</td>
 </tr>
 </tbody>
 </table>
