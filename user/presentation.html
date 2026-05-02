@@ -50,8 +50,9 @@
   /* ---- SLIDES ---- */
   .slides { margin-top: 52px; }
   .slide {
-    min-height: calc(100vh - 52px);
-    padding: 3rem 4rem;
+    height: calc(100vh - 52px);
+    overflow: hidden;
+    padding: 2rem 3.5rem;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -64,7 +65,7 @@
     color: var(--brand); margin-bottom: .75rem;
   }
   h1 { font-size: 3rem; font-weight: 800; color: var(--base2); line-height: 1.15; }
-  h2 { font-size: 2rem; font-weight: 700; color: var(--base2); margin-bottom: 1.5rem; }
+  h2 { font-size: 2rem; font-weight: 700; color: var(--base2); margin-bottom: 1.25rem; }
   h3 { font-size: 1.15rem; font-weight: 700; color: var(--base1); margin-bottom: .5rem; }
   p { color: var(--base0); font-size: 1rem; }
   .lead { font-size: 1.2rem; color: var(--base1); line-height: 1.7; }
@@ -215,7 +216,7 @@
   </p>
   <div class="tag-row" style="margin-top:1.5rem;">
     <span class="badge badge-cyan">MVP 稼働中</span>
-    <span class="badge badge-blue">招待制ベータ</span>
+    <span class="badge badge-blue">外部招待前</span>
     <span class="badge badge-green">月額コスト $14〜</span>
     <span class="badge badge-orange">収益化未実装</span>
   </div>
@@ -387,8 +388,7 @@
       </div>
       <div>
         <h3>タイムコメント</h3>
-        <p style="font-size:.9rem;">動画・音声の再生位置に紐づくコメント（YouTube Live風オーバーレイ）。
-        動画・音声作品専用の深いエンゲージメント体験。X・pixiv にはない。</p>
+        <p style="font-size:.9rem;">動画・音声の再生位置に紐づくコメント機能。SoundCloud 的な音声エンゲージメントを SNS 上で実現。X・pixiv にはない独自体験。</p>
       </div>
     </div>
 
@@ -435,7 +435,7 @@
   </div>
 
   <div class="slide-footer">
-    <span class="muted">その他: DM・通知 SSE リアルタイム / シリーズ機能 / 5言語対応 / PWA対応</span>
+    <span class="muted">その他: DM・通知 SSE リアルタイム / シリーズ機能 / 5言語対応 / PWA（Web） / ネイティブアプリ化を検討</span>
     <span class="slide-num">5 / 13</span>
   </div>
 </div>
@@ -623,13 +623,13 @@
 </div>
 
 <!-- ==================== SLIDE 8: DESIGN ==================== -->
-<div class="slide" id="s8">
+<div class="slide" id="s8" style="padding: 1.5rem 3rem;">
   <div class="slide-label">デザイン</div>
   <h2>Solarized Dark テーマで UI を統一</h2>
 
   <div class="cols-2" style="gap:2rem;">
     <div>
-      <p class="lead" style="font-size:1rem;margin-bottom:1.5rem;">
+      <p class="lead" style="font-size:1rem;margin-bottom:1rem;">
         全コンポーネントを <strong class="accent">Solarized Dark</strong> カラーパレットで統一。
         ブランドカラーは <strong style="color:#2aa198;">#2aa198（sol-cyan）</strong>。<br>
         <code style="font-size:.85rem;color:var(--base01);">bg-black / text-white / text-gray-*</code> は使用禁止とし、
@@ -637,75 +637,75 @@
       </p>
 
       <!-- Palette swatches -->
-      <div style="margin-bottom:1.5rem;">
-        <div style="font-size:.75rem;color:var(--base01);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">背景・テキスト（明暗スケール）</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <div style="margin-bottom:1rem;">
+        <div style="font-size:.75rem;color:var(--base01);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">背景・テキスト（明暗スケール）</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#002b36;border:1px solid #0d4555;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base03</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#002b36;border:1px solid #0d4555;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">base03</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#073642;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base02</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#073642;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">base02</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#586e75;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base01</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#586e75;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">base01</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#839496;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base0</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#839496;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">base0</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#93a1a1;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base1</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#93a1a1;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">base1</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#eee8d5;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">base2</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#eee8d5;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">base2</div>
           </div>
         </div>
       </div>
 
       <div>
-        <div style="font-size:.75rem;color:var(--base01);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.6rem;">アクセントカラー</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <div style="font-size:.75rem;color:var(--base01);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">アクセントカラー</div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;">
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#2aa198;box-shadow:0 0 12px rgba(42,161,152,.5);"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">cyan<br>ブランド</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#2aa198;box-shadow:0 0 10px rgba(42,161,152,.5);"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">cyan<br>ブランド</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#268bd2;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">blue<br>リンク</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#268bd2;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">blue<br>リンク</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#859900;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">green<br>成功</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#859900;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">green<br>成功</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#b58900;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">yellow<br>警告</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#b58900;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">yellow<br>警告</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#cb4b16;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">orange<br>危険</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#cb4b16;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">orange<br>危険</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#dc322f;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">red<br>エラー</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#dc322f;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">red<br>エラー</div>
           </div>
           <div style="text-align:center;">
-            <div style="width:48px;height:48px;border-radius:8px;background:#6c71c4;"></div>
-            <div style="font-size:.65rem;color:var(--base01);margin-top:4px;">violet<br>汎用</div>
+            <div style="width:38px;height:38px;border-radius:6px;background:#6c71c4;"></div>
+            <div style="font-size:.6rem;color:var(--base01);margin-top:3px;">violet<br>汎用</div>
           </div>
         </div>
       </div>
     </div>
 
     <div>
-      <div class="card card-accent" style="margin-bottom:1rem;">
-        <h3 style="margin-bottom:.6rem;">Solarized Dark を採用した理由</h3>
-        <ul class="checklist" style="font-size:.9rem;">
+      <div class="card card-accent" style="margin-bottom:.75rem;padding:1rem 1.25rem;">
+        <h3 style="margin-bottom:.5rem;">Solarized Dark を採用した理由</h3>
+        <ul class="checklist" style="font-size:.85rem;">
           <li>長時間利用しても目が疲れにくい低コントラスト設計</li>
           <li>明暗8段階のスケールで情報の階層を自然に表現できる</li>
           <li>アクセントカラー7色がすべて意味を持ち、UIの文脈で使い分けられる</li>
@@ -713,8 +713,8 @@
         </ul>
       </div>
 
-      <div class="card" style="margin-bottom:1rem;">
-        <h3 style="margin-bottom:.6rem;">全コンポーネントで徹底</h3>
+      <div class="card" style="margin-bottom:.75rem;padding:1rem 1.25rem;">
+        <h3 style="margin-bottom:.5rem;">全コンポーネントで徹底</h3>
         <table style="font-size:.85rem;">
           <thead><tr><th>コンポーネント</th><th>統一ポイント</th></tr></thead>
           <tbody>
@@ -726,7 +726,7 @@
         </table>
       </div>
 
-      <div class="card">
+      <div class="card" style="padding:1rem 1.25rem;">
         <h3 style="margin-bottom:.4rem;font-size:.85rem;color:var(--base01);">デザインルール（禁止事項）</h3>
         <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;">
           <span style="font-size:.8rem;padding:3px 10px;border-radius:4px;background:rgba(220,50,47,.12);color:#dc322f;text-decoration:line-through;">bg-black</span>
@@ -745,9 +745,9 @@
 </div>
 
 <!-- ==================== SLIDE 9: FEATURES LIST ==================== -->
-<div class="slide" id="s9">
+<div class="slide" id="s9" style="padding: 1.75rem 3.5rem;">
   <div class="slide-label">実装済み機能</div>
-  <h2>MVP として稼働中の機能</h2>
+  <h2>MVP 実装完了 <span style="font-size:1.1rem;font-weight:500;color:var(--base01);">— 外部ユーザー招待前（シードデータのみ）</span></h2>
 
   <div class="cols-3" style="gap:1rem;">
     <div class="card">
@@ -784,7 +784,7 @@
         <li>JWT リフレッシュローテーション</li>
         <li>招待コード登録制</li>
         <li>5言語対応（ja/en/zh/ko/es）</li>
-        <li>PWA（Android インストール対応）</li>
+        <li>PWA（Web） / ネイティブアプリ化を検討</li>
         <li>管理システム（admin/moderator）</li>
       </ul>
     </div>
@@ -849,11 +849,11 @@
 </div>
 
 <!-- ==================== SLIDE 11: ROADMAP ==================== -->
-<div class="slide" id="s11">
+<div class="slide" id="s11" style="padding: 1.75rem 3.5rem;">
   <div class="slide-label">ロードマップ</div>
   <h2>フェーズ別マイルストーン</h2>
 
-  <div class="cols-3" style="gap:1.25rem;margin-bottom:2rem;">
+  <div class="cols-3" style="gap:1.25rem;margin-bottom:1.25rem;">
     <div class="card card-accent">
       <div class="badge badge-cyan" style="margin-bottom:.75rem;">Phase 1 — 招待制ベータ</div>
       <div class="num-block" style="margin-bottom:1rem;">
@@ -866,7 +866,7 @@
         <li>バグ・UX 問題のトリアージ</li>
         <li>週次 DAU 30% 以上を KPI に</li>
       </ul>
-      <div style="margin-top:.75rem;" class="badge badge-cyan">現在ここ</div>
+      <div style="margin-top:.75rem;" class="badge badge-orange">現在: シードデータで準備中</div>
     </div>
 
     <div class="card" style="border-left:3px solid var(--blue);">
@@ -926,7 +926,7 @@
 </div>
 
 <!-- ==================== SLIDE 12: COST & SCALE ==================== -->
-<div class="slide" id="s12">
+<div class="slide" id="s12" style="padding: 1.5rem 3rem;">
   <div class="slide-label">コスト・スケール計画</div>
   <h2>インフラコストとスケールアップ</h2>
 
@@ -992,8 +992,8 @@
     <div>
       <h3 style="margin-bottom:1rem;">インフラ可用性ロードマップ</h3>
 
-      <div class="card" style="margin-bottom:.75rem;">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+      <div class="card" style="margin-bottom:.5rem;padding:.875rem 1.25rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;">
           <span class="badge badge-green">完了</span>
           <strong>Phase 1 — 日次 DB バックアップ</strong>
         </div>
@@ -1001,8 +1001,8 @@
         <p style="font-size:.8rem;color:var(--base01);">追加コスト $4/月</p>
       </div>
 
-      <div class="card" style="margin-bottom:.75rem;">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+      <div class="card" style="margin-bottom:.5rem;padding:.875rem 1.25rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;">
           <span class="badge badge-blue">予定</span>
           <strong>Phase 2 — ステージングサーバー</strong>
         </div>
@@ -1010,8 +1010,8 @@
         <p style="font-size:.8rem;color:var(--base01);">追加コスト +$8/月</p>
       </div>
 
-      <div class="card" style="margin-bottom:.75rem;">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+      <div class="card" style="margin-bottom:.5rem;padding:.875rem 1.25rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;">
           <span class="badge badge-blue">将来</span>
           <strong>Phase 3 — DB レプリケーション</strong>
         </div>
@@ -1019,8 +1019,8 @@
         <p style="font-size:.8rem;color:var(--base01);">追加コスト +$8/月</p>
       </div>
 
-      <div class="card">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+      <div class="card" style="padding:.875rem 1.25rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;">
           <span class="badge badge-orange">10万人規模</span>
           <strong>Phase 4 — 本格 HA 構成</strong>
         </div>
@@ -1046,7 +1046,7 @@
       <div class="card card-accent" style="margin-bottom:1.25rem;">
         <h3>MVP は稼働済み</h3>
         <p style="font-size:.9rem;margin-top:.5rem;">
-          招待制ベータとして実ユーザーが使用中。60以上のAPIエンドポイント、
+          外部ユーザー招待前の本番稼働段階。60以上のAPIエンドポイント、
           25以上のDBテーブル、5言語対応まで完成しており、
           <strong style="color:var(--brand)">0からの構築コストが不要</strong>。
         </p>
