@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plofolia — ビジネス提案資料</title>
+<style>
+  :root {
+    --base03: #002b36; --base02: #073642; --base01: #586e75;
+    --base00: #657b83; --base0: #839496; --base1: #93a1a1;
+    --base2: #eee8d5; --base3: #fdf6e3;
+    --yellow: #b58900; --orange: #cb4b16; --red: #dc322f;
+    --magenta: #d33682; --violet: #6c71c4; --blue: #268bd2;
+    --cyan: #2aa198; --green: #859900;
+    --brand: #2aa198; --brand-dark: #1a7a72;
+    --surface-900: #073642; --surface-800: #0d4555;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--base03);
+    color: var(--base1);
+    line-height: 1.6;
+  }
+
+  /* ---- NAV ---- */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(0,43,54,.95); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--surface-800);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 52px;
+  }
+  .nav-brand { font-weight: 800; font-size: 1.1rem; color: var(--brand); letter-spacing: -.02em; }
+  .nav-dots { display: flex; gap: 6px; }
+  .nav-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--base01); cursor: pointer; transition: background .2s;
+  }
+  .nav-dot.active { background: var(--brand); }
+  .nav-arrows { display: flex; gap: .5rem; }
+  .nav-btn {
+    background: var(--surface-800); border: none; color: var(--base0);
+    padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: .85rem;
+    transition: background .2s;
+  }
+  .nav-btn:hover { background: var(--surface-900); color: var(--brand); }
+
+  /* ---- SLIDES ---- */
+  .slides { margin-top: 52px; }
+  .slide {
+    min-height: calc(100vh - 52px);
+    padding: 3rem 4rem;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide.active { display: flex; }
+
+  /* ---- TYPOGRAPHY ---- */
+  .slide-label {
+    font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--brand); margin-bottom: .75rem;
+  }
+  h1 { font-size: 3rem; font-weight: 800; color: var(--base2); line-height: 1.15; }
+  h2 { font-size: 2rem; font-weight: 700; color: var(--base2); margin-bottom: 1.5rem; }
+  h3 { font-size: 1.15rem; font-weight: 700; color: var(--base1); margin-bottom: .5rem; }
+  p { color: var(--base0); font-size: 1rem; }
+  .lead { font-size: 1.2rem; color: var(--base1); line-height: 1.7; }
+  .accent { color: var(--brand); }
+  .muted { color: var(--base01); font-size: .85rem; }
+
+  /* ---- GRID LAYOUTS ---- */
+  .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .cols-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+  .cols-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1.25rem; }
+
+  /* ---- CARDS ---- */
+  .card {
+    background: var(--surface-900); border: 1px solid var(--surface-800);
+    border-radius: 12px; padding: 1.5rem;
+  }
+  .card-accent { border-left: 3px solid var(--brand); }
+  .card-warn { border-left: 3px solid var(--orange); }
+  .card-green { border-left: 3px solid var(--green); }
+
+  /* ---- BADGE ---- */
+  .badge {
+    display: inline-block; font-size: .7rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 20px; letter-spacing: .05em;
+  }
+  .badge-cyan { background: rgba(42,161,152,.2); color: var(--brand); }
+  .badge-orange { background: rgba(203,75,22,.2); color: var(--orange); }
+  .badge-green { background: rgba(133,153,0,.2); color: var(--green); }
+  .badge-blue { background: rgba(38,139,210,.2); color: var(--blue); }
+  .badge-violet { background: rgba(108,113,196,.2); color: var(--violet); }
+
+  /* ---- TABLE ---- */
+  table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  th {
+    background: var(--surface-800); color: var(--brand);
+    text-align: left; padding: .6rem 1rem; font-size: .75rem;
+    text-transform: uppercase; letter-spacing: .08em;
+  }
+  td { padding: .6rem 1rem; border-bottom: 1px solid var(--surface-800); color: var(--base0); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(42,161,152,.04); }
+
+  /* ---- PROBLEM vs SOLUTION ---- */
+  .vs-row {
+    display: grid; grid-template-columns: 1fr 40px 1fr; gap: 0;
+    align-items: center; margin-bottom: .75rem;
+  }
+  .vs-left {
+    background: rgba(220,50,47,.08); border: 1px solid rgba(220,50,47,.25);
+    border-radius: 8px; padding: .75rem 1rem; color: var(--base0); font-size: .9rem;
+  }
+  .vs-arrow { text-align: center; color: var(--brand); font-size: 1.1rem; }
+  .vs-right {
+    background: rgba(42,161,152,.08); border: 1px solid rgba(42,161,152,.25);
+    border-radius: 8px; padding: .75rem 1rem; color: var(--base1); font-size: .9rem;
+  }
+
+  /* ---- PHASE TIMELINE ---- */
+  .phase-bar { display: flex; gap: 0; margin-bottom: 2rem; border-radius: 8px; overflow: hidden; }
+  .phase-seg {
+    flex: 1; padding: .5rem 1rem; text-align: center; font-size: .8rem; font-weight: 700;
+  }
+  .phase-1 { background: rgba(42,161,152,.25); color: var(--brand); }
+  .phase-2 { background: rgba(38,139,210,.2); color: var(--blue); }
+  .phase-3 { background: rgba(133,153,0,.2); color: var(--green); }
+
+  /* ---- ARCH DIAGRAM ---- */
+  .arch-svg { width: 100%; max-width: 780px; margin: 0 auto; display: block; }
+
+  /* ---- FEATURE ICON CARD ---- */
+  .feat-card {
+    background: var(--surface-900); border: 1px solid var(--surface-800);
+    border-radius: 10px; padding: 1.25rem; display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .feat-icon {
+    width: 40px; height: 40px; border-radius: 8px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+  }
+
+  /* ---- COST BAR ---- */
+  .cost-row { display: flex; align-items: center; gap: 1rem; margin-bottom: .75rem; }
+  .cost-label { width: 160px; font-size: .85rem; color: var(--base0); flex-shrink: 0; }
+  .cost-bar-bg { flex: 1; background: var(--surface-800); border-radius: 4px; height: 10px; }
+  .cost-bar-fill { height: 10px; border-radius: 4px; background: var(--brand); }
+  .cost-value { width: 80px; text-align: right; font-size: .85rem; color: var(--brand); font-weight: 700; }
+
+  /* ---- NUMBER HIGHLIGHT ---- */
+  .num-block { text-align: center; }
+  .num-big { font-size: 2.8rem; font-weight: 800; color: var(--brand); line-height: 1; }
+  .num-unit { font-size: .85rem; color: var(--base01); margin-top: .25rem; }
+
+  /* ---- COVER SLIDE ---- */
+  .cover-logo {
+    width: 72px; height: 72px; border-radius: 18px;
+    background: var(--brand); display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; font-weight: 900; color: var(--base03);
+    box-shadow: 0 0 40px rgba(42,161,152,.5); margin-bottom: 2rem;
+  }
+  .tag-row { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+
+  /* ---- FOOTER ---- */
+  .slide-footer {
+    margin-top: auto; padding-top: 1.5rem;
+    border-top: 1px solid var(--surface-800);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .slide-num { font-size: .75rem; color: var(--base01); }
+
+  /* ---- CHECKLIST ---- */
+  .checklist { list-style: none; }
+  .checklist li {
+    padding: .5rem 0; border-bottom: 1px solid var(--surface-800);
+    display: flex; align-items: baseline; gap: .75rem; font-size: .95rem; color: var(--base0);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "o"; color: var(--brand); font-weight: 800; flex-shrink: 0; }
+
+  /* ---- KEYWORD CHIPS ---- */
+  .chip {
+    display: inline-block; background: var(--surface-800);
+    border: 1px solid rgba(42,161,152,.3); border-radius: 20px;
+    padding: 4px 12px; font-size: .8rem; color: var(--base1); margin: 3px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">Plofolia</div>
+  <div class="nav-dots" id="dots"></div>
+  <div class="nav-arrows">
+    <button class="nav-btn" onclick="prev()">prev</button>
+    <button class="nav-btn" onclick="next()">next</button>
+  </div>
+</nav>
+
+<div class="slides">
+
+<!-- ==================== SLIDE 1: COVER ==================== -->
+<div class="slide active" id="s1">
+  <div class="cover-logo">P</div>
+  <div class="slide-label">新規ビジネス提案</div>
+  <h1>Plofolia</h1>
+  <p class="lead" style="margin-top:.75rem; max-width:600px;">
+    クリエイター向け <span class="accent">SNS + ポートフォリオ</span> の統合プラットフォーム。<br>
+    AI時代に人間クリエイターと AI クリエイターの双方を支える次世代の発表・整理・収益化の場。
+  </p>
+  <div class="tag-row" style="margin-top:1.5rem;">
+    <span class="badge badge-cyan">MVP 稼働中</span>
+    <span class="badge badge-blue">招待制ベータ</span>
+    <span class="badge badge-green">月額コスト $14〜</span>
+    <span class="badge badge-orange">収益化未実装</span>
+  </div>
+  <div class="slide-footer">
+    <span class="muted">2026年5月 — エンジニアチーム向け提案資料</span>
+    <span class="slide-num">1 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 2: PROBLEM ==================== -->
+<div class="slide" id="s2">
+  <div class="slide-label">課題</div>
+  <h2>クリエイターSNSが抱える構造的問題</h2>
+
+  <div class="vs-row">
+    <div class="vs-left"><strong style="color:#dc322f">シャドウバン</strong> — 投稿が通知なく非表示にされる。原因も対処法も不明</div>
+    <div class="vs-arrow">→</div>
+    <div class="vs-right">透明な時系列表示 + <strong class="accent">分析ダッシュボード</strong>で可視化</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-left"><strong style="color:#dc322f">ジャンル混在</strong> — イラスト・映像・音声・AI作品が一つのタイムラインに混在</div>
+    <div class="vs-arrow">→</div>
+    <div class="vs-right"><strong class="accent">3ドメインタブ</strong>（画像/映像/音声）+ 人間/AI フィルター</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-left"><strong style="color:#dc322f">SNS とポートフォリオが分断</strong> — X に WIP を投稿しつつ別サービスで作品管理</div>
+    <div class="vs-arrow">→</div>
+    <div class="vs-right"><strong class="accent">一体設計</strong> — WIP投稿をそのまま作品ポートフォリオに整理</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-left"><strong style="color:#dc322f">AI学習の脅威</strong> — 無断スクレイピング・AI生成作品の氾濫で人間クリエイターの価値低下</div>
+    <div class="vs-arrow">→</div>
+    <div class="vs-right"><strong class="accent">AI学習拒否宣言</strong> + WIP記録が「人間が作った」証跡に</div>
+  </div>
+  <div class="vs-row">
+    <div class="vs-left"><strong style="color:#dc322f">NSFW・AI作品への差別</strong> — 突然のBAN・アルゴリズムによる抑制</div>
+    <div class="vs-arrow">→</div>
+    <div class="vs-right">アルゴリズムによる差別なし。<strong class="accent">AIフィルターで的確な読者へ</strong></div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">既存サービス（X / pixiv / Misskey）では解決されていない</span>
+    <span class="slide-num">2 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 3: SOLUTION ==================== -->
+<div class="slide" id="s3">
+  <div class="slide-label">ソリューション</div>
+  <h2>Plofolia = Plot + Portfolio</h2>
+  <p class="lead" style="margin-bottom:2rem; max-width:680px;">
+    日々のWIP（制作途中）を気軽に投稿しながら、完成作品をポートフォリオとして整理・公開できる。
+    クリエイターとファンの距離が近いプラットフォーム。
+  </p>
+
+  <!-- Concept diagram -->
+  <svg viewBox="0 0 760 200" class="arch-svg" style="max-width:700px;">
+    <!-- WIP投稿 box -->
+    <rect x="10" y="30" width="180" height="140" rx="12" fill="#0d4555" stroke="#2aa198" stroke-width="1.5"/>
+    <text x="100" y="60" text-anchor="middle" fill="#2aa198" font-size="13" font-weight="700">SNS（Plot）</text>
+    <text x="100" y="82" text-anchor="middle" fill="#839496" font-size="11">WIP 投稿</text>
+    <text x="100" y="99" text-anchor="middle" fill="#839496" font-size="11">フォロー / いいね</text>
+    <text x="100" y="116" text-anchor="middle" fill="#839496" font-size="11">タイムコメント</text>
+    <text x="100" y="133" text-anchor="middle" fill="#839496" font-size="11">DM・通知</text>
+    <text x="100" y="155" text-anchor="middle" fill="#586e75" font-size="10">毎日気軽に</text>
+
+    <!-- arrow -->
+    <path d="M200 100 L290 100" stroke="#2aa198" stroke-width="2" marker-end="url(#arr)" fill="none"/>
+    <text x="245" y="88" text-anchor="middle" fill="#2aa198" font-size="10">作品として整理</text>
+
+    <!-- Portfolio box -->
+    <rect x="300" y="30" width="180" height="140" rx="12" fill="#0d4555" stroke="#268bd2" stroke-width="1.5"/>
+    <text x="390" y="60" text-anchor="middle" fill="#268bd2" font-size="13" font-weight="700">Portfolio</text>
+    <text x="390" y="82" text-anchor="middle" fill="#839496" font-size="11">完成作品一覧</text>
+    <text x="390" y="99" text-anchor="middle" fill="#839496" font-size="11">シリーズ整理</text>
+    <text x="390" y="116" text-anchor="middle" fill="#839496" font-size="11">制作過程ツリー付き</text>
+    <text x="390" y="133" text-anchor="middle" fill="#839496" font-size="11">公開/非公開制御</text>
+    <text x="390" y="155" text-anchor="middle" fill="#586e75" font-size="10">仕事依頼にも</text>
+
+    <!-- arrow -->
+    <path d="M490 100 L580 100" stroke="#859900" stroke-width="2" marker-end="url(#arr2)" fill="none"/>
+
+    <!-- Result box -->
+    <rect x="590" y="30" width="160" height="140" rx="12" fill="#0d4555" stroke="#859900" stroke-width="1.5"/>
+    <text x="670" y="60" text-anchor="middle" fill="#859900" font-size="13" font-weight="700">クリエイターの価値</text>
+    <text x="670" y="82" text-anchor="middle" fill="#839496" font-size="11">人間性の証跡</text>
+    <text x="670" y="99" text-anchor="middle" fill="#839496" font-size="11">ファンとの関係</text>
+    <text x="670" y="116" text-anchor="middle" fill="#839496" font-size="11">発見されやすさ</text>
+    <text x="670" y="133" text-anchor="middle" fill="#839496" font-size="11">収益化の基盤</text>
+
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#2aa198"/>
+      </marker>
+      <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 z" fill="#859900"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <div class="slide-footer">
+    <span class="muted">命名: Plo(t) + (Port)folia</span>
+    <span class="slide-num">3 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 4: TARGET ==================== -->
+<div class="slide" id="s4">
+  <div class="slide-label">ターゲットユーザー</div>
+  <h2>二種類のクリエイターを同時に取り込む</h2>
+
+  <div class="cols-2" style="gap:2rem;">
+    <div class="card card-accent">
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(42,161,152,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">H</div>
+        <h3 style="margin:0;">人間クリエイター</h3>
+      </div>
+      <ul class="checklist">
+        <li>シャドウバンに悩むイラストレーター・漫画家</li>
+        <li>映像・音声作品をファンと深く交流したい映像作家・ミュージシャン</li>
+        <li>WIPから完成作品まで一か所で管理したいクリエイター</li>
+        <li>AI普及で自作品の価値が低下していると感じている人</li>
+        <li>NSFW作品を適切な環境で発表したいクリエイター</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--blue);">
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+        <div style="width:36px;height:36px;border-radius:8px;background:rgba(38,139,210,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;">A</div>
+        <h3 style="margin:0;">AIクリエイター</h3>
+      </div>
+      <ul class="checklist">
+        <li>AI作品を制限なく発表できる場所が欲しいクリエイター</li>
+        <li>他プラットフォームでのBAN・差別リスクを避けたい</li>
+        <li>プロンプト試行・スタイル探求をWIPとして公開したい</li>
+        <li>AIコンテンツ好きのファンへ直接届けたい</li>
+      </ul>
+      <div style="margin-top:1rem;padding:.75rem;background:rgba(38,139,210,.08);border-radius:8px;">
+        <p style="font-size:.85rem;color:var(--base01);">
+          AIクリエイターへの公平な扱いは他サービスにない差別化点。
+          OnlyFans のAI版に近いポジション。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.5rem;" class="card" style="border:none;background:var(--surface-800);padding:1rem;">
+    <p style="font-size:.9rem;"><strong style="color:var(--base2);">5言語対応</strong>（日本語・英語・中国語・韓国語・スペイン語）で
+    グローバルのクリエイターを最初から取り込める設計。</p>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">一次ターゲット: 最初の500人 — 日本のイラスト・映像・音声クリエイター</span>
+    <span class="slide-num">4 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 5: KEY FEATURES ==================== -->
+<div class="slide" id="s5">
+  <div class="slide-label">差別化機能</div>
+  <h2>他サービスにない 4 つの独自機能</h2>
+
+  <div class="cols-2" style="gap:1.25rem;">
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(42,161,152,.15);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2aa198" stroke-width="2">
+          <polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+        </svg>
+      </div>
+      <div>
+        <h3>タイムコメント</h3>
+        <p style="font-size:.9rem;">動画・音声の再生位置に紐づくコメント（YouTube Live風オーバーレイ）。
+        動画・音声作品専用の深いエンゲージメント体験。X・pixiv にはない。</p>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(38,139,210,.15);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#268bd2" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+        </svg>
+      </div>
+      <div>
+        <h3>SNS + ポートフォリオ一体設計</h3>
+        <p style="font-size:.9rem;">WIP投稿をポートフォリオ作品に紐づけるだけで、制作過程ツリー付きの
+        作品ページが完成。SNSとポートフォリオサイトを別々に管理する手間がゼロ。</p>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(133,153,0,.15);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#859900" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div>
+        <h3>AI学習拒否宣言</h3>
+        <p style="font-size:.9rem;">設定1クリックでプロフィールにバッジ表示 + noaiメタ情報付与。
+        WIP投稿の積み重ねが「人間が作った」制作過程の証跡にもなる。</p>
+      </div>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(108,113,196,.15);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6c71c4" stroke-width="2">
+          <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+          <line x1="8" y1="18" x2="21" y2="18"/>
+          <circle cx="3" cy="6" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="18" r="1"/>
+        </svg>
+      </div>
+      <div>
+        <h3>ドメイン分離タイムライン</h3>
+        <p style="font-size:.9rem;">画像 / 映像 / 音声 の3タブ + 人間/AIフィルター + 人気タブ。
+        各ジャンルのファンへ確実に届く設計。クリエイターの投稿が埋もれない。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">その他: DM・通知 SSE リアルタイム / シリーズ機能 / 5言語対応 / PWA対応</span>
+    <span class="slide-num">5 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 6: SYSTEM ARCHITECTURE ==================== -->
+<div class="slide" id="s6">
+  <div class="slide-label">システム構成</div>
+  <h2>アーキテクチャ概要</h2>
+
+  <svg viewBox="0 0 780 320" class="arch-svg">
+    <!-- User -->
+    <rect x="10" y="30" width="120" height="50" rx="8" fill="#0d4555" stroke="#2aa198" stroke-width="1.5"/>
+    <text x="70" y="52" text-anchor="middle" fill="#2aa198" font-size="11" font-weight="700">ユーザー</text>
+    <text x="70" y="68" text-anchor="middle" fill="#586e75" font-size="10">ブラウザ / PWA</text>
+
+    <!-- Admin -->
+    <rect x="10" y="120" width="120" height="50" rx="8" fill="#0d4555" stroke="#268bd2" stroke-width="1.5"/>
+    <text x="70" y="142" text-anchor="middle" fill="#268bd2" font-size="11" font-weight="700">管理者</text>
+    <text x="70" y="158" text-anchor="middle" fill="#586e75" font-size="10">aurora.plofolia.com</text>
+
+    <!-- Nginx -->
+    <rect x="185" y="60" width="110" height="80" rx="8" fill="#0d4555" stroke="#586e75" stroke-width="1.5"/>
+    <text x="240" y="90" text-anchor="middle" fill="#93a1a1" font-size="11" font-weight="700">Nginx</text>
+    <text x="240" y="106" text-anchor="middle" fill="#586e75" font-size="10">HTTPS :443</text>
+    <text x="240" y="121" text-anchor="middle" fill="#586e75" font-size="10">リバースプロキシ</text>
+
+    <!-- EC2 box -->
+    <rect x="350" y="10" width="280" height="230" rx="12" fill="rgba(13,69,85,.4)" stroke="#073642" stroke-width="2"/>
+    <text x="490" y="30" text-anchor="middle" fill="#586e75" font-size="10">AWS EC2 t3.micro (ap-northeast-1)</text>
+
+    <!-- terra -->
+    <rect x="365" y="40" width="115" height="45" rx="6" fill="#0d4555" stroke="#2aa198" stroke-width="1"/>
+    <text x="422" y="58" text-anchor="middle" fill="#2aa198" font-size="10" font-weight="700">terra :3000</text>
+    <text x="422" y="73" text-anchor="middle" fill="#586e75" font-size="9">Next.js フロント</text>
+
+    <!-- sol -->
+    <rect x="365" y="100" width="115" height="45" rx="6" fill="#0d4555" stroke="#859900" stroke-width="1"/>
+    <text x="422" y="118" text-anchor="middle" fill="#859900" font-size="10" font-weight="700">sol :4000</text>
+    <text x="422" y="133" text-anchor="middle" fill="#586e75" font-size="9">Express メイン API</text>
+
+    <!-- nova -->
+    <rect x="365" y="160" width="115" height="45" rx="6" fill="#0d4555" stroke="#268bd2" stroke-width="1"/>
+    <text x="422" y="178" text-anchor="middle" fill="#268bd2" font-size="10" font-weight="700">nova :4001</text>
+    <text x="422" y="193" text-anchor="middle" fill="#586e75" font-size="9">Express 管理 API</text>
+
+    <!-- PostgreSQL -->
+    <rect x="495" y="60" width="120" height="100" rx="6" fill="#0d4555" stroke="#586e75" stroke-width="1"/>
+    <text x="555" y="100" text-anchor="middle" fill="#93a1a1" font-size="11" font-weight="700">PostgreSQL 16</text>
+    <text x="555" y="116" text-anchor="middle" fill="#586e75" font-size="9">16 テーブル以上</text>
+    <text x="555" y="131" text-anchor="middle" fill="#586e75" font-size="9">Drizzle ORM</text>
+    <text x="555" y="150" text-anchor="middle" fill="#586e75" font-size="9">:5432</text>
+
+    <!-- Aurora UI box -->
+    <rect x="365" y="215" width="245" height="20" rx="4" fill="rgba(38,139,210,.1)" stroke="rgba(38,139,210,.3)" stroke-width="1"/>
+    <text x="487" y="229" text-anchor="middle" fill="#268bd2" font-size="9">aurora :3001 (Next.js 管理UI)</text>
+
+    <!-- AWS box -->
+    <rect x="650" y="40" width="120" height="170" rx="8" fill="rgba(13,69,85,.4)" stroke="#073642" stroke-width="1.5"/>
+    <text x="710" y="60" text-anchor="middle" fill="#586e75" font-size="10">AWS</text>
+    <rect x="662" y="70" width="96" height="30" rx="4" fill="#0d4555" stroke="#b58900" stroke-width="1"/>
+    <text x="710" y="90" text-anchor="middle" fill="#b58900" font-size="10" font-weight="700">S3 メディア</text>
+    <rect x="662" y="110" width="96" height="30" rx="4" fill="#0d4555" stroke="#cb4b16" stroke-width="1"/>
+    <text x="710" y="130" text-anchor="middle" fill="#cb4b16" font-size="10" font-weight="700">SES メール</text>
+    <rect x="662" y="150" width="96" height="30" rx="4" fill="#0d4555" stroke="#6c71c4" stroke-width="1"/>
+    <text x="710" y="170" text-anchor="middle" fill="#6c71c4" font-size="10" font-weight="700">Google / X OAuth</text>
+
+    <!-- Arrows -->
+    <path d="M130 55 L183 85" stroke="#2aa198" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+    <path d="M130 145 L183 115" stroke="#268bd2" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+    <path d="M297 85 L363 65" stroke="#2aa198" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+    <path d="M297 115 L363 120" stroke="#859900" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+    <path d="M297 130 L363 175" stroke="#268bd2" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+    <path d="M482 110 L493 110" stroke="#586e75" stroke-width="1" fill="none" marker-end="url(#a1)"/>
+    <path d="M617 110 L648 110" stroke="#b58900" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+
+    <!-- SSE label -->
+    <text x="325" y="82" text-anchor="middle" fill="#2aa198" font-size="9">HTTPS</text>
+    <text x="325" y="122" text-anchor="middle" fill="#859900" font-size="9">REST</text>
+    <text x="325" y="155" text-anchor="middle" fill="#268bd2" font-size="9">SSE</text>
+
+    <defs>
+      <marker id="a1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L6,3 z" fill="#586e75"/>
+      </marker>
+    </defs>
+
+    <!-- PM2 label -->
+    <text x="380" y="260" fill="#2aa198" font-size="9">PM2 で4プロセスを管理</text>
+    <text x="380" y="273" fill="#586e75" font-size="9">GitHub Actions CI / ワンコマンドデプロイ (deploy.ps1)</text>
+  </svg>
+
+  <div class="slide-footer">
+    <span class="muted">単一EC2で全プロセスを同居。ユーザー増加に伴い段階的にスケール予定</span>
+    <span class="slide-num">6 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 7: TECH STACK ==================== -->
+<div class="slide" id="s7">
+  <div class="slide-label">技術スタック</div>
+  <h2>選定技術と根拠</h2>
+
+  <div class="cols-2" style="gap:1.5rem;">
+    <div>
+      <table>
+        <thead><tr><th>レイヤー</th><th>技術</th><th>選定理由</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-cyan">FE</span></td>
+            <td><strong>Next.js 14</strong></td>
+            <td>SSR必須のOGP最適化 + i18n</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-cyan">FE</span></td>
+            <td><strong>Zustand + TanStack Query</strong></td>
+            <td>軽量 + 無限スクロール対応</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-green">BE</span></td>
+            <td><strong>Express + TypeScript</strong></td>
+            <td>枯れた実績・ミドルウェア豊富</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-green">BE</span></td>
+            <td><strong>Drizzle ORM</strong></td>
+            <td>Prismaより軽量・t3.microで快適</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-blue">DB</span></td>
+            <td><strong>PostgreSQL 16</strong></td>
+            <td>UUID・JSONB・全文検索の拡張性</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-orange">Auth</span></td>
+            <td><strong>JWT + httpOnly Cookie</strong></td>
+            <td>ステートレス・XSS対策・水平スケール対応</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-violet">Infra</span></td>
+            <td><strong>AWS EC2 + Nginx + PM2</strong></td>
+            <td>$10/月で4プロセス同居。長期コスト最安</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-violet">RT</span></td>
+            <td><strong>SSE</strong></td>
+            <td>通知・DM に十分。WebSocketより設定簡単</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <div class="card card-accent" style="margin-bottom:1rem;">
+        <h3>AI時代の開発体制</h3>
+        <p style="font-size:.9rem;margin-top:.5rem;">
+          プロダクト設計はオーナーが担当し、実装・インフラは
+          <strong style="color:var(--brand)">Claude Code（AI エンジニア）</strong>が自律実行。<br>
+          副業エンジニアを追加しやすい設計（GitHub PR ベース）。
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--base01);font-size:.85rem;margin-bottom:.75rem;">技術キーワード</h3>
+        <div>
+          <span class="chip">Next.js 14 App Router</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">Tailwind CSS</span>
+          <span class="chip">Drizzle ORM</span>
+          <span class="chip">PostgreSQL 16</span>
+          <span class="chip">JWT リフレッシュローテーション</span>
+          <span class="chip">SSE リアルタイム</span>
+          <span class="chip">PWA</span>
+          <span class="chip">GitHub Actions CI</span>
+          <span class="chip">AWS EC2 / S3 / SES</span>
+          <span class="chip">Google / Twitter OAuth</span>
+          <span class="chip">Zod バリデーション</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">フルスタック TypeScript で型安全性を保証。将来の水平スケールも設計済み</span>
+    <span class="slide-num">7 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 8: FEATURES LIST ==================== -->
+<div class="slide" id="s8">
+  <div class="slide-label">実装済み機能</div>
+  <h2>MVP として稼働中の機能</h2>
+
+  <div class="cols-3" style="gap:1rem;">
+    <div class="card">
+      <div class="badge badge-green" style="margin-bottom:.75rem;">SNS コア</div>
+      <ul class="checklist" style="font-size:.85rem;">
+        <li>タイムライン（3ドメイン + AI/人間フィルター + 人気）</li>
+        <li>投稿（画像4枚・動画・音声+カバー）</li>
+        <li>いいね・リポスト・返信・ブックマーク</li>
+        <li>フォロー・ミュート・ブロック</li>
+        <li>DM リアルタイムチャット（SSE）</li>
+        <li>通知リアルタイム（SSE）</li>
+        <li>ハッシュタグ・検索オートコンプリート</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge badge-cyan" style="margin-bottom:.75rem;">クリエイター特化</div>
+      <ul class="checklist" style="font-size:.85rem;">
+        <li>ポートフォリオ作品管理（WIP連携）</li>
+        <li>シリーズ投稿機能</li>
+        <li>タイムコメント（動画・音声）</li>
+        <li>クリエイター分析ダッシュボード</li>
+        <li>AI学習拒否宣言</li>
+        <li>閲覧地域フィルタリング</li>
+        <li>国籍表示</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="badge badge-blue" style="margin-bottom:.75rem;">認証・インフラ</div>
+      <ul class="checklist" style="font-size:.85rem;">
+        <li>メール認証フロー + MX検証</li>
+        <li>Google / Twitter OAuth</li>
+        <li>JWT リフレッシュローテーション</li>
+        <li>招待コード登録制</li>
+        <li>5言語対応（ja/en/zh/ko/es）</li>
+        <li>PWA（Android インストール対応）</li>
+        <li>管理システム（admin/moderator）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">マイグレーション: 0043ファイル / テーブル数: 25以上 / API エンドポイント: 60以上</span>
+    <span class="slide-num">8 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 9: BUSINESS MODEL ==================== -->
+<div class="slide" id="s9">
+  <div class="slide-label">ビジネスモデル</div>
+  <h2>収益化戦略</h2>
+
+  <div class="cols-2" style="gap:2rem;">
+    <div>
+      <div class="phase-bar">
+        <div class="phase-seg phase-1">Phase 1<br>現在</div>
+        <div class="phase-seg phase-2">Phase 2<br>近いうち</div>
+        <div class="phase-seg phase-3">Phase 3<br>成長期</div>
+      </div>
+
+      <table>
+        <thead><tr><th>フェーズ</th><th>手段</th><th>対象</th><th>プラットフォーム手数料</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-cyan">Phase 1</span></td>
+            <td>Ko-Fi 寄付</td>
+            <td>サービス全体への支援</td>
+            <td>0%（Ko-Fi 手数料のみ）</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-blue">Phase 2</span></td>
+            <td>Stripe チップ</td>
+            <td>SFW クリエイターへの投げ銭</td>
+            <td><strong style="color:var(--brand)">15%</strong></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-green">Phase 3</span></td>
+            <td>CCBill</td>
+            <td>NSFW サブスク・単品販売</td>
+            <td><strong style="color:var(--brand)">15%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="card" style="margin-top:1.25rem;background:rgba(42,161,152,.06);">
+        <p style="font-size:.9rem;"><strong style="color:var(--base2);">なぜ Stripe + CCBill の二本立てか？</strong></p>
+        <p style="font-size:.85rem;margin-top:.5rem;">
+          Stripe は NSFW コンテンツへの利用規約が厳しく突然停止リスクあり。
+          CCBill は OnlyFans 等で実績のある成人コンテンツ専用決済。
+          手数料 15% は OnlyFans（20%）より低く、移住クリエイターへの訴求になる。
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:1rem;color:var(--base01);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;">損益分岐点の試算</h3>
+
+      <div class="card" style="margin-bottom:1rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:.9rem;">現在の固定費</span>
+          <strong style="color:var(--brand);">$14 / 月</strong>
+        </div>
+      </div>
+
+      <div class="card card-green" style="margin-bottom:1rem;">
+        <div style="font-size:.85rem;color:var(--base01);margin-bottom:.5rem;">Phase 2 損益分岐点（チップ手数料15%）</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:.9rem;">必要な月間総チップ額</span>
+          <strong style="color:var(--green);">$93</strong>
+        </div>
+        <p style="font-size:.8rem;color:var(--base01);margin-top:.5rem;">
+          93人が$1チップするだけで黒字。現実的な目標。
+        </p>
+      </div>
+
+      <div class="card">
+        <div style="font-size:.85rem;color:var(--base01);margin-bottom:.75rem;">広告を採用しない理由</div>
+        <ul style="font-size:.85rem;color:var(--base0);padding-left:1rem;">
+          <li style="margin-bottom:.4rem;">NSFW対応広告ネットワークが限られる</li>
+          <li style="margin-bottom:.4rem;">クリエイターへの不信感を招く</li>
+          <li>クリエイター間の直接決済の方がLTV高い</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">決済システムは収益化フェーズで追加実装。現在は Ko-Fi リンクのみ</span>
+    <span class="slide-num">9 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 10: ROADMAP ==================== -->
+<div class="slide" id="s10">
+  <div class="slide-label">ロードマップ</div>
+  <h2>フェーズ別マイルストーン</h2>
+
+  <div class="cols-3" style="gap:1.25rem;margin-bottom:2rem;">
+    <div class="card card-accent">
+      <div class="badge badge-cyan" style="margin-bottom:.75rem;">Phase 1 — 招待制ベータ</div>
+      <div class="num-block" style="margin-bottom:1rem;">
+        <div class="num-big">100</div>
+        <div class="num-unit">目標ユーザー数</div>
+      </div>
+      <ul class="checklist" style="font-size:.85rem;">
+        <li>招待コードで信頼ユーザー限定</li>
+        <li>コアループ（投稿・いいね・フォロー）検証</li>
+        <li>バグ・UX 問題のトリアージ</li>
+        <li>週次 DAU 30% 以上を KPI に</li>
+      </ul>
+      <div style="margin-top:.75rem;" class="badge badge-cyan">現在ここ</div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--blue);">
+      <div class="badge badge-blue" style="margin-bottom:.75rem;">Phase 2 — 限定公開</div>
+      <div class="num-block" style="margin-bottom:1rem;">
+        <div class="num-big" style="color:var(--blue);">1,000</div>
+        <div class="num-unit">目標ユーザー数</div>
+      </div>
+      <ul class="checklist" style="font-size:.85rem;">
+        <li>招待コード配布ツイートでバイラル</li>
+        <li>Stripe チップ機能実装</li>
+        <li>OGP・シェア体験最終調整</li>
+        <li>モデレーター採用</li>
+      </ul>
+    </div>
+
+    <div class="card card-green">
+      <div class="badge badge-green" style="margin-bottom:.75rem;">Phase 3 — フルオープン</div>
+      <div class="num-block" style="margin-bottom:1rem;">
+        <div class="num-big" style="color:var(--green);">5,000+</div>
+        <div class="num-unit">目標ユーザー数</div>
+      </div>
+      <ul class="checklist" style="font-size:.85rem;">
+        <li>招待制解除・オープン登録</li>
+        <li>CCBill 実装（NSFW 収益化）</li>
+        <li>CloudFront 導入（帯域最適化）</li>
+        <li>インフルエンサーへの正式アプローチ</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ユーザー獲得チャネル -->
+  <h3 style="margin-bottom:.75rem;color:var(--base01);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;">主要ユーザー獲得チャネル</h3>
+  <div class="cols-4" style="gap:1rem;">
+    <div style="text-align:center;padding:.75rem;background:var(--surface-900);border-radius:8px;">
+      <div style="font-weight:700;color:var(--base1);margin-bottom:.25rem;">X / Bluesky</div>
+      <div style="font-size:.8rem;color:var(--base01);">最優先。招待コード配布ツイートでバイラル</div>
+    </div>
+    <div style="text-align:center;padding:.75rem;background:var(--surface-900);border-radius:8px;">
+      <div style="font-weight:700;color:var(--base1);margin-bottom:.25rem;">Pixiv / Skeb</div>
+      <div style="font-size:.8rem;color:var(--base01);">プロフィールリンクで二次流入</div>
+    </div>
+    <div style="text-align:center;padding:.75rem;background:var(--surface-900);border-radius:8px;">
+      <div style="font-weight:700;color:var(--base1);margin-bottom:.25rem;">Discord</div>
+      <div style="font-size:.8rem;color:var(--base01);">NSFWコミュニティへの告知</div>
+    </div>
+    <div style="text-align:center;padding:.75rem;background:var(--surface-900);border-radius:8px;">
+      <div style="font-weight:700;color:var(--base1);margin-bottom:.25rem;">Mastodon</div>
+      <div style="font-size:.8rem;color:var(--base01);">X移住勢への訴求</div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">Phase 3 で Ko-Fi 収益 > AWS コスト（黒字化）を目指す</span>
+    <span class="slide-num">10 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 11: COST & SCALE ==================== -->
+<div class="slide" id="s11">
+  <div class="slide-label">コスト・スケール計画</div>
+  <h2>インフラコストとスケールアップ</h2>
+
+  <div class="cols-2" style="gap:2rem;">
+    <div>
+      <h3 style="margin-bottom:1rem;">フェーズ別月額コスト</h3>
+
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:.8rem;color:var(--base01);margin-bottom:.5rem;">現在 〜 1,000人</div>
+        <div class="cost-row">
+          <span class="cost-label">EC2 t3.micro</span>
+          <div class="cost-bar-bg"><div class="cost-bar-fill" style="width:30%;"></div></div>
+          <span class="cost-value">$10</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">EBS + S3 + SES</span>
+          <div class="cost-bar-bg"><div class="cost-bar-fill" style="width:12%;background:var(--blue);"></div></div>
+          <span class="cost-value" style="color:var(--blue);">$4</span>
+        </div>
+        <div style="border-top:1px solid var(--surface-800);padding-top:.5rem;display:flex;justify-content:flex-end;">
+          <strong style="color:var(--brand);font-size:1.1rem;">合計 $14 / 月</strong>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:.8rem;color:var(--base01);margin-bottom:.5rem;">1,000 〜 10,000人（t3.small + CloudFront）</div>
+        <div class="cost-row">
+          <span class="cost-label">EC2 t3.small</span>
+          <div class="cost-bar-bg"><div class="cost-bar-fill" style="width:50%;"></div></div>
+          <span class="cost-value">$20</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">CloudFront + S3</span>
+          <div class="cost-bar-bg"><div class="cost-bar-fill" style="width:60%;background:var(--blue);"></div></div>
+          <span class="cost-value" style="color:var(--blue);">$25</span>
+        </div>
+        <div style="border-top:1px solid var(--surface-800);padding-top:.5rem;display:flex;justify-content:flex-end;">
+          <strong style="color:var(--blue);font-size:1.1rem;">合計 $50 / 月</strong>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:.8rem;color:var(--base01);margin-bottom:.5rem;">10万人規模（ALB + RDS Multi-AZ）</div>
+        <div class="cost-row">
+          <span class="cost-label">EC2 × 2 + ALB</span>
+          <div class="cost-bar-bg"><div class="cost-bar-fill" style="width:80%;"></div></div>
+          <span class="cost-value">$100</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">RDS + CloudFront</span>
+          <div class="cost-bar-bg"><div class="cost-bar-fill" style="width:95%;background:var(--green);"></div></div>
+          <span class="cost-value" style="color:var(--green);">$210</span>
+        </div>
+        <div style="border-top:1px solid var(--surface-800);padding-top:.5rem;display:flex;justify-content:flex-end;">
+          <strong style="color:var(--green);font-size:1.1rem;">合計 $310 / 月</strong>
+        </div>
+        <p style="font-size:.8rem;color:var(--base01);margin-top:.5rem;">
+          この規模では手数料収益（月数十万円）でカバー可能
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="margin-bottom:1rem;">インフラ可用性ロードマップ</h3>
+
+      <div class="card" style="margin-bottom:.75rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+          <span class="badge badge-green">完了</span>
+          <strong>Phase 1 — 日次 DB バックアップ</strong>
+        </div>
+        <p style="font-size:.85rem;">pg_dump → S3 (30世代) + AMI 週次スナップショット</p>
+        <p style="font-size:.8rem;color:var(--base01);">追加コスト $4/月</p>
+      </div>
+
+      <div class="card" style="margin-bottom:.75rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+          <span class="badge badge-blue">予定</span>
+          <strong>Phase 2 — ステージングサーバー</strong>
+        </div>
+        <p style="font-size:.85rem;">test.plofolia.com — develop ブランチの自動デプロイ</p>
+        <p style="font-size:.8rem;color:var(--base01);">追加コスト +$8/月</p>
+      </div>
+
+      <div class="card" style="margin-bottom:.75rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+          <span class="badge badge-blue">将来</span>
+          <strong>Phase 3 — DB レプリケーション</strong>
+        </div>
+        <p style="font-size:.85rem;">PostgreSQL Hot Standby + repmgr 自動昇格</p>
+        <p style="font-size:.8rem;color:var(--base01);">追加コスト +$8/月</p>
+      </div>
+
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;">
+          <span class="badge badge-orange">10万人規模</span>
+          <strong>Phase 4 — 本格 HA 構成</strong>
+        </div>
+        <p style="font-size:.85rem;">ALB + RDS Multi-AZ + CloudFront + ElastiCache</p>
+        <p style="font-size:.8rem;color:var(--base01);">追加コスト +$100〜150/月</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">現在は単一EC2で安定稼働中。スケール時も 1ENV変数で S3・DB 移行可能な設計</span>
+    <span class="slide-num">11 / 12</span>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 12: SUMMARY ==================== -->
+<div class="slide" id="s12">
+  <div class="slide-label">まとめ</div>
+  <h2>なぜ今、Plofolia に投資するか</h2>
+
+  <div class="cols-2" style="gap:2rem;margin-bottom:2rem;">
+    <div>
+      <div class="card card-accent" style="margin-bottom:1.25rem;">
+        <h3>MVP は稼働済み</h3>
+        <p style="font-size:.9rem;margin-top:.5rem;">
+          招待制ベータとして実ユーザーが使用中。60以上のAPIエンドポイント、
+          25以上のDBテーブル、5言語対応まで完成しており、
+          <strong style="color:var(--brand)">0からの構築コストが不要</strong>。
+        </p>
+      </div>
+      <div class="card card-accent">
+        <h3>市場の追い風</h3>
+        <p style="font-size:.9rem;margin-top:.5rem;">
+          X のシャドウバン問題・AI生成コンテンツの普及・クリエイター権利への関心の高まりが
+          重なり、クリエイター専用 SNS への需要が拡大している。
+          <strong style="color:var(--brand)">参入タイミングとして最適</strong>。
+        </p>
+      </div>
+    </div>
+
+    <div>
+      <div class="card card-green" style="margin-bottom:1.25rem;">
+        <h3>リスクが低い</h3>
+        <p style="font-size:.9rem;margin-top:.5rem;">
+          インフラコスト $14/月から始められる。
+          損益分岐点は月間チップ $93（= 93人が$1チップ）。
+          CCBill を追加することで NSFW 市場という
+          <strong style="color:var(--green)">収益性の高いニッチ</strong>を取れる。
+        </p>
+      </div>
+      <div class="card card-green">
+        <h3>エンジニアチームへの提案</h3>
+        <p style="font-size:.9rem;margin-top:.5rem;">
+          Next.js / Express / PostgreSQL / AWS という<strong style="color:var(--green)">業界標準スタック</strong>。
+          コードベースは GitHub で管理済み・CI 完備。
+          副業エンジニアから正社員まで段階的に参加しやすい。
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:rgba(42,161,152,.08);border:1px solid rgba(42,161,152,.3);border-radius:12px;padding:1.5rem;display:flex;align-items:center;gap:2rem;">
+    <div class="num-block">
+      <div class="num-big">$14</div>
+      <div class="num-unit">現在の月額固定費</div>
+    </div>
+    <div class="num-block">
+      <div class="num-big">60+</div>
+      <div class="num-unit">実装済み API エンドポイント</div>
+    </div>
+    <div class="num-block">
+      <div class="num-big">5</div>
+      <div class="num-unit">対応言語</div>
+    </div>
+    <div class="num-block">
+      <div class="num-big" style="color:var(--green)">15%</div>
+      <div class="num-unit">プラットフォーム手数料</div>
+    </div>
+    <div style="flex:1;border-left:1px solid rgba(42,161,152,.3);padding-left:1.5rem;">
+      <p style="font-size:1rem;color:var(--base1);line-height:1.7;">
+        クリエイターSNS × ポートフォリオ × AI時代の権利保護。<br>
+        MVP 稼働済み・低固定費・明確な収益化ルートで、<br>
+        <strong style="color:var(--brand)">今すぐ一緒に育てられる</strong> プロダクト。
+      </p>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="muted">plofolia.com — GitHub: plofolia-dev/plofolia</span>
+    <span class="slide-num">12 / 12</span>
+  </div>
+</div>
+
+</div><!-- /slides -->
+
+<script>
+  const TOTAL = 12;
+  let cur = 1;
+
+  function goTo(n) {
+    document.getElementById('s' + cur).classList.remove('active');
+    cur = Math.max(1, Math.min(TOTAL, n));
+    document.getElementById('s' + cur).classList.add('active');
+    document.querySelectorAll('.nav-dot').forEach((d, i) => {
+      d.classList.toggle('active', i + 1 === cur);
+    });
+  }
+
+  function next() { goTo(cur + 1); }
+  function prev() { goTo(cur - 1); }
+
+  // Build dots
+  const dotsEl = document.getElementById('dots');
+  for (let i = 1; i <= TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'nav-dot' + (i === 1 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+  });
+</script>
+</body>
+</html>
