@@ -251,7 +251,7 @@
     <div class="vs-right"><strong class="accent">AI学習拒否宣言</strong> + WIP記録が「人間が作った」証跡に</div>
   </div>
   <div class="vs-row">
-    <div class="vs-left"><strong style="color:#dc322f">NSFW・AI作品への差別</strong> — 突然のBAN・アルゴリズムによる抑制</div>
+    <div class="vs-left"><strong style="color:#dc322f">特定コンテンツの差別</strong> — AI作品・表現ジャンルによる突然のBANやアルゴリズム抑制</div>
     <div class="vs-arrow">→</div>
     <div class="vs-right">アルゴリズムによる差別なし。<strong class="accent">AIフィルターで的確な読者へ</strong></div>
   </div>
@@ -338,7 +338,7 @@
         <li>映像・音声作品をファンと深く交流したい映像作家・ミュージシャン</li>
         <li>WIPから完成作品まで一か所で管理したいクリエイター</li>
         <li>AI普及で自作品の価値が低下していると感じている人</li>
-        <li>NSFW作品を適切な環境で発表したいクリエイター</li>
+        <li>表現の自由度が高い環境で発表したいクリエイター</li>
       </ul>
     </div>
 
@@ -677,84 +677,51 @@
 <!-- ==================== SLIDE 9: BUSINESS MODEL ==================== -->
 <div class="slide" id="s9">
   <div class="slide-label">ビジネスモデル</div>
-  <h2>収益化戦略</h2>
+  <h2>収益化方針</h2>
 
-  <div class="cols-2" style="gap:2rem;">
-    <div>
-      <div class="phase-bar">
-        <div class="phase-seg phase-1">Phase 1<br>現在</div>
-        <div class="phase-seg phase-2">Phase 2<br>近いうち</div>
-        <div class="phase-seg phase-3">Phase 3<br>成長期</div>
+  <div style="max-width:640px;">
+    <div class="card" style="border:1px solid rgba(181,137,0,.4);background:rgba(181,137,0,.07);margin-bottom:1.5rem;">
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem;">
+        <span class="badge badge-orange">検討中</span>
+        <strong style="color:var(--base2);">収益化方針は現在未定</strong>
       </div>
-
-      <table>
-        <thead><tr><th>フェーズ</th><th>手段</th><th>対象</th><th>プラットフォーム手数料</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><span class="badge badge-cyan">Phase 1</span></td>
-            <td>Ko-Fi 寄付</td>
-            <td>サービス全体への支援</td>
-            <td>0%（Ko-Fi 手数料のみ）</td>
-          </tr>
-          <tr>
-            <td><span class="badge badge-blue">Phase 2</span></td>
-            <td>Stripe チップ</td>
-            <td>SFW クリエイターへの投げ銭</td>
-            <td><strong style="color:var(--brand)">15%</strong></td>
-          </tr>
-          <tr>
-            <td><span class="badge badge-green">Phase 3</span></td>
-            <td>CCBill</td>
-            <td>NSFW サブスク・単品販売</td>
-            <td><strong style="color:var(--brand)">15%</strong></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="card" style="margin-top:1.25rem;background:rgba(42,161,152,.06);">
-        <p style="font-size:.9rem;"><strong style="color:var(--base2);">なぜ Stripe + CCBill の二本立てか？</strong></p>
-        <p style="font-size:.85rem;margin-top:.5rem;">
-          Stripe は NSFW コンテンツへの利用規約が厳しく突然停止リスクあり。
-          CCBill は OnlyFans 等で実績のある成人コンテンツ専用決済。
-          手数料 15% は OnlyFans（20%）より低く、移住クリエイターへの訴求になる。
-        </p>
-      </div>
+      <p style="font-size:.95rem;line-height:1.75;">
+        決済手段・手数料率・対象ユーザー範囲のいずれも確定していない。<br>
+        パイロット期間中のユーザー行動・利用傾向を観察したうえで改めて決定する。
+      </p>
     </div>
 
-    <div>
-      <h3 style="margin-bottom:1rem;color:var(--base01);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;">損益分岐点の試算</h3>
-
-      <div class="card" style="margin-bottom:1rem;">
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:.9rem;">現在の固定費</span>
-          <strong style="color:var(--brand);">$14 / 月</strong>
-        </div>
+    <div class="card" style="margin-bottom:1.25rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:.95rem;">現在の月額固定費</span>
+        <strong style="color:var(--brand);font-size:1.2rem;">$14 / 月</strong>
       </div>
+      <p style="font-size:.85rem;color:var(--base01);margin-top:.4rem;">
+        ユーザーが0人でも発生する固定費。EC2 + EBS + S3 + SES + ドメイン。
+      </p>
+    </div>
 
-      <div class="card card-green" style="margin-bottom:1rem;">
-        <div style="font-size:.85rem;color:var(--base01);margin-bottom:.5rem;">Phase 2 損益分岐点（チップ手数料15%）</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:.9rem;">必要な月間総チップ額</span>
-          <strong style="color:var(--green);">$93</strong>
-        </div>
-        <p style="font-size:.8rem;color:var(--base01);margin-top:.5rem;">
-          93人が$1チップするだけで黒字。現実的な目標。
-        </p>
-      </div>
+    <div class="card card-green" style="margin-bottom:1.25rem;">
+      <h3 style="margin-bottom:.5rem;">収益化を考える際の判断軸</h3>
+      <ul class="checklist" style="font-size:.9rem;">
+        <li>クリエイターが価値を感じて対価を払える仕組みか</li>
+        <li>扱うコンテンツの範囲に対応できる決済手段か</li>
+        <li>プラットフォーム手数料はクリエイターが納得できる水準か</li>
+        <li>広告モデルはクリエイターへの不信感を招くため慎重に検討</li>
+      </ul>
+    </div>
 
-      <div class="card">
-        <div style="font-size:.85rem;color:var(--base01);margin-bottom:.75rem;">広告を採用しない理由</div>
-        <ul style="font-size:.85rem;color:var(--base0);padding-left:1rem;">
-          <li style="margin-bottom:.4rem;">NSFW対応広告ネットワークが限られる</li>
-          <li style="margin-bottom:.4rem;">クリエイターへの不信感を招く</li>
-          <li>クリエイター間の直接決済の方がLTV高い</li>
-        </ul>
-      </div>
+    <div class="card">
+      <h3 style="margin-bottom:.5rem;color:var(--base01);font-size:.85rem;">今後の検討候補（確定ではない）</h3>
+      <p style="font-size:.85rem;color:var(--base01);">
+        クリエイター間チップ / 月額サブスク / 単品販売 / プレミアム機能 / 法人向けプランなど、
+        複数のモデルが選択肢としてある。ユーザー獲得後に改めて議論する。
+      </p>
     </div>
   </div>
 
   <div class="slide-footer">
-    <span class="muted">決済システムは収益化フェーズで追加実装。現在は Ko-Fi リンクのみ</span>
+    <span class="muted">収益化方針が確定した時点でこのスライドを更新する</span>
     <span class="slide-num">9 / 12</span>
   </div>
 </div>
@@ -788,7 +755,7 @@
       </div>
       <ul class="checklist" style="font-size:.85rem;">
         <li>招待コード配布ツイートでバイラル</li>
-        <li>Stripe チップ機能実装</li>
+        <li>収益化方針の確定・実装</li>
         <li>OGP・シェア体験最終調整</li>
         <li>モデレーター採用</li>
       </ul>
@@ -802,7 +769,7 @@
       </div>
       <ul class="checklist" style="font-size:.85rem;">
         <li>招待制解除・オープン登録</li>
-        <li>CCBill 実装（NSFW 収益化）</li>
+        <li>収益化本格稼働</li>
         <li>CloudFront 導入（帯域最適化）</li>
         <li>インフルエンサーへの正式アプローチ</li>
       </ul>
@@ -822,7 +789,7 @@
     </div>
     <div style="text-align:center;padding:.75rem;background:var(--surface-900);border-radius:8px;">
       <div style="font-weight:700;color:var(--base1);margin-bottom:.25rem;">Discord</div>
-      <div style="font-size:.8rem;color:var(--base01);">NSFWコミュニティへの告知</div>
+      <div style="font-size:.8rem;color:var(--base01);">クリエイターコミュニティへの告知</div>
     </div>
     <div style="text-align:center;padding:.75rem;background:var(--surface-900);border-radius:8px;">
       <div style="font-weight:700;color:var(--base1);margin-bottom:.25rem;">Mastodon</div>
@@ -831,7 +798,7 @@
   </div>
 
   <div class="slide-footer">
-    <span class="muted">Phase 3 で Ko-Fi 収益 > AWS コスト（黒字化）を目指す</span>
+    <span class="muted">収益化方針はユーザー獲得後に改めて決定する</span>
     <span class="slide-num">10 / 12</span>
   </div>
 </div>
@@ -977,9 +944,8 @@
         <h3>リスクが低い</h3>
         <p style="font-size:.9rem;margin-top:.5rem;">
           インフラコスト $14/月から始められる。
-          損益分岐点は月間チップ $93（= 93人が$1チップ）。
-          CCBill を追加することで NSFW 市場という
-          <strong style="color:var(--green)">収益性の高いニッチ</strong>を取れる。
+          収益化方針は未定だが、固定費が極めて低いため
+          <strong style="color:var(--green)">ユーザー検証に十分な時間をかけられる</strong>。
         </p>
       </div>
       <div class="card card-green">
@@ -1007,13 +973,13 @@
       <div class="num-unit">対応言語</div>
     </div>
     <div class="num-block">
-      <div class="num-big" style="color:var(--green)">15%</div>
-      <div class="num-unit">プラットフォーム手数料</div>
+      <div class="num-big" style="color:var(--yellow);font-size:1.8rem;">未定</div>
+      <div class="num-unit">収益化方針</div>
     </div>
     <div style="flex:1;border-left:1px solid rgba(42,161,152,.3);padding-left:1.5rem;">
       <p style="font-size:1rem;color:var(--base1);line-height:1.7;">
         クリエイターSNS × ポートフォリオ × AI時代の権利保護。<br>
-        MVP 稼働済み・低固定費・明確な収益化ルートで、<br>
+        MVP 稼働済み・低固定費・収益化はユーザー獲得後に決定。<br>
         <strong style="color:var(--brand)">今すぐ一緒に育てられる</strong> プロダクト。
       </p>
     </div>
